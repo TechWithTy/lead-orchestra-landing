@@ -1,0 +1,2 @@
+# Temporarily ignore vercel.json to avoid Windows compatibility issues
+# Use WSL or modify vercel.json installCommand for Windows

@@ -1,24 +1,30 @@
 import { timelineSummary } from "@/data/about/timelineSummary";
 import type { SeoMeta } from "../../utils/seo/seo";
 
-// Default SEO meta for Deal Scale
+// Default SEO meta for Lead Orchestra
 export const DEFAULT_SEO: SeoMeta = {
-	title: "Deal Scale AI Real Estate Automation for Deal Flow",
+	title: "Lead Orchestra | Open-Source Lead Scraping & Data Ingestion",
 	description:
-		"AI real estate automation for investors and agents to unify deal flow, automate outreach, and book more appointments without switching CRMs.",
+		"Scrape Anything. Export Everywhere. Open-source lead scraping and data ingestion that plugs into anything. Fresh leads, not rented lists. Built for developers, agencies, and data teams.",
 	canonical: "https://dealscale.io",
 	image: "/banners/main.png",
 	keywords: [
-		"Real estate AI",
-		"Real estate CRM",
-		"Real estate automation",
-		"AI lookalike audience expansion inspired by How to Win Friends and Influence People",
-		"Real Estate Investor Leads",
-		"Real Estate Agent Leads",
-		"wholesaling tools",
-		"motivated sellers",
+		"open-source lead scraping",
+		"MCP scraping",
+		"data ingestion",
+		"web scraping",
+		"lead generation",
+		"developer tools",
+		"MCP protocol",
+		"CSV JSON export",
+		"Playwright scraping",
+		"scraping API",
+		"lead scraping tools",
+		"data extraction",
+		"scraping infrastructure",
+		"open-source scraping",
 	],
-	siteName: "Deal Scale | AI-Powered Real Estate Solutions",
+	siteName: "Lead Orchestra | Open-Source Lead Scraping Engine",
 	type: "website",
 	ratingValue: 5,
 	reviewCount: 9,
@@ -29,9 +35,9 @@ export const DEFAULT_SEO: SeoMeta = {
  */
 export const STATIC_SEO_META: Record<string, SeoMeta> = {
 	"/": {
-		title: "Deal Scale AI Real Estate Automation for Deal Flow",
+		title: "Lead Orchestra | Open-Source Lead Scraping & Data Ingestion",
 		description:
-			"AI real estate automation for investors and agents to unify deal flow, automate outreach, and book more appointments without switching CRMs.",
+			"Scrape Anything. Export Everywhere. Open-source lead scraping and data ingestion that plugs into anything. Fresh leads, not rented lists.",
 		canonical: "https://dealscale.io",
 		keywords: DEFAULT_SEO.keywords,
 		image: DEFAULT_SEO.image,
@@ -39,29 +45,36 @@ export const STATIC_SEO_META: Record<string, SeoMeta> = {
 		reviewCount: 9,
 	},
 	"/products": {
-		title: "Products | Deal Scale",
+		title: "Products | Lead Orchestra",
 		description:
-			"Browse our curated collection of digital and physical products from Deal Scale.",
+			"Browse our curated collection of lead magnets, MCP plugins, n8n workflows, and scraping tools from Lead Orchestra.",
 		canonical: "https://dealscale.io/products",
-		keywords: [...DEFAULT_SEO.keywords, "products", "shop", "catalog"],
+		keywords: [
+			...DEFAULT_SEO.keywords,
+			"products",
+			"lead magnets",
+			"MCP plugins",
+			"n8n workflows",
+		],
 		image: DEFAULT_SEO.image,
 	},
 	"/blogs": {
-		title: "Blogs | Deal Scale",
+		title: "Blogs | Lead Orchestra",
 		description:
-			"See the latest insights, stories, and updates for real estate investors and wholesalers from the Deal Scale team.",
+			"See the latest insights, tutorials, and updates on lead scraping, data ingestion, and developer tools from the Lead Orchestra team.",
 		canonical: "https://dealscale.io/blogs",
 		keywords: DEFAULT_SEO.keywords,
 		image: DEFAULT_SEO.image,
 	},
 	"/pricing": {
-		title: "Pricing | Deal Scale",
+		title: "Pricing | Lead Orchestra",
 		description:
-			"Check out our pricing options and packages tailored to your growth goals. Sensible investments for maximal growth.",
+			"Check out our pricing options and packages for lead scraping credits. Open-source free tier available. Sensible investments for maximal growth.",
 		canonical: "https://dealscale.io/pricing",
 		keywords: [
-			"deal scale pricing",
-			"real estate ai pricing",
+			"lead orchestra pricing",
+			"scraping credits pricing",
+			"open-source scraping",
 			...DEFAULT_SEO.keywords,
 		],
 		image: DEFAULT_SEO.image,
@@ -69,17 +82,17 @@ export const STATIC_SEO_META: Record<string, SeoMeta> = {
 		changeFrequency: "daily",
 	},
 	"/case-studies": {
-		title: "Case Studies | Deal Scale",
+		title: "Case Studies | Lead Orchestra",
 		description:
-			"Check out real-world solutions and success stories from real estate professionals using Deal Scale and its Technologies.",
+			"Check out real-world solutions and success stories from developers, agencies, and startups using Lead Orchestra for lead scraping and data ingestion.",
 		canonical: "https://dealscale.io/case-studies",
 		keywords: DEFAULT_SEO.keywords,
 		image: "/banners/CaseStudy2.png",
 	},
 	"/contact": {
-		title: "Beta Test Sign Up | Deal Scale",
+		title: "Contact | Lead Orchestra",
 		description:
-			"Get in touch with Deal Scale for expert AI-powered real estate solutions and support.",
+			"Get in touch with Lead Orchestra for expert lead scraping solutions, MCP plugin support, and developer tools.",
 		canonical: "https://dealscale.io/contact",
 		keywords: DEFAULT_SEO.keywords,
 		image: DEFAULT_SEO.image,
@@ -93,28 +106,30 @@ export const STATIC_SEO_META: Record<string, SeoMeta> = {
 		image: DEFAULT_SEO.image,
 	},
 	"/about": {
-		title: "About Us | Deal Scale",
+		title: "About Us | Lead Orchestra",
 		description:
-			"Learn about Deal Scale's mission to revolutionize real estate with AI-powered solutions for investors, agents, and wholesalers.",
+			"Learn about Lead Orchestra's mission to revolutionize lead generation with open-source scraping tools for developers, agencies, and data teams.",
 		canonical: "https://dealscale.io/about",
 		keywords: [
-			"About Deal Scale",
+			"About Lead Orchestra",
 			"Our Mission",
-			"Real Estate Technology",
+			"Open-Source Scraping",
+			"MCP Protocol",
 			...DEFAULT_SEO.keywords,
 		],
 		image: DEFAULT_SEO.image,
 		manifestoSections: timelineSummary,
 	},
 	"/features": {
-		title: "Features | Deal Scale",
+		title: "Features | Lead Orchestra",
 		description:
-			"Check out powerful features of Deal Scale's AI, including automated lead nurturing, outreach, and our AI Caller.",
+			"Check out powerful features of Lead Orchestra's scraping engine, including MCP plugins, data normalization, and multi-format export.",
 		canonical: "https://dealscale.io/features",
 		keywords: [
-			"AI lead nurture",
-			"real estate outreach",
-			"AI personalization",
+			"MCP scraping",
+			"data normalization",
+			"lead export",
+			"scraping API",
 			...DEFAULT_SEO.keywords,
 		],
 		image: "/banners/Feature.png",

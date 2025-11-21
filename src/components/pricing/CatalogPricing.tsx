@@ -131,6 +131,7 @@ interface CatalogPricingProps {
 	showUpgradeStack?: boolean;
 	showAddOnStack?: boolean;
 	showPilotBlurb?: boolean;
+	showOpenSource?: boolean;
 }
 
 export const minimalCatalogPricingOptions = {
@@ -149,6 +150,7 @@ export const CatalogPricing = ({
 	showUpgradeStack = true,
 	showAddOnStack = true,
 	showPilotBlurb = true,
+	showOpenSource = false,
 }: CatalogPricingProps) => {
 	const router = useNavigationRouter();
 	const [view, setView] = useState<PricingView>("monthly");
@@ -204,11 +206,7 @@ export const CatalogPricing = ({
 	const oneTimePlans = catalog.pricing.oneTime;
 
 	const recurringPlans =
-		view === "monthly"
-			? monthlyPlans.filter((plan) => plan.id !== "free")
-			: view === "annual"
-				? annualPlans
-				: [];
+		view === "monthly" ? monthlyPlans : view === "annual" ? annualPlans : [];
 
 	const selfHostedPlan = oneTimePlans.find(
 		(plan): plan is SelfHostedPlan => "roiEstimator" in plan,
@@ -284,15 +282,12 @@ export const CatalogPricing = ({
 		setView(next);
 	};
 
-	const freePlan = monthlyPlans.find((plan) => plan.id === "free");
-	const basicPlan = monthlyPlans.find((plan) => plan.id === "basic");
-	const starterPlan = monthlyPlans.find((plan) => plan.id === "starter");
+	const freePlan = monthlyPlans.find((plan) => plan.id === "open-source");
+	const basicPlan = monthlyPlans.find((plan) => plan.id === "team");
+	const starterPlan = monthlyPlans.find((plan) => plan.id === "agency");
 
 	const aiCreditsProduct = useMemo(
-		() =>
-			creditProducts.find(
-				(product) => product.slug === "ai-conversation-credits",
-			),
+		() => creditProducts.find((product) => product.slug === "lead-credits"),
 		[],
 	);
 
@@ -300,7 +295,7 @@ export const CatalogPricing = ({
 		async (coupon: string) => {
 			if (!aiCreditsProduct) {
 				toast.error(
-					"AI credits product is unavailable. Please try again later.",
+					"Lead credits product is unavailable. Please try again later.",
 				);
 				return;
 			}
@@ -650,7 +645,7 @@ export const CatalogPricing = ({
 		if (showAddOnStack && aiCreditsProduct) {
 			items.push({
 				id: 2,
-				name: "AI Credits",
+				name: "Lead Credits",
 				designation: "Add-on Discount",
 				content: (
 					<div className="flex flex-col gap-4">
@@ -659,11 +654,10 @@ export const CatalogPricing = ({
 								Add-On Boost
 							</p>
 							<h4 className="font-semibold text-foreground text-lg">
-								AI Conversation Credits
+								Lead Credits
 							</h4>
 							<p className="text-muted-foreground text-xs">
-								Top up automation credits with the launch coupon applied
-								instantly.
+								Top up lead credits with the launch coupon applied instantly.
 							</p>
 						</div>
 						<button
@@ -751,7 +745,7 @@ export const CatalogPricing = ({
 			<section id="pricing" className="relative px-6 lg:px-8">
 				<div className="pointer-events-none absolute inset-0 bg-grid-lines opacity-10" />
 				<div className="mx-auto max-w-6xl">
-					<header className="text-center">
+					<header className="pt-12 text-center md:pt-16">
 						<p className="text-primary/70 text-xs uppercase tracking-wide">
 							Pricing
 						</p>
@@ -784,79 +778,112 @@ export const CatalogPricing = ({
 							{(showFreePreview ||
 								(showUpgradeStack && stackItems.length > 0)) && (
 								<div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-									{showFreePreview && (
+									{showFreePreview && freePlan && (
 										<GlassCard className="flex flex-col items-center gap-5 p-6 text-center">
 											<div className="flex flex-col items-center gap-2">
 												<Badge
 													variant="secondary"
 													className="bg-primary/10 text-primary"
 												>
-													Free Trial
+													{showOpenSource ? "Open Source" : "Free Trial"}
 												</Badge>
 												<h3 className="font-semibold text-2xl text-foreground">
-													Explore DealScale with 5 AI demo credits
+													{showOpenSource
+														? freePlan.name
+														: "Explore Lead Orchestra with Free Trial"}
 												</h3>
 												<p className="text-muted-foreground text-sm">
-													Test outbound cadences, dashboard analytics, and CRM
-													sync before you upgrade. Pilot pricing locks in for 2
-													years once you activate.
-												</p>
-												<p className="text-muted-foreground text-xs">
-													After the trial you can continue with the Basic plan
-													at ${basicPlan?.price.toLocaleString() ?? "2,000"}
-													/mo—cancel anytime before the renewal.
+													{showOpenSource
+														? freePlan.idealFor
+															? `Ideal for ${freePlan.idealFor.toLowerCase()}`
+															: "100% free and open-source scraping engine"
+														: "Test scraping workflows, data normalization, and CRM export before you upgrade."}
 												</p>
 											</div>
 											<ul className="list-none space-y-3 text-center text-muted-foreground text-sm">
-												{freePlan?.features?.map((feature) => (
-													<li key={feature}>{feature}</li>
-												)) ?? (
-													<>
-														<li>
-															5 AI demo credits (approx. 4–5 minutes of AI call
-															time)
-														</li>
-														<li>1 active campaign</li>
-														<li>Dashboard + CRM preview</li>
-													</>
-												)}
+												{showOpenSource
+													? freePlan.features?.map((feature) => (
+															<li key={feature}>{feature}</li>
+														))
+													: [
+															"5 demo scraping jobs",
+															"1 active campaign",
+															"Dashboard + CRM preview",
+															"Upgrade to Team plan for full access",
+														].map((feature) => (
+															<li key={feature}>{feature}</li>
+														))}
 											</ul>
 											<div className="flex w-full flex-col gap-3 sm:flex-row">
-												<Button
-													className="flex-1"
-													onClick={handleStartTrial}
-													disabled={trialLoading}
-													aria-live="assertive"
-												>
-													{trialLoading ? (
-														<>
-															<Loader2
-																className="mr-2 h-4 w-4 animate-spin"
-																aria-hidden
-															/>
-															<span className="sr-only">Starting trial…</span>
-															<span aria-hidden>Starting trial…</span>
-														</>
-													) : (
-														"Start Free Trial"
-													)}
-												</Button>
-												<Button
-													variant="outline"
-													className="flex-1 whitespace-nowrap"
-													onClick={() => {
-														if (starterPlan) {
-															void handleSubscribe(starterPlan, "monthly");
-														} else {
-															toast.error(
-																"Starter plan checkout is temporarily unavailable.",
-															);
-														}
-													}}
-													disabled={loading === `${starterPlan?.id}-monthly`}
-												>
-													Lock In Pricing for 2 Years
-												</Button>
+												{showOpenSource ? (
+													<>
+														<Button className="flex-1" asChild>
+															<a
+																href="https://github.com"
+																target="_blank"
+																rel="noopener noreferrer"
+															>
+																View on GitHub
+															</a>
+														</Button>
+														<Button
+															variant="outline"
+															className="flex-1 whitespace-nowrap"
+															onClick={() => {
+																if (basicPlan) {
+																	void handleSubscribe(basicPlan, "monthly");
+																} else {
+																	toast.error(
+																		"Team plan checkout is temporarily unavailable.",
+																	);
+																}
+															}}
+															disabled={loading === `${basicPlan?.id}-monthly`}
+														>
+															Upgrade to Team Plan
+														</Button>
+													</>
+												) : (
+													<>
+														<Button
+															className="flex-1"
+															onClick={handleStartTrial}
+															disabled={trialLoading}
+															aria-live="assertive"
+														>
+															{trialLoading ? (
+																<>
+																	<Loader2
+																		className="mr-2 h-4 w-4 animate-spin"
+																		aria-hidden
+																	/>
+																	<span className="sr-only">
+																		Starting trial…
+																	</span>
+																	<span aria-hidden>Starting trial…</span>
+																</>
+															) : (
+																"Start Free Trial"
+															)}
+														</Button>
+														<Button
+															variant="outline"
+															className="flex-1 whitespace-nowrap"
+															onClick={() => {
+																if (basicPlan) {
+																	void handleSubscribe(basicPlan, "monthly");
+																} else {
+																	toast.error(
+																		"Team plan checkout is temporarily unavailable.",
+																	);
+																}
+															}}
+															disabled={loading === `${basicPlan?.id}-monthly`}
+														>
+															Upgrade to Team Plan
+														</Button>
+													</>
+												)}
 											</div>
 										</GlassCard>
 									)}
@@ -908,7 +935,7 @@ export const CatalogPricing = ({
 					) : null}
 
 					{view !== "oneTime" && recurringPlans.length > 0 ? (
-						<div className="mt-12 grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+						<div className="mt-12 grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
 							{minimalStackActive && minimalStackItems.length === 2 ? (
 								<div className="md:col-span-2">
 									<CardStack
@@ -966,10 +993,17 @@ export const CatalogPricing = ({
 														label: "Talk to Sales",
 														href: "/contact",
 													}
-												: plan.ctaType === "upgrade"
+												: plan.ctaType === "link" || plan.ctaType === "upgrade"
 													? {
-															label: "Start Free Trial",
-															href: "/signup",
+															label:
+																plan.ctaLabel ??
+																(plan.ctaType === "upgrade"
+																	? "Start Free Trial"
+																	: "View on GitHub"),
+															href:
+																plan.ctaType === "link"
+																	? "https://github.com"
+																	: "/signup",
 														}
 													: undefined
 										}

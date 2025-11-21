@@ -37,13 +37,13 @@ export function buildManifestoSchema(
 		"@context": SCHEMA_CONTEXT,
 		"@type": "CreativeWorkSeries",
 		"@id": seriesId,
-		name: options.name ?? "DealScale Blue Ocean Manifesto",
+		name: options.name ?? "Lead Orchestra Blue Ocean Manifesto",
 		headline:
 			options.description ??
-			"Ten-part manifesto outlining how DealScale automates wealth creation for real estate operators.",
+			"Ten-part manifesto outlining how Lead Orchestra automates wealth creation for real estate operators.",
 		description:
 			options.description ??
-			"Discover how DealScale scales revenue leverage with automation, ownership, and lifestyle-driven outcomes.",
+			"Discover how Lead Orchestra scales revenue leverage with automation, ownership, and lifestyle-driven outcomes.",
 		url: baseUrl,
 		inLanguage: "en-US",
 		author: {

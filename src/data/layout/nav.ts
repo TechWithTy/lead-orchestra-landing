@@ -1,9 +1,10 @@
 export const offerImg =
-	"/sales/offerings/re_investors_guide_financial_freedom.png";
+	"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop&q=80";
 import {
 	BookIcon,
 	BriefcaseIcon,
 	BuildingIcon,
+	Code2Icon,
 	DollarSignIcon,
 	FileTextIcon,
 	GlobeIcon,
@@ -11,9 +12,11 @@ import {
 	InfoIcon,
 	LightbulbIcon,
 	type LucideIcon,
+	MailIcon,
 	NewspaperIcon,
 	PhoneIcon,
 	RocketIcon,
+	SearchIcon,
 	UsersIcon,
 } from "lucide-react";
 
@@ -72,13 +75,13 @@ export const navItems: NavItem[] = [
 			{ title: "Partners", href: "/partners", icon: UsersIcon },
 			{ title: "Careers", href: "/careers", icon: BriefcaseIcon },
 			{
-				title: "Tools For Investors & Wholesalers",
-				href: "/blogs?tag=investor+wholesaler+tools",
+				title: "Tools For Lead Gen Agencies",
+				href: "/blogs?tag=lead+gen+agencies+tools",
 				icon: FileTextIcon,
 			},
 			{
-				title: "Tools For Agents",
-				href: "/blogs?tag=agent+tools",
+				title: "Tools For Founders",
+				href: "/blogs?tag=founders+tools",
 				icon: FileTextIcon,
 			},
 
@@ -87,11 +90,12 @@ export const navItems: NavItem[] = [
 				href: "/newsletter",
 				icon: FileTextIcon,
 				image: offerImg,
-				ctaTitle: "RE Launchpad",
-				ctaSubtitle: "Get started with AI-powered real estate tools.",
+				ctaTitle: "N8N Lead Gen Workflows",
+				ctaSubtitle:
+					"Get ready-to-use n8n lead gen workflows for Lead Orchestra scraping automation.",
 				ctaButton: {
-					label: "See Tools",
-					href: "/blogs?tag=dev-tools",
+					label: "See Workflows",
+					href: "/blogs?tag=n8n+workflows",
 				},
 			},
 		],
@@ -102,16 +106,25 @@ export const navItems: NavItem[] = [
 		icon: BuildingIcon,
 		children: [
 			{
-				title: "Investors",
-				href: "/industries/investors",
-				icon: DollarSignIcon,
+				title: "Developers & Engineers",
+				href: "/industries/developers",
+				icon: Code2Icon,
 			},
 			{
-				title: "Wholesalers",
-				href: "/industries/wholesalers",
-				icon: LightbulbIcon,
+				title: "Lead Gen Agencies",
+				href: "/industries/agencies",
+				icon: MailIcon,
 			},
-			{ title: "Agents", href: "/industries/agents", icon: GlobeIcon },
+			{
+				title: "SDR & RevOps Teams",
+				href: "/industries/sdr-revops",
+				icon: SearchIcon,
+			},
+			{
+				title: "Real Estate",
+				href: "/industries/real-estate",
+				icon: HomeIcon,
+			},
 		],
 	},
 	{ title: "Contact Us", href: "/contact", icon: PhoneIcon },

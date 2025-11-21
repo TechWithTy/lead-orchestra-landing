@@ -24,16 +24,17 @@ import { useShallow } from "zustand/react/shallow";
 import { ActivityRoller, usePrefersReducedMotion } from "./ActivityRoller";
 
 const LEFT_COLUMN_POINTS = [
-	"Sync sourcing, underwriting, and investor CRM workflows into a single live feed.",
-	"Surface the most valuable seller or deal signal with motion cues and badges.",
-	"Respect focus mode by pausing motion when the acquisitions desk needs deep work.",
+	"Sync scraping jobs, data normalization, and export workflows into a single live feed.",
+	"Surface the most valuable lead sources and scraping signals with motion cues and badges.",
+	"Respect focus mode by pausing motion when developers need deep work.",
 ] as const;
 
 const FALLBACK_HEADLINE =
-	"We orchestrate every deal touchpoint so AI Sales Assistants stay in deal mode.";
+	"We orchestrate every scraping touchpoint so developers stay in flow mode.";
 const FALLBACK_SUBHEAD =
-	"Monitor live seller handoffs, deal alerts, and compliance tasks without leaving your workflow. Investors trust DealScale to automate deal flow outreach.";
-const FALLBACK_SUPPORT = "Automate deal flow conversations in under 5 minutes.";
+	"Monitor live scraping jobs, data exports, and integration tasks without leaving your workflow. Developers trust Lead Orchestra for open-source data ingestion.";
+const FALLBACK_SUPPORT =
+	"Paste a URL → scrape all the leads → clean them → export instantly.";
 
 const CARD_STACK_OFFSET = 12;
 const CARD_STACK_SCALE_FACTOR = 0.04;
@@ -118,7 +119,7 @@ export default function FeatureSectionActivity(): JSX.Element {
 		PERSONA_LABELS[persona] ??
 		PERSONA_LABEL ??
 		PERSONA_LABELS[DEFAULT_PERSONA_KEY] ??
-		"AI Sales Assistants";
+		"Developers";
 	const personaAudience =
 		personaLabel.endsWith("s") || personaLabel.endsWith("S")
 			? personaLabel
@@ -127,12 +128,12 @@ export default function FeatureSectionActivity(): JSX.Element {
 		personaAudience.endsWith("s") || personaAudience.endsWith("S")
 			? "stay"
 			: "stays";
-	const headline = `We orchestrate every deal touchpoint so ${personaAudience} ${personaVerb} in deal mode.`;
+	const headline = `We orchestrate every scraping touchpoint so ${personaAudience} ${personaVerb} in flow mode.`;
 	const resolvedBenefit =
 		goal ??
 		LIVE_COPY?.values?.benefit ??
 		PERSONA_GOAL ??
-		"Automate deal flow conversations";
+		"Scrape, normalize, and export lead data";
 	const subheadline =
 		`${resolvedBenefit} ${LIVE_COPY?.values?.socialProof ?? ""}`.trim() ||
 		FALLBACK_SUBHEAD;
@@ -201,7 +202,7 @@ export default function FeatureSectionActivity(): JSX.Element {
 				<div className="flex flex-col items-center gap-6 text-center md:items-start md:text-left lg:gap-8">
 					<span className="hidden items-center gap-2 self-center rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-semibold text-primary text-xs uppercase tracking-widest sm:inline-flex md:self-start">
 						<span className="block h-2 w-2 animate-pulse rounded-full bg-accent" />
-						{personaLabel} • Live Activity Stream
+						{personaLabel ? `${personaLabel} • ` : ""}Live Activity Stream
 					</span>
 					<h2 className="text-balance font-semibold text-3xl text-foreground leading-tight sm:text-4xl lg:text-5xl">
 						{headline}

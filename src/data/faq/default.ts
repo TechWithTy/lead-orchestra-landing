@@ -2,88 +2,78 @@ import type { FAQItem } from "@/types/faq";
 
 export const faqItems: FAQItem[] = [
 	{
-		question: "What makes DealScale different from other real estate tools?",
+		question: "What makes Lead Orchestra different from other scraping tools?",
 		answer:
-			"DealScale is an AI sales coworker that automates skip tracing, AI cold calling, and seller qualification for agents and investors. Unlike list providers, it handles outreach, follow-up, and appointment booking so you can focus on closing deals. For investors like you, it also bakes in best-next-step playbooks that earn trust with sellers, win influencer referrals, and keep your pipeline warm without adding headcount.",
+			"Lead Orchestra is an open-source lead scraping and data ingestion platform built specifically for real estate professionals. Unlike generic scrapers, it includes pre-built plugins for Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, and Twitter. All scraped data is automatically normalized to Lead Standard Format (LSF) schemas, making it ready to export to CRM, CSV, JSON, Database, S3, or any system. Plus, it's built with Playwright for reliable anti-bot bypass and includes developer tooling like CLI, SDKs, and webhooks.",
 	},
 	{
-		question: "Who is DealScale built for?",
+		question: "Who is Lead Orchestra built for?",
 		answer:
-			"DealScale is designed for real estate agents, investors, and wholesalers who want to automate outreach, follow-up, and appointment booking using AI voice, SMS, and data-driven qualification. Agencies and brokerages also use DealScale to scale lookalike audience expansion without hiring extra staff.",
+			"Lead Orchestra is designed for developers, agencies, and data teams who need to scrape leads from multiple sources and normalize the data for their workflows. Real estate agents, investors, and wholesalers use it to gather fresh leads from Zillow, Realtor, MLS, and social platforms. Agencies use it to build custom scraping pipelines for clients. Data teams use it for automated data ingestion and normalization.",
 	},
 	{
-		question: "What is AI Voice Outreach?",
+		question: "What sources can Lead Orchestra scrape?",
 		answer:
-			"AI Voice Outreach uses your cloned voice to call and qualify leads automatically. The AI speaks naturally, handles objections, and books appointments directly in your CRM while following compliance standards like TCPA and GDPR.",
+			"Lead Orchestra includes pre-built MCP plugins for Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, and Twitter. The unified MCP spec makes it easy to add new sources. You can also use the Playwright-based crawling engine to scrape any website with custom selectors and navigation flows.",
 	},
 	{
-		question: "How does voice cloning work?",
+		question: "How does the scraping engine work?",
 		answer:
-			"DealScale uses AI voice cloning software built for real estate professionals. You record a short sample of your voice, and a private model is trained securely for your account. Your AI assistant speaks just like you, building trust with sellers while protecting your data and privacy.",
+			"Lead Orchestra uses a PlaywrightCrawler-based engine with anti-bot modules, headless browser clusters, proxy rotation, stealth mode, and captcha bypass. It supports multi-step navigation, DOM selectors, automatic retries, and rate limiting to ensure reliable scraping without getting blocked.",
 	},
 	{
-		question: "Can DealScale send SMS or social messages?",
+		question: "What data formats can I export to?",
 		answer:
-			"Yes. AI SMS and Social DMs are rolling out soon, allowing you to automatically follow up with leads through text, Facebook Messenger, Instagram, and LinkedIn while maintaining brand consistency and compliance.",
+			"You can export scraped and normalized data to CRM, CSV, JSON, Database, S3, or any system via API. The data normalization layer automatically parses addresses, extracts phone numbers and emails, tags metadata, de-duplicates records, and resolves entities before export.",
 	},
 	{
-		question: "Is skip tracing really unlimited and accurate?",
+		question: "Can I use Lead Orchestra with my existing tools?",
 		answer:
-			"Yes. Every plan includes unlimited verified owner data from over 140 million U.S. property records with more than 90 percent accuracy and no per-record costs. Our data is refreshed daily and enriched for better match rates.",
+			"Yes. Lead Orchestra is designed to plug into anything. Export to CRM for immediate use, CSV/JSON for spreadsheets, Database for storage, S3 for cloud storage, or use the API to integrate with custom systems. The webhook system can trigger actions in other tools when new leads are scraped.",
 	},
 	{
-		question: "Can I import my own lead lists?",
+		question: "How fast can I start scraping?",
 		answer:
-			"Yes. You can upload any CSV, spreadsheet, or CRM export, and DealScale will clean, enrich, and sync it automatically for AI outreach and analysis.",
+			"You can start scraping in under 5 minutes. Just paste a URL, configure your scraping parameters (or use defaults), and let Lead Orchestra handle the rest. The CLI and SDKs make it easy to automate scraping jobs, and GitHub Actions templates help you set up continuous scraping workflows.",
 	},
 	{
-		question: "Will people know they are talking to AI?",
+		question: "Is Lead Orchestra open-source?",
 		answer:
-			"You control disclosure. Your agent can identify itself as an AI assistant or speak naturally in your cloned voice for a fully human experience. DealScale provides disclosure templates and consent tools to help you stay transparent and compliant.",
+			"Yes. Lead Orchestra is open-source, giving you full control over your scraping infrastructure. You can self-host, customize the code, and contribute improvements. Enterprise plans include additional features, support, and optional managed hosting.",
 	},
 	{
-		question: "What kind of ROI can I expect?",
+		question: "What kind of data quality can I expect?",
 		answer:
-			"Most users see over 300 percent ROI within 90 days. On average, every $1 spent on DealScale returns $3 to $10 in closed-deal revenue. Many agents and investors recover their annual plan cost after one converted listing or wholesale deal.",
+			"Lead Orchestra's data normalization layer ensures high-quality output. It automatically parses addresses into standardized formats, extracts and validates phone numbers and emails, tags metadata, removes duplicates, and resolves entity relationships. All data is normalized to Lead Standard Format (LSF) schemas for consistency.",
 	},
 	{
-		question: "Does DealScale replace my CRM?",
+		question: "Does Lead Orchestra handle rate limiting and anti-bot measures?",
 		answer:
-			"No. DealScale is a CRM-agnostic automation layer that connects seamlessly with HubSpot, GoHighLevel, Lofty, Zoho, Follow Up Boss, Salesforce, and more for instant two-way sync of leads, conversations, and appointment data. Your CRM stays the source of truth while DealScale orchestrates lookalike audience expansion, enrichment, and outreach using relationship-first playbooks.",
+			"Yes. The Playwright-based engine includes built-in anti-bot modules, proxy rotation, stealth mode, and captcha bypass. Automatic retries and rate limiting help prevent blocks. The headless browser cluster distributes load to avoid detection patterns.",
 	},
 	{
-		question: "How fast can I launch my first campaign?",
+		question: "Can I scrape data on a schedule?",
 		answer:
-			"You can launch in under five minutes. Just import leads, clone your voice, select a campaign template, and start AI outreach instantly through phone, SMS, or social channels.",
+			"Yes. Use the CLI, SDKs, or GitHub Actions templates to set up scheduled scraping jobs. The webhook system can notify you when scraping completes, and you can export data automatically to your preferred destination.",
 	},
 	{
-		question: "What are TCPA compliant voicemail drops?",
+		question: "What developer tools are included?",
 		answer:
-			"DealScale supports ringless voicemail drops that never trigger a live ring. Each message includes a consent statement and opt-out option, ensuring full TCPA and carrier compliance while keeping delivery rates high.",
+			"Lead Orchestra includes a CLI for command-line scraping, SDKs for JavaScript, Python, and Go, a webhook system for integrations, GitHub Actions templates for CI/CD workflows, an API key console for access management, and usage analytics to track your scraping activity.",
 	},
 	{
-		question: "Is DealScale TCPA and GDPR compliant?",
+		question: "How does data normalization work?",
 		answer:
-			"Yes. DealScale automatically filters Do Not Call numbers, enforces time zone–safe outreach windows, and tracks consent and opt-outs. All data handling meets TCPA, GDPR, and CCPA compliance standards.",
+			"The data normalization layer automatically processes scraped data: parsing addresses into standardized formats, extracting and validating phone numbers and email addresses, tagging metadata for categorization, de-duplicating records across sources, and resolving entity relationships. All output follows Lead Standard Format (LSF) schemas.",
 	},
 	{
-		question: "What is DealScale's compliance policy?",
+		question: "Can I white label or self host Lead Orchestra?",
 		answer:
-			"DealScale follows a privacy-by-design framework that includes consent tracking, encryption at rest and in transit, carrier registration, and AI use transparency. We align with TCPA, GDPR, CCPA, and emerging AI regulations to protect users and leads alike.",
+			"Yes. Since Lead Orchestra is open-source, you can self-host it on your own infrastructure. Enterprise and partner users can also white label it with custom branding, dedicated infrastructure, and optional revenue-sharing models.",
 	},
 	{
-		question: "How will DealScale handle the Colorado AI Act in 2026?",
+		question: "Is there a free trial or open-source version?",
 		answer:
-			"DealScale is already preparing for the Colorado Artificial Intelligence Act, effective February 2026. The platform will include AI labeling, opt-out controls, and documentation for automated decision logic so users can meet transparency and fairness requirements easily.",
-	},
-	{
-		question: "Can I white label or self host DealScale?",
-		answer:
-			"Yes. Enterprise and partner users can white label or self host DealScale with custom branding, dedicated infrastructure, and optional revenue-sharing models.",
-	},
-	{
-		question: "Is there a free trial or pilot program?",
-		answer:
-			"Yes. New users can join the pilot program or request a free trial to test AI voice, skip tracing, and CRM integration before upgrading to a paid plan.",
+			"Yes. Lead Orchestra is open-source, so you can use it for free. Enterprise plans include additional features, support, managed hosting, and priority updates. New users can also request a trial of enterprise features.",
 	},
 ];

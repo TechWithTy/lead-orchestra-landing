@@ -66,22 +66,22 @@ const realTimeFeatureListSchema = z.array(realTimeFeatureSchema).min(1);
 
 const realTimeFeaturesSeed = [
 	{
-		id: "insight-pulse",
-		label: "Insight Pulse",
-		eyebrow: "Dynamic analytics overview",
+		id: "scraping-engine",
+		label: "Scraping & Crawling Engine",
+		eyebrow: "Pillar 1: Core scraping infrastructure",
 		description:
-			"Zoom into deal health, revenue velocity, and quota pacing inside a live charting workspace. Operators compare real-time performance to last sprint and quarterly targets without leaving the Macbook canvas.",
+			"PlaywrightCrawler-based engine with anti-bot modules, headless browser cluster, proxy rotation, stealth mode, and captcha bypass. Multi-step navigation, DOM selectors, automatic retries, and rate limiting.",
 		media: {
 			src: "/demo/static/charts/tab-1/baseline-kpis-top.png",
-			alt: "Baseline analytics dashboard chart showing live KPI trends.",
+			alt: "Lead Orchestra scraping engine dashboard showing live scraping jobs.",
 		},
 		chart: {
-			heading: "Pipeline velocity vs. target",
+			heading: "Scraping throughput vs. targets",
 			description:
-				"Live pipeline units streamed from the orchestration layer. Benchmarks update every 30 seconds as data lands in the warehouse.",
-			currentLabel: "Live pipeline",
-			previousLabel: "Last sprint",
-			targetLabel: "Target pace",
+				"Live scraping jobs streamed from the orchestration layer. Performance metrics update every 30 seconds as data lands.",
+			currentLabel: "Live scraping",
+			previousLabel: "Last hour",
+			targetLabel: "Target rate",
 			data: [
 				{ period: "Mon", current: 320, previous: 285, target: 300 },
 				{ period: "Tue", current: 344, previous: 298, target: 310 },
@@ -92,167 +92,167 @@ const realTimeFeaturesSeed = [
 		},
 		highlights: [
 			{
-				title: "Segment drill-downs",
+				title: "Multi-step navigation",
 				description:
-					"Slice the live chart by region, AE pod, or campaign cohort and instantly compare to last sprint performance.",
+					"Handle complex scraping workflows with automatic retries, DOM selectors, and depth-based crawling across any website structure.",
 				metric: {
-					label: "Filters applied",
-					value: "7 segments",
+					label: "Success rate",
+					value: "98.5%",
 				},
 				visual: "/demo/static/charts/tab-1/baseline-kpis-mid.png",
 			},
 			{
-				title: "AI pacing forecasts",
+				title: "Anti-bot & stealth",
 				description:
-					"Blend historical trendlines with AI projections so revenue leaders understand if they are ahead or behind pace.",
+					"Built-in proxy rotation, captcha solving, and stealth mode to bypass detection and maintain high success rates.",
 				metric: {
-					label: "Forecast delta",
-					value: "+6.4%",
+					label: "Block rate",
+					value: "<2%",
 				},
 				visual: "/demo/static/charts/tab-1/baseline-kpis-bottom.png",
 			},
 		],
 		metrics: [
 			{
-				label: "Deals in motion",
-				value: "126 deals",
+				label: "Active scrapers",
+				value: "12 sources",
 			},
 			{
-				label: "Revenue pace",
-				value: "$4.2M",
+				label: "Leads scraped",
+				value: "5.2K / hour",
 			},
 			{
-				label: "Win uplift",
-				value: "12.5%",
+				label: "Uptime",
+				value: "99.9%",
 			},
 		],
 	},
 	{
-		id: "command-center",
-		label: "Analytics Command Center",
-		eyebrow: "Real-time dashboards",
+		id: "mcp-aggregator",
+		label: "MCP API Aggregator",
+		eyebrow: "Pillar 2: Unified scraping interface",
 		description:
-			"Monitor revenue, pipeline velocity, and marketing lift without refreshing a single tab. The live dashboard layers AI forecasting with human-friendly calculators so operators can take action in seconds.",
+			"Unified MCP spec for scraping targets. Plugins for Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, Twitter. All sources normalized to Lead Standard Format (LSF) schemas.",
 		media: {
 			src: "/demo/static/charts/tab-2/ai-agent-overview-top.png",
-			alt: "AI agent analytics chart tracking live outcomes and assist volume.",
+			alt: "MCP plugin ecosystem showing available scrapers and connectors.",
 		},
 		highlights: [
 			{
-				title: "Streaming KPI tiles",
+				title: "Plugin ecosystem",
 				description:
-					"Every metric updates from our analytics stream within 1.5 seconds, so leadership meetings stay aligned with reality, not stale exports.",
+					"Community-powered plugins for any source. Zillow, Realtor, LinkedIn, job boards, directories—all accessible through one unified interface.",
 				metric: {
-					label: "Refresh rate",
-					value: "1.5s",
+					label: "Available plugins",
+					value: "20+ sources",
 				},
 				visual: "/demo/static/charts/tab-2/ai-agent-overview-mid.png",
 			},
 			{
-				title: "Scenario calculators",
+				title: "Standardized schemas",
 				description:
-					"Model conversion lift and revenue impact instantly with reusable calculators tied to your live funnel stages.",
+					"All scraped data normalized to Lead Standard Format (LSF), so every source outputs consistent, structured lead objects.",
 				metric: {
-					label: "Forecast accuracy",
-					value: "±3.2%",
+					label: "Schema compliance",
+					value: "100%",
 				},
 				visual: "/demo/static/charts/tab-2/ai-agent-overview-bottom.png",
 			},
 		],
 		metrics: [
 			{
-				label: "Active dashboards",
-				value: "12 teams",
+				label: "MCP providers",
+				value: "8 active",
 			},
 			{
-				label: "Insights unlocked",
-				value: "74 / week",
+				label: "Community plugins",
+				value: "15+",
 			},
 		],
 	},
 	{
-		id: "experiment-lab",
-		label: "Experiment Lab",
-		eyebrow: "A/B testing workflow",
+		id: "normalization",
+		label: "Data Normalization Layer",
+		eyebrow: "Pillar 3: Clean, structured data",
 		description:
-			"Launch experiments, capture results, and promote winners with a single workflow. Experiments sync to analytics so you can compare uplift across every touchpoint.",
+			"Address parsing, phone/email extraction, metadata tagging, de-duping, and entity resolution. Export to CRM, CSV, JSON, Database, S3, or any system.",
 		media: {
 			src: "/demo/static/charts/tab-3/premium-engagement-top.png",
-			alt: "Premium analytics chart highlighting variant uplift and engagement.",
+			alt: "Data normalization dashboard showing cleaned and structured leads.",
 		},
 		highlights: [
 			{
-				title: "Variant orchestration",
+				title: "Smart extraction",
 				description:
-					"Roll out new copy, pricing, or onboarding flows with experiment templates and guardrails tied to your governance model.",
+					"Automatic address parsing, phone/email extraction, and metadata tagging from raw HTML. Entity resolution and de-duping ensure clean datasets.",
 				metric: {
-					label: "Launch time",
-					value: "8 min setup",
+					label: "Extraction accuracy",
+					value: "96.8%",
 				},
 				visual: "/demo/static/charts/tab-3/premium-engagement-bottom.png",
 			},
 			{
-				title: "Automated readouts",
+				title: "Multi-format export",
 				description:
-					"Receive experiment summaries in Slack and email with significance, revenue impact, and recommended next steps.",
+					"Export normalized leads to CRM, CSV, JSON, Database, S3, or any system. Webhook triggers for real-time integration with your stack.",
 				metric: {
-					label: "Time saved",
-					value: "14 hrs / sprint",
+					label: "Export formats",
+					value: "5+ formats",
 				},
 				visual: "/demo/static/charts/tab-3/premium-engagement-bottom-2.png",
 			},
 		],
 		metrics: [
 			{
-				label: "Concurrent tests",
-				value: "9 active",
+				label: "Leads normalized",
+				value: "12.5K / day",
 			},
 			{
-				label: "Win rate",
-				value: "62%",
+				label: "Dedupe rate",
+				value: "8.2%",
 			},
 		],
 	},
 	{
-		id: "team-hub",
-		label: "Team Collaboration Hub",
-		eyebrow: "Invite teammates & live chat",
+		id: "developer-tooling",
+		label: "Developer Tooling",
+		eyebrow: "Pillar 4: Built for developers",
 		description:
-			"Bring sales, marketing, and operations into the same command center. Role-aware invites, live commentary, and threaded decisions keep everyone on the same page.",
+			"CLI, SDKs (JS, Python, Go), webhook system, GitHub Actions templates, API key console, and usage analytics. Built for developers, agencies, and data teams.",
 		media: {
 			src: "/demo/static/charts/tab-3/premium-engagement-mid.png",
-			alt: "Engagement and collaboration analytics chart for cross-functional teams.",
+			alt: "Developer tools and SDK documentation interface.",
 		},
 		highlights: [
 			{
-				title: "Role-aware invites",
+				title: "CLI & SDKs",
 				description:
-					"Provision teams with presets mapped to your CRM, support desk, and pipeline permissions in under 60 seconds.",
+					"Command-line interface and SDKs for JavaScript, Python, and Go. Integrate scraping into your existing workflows with minimal setup.",
 				metric: {
-					label: "Teammates onboarded",
-					value: "48 seats",
+					label: "SDK languages",
+					value: "3 languages",
 				},
 				visual: "/demo/static/charts/tab-3/premium-engagement-bottom-3.png",
 			},
 			{
-				title: "Real-time chat",
+				title: "Webhooks & automation",
 				description:
-					"Thread decisions across analytics widgets and escalate to voice or video when deals need immediate attention.",
+					"GitHub Actions templates, webhook system, and API console for seamless integration with your development and automation workflows.",
 				metric: {
-					label: "Response time",
-					value: "<30s avg",
+					label: "Integration time",
+					value: "<5 min",
 				},
 				visual: "/demo/static/charts/tab-3/premium-engagement-mid.png",
 			},
 		],
 		metrics: [
 			{
-				label: "Pending invites",
-				value: "6 awaiting",
+				label: "API calls",
+				value: "2.4K / day",
 			},
 			{
-				label: "Resolved threads",
-				value: "132 / week",
+				label: "Active integrations",
+				value: "48 teams",
 			},
 		],
 	},

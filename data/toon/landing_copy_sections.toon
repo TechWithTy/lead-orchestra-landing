@@ -1,0 +1,21 @@
+landing_copy_sections[8]{
+  section_id,
+  section_name,
+  current_copy_status,
+  updated_copy_status,
+  business_note_source,
+  toon_data_ref,
+  status,
+  priority,
+  component_path
+}:
+hero, Hero Section, "Needs analysis", "Ready for update", business_model.md|brian_dump_1.md, hero.toon, pending, high, src/components/landing/Hero.tsx
+value_prop, Value Proposition, "Needs analysis", "Ready for update", business_model.md, value_prop.toon, pending, high, src/components/landing/ValueProp.tsx
+features, Features Section, "Needs analysis", "Ready for update", brian_dump_1.md, features.toon, pending, medium, src/components/landing/Features.tsx
+pricing, Pricing Section, "Needs analysis", "Ready for update", pricing.md, pricing.toon, pending, high, src/components/landing/Pricing.tsx
+cta, Call to Action, "Needs analysis", "Ready for update", business_model.md, cta.toon, pending, high, src/components/landing/CTA.tsx
+testimonials, Social Proof, "Needs analysis", "Ready for update", business_model.md, testimonials.toon, pending, low, src/components/landing/Testimonials.tsx
+integrations, Integrations, "Needs analysis", "Ready for update", brian_dump_1.md, integrations.toon, pending, medium, src/components/landing/Integrations.tsx
+footer, Footer Copy, "Needs analysis", "Ready for update", business_model.md, footer.toon, pending, low, src/components/landing/Footer.tsx
+
+

@@ -24,7 +24,7 @@ interface DynamicFaqSectionProps {
 	className?: string;
 }
 
-const DEFAULT_PERSONA: PersonaKey = "investor";
+const DEFAULT_PERSONA: PersonaKey = "developer";
 
 const toPersonaKey = (value: string | null): PersonaKey => {
 	if (!value) {

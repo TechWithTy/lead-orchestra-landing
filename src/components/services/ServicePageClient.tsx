@@ -63,8 +63,8 @@ const ServicePageClient: React.FC<ServicePageClientProps> = ({ service }) => {
 			<Separator className="mx-auto my-16 max-w-7xl border-white/10" />
 			<BentoPage
 				features={MainBentoFeatures}
-				title="Why Real Estate Leaders Choose Deal Scale"
-				subtitle="We deliver a scalable and automated solution to keep your deal pipeline consistently full."
+				title="Why Developers & Agencies Choose Lead Orchestra"
+				subtitle="Open-source scraping that plugs into anything. Scrape any website, normalize data, and export to your stack—no vendor lock-in."
 			/>
 			<Separator className="mx-auto my-8 max-w-7xl border-white/10" />
 			<section className="container">

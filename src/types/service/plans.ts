@@ -30,7 +30,6 @@ export interface RoiEstimatorTier {
 
 export interface PricingCredits {
 	ai: UnlimitedValue;
-	skipTrace: UnlimitedValue;
 	lead: UnlimitedValue;
 }
 

@@ -1,0 +1,26 @@
+copy_tokens[15]{
+  token_id,
+  token_name,
+  token_value,
+  token_type,
+  usage_count,
+  section_refs
+}:
+tagline, Main Tagline, "Open-source lead scraping and data ingestion that plugs into anything", headline, 3, hero,value_prop,footer
+value_engine1, Engine 1 Value, "Free, open-source, MCP-based scraping engine with zero marginal cost", description, 2, hero,features
+value_engine2, Engine 2 Value, "Natural upsell to Deal Scale for AI enrichment, scoring, and automation", description, 2, pricing,cta
+target_dev, Target Developers, "Developers needing reliable scraping + standardized schemas", audience, 1, hero
+target_agency, Target Agencies, "Lead-gen agencies (SEO, recruiting, real estate, local services)", audience, 1, hero
+target_startup, Target Startups, "Startups needing scraping without compliance-heavy infrastructure", audience, 1, hero
+target_enterprise, Target Enterprise, "Enterprise Data Teams (RevOps, SDR, Growth) needing custom solutions", audience, 1, hero
+feature_mcp, MCP Feature, "MCP server framework for AI-native scraping architecture", feature, 1, features
+feature_playwright, Playwright Feature, "Playwright + proxy adapter for reliable, anti-bot scraping", feature, 1, features
+feature_cli, CLI Feature, "Developer-friendly CLI tools for local and cloud execution", feature, 1, features
+feature_toon, TOON Output, "Standardized TOON/JSON output schemas for seamless integration", feature, 1, features
+feature_plugins, Plugin Ecosystem, "Open-source plugin marketplace with community contributions", feature, 1, features
+pricing_free, Free Tier, "100% free and open-source - no credit card required", pricing, 1, pricing
+pricing_enterprise, Enterprise Tier, "Self-hosted enterprise licensing starting at $7,999/year", pricing, 1, pricing
+differentiation, Differentiation, "Not a CRM, AI engine, or outreach tool - ONLY the data ingestion layer", positioning, 2, value_prop,features
+integration_dealscale, Deal Scale Integration, "Seamless integration with Deal Scale for AI enrichment and automation", integration, 2, integrations,cta
+
+

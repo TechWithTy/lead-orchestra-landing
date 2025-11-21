@@ -61,85 +61,86 @@ const CALL_DEMO_PLAYLIST_AUTOPLAY_SRC =
 const TEXT_DEMO_MESSAGES: readonly TextDemoMessage[] = [
 	{
 		sender: "AI",
-		text: "Hey there 👋 this is Ava with Metro Realty. Just wanted to check in, are you still open to selling your home on 2143 W Elm St this month? If you’d like to talk to a teammate, I can loop in Jordan here: https://deal.scale/agents/jordan.",
+		text: "🔍 Scraping job complete! Extracted 247 fresh leads from Zillow search results. All data normalized and ready for export. View results: https://app.leadorchestra.io/jobs/abc123",
 		attachments: [
 			{
-				id: "walkthrough-shots",
+				id: "scrape-results",
 				type: "image",
-				title: "Seller walk-through stills",
-				meta: "3 photos • 2.1 MB",
-				description: "Curb appeal, kitchen update, backyard garden.",
+				title: "Scraping results summary",
+				meta: "3 screenshots • 1.8 MB",
+				description: "Lead count, data quality metrics, export options.",
 				previewGradient: "from-sky-400/25 via-sky-500/15 to-indigo-500/20",
 			},
 			{
-				id: "ai-gif",
+				id: "data-preview",
 				type: "gif",
-				title: "AI pricing explainer.gif",
-				meta: "Loop • 12 sec",
-				description: "Shows the pricing model as the AI narrates the offer.",
+				title: "Data normalization preview.gif",
+				meta: "Loop • 8 sec",
+				description:
+					"Shows address parsing, phone extraction, and deduplication in action.",
 				previewGradient: "from-emerald-400/25 via-cyan-400/20 to-slate-900/30",
 			},
 		],
 	},
 	{
 		sender: "Lead",
-		text: "Hey, it’s Elyas. Depends what kind of offer I’d get.",
+		text: "Nice! Can I export this to my CRM?",
 		attachments: [
 			{
-				id: "repair-estimate",
+				id: "export-config",
 				type: "file",
-				title: "Roof & plumbing receipts.pdf",
-				meta: "PDF • 684 KB",
-				description: "Recent work they want factored into the offer.",
+				title: "Database schema.json",
+				meta: "JSON • 2.4 KB",
+				description: "CRM connection config and field mapping.",
 				previewGradient: "from-amber-400/25 via-orange-500/20 to-stone-900/25",
 			},
 		],
 	},
 	{
 		sender: "AI",
-		text: "Totally understandable. Looking at recent sales nearby, homes like yours are closing around $420K to $435K. Would that range work for you?",
+		text: "✅ Export started! 247 leads are being synced to your CRM. ETA: 2 minutes. You'll get a webhook notification when it's complete.",
 		attachments: [
 			{
-				id: "comp-report",
+				id: "export-progress",
 				type: "video",
-				title: "Comp set walk-through.mp4",
-				meta: "Video • 38 sec",
-				description: "Auto-generated clip summarizing comparable sales.",
+				title: "Export progress.mp4",
+				meta: "Video • 15 sec",
+				description: "Real-time export status showing records being inserted.",
 				previewGradient: "from-indigo-400/25 via-purple-500/20 to-slate-900/30",
 			},
 		],
 	},
 	{
 		sender: "Lead",
-		text: "That’s close, Aly. If we can move fast I’m listening.",
+		text: "Perfect! Can I schedule this scrape to run daily?",
 	},
 	{
 		sender: "AI",
-		text: "Perfect, I’ll have Jordan give you a quick call with a verified cash estimate today. Does 3 PM work?",
+		text: "Absolutely! I've set up a recurring job to scrape this Zillow search every day at 6 AM. You'll get a notification with fresh leads each morning. Want me to auto-export to your CRM too?",
 	},
 	{
 		sender: "Lead",
-		text: "Yeah, that’s fine. Loop me in if Elyas needs anything else.",
+		text: "Yes, auto-export would be great. Thanks!",
 	},
 	{
 		sender: "AI",
-		text: "✅ Great! You’re confirmed for 3 PM. Jordan will reach out then. Thanks again!",
+		text: "✅ Done! Your scheduled scrape is active. Daily runs at 6 AM with automatic CRM export. You'll receive notifications for each completed job.",
 	},
 ];
 const TEXT_DEMO_MESSAGES_COUNT = TEXT_DEMO_MESSAGES.length;
 
 const SESSION_MONITOR_DIALOG = [
-	"📞 “Hey Sarah, it’s Ava from Metro Home Team. Still open to an offer on 2143 W Elm St this month?”",
-	"📞 “Looping Jordan into the live call now so we can confirm the cash offer while you stay on.”",
-	"💬 “Texted Elyas the inspection checklist so he can review before tomorrow’s walkthrough.”",
-	"📱 “Sent the investor update on Instagram with new comps and cap-rate projections.”",
+	"🔍 Scraping 247 leads from Zillow search results...",
+	"📊 Normalizing data: addresses, phone numbers, emails extracted.",
+	"💾 Exporting 1,234 leads to CRM...",
+	"🚀 Scheduled scrape job completed: 892 fresh leads from Realtor.com",
 ] as const;
 
 const SESSION_MONITOR_STATUS = [
-	"🧠 Auto-response ready, synced with your CRM.",
-	"🧠 Live call assist engaged, summarizing investor intent.",
-	"💬 SMS follow-up captured, ready for CRM logging.",
-	"📣 Social outreach tagged with campaign analytics.",
+	"✅ Scraping job active, extracting data from 3 sources.",
+	"🔄 Data normalization in progress, cleaning 500+ records.",
+	"📤 Export ready: 1,234 leads formatted for CSV download.",
+	"⚡ MCP plugin loaded: LinkedIn scraping pipeline initialized.",
 ] as const;
 
 const PhoneShell = ({
@@ -186,10 +187,12 @@ const CallHandoffCard = ({
 							className="size-full object-cover"
 						/>
 					</div>
-					<h3 className="font-semibold text-lg">Jordan, DealScale AI Rep</h3>
+					<h3 className="font-semibold text-lg">
+						Lead Orchestra Data Pipeline
+					</h3>
 					<p className="text-slate-300 text-sm">
-						Lead is ready to confirm. Accept and we&apos;ll sync the handoff to
-						your CRM.
+						Scraped leads ready for export. Accept and we&apos;ll sync the data
+						to your system in CSV/JSON format.
 					</p>
 				</div>
 			</div>
@@ -514,7 +517,7 @@ const CallDemoInteractive = () => {
 											"bg-slate-900/70 backdrop-blur",
 										)}
 									>
-										AI Text Demo
+										Scraping Demo
 									</div>
 								</div>
 								<div className="flex h-full flex-col overflow-hidden rounded-[28px] bg-gradient-to-b from-slate-100/90 to-white/95 p-6 shadow-inner backdrop-blur-sm dark:bg-slate-950/85 dark:from-slate-950/85 dark:to-black/90 dark:shadow-none">
@@ -638,7 +641,7 @@ const CallDemoInteractive = () => {
 									</div>
 									<div className="mt-3 text-center font-semibold text-[10px] text-slate-500 uppercase tracking-[0.3em] dark:text-slate-300">
 										<p className="text-center font-medium text-[10px] text-slate-500 uppercase tracking-[0.3em] dark:text-slate-300">
-											Live Text Outreach
+											Scraping Job Updates
 										</p>
 									</div>
 									<div className="mt-1 flex justify-center">
@@ -647,7 +650,7 @@ const CallDemoInteractive = () => {
 											sparklesCount={8}
 											colors={{ first: "#38bdf8", second: "#f97316" }}
 										>
-											iMessage Support
+											Job Notifications
 										</SparklesText>
 									</div>
 									<div className="mt-4 flex flex-col gap-2">
@@ -901,7 +904,7 @@ const CallDemoInteractive = () => {
 	);
 	const personaLabel =
 		PERSONA_LABELS[persona] ?? PERSONA_LABELS[DEFAULT_PERSONA_KEY];
-	const resolvedGoal = goal ?? "Automate deal flow conversations";
+	const resolvedGoal = goal ?? "Scrape, normalize, and export lead data";
 	const resolvedGoalLower = resolvedGoal.toLowerCase();
 	const personaSeo = useMemo(
 		() => buildPersonaAiOutreachStudioSeo({ persona, goal: resolvedGoal }),
@@ -913,16 +916,16 @@ const CallDemoInteractive = () => {
 	const leadCaptureCopy = useMemo(() => {
 		if (leadCaptureOrigin === "text") {
 			return {
-				title: "Ready to automate your SMS outreach?",
+				title: "Ready to start scraping leads?",
 				description:
-					"Drop in your details and we’ll send over the full SMS workflow alongside early access invites.",
+					"Drop in your details and we'll send over the full scraping workflow alongside early access to MCP plugins.",
 			};
 		}
 
 		return {
-			title: "Ready to start Scaling Your Deals?",
+			title: "Ready to start scraping with Lead Orchestra?",
 			description:
-				"Request Founders Circle or Pilot access and unlock the full AI outreach workflow plus white-glove onboarding.",
+				"Get started free with open-source scraping. View on GitHub or request enterprise access for self-hosted licensing.",
 		};
 	}, [leadCaptureOrigin]);
 
@@ -950,11 +953,15 @@ const CallDemoInteractive = () => {
 							</p>
 						</div>
 						<div className="flex flex-col gap-6">
-							<div className="grid gap-4 text-slate-600 text-sm sm:grid-cols-2 lg:grid-cols-3 dark:text-white/70">
-								{AI_OUTREACH_STUDIO_FEATURES.map((feature) => (
+							<div className="grid auto-rows-[minmax(0,max-content)] gap-4 text-slate-600 text-sm sm:grid-cols-2 lg:grid-cols-3 dark:text-white/70">
+								{AI_OUTREACH_STUDIO_FEATURES.map((feature, index) => (
 									<div
 										key={feature.title}
-										className="rounded-xl border border-slate-200/70 bg-white/75 p-4 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+										className={cn(
+											"h-auto self-start rounded-xl border border-slate-200/70 bg-white/75 p-4 text-center shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5",
+											// Center the 4th card (index 3) when it's on its own row
+											index === 3 && "lg:col-start-2 lg:col-end-3",
+										)}
 									>
 										<h3 className="font-semibold text-slate-900 text-sm uppercase tracking-[0.18em] dark:text-white">
 											{feature.title}
@@ -970,13 +977,12 @@ const CallDemoInteractive = () => {
 									Session Monitor
 								</p>
 								<h3 className="mt-2 text-center font-semibold text-slate-900 text-xl sm:text-left dark:text-white">
-									Automate your follow-ups, not your relationships.
+									Scrape any source, export to any system.
 								</h3>
 								<p className="mt-3 text-center text-slate-600 text-sm sm:text-left dark:text-white/70">
-									Build call and SMS workflows in seconds. Customize tone,
-									timing, and goals, then let DealScale handle the outreach and
-									sync every interaction directly to your CRM so you can focus
-									on {resolvedGoalLower}.
+									Build scraping workflows in minutes. Paste a URL → scrape all
+									the leads → clean them → export to CSV/JSON. Focus on{" "}
+									{resolvedGoalLower}.
 								</p>
 								<div className="mt-4 flex flex-col items-center gap-4 rounded-xl bg-slate-900/5 p-4 text-slate-700 text-sm sm:flex-row sm:items-start dark:bg-black/30 dark:text-white/70">
 									<Image
@@ -1115,7 +1121,7 @@ const StaticCallDemoPreview = () => {
 			goal: state.goal,
 		})),
 	);
-	const resolvedGoal = goal ?? "Automate deal flow conversations";
+	const resolvedGoal = goal ?? "Scrape, normalize, and export lead data";
 	const personaSeo = useMemo(
 		() => buildPersonaAiOutreachStudioSeo({ persona, goal: resolvedGoal }),
 		[persona, resolvedGoal],
@@ -1181,16 +1187,17 @@ const StaticCallDemoPreview = () => {
 						</p>
 						<div className="space-y-3 rounded-2xl border border-white/10 bg-slate-900/70 p-6 text-sm leading-relaxed">
 							<p className="text-emerald-300">
-								<span className="font-semibold">AI</span>: Hey there 👋 this is
-								Ava with Metro Realty. Still open to selling 2143 W Elm St this
-								month?
+								<span className="font-semibold">System</span>: 🔍 Scraping job
+								complete! Extracted 247 fresh leads from Zillow. All data
+								normalized and ready for export.
 							</p>
 							<p className="text-white/90">
-								<span className="font-semibold">Lead</span>: Depends what kind
-								of offer I’d get.
+								<span className="font-semibold">User</span>: Can I export this
+								to my CRM?
 							</p>
 							<p className="text-emerald-300">
-								<span className="font-semibold">AI</span>: Totally
+								<span className="font-semibold">System</span>: Export started!
+								247 leads are being synced to your CRM. ETA: 2 minutes.
 								understandable. Homes nearby are closing at $420K–$435K. Want
 								Jordan to confirm a cash offer today?
 							</p>

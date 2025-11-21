@@ -23,7 +23,7 @@ export async function getSeoMetadataForCaseStudy(
 	}
 
 	return {
-		title: `${caseStudy.title} | Case Study | Deal Scale`,
+		title: `${caseStudy.title} | Case Study | Lead Orchestra`,
 		description: caseStudy.subtitle || "Case study details.",
 		canonical: pageUrl,
 		keywords: caseStudy.categories || [],

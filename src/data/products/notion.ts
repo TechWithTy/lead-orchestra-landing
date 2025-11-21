@@ -22,7 +22,7 @@ export const notionProducts: ProductType[] = [
 		licenseName: LicenseType.Proprietary,
 		description:
 			"A modern, customizable CRM built in Notion for tracking investors, conversations, and deal status. Perfect for startups raising capital or managing investor relations.",
-		categories: [ProductCategory.Notion, ProductCategory.Essentials],
+		categories: [ProductCategory.Notion],
 		images: ["/products/notion-2.png"],
 		types: [{ name: "Notion Template", value: "notion-template", price: 79 }],
 		reviews: [],
@@ -46,7 +46,7 @@ export const notionProducts: ProductType[] = [
 		licenseName: LicenseType.Proprietary,
 		description:
 			"A Kanban-style deal pipeline for tracking opportunities, stages, and notes. Designed for founders and sales teams to manage deals from lead to close.",
-		categories: [ProductCategory.Notion, ProductCategory.Essentials],
+		categories: [ProductCategory.Notion],
 		images: ["/products/notion-2.png"],
 		types: [{ name: "Notion Template", value: "notion-template", price: 59 }],
 		reviews: [],
@@ -70,7 +70,7 @@ export const notionProducts: ProductType[] = [
 		licenseName: LicenseType.Proprietary,
 		description:
 			"An all-in-one Notion workspace for startups. Includes dashboards for product, marketing, hiring, fundraising, and more. Get organized from day one.",
-		categories: [ProductCategory.Notion, ProductCategory.Essentials],
+		categories: [ProductCategory.Notion],
 		images: ["/products/notion-2.png"],
 		types: [
 			{ name: "Notion Workspace", value: "notion-workspace", price: 129 },
@@ -95,7 +95,7 @@ export const notionProducts: ProductType[] = [
 		licenseName: LicenseType.Proprietary,
 		description:
 			"Track investor outreach, commitments, follow-ups, and round progress in a single Notion dashboard. Stay organized during your raise.",
-		categories: [ProductCategory.Notion, ProductCategory.Essentials],
+		categories: [ProductCategory.Notion],
 		images: ["/products/notion-2.png"],
 		types: [{ name: "Notion Template", value: "notion-template", price: 49 }],
 		reviews: [],
@@ -118,7 +118,7 @@ export const notionProducts: ProductType[] = [
 		licenseName: LicenseType.Proprietary,
 		description:
 			"A central wiki for your startup team. Document processes, policies, onboarding, and knowledge in a single Notion workspace.",
-		categories: [ProductCategory.Notion, ProductCategory.Essentials],
+		categories: [ProductCategory.Notion],
 		images: ["/products/notion-2.png"],
 		types: [{ name: "Notion Template", value: "notion-template", price: 69 }],
 		reviews: [],

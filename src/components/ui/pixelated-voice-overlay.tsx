@@ -467,7 +467,7 @@ const PixelatedVoiceOverlayComponent = ({
 				</div>
 				{!hasActiveTrack ? (
 					<div className="flex flex-col gap-3 text-center text-slate-600 sm:flex-row sm:items-center sm:justify-between sm:text-left dark:text-white/70">
-						<div className="flex flex-col gap-2 items-center sm:items-start">
+						<div className="flex flex-col items-center gap-2 sm:items-start">
 							<span className="text-slate-500 text-xs uppercase tracking-[0.28em] dark:text-white/50">
 								Audio Comparison
 							</span>
@@ -476,7 +476,7 @@ const PixelatedVoiceOverlayComponent = ({
 								timbre, pacing, and emotion.
 							</p>
 						</div>
-						<div className="flex flex-col gap-2 sm:flex-row sm:items-center items-center">
+						<div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
 							<button
 								type="button"
 								onClick={isPlaying ? onStop : onPlay}

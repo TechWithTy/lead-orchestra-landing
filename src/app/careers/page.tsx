@@ -11,9 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 	return {
 		...metadata,
-		title: "Careers at DealScale - Join Our Team",
+		title: "Careers at Lead Orchestra - Join Our Team",
 		description:
-			"Explore open roles at DealScale. We're building AI-powered tools for real estate professionals. Join us in revolutionizing the industry.",
+			"Explore open roles at Lead Orchestra. We're building AI-powered tools for real estate professionals. Join us in revolutionizing the industry.",
 		alternates: {
 			canonical: CAREERS_PORTAL_URL,
 		},
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 			},
 		},
 		openGraph: {
-			title: "Careers at DealScale",
+			title: "Careers at Lead Orchestra",
 			description:
 				"Join our team and help build the future of real estate technology.",
 			url: CAREERS_PORTAL_URL,
@@ -34,8 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: "Careers at DealScale",
-			description: "Explore open roles at DealScale.",
+			title: "Careers at Lead Orchestra",
+			description: "Explore open roles at Lead Orchestra.",
 		},
 	};
 }

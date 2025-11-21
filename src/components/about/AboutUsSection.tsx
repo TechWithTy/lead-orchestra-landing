@@ -30,14 +30,13 @@ export const AboutUsSection: React.FC = () => (
 					Our Mission
 				</span>
 				<h2 className="mb-4 font-bold text-3xl text-foreground sm:text-4xl">
-					About <span className="text-primary">Deal Scale</span>
+					About <span className="text-primary">Lead Orchestra</span>
 				</h2>
 				<p className="mb-6 max-w-lg text-base text-muted-foreground dark:text-gray-300">
-					Deal Scale connects growth teams with qualified buyers without the
-					bottlenecks of manual timelines. Powered by AI sales automation,
-					conversational nurture campaigns, and CRM-grade analytics, our revenue
-					platform continuously sources, qualifies, and schedules sales-ready
-					meetings so your closers can focus on winning new business.
+					Lead Orchestra is the open-source engine that powers your lead
+					pipeline. Scrape Anything. Export Everywhere. Paste a URL → scrape all
+					the leads → clean them → export instantly. Fresh leads, not rented
+					lists. Built for developers, agencies, and data teams.
 				</p>
 				<div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-start">
 					<Link

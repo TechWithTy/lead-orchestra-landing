@@ -13,7 +13,15 @@ import {
 import { Badge } from "@/components/ui/badge";
 import type { BentoFeature } from "@/types/bento/features";
 import Lottie from "lottie-react";
-import { CalendarCheck, Clock, DatabaseZap, PlaneTakeoff } from "lucide-react";
+import {
+	CalendarCheck,
+	Clock,
+	Code,
+	DatabaseZap,
+	Download,
+	Globe,
+	PlaneTakeoff,
+} from "lucide-react";
 
 const chipClassName =
 	"mt-6 w-fit rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent-foreground backdrop-blur-sm";
@@ -29,7 +37,7 @@ const layout = {
 export const MainBentoFeatures: BentoFeature[] = [
 	{
 		title: "Get started in 3 minutes or less",
-		description: "Launch your first AI campaign in minutes, not hours.",
+		description: "Start scraping leads in minutes, not hours.",
 		icon: <PlaneTakeoff className="h-6 w-6 text-accent" />,
 		className: layout.startOne,
 		background: (
@@ -44,28 +52,29 @@ export const MainBentoFeatures: BentoFeature[] = [
 			<div className="space-y-4 text-foreground">
 				<div className="space-y-1">
 					<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-						Launch in One Click
+						Scrape in One Click
 					</h3>
 					<p className="font-medium text-sm text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-						Import, connect, and go live instantly
+						Paste a URL, configure, and scrape instantly
 					</p>
 				</div>
 				<p className="text-sm text-white/90 leading-6 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-					Upload your seller list, connect your CRM, and spin up your first AI
-					campaign in a single click—before your coffee cools.
+					Paste a URL from Zillow, Realtor, or any source, configure your
+					scraping parameters, and start extracting leads in seconds. No complex
+					setup required.
 				</p>
 				<Badge
 					variant="secondary"
 					className="w-fit rounded-full bg-accent/15 px-3 py-1 font-semibold text-accent-foreground text-xs"
 				>
-					AI campaign live in under 60 seconds
+					First scrape in under 60 seconds
 				</Badge>
 			</div>
 		),
 	},
 	{
-		title: "AI That Works While You Sleep",
-		description: "Never miss a hot lead again",
+		title: "Scraping That Works While You Sleep",
+		description: "Never miss a fresh lead again",
 		icon: <Clock className="h-6 w-6 text-accent" />,
 		className: layout.startTwo,
 		background: (
@@ -80,30 +89,31 @@ export const MainBentoFeatures: BentoFeature[] = [
 			<div className="space-y-4 text-foreground">
 				<div className="space-y-1">
 					<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-						AI That Works While You Sleep
+						Scraping That Works While You Sleep
 					</h3>
 					<p className="font-medium text-sm text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-						Never miss a hot lead again
+						Never miss a fresh lead again
 					</p>
 				</div>
 				<p className="text-sm text-white/90 leading-6 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-					Your AI responds instantly to every text, call, or form. It
-					pre-qualifies, nurtures, and books appointments around the clock so no
-					opportunity slips away.
+					Set up automated scraping jobs that run 24/7. Schedule daily scrapes
+					from Zillow, Realtor, MLS, and social platforms. Fresh leads are
+					automatically normalized and exported to your pipeline while you
+					sleep.
 				</p>
 				<Badge
 					variant="secondary"
 					className="w-fit rounded-full bg-accent/15 px-3 py-1 font-semibold text-accent-foreground text-xs"
 				>
-					Replies 24/7 — zero delays
+					Automated scraping 24/7 — zero manual work
 				</Badge>
 			</div>
 		),
 	},
 	{
-		title: "Appointments, Not Just Leads",
-		description: "Your calendar, always full",
-		icon: <CalendarCheck className="h-6 w-6 text-accent" />,
+		title: "Export Everywhere, Not Just CSV",
+		description: "Your data, your way",
+		icon: <Download className="h-6 w-6 text-accent" />,
 		className: layout.startThree,
 		background: (
 			<Lottie
@@ -117,28 +127,29 @@ export const MainBentoFeatures: BentoFeature[] = [
 			<div className="space-y-4 text-foreground">
 				<div className="space-y-1">
 					<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-						Appointments, Not Just Leads
+						Export Everywhere, Not Just CSV
 					</h3>
 					<p className="font-medium text-sm text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-						Your calendar, always full
+						Your data, your way
 					</p>
 				</div>
 				<p className="text-sm text-white/90 leading-6 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-					AI-qualified, sales-ready appointments land directly on your calendar.
-					You focus on closing while the system handles every follow-up.
+					Export normalized data to CRM, CSV, JSON, Database, S3, or any system
+					via API. Webhooks trigger actions in your deal tracker or custom
+					tools. Your scraped leads flow seamlessly into your workflow.
 				</p>
 				<Badge
 					variant="secondary"
 					className="w-fit rounded-full bg-accent/15 px-3 py-1 font-semibold text-accent-foreground text-xs"
 				>
-					Calendar auto-filled with sales-ready calls
+					Export to any format or system
 				</Badge>
 			</div>
 		),
 	},
 	{
-		title: "Unlimited Skip Tracing",
-		description: "Data that does not cost you extra",
+		title: "Unlimited Scraping",
+		description: "Fresh leads that don't cost extra",
 		icon: <DatabaseZap className="h-6 w-6 text-accent" />,
 		className: layout.startFive,
 		background: (
@@ -153,65 +164,69 @@ export const MainBentoFeatures: BentoFeature[] = [
 			<div className="space-y-4 text-foreground">
 				<div className="space-y-1">
 					<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-						Unlimited Skip Tracing
+						Unlimited Scraping
 					</h3>
 					<p className="font-medium text-sm text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-						Data that does not cost you extra
+						Fresh leads that don't cost extra
 					</p>
 				</div>
 				<p className="text-sm text-white/90 leading-6 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-					Build hyper-targeted lists from more than 140 million property
-					records. Unlimited, high-quality owner data is included with every
-					plan, turning skip tracing into a growth multiplier.
+					Scrape unlimited leads from Zillow, Realtor, LinkedIn, MLS, and more.
+					No per-record fees, no limits. Get fresh data directly from the
+					source, not rented lists. Open-source means you control your data
+					pipeline.
 				</p>
 				<Badge
 					variant="secondary"
 					className="w-fit rounded-full bg-accent/15 px-3 py-1 font-semibold text-accent-foreground text-xs"
 				>
-					Unlimited owner data included
+					Unlimited scraping — no per-record costs
 				</Badge>
 			</div>
 		),
 	},
-	(() => {
-		const personaCopy = HERO_COPY_V7.personas[DEFAULT_PERSONA];
-		const primaryHope = personaCopy.hope[0] ?? "";
-		const primarySolution = personaCopy.solution[0] ?? "";
-		return {
-			title: "Automate deal flow conversations",
-			description: "Persona Spotlight: AI Sales Coworkers",
-			icon: <CalendarCheck className="h-6 w-6 text-accent" />,
-			className: layout.startFour,
-			background: (
-				<Lottie
-					animationData={voiceWave}
-					className="h-40 w-40 opacity-60"
-					loop
-					autoplay
-				/>
-			),
-			content: (
-				<div className="space-y-4 rounded-2xl bg-gradient-to-br from-primary/15 via-accent/10 to-primary/5 p-4 text-left text-foreground shadow-[0_24px_60px_-38px_rgba(99,102,241,0.45)] backdrop-blur-md sm:p-6">
-					<div className="space-y-1">
-						<p className="font-semibold text-accent text-xs uppercase tracking-wide [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
-							{PERSONA_LABEL}
-						</p>
-						<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-							{PERSONA_GOAL}
-						</h3>
-					</div>
-					<div className="space-y-3 text-sm text-white/90">
-						<p className="font-medium text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">{primarySolution}</p>
-						<p className="[text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">{primaryHope}</p>
-					</div>
-					<Badge
-						variant="secondary"
-						className="w-fit rounded-full bg-primary/20 px-3 py-1 font-semibold text-primary-foreground text-xs backdrop-blur-sm"
-					>
-						Your voice, your pipeline, 24/7
-					</Badge>
+	{
+		title: "Scrape Any Source",
+		description: "MCP API Aggregator: Unified scraping interface",
+		icon: <Globe className="h-6 w-6 text-accent" />,
+		className: layout.startFour,
+		background: (
+			<Lottie
+				animationData={voiceWave}
+				className="h-40 w-40 opacity-60"
+				loop
+				autoplay
+			/>
+		),
+		content: (
+			<div className="space-y-4 rounded-2xl bg-gradient-to-br from-primary/15 via-accent/10 to-primary/5 p-4 text-left text-foreground shadow-[0_24px_60px_-38px_rgba(99,102,241,0.45)] backdrop-blur-md sm:p-6">
+				<div className="space-y-1">
+					<p className="font-semibold text-accent text-xs uppercase tracking-wide [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
+						MCP API Aggregator
+					</p>
+					<h3 className="font-semibold text-white text-xl leading-tight [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
+						Scrape Any Source
+					</h3>
 				</div>
-			),
-		};
-	})(),
+				<div className="space-y-3 text-sm text-white/90">
+					<p className="font-medium text-white/90 [text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
+						Pre-built plugins for Zillow, Realtor, LinkedIn, MLS, Facebook,
+						Reddit, and Twitter. All sources normalized to Lead Standard Format
+						(LSF) schemas.
+					</p>
+					<p className="[text-shadow:0_1px_1px_rgba(0,0,0,0.3)]">
+						Use the Playwright engine to scrape any website. The unified MCP
+						spec makes it easy to add new sources or create custom scrapers for
+						your specific needs.
+					</p>
+				</div>
+				<Badge
+					variant="secondary"
+					className="w-fit rounded-full bg-primary/20 px-3 py-1 font-semibold text-primary-foreground text-xs backdrop-blur-sm"
+				>
+					One interface, unlimited sources
+				</Badge>
+			</div>
+		),
+	},
 ];

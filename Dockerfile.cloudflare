@@ -1,0 +1,68 @@
+# Cloudflare Pages Optimized Dockerfile
+# This Dockerfile is optimized for building Next.js apps for Cloudflare Pages deployment
+# Uses next-on-pages to generate Cloudflare-compatible output
+
+FROM node:20-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+# Copy package files for monorepo
+COPY package.json pnpm-lock.yaml* ./
+COPY pnpm-workspace.yaml ./
+COPY landing/package.json ./landing/
+COPY packages ./packages
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Build for Cloudflare Pages
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Build Next.js app for Cloudflare Pages
+WORKDIR /app/landing
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV SKIP_HUSKY=1
+ENV NODE_ENV=production
+
+# First build Next.js normally
+RUN pnpm run build
+
+# Then convert to Cloudflare Pages format using next-on-pages
+RUN pnpm run build:cf
+
+# Production image for Cloudflare Pages
+FROM base AS runner
+WORKDIR /app/landing
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Copy Cloudflare Pages build output
+# next-on-pages generates output in .vercel/output/static
+COPY --from=builder /app/landing/.vercel/output ./output
+COPY --from=builder /app/landing/public ./public
+
+# Copy wrangler.toml for Cloudflare Workers deployment (if needed)
+COPY --from=builder /app/landing/wrangler.toml ./wrangler.toml 2>/dev/null || true
+
+# For Cloudflare Pages, the output is static files
+# The .vercel/output/static directory contains the static assets
+# Cloudflare Pages will serve these directly
+
+EXPOSE 8788
+
+# Cloudflare Pages uses wrangler pages dev for local testing
+# In production, Cloudflare Pages serves the static files directly
+CMD ["echo", "Cloudflare Pages build complete. Deploy the output directory to Cloudflare Pages."]
+
+
+

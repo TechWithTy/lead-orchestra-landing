@@ -341,7 +341,7 @@ const ServicesSection = (props: ServicesSectionProps) => {
 	const getTabLabel = (tab: ServiceCategoryValue) => {
 		switch (tab) {
 			case SERVICE_CATEGORIES.LEAD_GENERATION:
-				return "Lookalike Audience Expansion";
+				return "Lead Generation";
 			case SERVICE_CATEGORIES.LEAD_PREQUALIFICATION:
 				return "Lead Pre-qualification";
 			case SERVICE_CATEGORIES.SKIP_TRACING:
@@ -349,7 +349,7 @@ const ServicesSection = (props: ServicesSectionProps) => {
 			case SERVICE_CATEGORIES.AI_FEATURES:
 				return "AI Features";
 			case SERVICE_CATEGORIES.REAL_ESTATE_TOOLS:
-				return "Real Estate Tools";
+				return "Tools";
 			default:
 				return tab;
 		}

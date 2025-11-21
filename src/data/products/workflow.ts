@@ -15,99 +15,87 @@ export interface WorkflowProductType extends ProductType {
 
 export const workflowProducts: WorkflowProductType[] = [
 	{
-		id: "outreach-workflow",
-		name: "Outreach Automation Workflow",
+		id: "zillow-scraping-workflow",
+		name: "Zillow Scraping Workflow",
 		abTest: motivatedSellerWorkflowABTests[0],
-		price: 499,
-		sku: "WF-OUTREACH",
-		slug: "outreach-workflow",
+		price: 199,
+		sku: "WF-ZILLOW-SCRAPE",
+		slug: "zillow-scraping-workflow",
 		licenseName: LicenseType.Proprietary,
 		description:
-			"Automate outreach, follow-up, and lead nurturing for your campaigns. Includes pre-built triggers, multi-channel messaging, and pipeline automation.",
-		categories: [
-			ProductCategory.Workflows,
-			ProductCategory.Automation,
-			// Removed Monetize - users BUY these workflows, they don't earn from them
-		],
+			"Pre-configured Lead Orchestra workflow for scraping Zillow listings. Includes MCP plugin setup, data normalization, and automatic export to CRM. Get started scraping Zillow in minutes.",
+		categories: [ProductCategory.Workflows, ProductCategory.Automation],
 		images: ["/products/workflows.png"],
 		types: [
-			{ name: "Standard", value: "standard", price: 499 },
-			{ name: "Premium", value: "premium", price: 799 },
+			{ name: "Standard", value: "standard", price: 199 },
+			{ name: "Premium", value: "premium", price: 399 },
 		],
 		reviews: [],
 		colors: [],
 		sizes: [],
 		faqs: [
 			{
-				question: "What does this workflow automate?",
+				question: "What does this workflow include?",
 				answer:
-					"This workflow automates lead intake, qualification, follow-up, and multi-channel communication for outreach campaigns.",
+					"This workflow includes a pre-configured MCP plugin for Zillow, data normalization settings, and automatic export to your CRM. Just connect your Lead Orchestra instance and start scraping.",
 			},
 		],
-		workflowId: "wf-001-outreach",
+		workflowId: "wf-001-zillow",
 		userId: "user-assign-on-purchase",
 	},
 	{
-		id: "buyer-lead-nurture-workflow",
-		name: "Buyer Lead Nurture Workflow",
+		id: "linkedin-scraping-workflow",
+		name: "LinkedIn Scraping Workflow",
 		abTest: buyerLeadNurtureWorkflowABTests[0],
-		price: 399,
-		sku: "WF-BUYER-LEAD",
-		slug: "buyer-lead-nurture-workflow",
+		price: 249,
+		sku: "WF-LINKEDIN-SCRAPE",
+		slug: "linkedin-scraping-workflow",
 		licenseName: LicenseType.Proprietary,
 		description:
-			"Automate buyer lead follow-up, appointment scheduling, and drip campaigns. Designed for real estate teams and agents to maximize conversion.",
-		categories: [
-			ProductCategory.Workflows,
-			ProductCategory.Automation,
-			// Removed Monetize - users BUY these workflows, they don't earn from them
-		],
+			"Automate LinkedIn company and profile scraping with Lead Orchestra. Extract company data, employee information, and contact details. Perfect for B2B lead generation.",
+		categories: [ProductCategory.Workflows, ProductCategory.Automation],
 		images: ["/products/workflows.png"],
 		types: [
-			{ name: "Standard", value: "standard", price: 399 },
-			{ name: "Premium", value: "premium", price: 699 },
+			{ name: "Standard", value: "standard", price: 249 },
+			{ name: "Premium", value: "premium", price: 499 },
 		],
 		reviews: [],
 		colors: [],
 		sizes: [],
 		faqs: [
 			{
-				question: "How does this workflow help with buyer leads?",
+				question: "What data can I scrape from LinkedIn?",
 				answer:
-					"It automates follow-up, appointment reminders, and sends personalized messages to nurture buyer leads through your pipeline.",
+					"This workflow allows you to scrape company pages, employee profiles, job postings, and contact information. All data is normalized to Lead Standard Format (LSF) for easy export.",
 			},
 		],
-		workflowId: "wf-002-buyer-lead",
+		workflowId: "wf-002-linkedin",
 		userId: "user-assign-on-purchase",
 	},
 	{
-		id: "open-house-workflow",
-		name: "Open House Follow-Up Workflow",
-		price: 299,
-		sku: "WF-OPEN-HOUSE",
-		slug: "open-house-workflow",
+		id: "multi-source-scraping-workflow",
+		name: "Multi-Source Scraping Workflow",
+		price: 399,
+		sku: "WF-MULTI-SOURCE",
+		slug: "multi-source-scraping-workflow",
 		abTest: openHouseWorkflowABTests[0],
 		licenseName: LicenseType.Proprietary,
 		description:
-			"Automate follow-up with open house attendees, send thank-you messages, and schedule post-event calls or emails.",
-		categories: [
-			ProductCategory.Workflows,
-			ProductCategory.Automation,
-			// Removed Monetize - users BUY these workflows, they don't earn from them
-		],
+			"Scrape from multiple sources simultaneously (Zillow, Realtor, LinkedIn, MLS) with unified data normalization and export. Perfect for agencies and data teams scaling their lead generation.",
+		categories: [ProductCategory.Workflows, ProductCategory.Automation],
 		images: ["/products/workflows.png"],
-		types: [{ name: "Standard", value: "standard", price: 299 }],
+		types: [{ name: "Standard", value: "standard", price: 399 }],
 		reviews: [],
 		colors: [],
 		sizes: [],
 		faqs: [
 			{
-				question: "What is included in this open house workflow?",
+				question: "What sources are included?",
 				answer:
-					"Automated attendee follow-up, thank-you messages, and reminders for agents to connect with prospects after the event.",
+					"This workflow includes pre-configured MCP plugins for Zillow, Realtor.com, LinkedIn, and MLS. All scraped data is automatically normalized to LSF and can be exported to CRM, CSV, or Database.",
 			},
 		],
-		workflowId: "wf-003-open-house",
+		workflowId: "wf-003-multi-source",
 		userId: "user-assign-on-purchase",
 	},
 ];

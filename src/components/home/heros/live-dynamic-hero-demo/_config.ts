@@ -10,154 +10,144 @@ const HERO_COPY_V7 = {
 	version: 7,
 	structure: "problem_solution_fear_hope_persona",
 	personas: {
-		agent: {
+		developer: {
 			problem: [
-				"spending hours on manual real estate lead follow-up",
-				"juggling too many cold calling lists and CRM tabs",
+				"buying stale lead lists from Apollo and ZoomInfo",
+				"rebuilding scrapers and glue code for every project",
+				"managing complex proxy rotations and anti-bot systems",
 			],
 			solution: [
-				"AI real estate cold calling that runs directly from your CRM",
-				"automated real estate lead follow-up with AI voice and SMS",
+				"scraping your own fresh leads from any website",
+				"open-source lead OS that standardizes everything",
+				"one-click scraping with MCP plugins",
 			],
 			fear: [
-				"other agents win your hottest seller leads first",
-				"your real estate pipeline quietly goes cold",
+				"your scraping pipeline breaks when sites change",
+				"you waste weeks building what should be a plugin",
 			],
 			hope: [
-				"every morning you wake up to new appointments booked for you",
-				"you finally spend more time closing and less time chasing leads",
-				"your clients rave about your speed and consistency",
+				"you scrape any source in minutes with MCP plugins",
+				"your data flows seamlessly into any system",
+				"you focus on building features, not infrastructure",
 			],
 		},
-		investor: {
+		agency: {
 			problem: [
-				"Losing Deals",
-				"losing track of off-market leads",
-				"chasing leads manually",
+				"using the same Apollo lists as every other agency",
+				"paying premium prices for limited scraping APIs",
+				"struggling to find unique leads competitors can't access",
 			],
 			solution: [
-				"Automating Your Entire Real Estate Deal Flow",
-				"AI real estate deal flow automation",
-				"automated seller nurturing",
-			],
-			fear: ["your next profitable deal slips", "your deal pipeline dries up"],
-			hope: [
-				"you wake up to ready-to-close seller leads every week",
-				"you scale your portfolio while competitors chase spreadsheets",
-				"your next million-dollar flip starts automatically",
-			],
-		},
-		founder: {
-			problem: [
-				"building outbound and follow-up systems by hand for your sales team",
-				"spending time you don’t have managing real estate outreach workflows",
-			],
-			solution: [
-				"launching scalable AI real estate sales workflows in minutes",
-				"automating sales follow-up across voice, SMS, and email from one hub",
+				"scraping niche sources your competitors ignore",
+				"free, open-source scraping with unlimited data",
+				"unique lead datasets clients can't get anywhere else",
 			],
 			fear: [
-				"growth slows because outreach can’t keep up",
-				"your team burns out before you hit your revenue targets",
+				"your scraping costs eat into profit margins",
+				"competitors find leads you can't access",
 			],
 			hope: [
-				"your team scales 3x without adding headcount",
-				"your pipeline runs 24/7 while you focus on strategy",
-				"you finally build a company that runs itself",
+				"you scrape unlimited leads at zero marginal cost",
+				"you access niche sources your competitors can't",
+				"you scale your agency without scaling costs",
 			],
 		},
-		wholesaler: {
+		startup: {
 			problem: [
-				"spending nights cold calling seller lists manually",
-				"forgetting to follow up with warm sellers after the first call",
+				"spending engineering time on data ingestion instead of core features",
+				"paying for enterprise tools you don't need yet",
+				"needing scraping without compliance-heavy infrastructure",
 			],
 			solution: [
-				"AI wholesaling calls that nurture motivated sellers 24/7",
-				"automated follow-up campaigns that keep you top of mind with sellers",
+				"open-source scraping that plugs into anything",
+				"free tier with no credit card required",
+				"focus on product-market fit, not scraping infrastructure",
 			],
 			fear: [
-				"other wholesalers lock up your best contracts first",
-				"your marketing spend gets wasted on unworked leads",
+				"your MVP gets delayed by infrastructure work",
+				"you burn runway on tools instead of product",
 			],
 			hope: [
-				"you lock up more deals while you sleep",
-				"your AI assistant keeps your seller pipeline warm 24/7",
-				"you scale from hustler to business owner",
+				"you launch faster with ready-made scraping",
+				"you scale data ingestion without scaling costs",
+				"you focus on product-market fit, not plumbing",
 			],
 		},
-		loan_officer: {
+		enterprise: {
 			problem: [
-				"spending hours calling borrowers who never answer",
-				"losing track of loan applications across multiple CRM systems",
+				"needing custom scrapers with enterprise compliance",
+				"managing distributed scraping infrastructure",
+				"integrating scraping into existing data pipelines",
 			],
 			solution: [
-				"AI-powered borrower follow-up that runs automatically from your mortgage CRM",
-				"automated call, text, and email sequences that keep loan applicants engaged",
+				"self-hosted enterprise licensing with full control",
+				"SOC2/ISO compliance modules",
+				"seamless integration with existing systems",
 			],
 			fear: [
-				"competitors capture your pre-approved borrowers first",
-				"your pipeline dries up when rates change or leads go cold",
+				"compliance issues from third-party scrapers",
+				"vendor lock-in with proprietary solutions",
 			],
 			hope: [
-				"your borrowers feel supported from first inquiry to closing day",
-				"you grow referral business while AI handles routine calls",
-				"you hit record closings without burning out your team",
+				"you maintain full control and compliance",
+				"you integrate scraping into your existing stack",
+				"you scale without vendor dependencies",
 			],
 		},
 	},
 	template: "Stop {problem}, start {solution} — before {fear}. Imagine {hope}.",
 	ctas: {
 		primary: [
-			"Try DealScale Free",
-			"Automate My Outreach",
-			"Launch My First AI Campaign",
-			"Start 5 Free AI Calls",
-			"Automate Borrower Follow-Up",
+			"Get Started Free (Open Source)",
+			"View on GitHub",
+			"Start Scraping in 5 Minutes",
+			"Try the CLI",
+			"Explore MCP Plugins",
 		],
 		secondary: [
 			"See How It Works",
-			"Watch a 1-Minute AI Demo",
-			"Take the Quick Start Tour",
-			"View Real Estate Case Studies",
-			"See Mortgage Automation in Action",
+			"Read the Documentation",
+			"View Example Scrapers",
+			"Join the Community",
+			"Watch a Demo",
 		],
 		social: [
-			"Join 200+ Agents Using AI",
-			"Share with a Teammate",
-			"Invite My Team to DealScale",
-			"Refer a Friend and Earn Credits",
-			"Join Loan Officers Using DealScale",
+			"Star on GitHub",
+			"Share with Your Team",
+			"Contribute a Plugin",
+			"Join Discord",
+			"Follow on Twitter",
 		],
 	},
 	demo_mode: {
 		enabled: true,
 		headline_variant:
-			"Automate Real Estate & Mortgage Outreach with AI — See DealScale in Action",
+			"Open-Source Lead Scraping & Data Ingestion — See Lead Orchestra in Action",
 		cta: "Start Interactive Demo",
 	},
 	metadata: {
-		tone: "hopeful_motivational",
+		tone: "developer_friendly_empowering",
 		vertical: [
-			"real_estate",
-			"investor",
-			"founder",
-			"wholesaler",
-			"loan_officer",
+			"developer_tools",
+			"data_ingestion",
+			"web_scraping",
+			"lead_generation",
+			"mcp_protocol",
 		],
-		emotion_trigger: ["hope", "relief", "fomo", "social_currency"],
+		emotion_trigger: ["freedom", "empowerment", "efficiency", "community"],
 		updated_by: "Ty",
 	},
 } as const;
 
 export type HeroPersonaKey = keyof typeof HERO_COPY_V7.personas;
 
-export const DEFAULT_PERSONA: HeroPersonaKey = "investor";
-export const DEFAULT_PERSONA_DISPLAY = "AI Sales Teammates";
+export const DEFAULT_PERSONA: HeroPersonaKey = "developer";
+export const DEFAULT_PERSONA_DISPLAY = "Open-Source Scraping Engine";
 
-const PERSONA_LABEL = "For Real Estate Investors";
-const PERSONA_GOAL = "Automate deal flow conversations";
+const PERSONA_LABEL = "For Developers, Agencies & Data Teams";
+const PERSONA_GOAL = "Scrape, normalize, and export lead data";
 const PERSONA_SOCIAL_PROOF =
-	"AI follow-up, sequencing, and CRM automation — every lead worked automatically.";
+	"Fresh leads, not rented lists. Open-source scraping with unlimited data, zero credit limits.";
 
 const pickPersonaField = (field: "problem" | "solution" | "fear" | "hope") => {
 	const persona = HERO_COPY_V7.personas[DEFAULT_PERSONA];
@@ -207,26 +197,26 @@ export const LIVE_COPY = resolveHeroCopy(
 );
 
 export const LIVE_PRIMARY_CTA = {
-	label: "Get Started in 1 Click",
+	label: "Scrape Your First Site",
 	description:
-		"Stop dialing. Start closing. Your AI coworker books qualified sellers while you sleep.",
+		"Paste a URL → scrape all the leads → clean them → export instantly. Fresh leads, not rented lists.",
 	emphasis: "solid" as const,
-	badge: "Free Trial",
+	badge: "100% Free",
 };
 
 export const LIVE_SECONDARY_CTA = {
 	label: HERO_COPY_V7.ctas.secondary[0],
-	description: "Preview the four-pillar lead engine in a guided tour.",
+	description: "See how open-source scraping works. One command = fresh leads.",
 	emphasis: "outline" as const,
-	badge: "Live Demo",
+	badge: "View on GitHub",
 };
 
 export const LIVE_MICROCOPY =
-	'Stop dialing. Start closing. Your AI coworker books qualified sellers while you sleep. <link href="#live-hero-details">Review the rollout steps</link>. "People buy from people who make them feel capable and confident." - Dale Carnegie.';
+	'Scrape Anything. Export Everywhere. <link href="#live-hero-details">See how it works</link>. Fresh leads, not rented lists.';
 
 export const LIVE_SOCIAL_PROOF = {
 	...DEFAULT_HERO_SOCIAL_PROOF,
-	// caption: "Reusable hero experiences adopted by DealScale builders.",
+	// caption: "Reusable hero experiences adopted by Lead Orchestra builders.",
 };
 
 export { PERSONA_GOAL, PERSONA_LABEL, HERO_COPY_V7, PERSONA_SOCIAL_PROOF };

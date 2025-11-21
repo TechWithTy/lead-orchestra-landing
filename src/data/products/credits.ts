@@ -16,14 +16,14 @@ import { sizingChart } from "./sizingChart";
 export const creditProducts: ProductType[] = [
 	{
 		id: "ai-credits-bundle",
-		name: "AI Conversation Credits",
+		name: "Lead Credits",
 		price: 100, // Starting price for the smallest bundle
 		sku: "DS-AI-CRED",
-		slug: "ai-conversation-credits",
+		slug: "lead-credits",
 		licenseName: LicenseType.Proprietary,
 		abTest: AIConversationCreditsABTest,
 		description:
-			"Power your AI Virtual Agents with conversation credits. Each credit is used for AI-driven interactions like making calls, sending texts, and nurturing leads. Keep your pipeline automation running smoothly by topping up your credits anytime.",
+			"Power your lead scraping and data processing workflows with lead credits. Each credit is used for data operations like scraping leads, normalizing data, and exporting to your CRM. Keep your pipeline automation running smoothly by topping up your credits anytime.",
 		categories: [
 			ProductCategory.Credits,
 			ProductCategory.AddOn,
@@ -41,51 +41,14 @@ export const creditProducts: ProductType[] = [
 		sizes: [], // * Required by ProductType
 		faqs: [
 			{
-				question: "What is an AI Credit used for?",
+				question: "What is a Lead Credit used for?",
 				answer:
-					"AI Credits are consumed during interactions managed by your AI Virtual Agent. This includes analyzing responses, making decisions, and sending personalized follow-ups across various channels.",
+					"Lead Credits are consumed during data operations managed by your scraping jobs. This includes scraping leads from websites, normalizing data, and exporting to your CRM or other systems.",
 			},
 			{
 				question: "Do these credits expire?",
 				answer:
-					"Purchased credits do not expire and will roll over each month as long as you have an active Deal Scale account.",
-			},
-		],
-	},
-	{
-		id: "skip-trace-credits-bundle",
-		name: "Skip Trace Credits",
-		price: 75, // Starting price
-		sku: "DS-SKIP-CRED",
-		slug: "skip-trace-credits",
-		abTest: skipTraceCreditsABTests[0], // Use the first test from the array
-		licenseName: LicenseType.Proprietary,
-		description:
-			"Instantly find accurate contact information for property owners. Use Skip Trace Credits to uncover phone numbers and email addresses for your target leads, enabling direct outreach and transforming a simple address into a real conversation.",
-		categories: [
-			ProductCategory.Credits,
-			ProductCategory.AddOn,
-			ProductCategory.Data,
-		],
-		images: ["/products/coins.png"],
-		types: [
-			{ name: "100", value: "100-credits", price: 75 },
-			{ name: "500", value: "500-credits", price: 325 },
-			{ name: "1,500", value: "1500-credits", price: 900 },
-		],
-		reviews: [], // * Required by ProductType
-		colors: [], // * Required by ProductType
-		sizes: [], // * Required by ProductType
-		faqs: [
-			{
-				question: "What does one Skip Trace Credit provide?",
-				answer:
-					"One credit is used to search for the contact details associated with one property owner or record. We provide the most up-to-date information available from our data partners.",
-			},
-			{
-				question: "What is the typical success rate?",
-				answer:
-					"Our data is highly accurate, but success rates can vary based on the public availability of information for a given individual. We continuously update our databases to ensure the highest possible accuracy.",
+					"Purchased credits do not expire and will roll over each month as long as you have an active Lead Orchestra account.",
 			},
 		],
 	},
@@ -116,7 +79,7 @@ export const creditProducts: ProductType[] = [
 			{
 				question: "What information is included with each lead?",
 				answer:
-					"Each lead includes the property address, owner's name (when available), and basic property characteristics. You can then use Skip Trace credits to acquire direct contact information.",
+					"Each lead includes the property address, owner's name (when available), and basic property characteristics. Contact information is included as part of the lead data when available.",
 			},
 			{
 				question: "Can I filter the leads I want to purchase?",

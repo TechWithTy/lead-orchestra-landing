@@ -16,16 +16,16 @@ export default function EventFilter({
 	onCategoryChange,
 }: EventFilterProps) {
 	return (
-		<div className="mb-8">
-			<div className="my-5 flex w-full justify-center">
+		<div className="mb-12 md:mb-16">
+			<div className="mb-6 flex w-full justify-center">
 				<Input
 					type="text"
 					placeholder="Search events..."
 					onChange={(e) => onSearch(e.target.value)}
-					className="mb-4 w-full max-w-xs sm:max-w-sm"
+					className="w-full max-w-xs sm:max-w-sm"
 				/>
 			</div>
-			<div className="flex flex-wrap justify-center gap-2">
+			<div className="flex flex-wrap justify-center gap-3">
 				{categories.map((category) => (
 					<button
 						key={category.id}

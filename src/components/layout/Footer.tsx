@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({
 								{/* Show dark text logo on light mode */}
 								<Image
 									src="/company/logos/DealScale_Horizontal_Black.png"
-									alt="Deal Scale"
+									alt="Lead Orchestra"
 									width={300}
 									height={76}
 									className="block h-auto w-full dark:hidden"
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
 								{/* Show light text logo on dark mode */}
 								<Image
 									src="/company/logos/Deal_Scale_Horizontal_White.png"
-									alt="Deal Scale"
+									alt="Lead Orchestra"
 									width={300}
 									height={76}
 									className="hidden h-auto w-full dark:block"

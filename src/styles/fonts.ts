@@ -1,6 +1,6 @@
-import { JetBrains_Mono, Manrope } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
-export const sansFont = Manrope({
+export const sansFont = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-sans",

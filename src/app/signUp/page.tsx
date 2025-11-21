@@ -20,7 +20,7 @@ export default function SignUpPage() {
 				<div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 					<div className="flex flex-col space-y-2 text-center">
 						<h1 className="font-semibold text-2xl tracking-tight">
-							Create your DealScale account
+							Create your Lead Orchestra account
 						</h1>
 						<p className="text-muted-foreground text-sm">
 							We&rsquo;ll confirm everything by email or SMS after you finish.

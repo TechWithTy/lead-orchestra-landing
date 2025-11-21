@@ -63,9 +63,9 @@ export function FeatureTimelineTable({
 					Delivery Roadmap
 				</CardTitle>
 				<CardDescription className="text-pretty">
-					A transparent view of what is live inside Deal Scale today, what is
-					enjoying limited beta access, and the initiatives we are building next
-					for revenue and acquisitions teams.
+					A transparent view of what is live inside Lead Orchestra today, what
+					is enjoying limited beta access, and the initiatives we are building
+					next for developers, agencies, and data teams.
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="pt-4">

@@ -56,4 +56,8 @@ reports/
 
 # Task files
 # tasks.json
-# tasks/ 
+# tasks/
+
+# Windows reserved device names (prevent Git errors)
+nul
+NUL 

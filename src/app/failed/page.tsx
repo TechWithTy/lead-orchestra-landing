@@ -2,10 +2,10 @@ import StatusPageClient from "@/components/ui/StatusPageClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Error | DealScale",
+	title: "Error | Lead Orchestra",
 	description: "An error occurred",
 	openGraph: {
-		title: "Error | DealScale",
+		title: "Error | Lead Orchestra",
 		description: "An error occurred while processing your request",
 	},
 };

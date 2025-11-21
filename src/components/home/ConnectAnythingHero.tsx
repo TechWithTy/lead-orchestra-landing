@@ -18,10 +18,10 @@ import Image from "next/image";
 const ROTATION_INTERVAL_MS = 4000;
 
 const HERO_MESSAGES = [
-	"Sync your CRM with AI precision.",
-	"Automate workflows across all platforms, primarily Kestra, Make, Zapier, and n8n.",
-	"Keep HubSpot, Zoho, and Salesforce perfectly aligned.",
-	"No switching CRMs, just scaling smarter.",
+	"Export scraped data to CRM, CSV/JSON, Database, S3, or any system.",
+	"Integrate with MCP protocol, APIs, webhooks, and workflow engines like Kestra, Make, Zapier, and n8n.",
+	"Connect to CRMs, data warehouses, and automation platforms.",
+	"Open-source scraping that plugs into anything—no vendor lock-in.",
 ];
 
 const BASE_LOGOS = [
@@ -138,25 +138,25 @@ const BEAM_NETWORK_NODES: AnimatedBeamNetworkNode[] = [
 
 const HERO_METRICS = [
 	{
-		id: "sync",
-		value: 22,
-		suffix: "ms",
-		decimalPlaces: 0,
-		label: "Sync latency across CRMs",
-	},
-	{
-		id: "coverage",
-		value: 18,
+		id: "sources",
+		value: 10,
 		suffix: "+",
 		decimalPlaces: 0,
-		label: "Active integration bridges",
+		label: "Built-in scraping sources",
+	},
+	{
+		id: "plugins",
+		value: 20,
+		suffix: "+",
+		decimalPlaces: 0,
+		label: "Community MCP plugins",
 	},
 	{
 		id: "uptime",
 		value: 99.9,
 		suffix: "%",
 		decimalPlaces: 1,
-		label: "Automation uptime",
+		label: "Scraping reliability",
 	},
 ];
 
@@ -204,7 +204,7 @@ export function ConnectAnythingHero(): JSX.Element {
 				centerContent={
 					<Image
 						src="/logos/DealScale%20Transparent%20Logo/Deal%20Scale%20No%20Text.png"
-						alt="DealScale core logo"
+						alt="Lead Orchestra core logo"
 						width={56}
 						height={56}
 						priority={false}
@@ -227,7 +227,7 @@ export function ConnectAnythingHero(): JSX.Element {
 						<span className="mr-2 inline-flex items-center justify-center rounded-full bg-sky-500/20 p-1 text-sky-600 dark:text-sky-300">
 							<Sparkles className="h-3.5 w-3.5" />
 						</span>
-						CRM Outreach Layer
+						Data Ingestion Layer
 					</Badge>
 				</motion.div>
 				<motion.h1
@@ -238,7 +238,7 @@ export function ConnectAnythingHero(): JSX.Element {
 				>
 					<div className="space-y-1 sm:space-y-2">
 						<span className="block w-full text-black dark:text-white">
-							Connect Any CRM
+							Export to Any System
 						</span>
 					</div>
 				</motion.h1>
@@ -262,9 +262,9 @@ export function ConnectAnythingHero(): JSX.Element {
 					transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
 					className="mt-5 max-w-3xl text-slate-900 text-sm drop-shadow-[0_6px_14px_rgba(15,23,42,0.2)] md:text-base dark:text-slate-100/85"
 				>
-					DealScale keeps your existing CRM stack in sync, enriches every
-					touchpoint, and orchestrates automations across all platforms, with
-					primary integrations for Kestra, Make, Zapier, and n8n.
+					Lead Orchestra exports scraped data to CRM, CSV/JSON, Database, S3, or
+					any system. Integrate with MCP protocol, APIs, webhooks, and workflow
+					engines like Kestra, Make, Zapier, and n8n.
 				</motion.p>
 				<motion.ul
 					initial="hidden"

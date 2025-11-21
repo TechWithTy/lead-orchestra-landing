@@ -64,10 +64,11 @@ const EventsGrid: React.FC<EventsGridProps> = ({
 								title="Past Events"
 								centered
 								description="Browse previous events and conferences."
+								className="mt-16 md:mt-20"
 							/>
 
 							<Suspense fallback={<div>Loading events...</div>}>
-								<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+								<div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 									{pastEvents.map((event, index) => (
 										<EventCard key={event.id} event={event} index={index} />
 									))}

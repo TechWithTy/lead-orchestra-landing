@@ -50,7 +50,8 @@ export function FooterBetaCta({ className = "" }: { className?: string }) {
 				)}
 			</div>
 			<p className="text-muted-foreground text-xs md:mx-auto md:max-w-xs md:text-sm dark:text-white/60">
-				Try DealScale free before public launch and help shape the roadmap.
+				Get started free with open-source scraping. View on GitHub or request
+				enterprise access.
 			</p>
 			<div className="flex w-full flex-col-reverse gap-2 sm:flex-row sm:gap-3 md:w-full md:flex-row md:justify-center md:gap-3 lg:w-auto lg:justify-start">
 				<Link

@@ -178,9 +178,9 @@ export const landingContentGaps: LandingGapContentConfig = {
 		ctaUrl: "/about",
 	},
 	bento: {
-		fallbackTitle: "Why Real Estate Leaders Choose Deal Scale",
+		fallbackTitle: "Why Developers & Agencies Choose Lead Orchestra",
 		fallbackSubtitle:
-			"We deliver a scalable and automated solution to keep your deal pipeline consistently full.",
+			"Open-source scraping that plugs into anything. Scrape any website, normalize data, and export to your stack—no vendor lock-in.",
 	},
 	blogPreview: {
 		fallbackTitle: "Latest Insights",

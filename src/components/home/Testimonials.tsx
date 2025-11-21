@@ -35,7 +35,7 @@ const usePersonaTestimonials = (
 ) => {
 	return useMemo(() => {
 		const personaSpecific = getTestimonialsForPersona(persona);
-		if (personaSpecific.length > 0) {
+		if (personaSpecific && personaSpecific.length > 0) {
 			return personaSpecific;
 		}
 

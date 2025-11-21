@@ -163,7 +163,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
 				{variant === "default" && (
 					<div className="mb-4 text-center">
 						<Header
-							title="Trusted Partners of DealScale"
+							title="Trusted by Lead Orchestra"
 							subtitle="Trusted by top-performing real estate teams and investors nationwide."
 						/>
 					</div>

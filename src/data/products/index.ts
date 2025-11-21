@@ -2,8 +2,8 @@ import type { ProductType } from "@/types/products";
 import { agentProducts } from "./agents";
 import { closerProducts } from "./closers";
 import { creditProducts } from "./credits";
-import { essentialsProducts } from "./essentials";
 import { freeResourceProducts } from "./free-resources";
+import { leadMagnetProducts } from "./lead-magnets";
 import { monetizeProducts } from "./monetize";
 import { notionProducts } from "./notion";
 import { workflowProducts } from "./workflow";
@@ -11,7 +11,7 @@ import { workflowProducts } from "./workflow";
 export const mockProducts: ProductType[] = [
 	...freeResourceProducts,
 	...creditProducts,
-	...essentialsProducts,
+	...leadMagnetProducts, // Replaced essentialsProducts with lead magnets
 	...notionProducts,
 	...workflowProducts,
 	...agentProducts,

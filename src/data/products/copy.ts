@@ -277,7 +277,7 @@ export const abTestExample = defineAbTest({
 });
 export const AIConversationCreditsABTest = defineAbTest({
 	id: "abtest-002",
-	name: "AI Conversation Credits",
+	name: "Lead Credits",
 	description:
 		"A/B test for outcome-driven messaging highlighting AI automation and credit-based sales enablement.",
 	variants: [
@@ -285,32 +285,32 @@ export const AIConversationCreditsABTest = defineAbTest({
 			name: "Outcome-Focused Copy",
 			percentage: 50,
 			copy: {
-				cta: "Power Up Your AI & Automate Your Deal Flow",
-				buttonCta: "Get AI Credits Now",
+				cta: "Power Up Your Scraping & Automate Your Lead Flow",
+				buttonCta: "Get Lead Credits Now",
 				tagline:
-					"Your AI Agent is Ready to Close Deals. Don't Let It Run Out of Fuel.",
+					"Your Scraping Pipeline is Ready to Process Leads. Don't Let It Run Out of Fuel.",
 				subtitle:
-					"Instantly add AI Conversation Credits to keep your automated lookalike audience expansion (inspired by How to Win Friends and Influence People), nurturing, and outreach running 24/7.",
+					"Instantly add Lead Credits to keep your automated lead generation, data processing, and export workflows running 24/7.",
 				description:
-					"Keep your real estate pipeline on full autopilot. AI Conversation Credits power your AI Virtual Agents to make calls, send texts, and nurture leads from first touch to close. Each credit fuels a critical interaction, ensuring no lead goes cold and your deal flow never stops. Top up anytime and choose a bundle with bulk discounts to maximize your ROI.",
+					"Keep your lead pipeline on full autopilot. Lead Credits power your scraping jobs, data normalization, and export workflows to process leads from any source to your CRM. Each credit fuels a critical data operation, ensuring no lead goes unprocessed and your pipeline never stops. Top up anytime and choose a bundle with bulk discounts to maximize your ROI.",
 				whatsInItForMe:
-					"This is how you scale effortlessly: Your AI Virtual Agent works around the clock, engaging leads, sending follow-ups, and scheduling calls so you don't have to. More credits mean more automated outreach, a shorter sales cycle, and more closed deals in your pipeline—all without adding headcount.",
+					"This is how you scale effortlessly: Your scraping jobs work around the clock, extracting leads, normalizing data, and exporting to your CRM so you don't have to. More credits mean more automated data processing, a shorter sales cycle, and more closed deals in your pipeline—all without adding headcount.",
 				target_audience:
-					"Growth-focused real estate investors, wholesalers, and flippers who want to use AI automation to scale their business, surface lookalike off-market deals powered by similarity intelligence, and eliminate tedious manual outreach.",
+					"Growth-focused developers, agencies, and data teams who want to use automated scraping to scale their business, surface fresh leads from any source, and eliminate tedious manual data extraction.",
 				pain_point:
-					"Your deal pipeline stalls when manual follow-up becomes overwhelming. You're losing deals because you can't engage every lead instantly and consistently. Scaling your outreach means hiring more staff, which increases overhead and complexity.",
-				fear: "Every unanswered lead gets rerouted to a competitor with an AI dialer—your pipeline goes cold while overhead keeps climbing.",
+					"Your lead pipeline stalls when manual data extraction becomes overwhelming. You're losing deals because you can't access every lead source instantly and consistently. Scaling your data acquisition means hiring more staff, which increases overhead and complexity.",
+				fear: "Every missed lead gets rerouted to a competitor with a superior data pipeline—your pipeline goes cold while overhead keeps climbing.",
 				solution:
-					"AI Conversation Credits fuel your automated sales force. They enable your AI Virtual Agent to handle thousands of interactions—calls, texts, and emails—autonomously. This ensures every lead is nurtured instantly, keeping your pipeline full and allowing you to scale outreach infinitely without adding to your payroll.",
+					"Lead Credits fuel your automated data pipeline. They enable your scraping jobs to process thousands of leads—extracting, normalizing, and exporting data—autonomously. This ensures every lead is processed instantly, keeping your pipeline full and allowing you to scale data acquisition infinitely without adding to your payroll.",
 				highlights: [
-					"Keep Your Pipeline on Autopilot: Never miss a follow-up or a new lead opportunity.",
-					"Scale Without Scaling Headcount: Automate thousands of outreach tasks instantly.",
-					"Close Deals Faster: Engage and qualify leads 24/7 to shorten your sales cycle.",
+					"Keep Your Pipeline on Autopilot: Never miss a new lead opportunity or data source.",
+					"Scale Without Scaling Headcount: Automate thousands of data extraction tasks instantly.",
+					"Close Deals Faster: Process and export leads 24/7 to shorten your sales cycle.",
 				],
 				highlighted_words: ["Automate", "Instantly", "Scale"],
 			},
 			variant_description:
-				"Emphasizes outcome-driven automation and the value of AI Conversation Credits.",
+				"Emphasizes outcome-driven automation and the value of Lead Credits.",
 			kpis: [
 				{ name: "CTR", value: 0, goal: 5, unit: "%" },
 				{ name: "Conversion Rate", value: 0, goal: 3, unit: "%" },

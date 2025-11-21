@@ -74,10 +74,9 @@ export const RecurringPlanCard = ({
 
 	const credits = plan.credits
 		? [
-				{ label: "AI", value: formatCredits(plan.credits.ai) },
-				{ label: "Skip Trace", value: formatCredits(plan.credits.skipTrace) },
-				{ label: "Lead", value: formatCredits(plan.credits.lead) },
-			].filter((credit) => credit.value)
+				{ label: "AI", value: formatCredits(plan.credits.ai) ?? "0" },
+				{ label: "Lead", value: formatCredits(plan.credits.lead) ?? "0" },
+			]
 		: [];
 
 	const seats = formatSeatAllocation(plan.seats);
@@ -95,16 +94,27 @@ export const RecurringPlanCard = ({
 				? "Contact Sales"
 				: plan.ctaType === "upgrade"
 					? "Start Free Trial"
-					: "Learn More");
+					: plan.ctaType === "link"
+						? (plan.ctaLabel ?? "Learn More")
+						: "Learn More");
 
 	const actionButton =
-		ctaOverride?.href || plan.ctaType === "contactSales" ? (
+		ctaOverride?.href ||
+		plan.ctaType === "contactSales" ||
+		plan.ctaType === "link" ? (
 			<Button
 				asChild
 				className="mt-4 w-full"
 				variant={plan.ctaType === "contactSales" ? "secondary" : "default"}
 			>
-				<Link href={ctaOverride?.href ?? "/contact"}>{ctaLabel}</Link>
+				<Link
+					href={
+						ctaOverride?.href ??
+						(plan.ctaType === "link" ? "https://github.com" : "/contact")
+					}
+				>
+					{ctaLabel}
+				</Link>
 			</Button>
 		) : (
 			<Button

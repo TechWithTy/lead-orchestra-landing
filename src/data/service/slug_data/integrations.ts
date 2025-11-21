@@ -17,16 +17,28 @@ export const leadGenIntegrations: TechStack[] = [
 		category: "Universal Connectivity",
 		libraries: [
 			{
-				name: "Universal CSV Export",
+				name: "CSV / JSON Export",
 				description:
-					"Export any lead list as a CSV file, making it compatible with virtually any CRM, dialer, or marketing platform on the market.",
+					"Export scraped leads as CSV or JSON files, making it compatible with virtually any CRM, database, or data platform. Perfect for manual imports and data analysis.",
 				customSvg: universalSvg,
 			},
 			{
-				name: "Zapier",
+				name: "Database Export",
 				description:
-					"Connect Deal Scale to thousands of other apps. Automatically send your lead lists to your CRM or start marketing campaigns without writing any code.",
-				customSvg: zapierSvg,
+					"Directly export normalized leads to PostgreSQL, MySQL, MongoDB, or any database. Automated schema mapping and bulk insert for high-performance data ingestion.",
+				customSvg: universalSvg,
+			},
+			{
+				name: "S3 / Cloud Storage",
+				description:
+					"Export scraped data directly to AWS S3, Google Cloud Storage, or Azure Blob Storage. Perfect for data lakes, ETL pipelines, and enterprise data workflows.",
+				customSvg: universalSvg,
+			},
+			{
+				name: "REST API & Webhooks",
+				description:
+					"Real-time data export via REST API or webhook triggers. Integrate Lead Orchestra with any system that accepts HTTP requests. Custom payload formatting and authentication.",
+				customSvg: universalSvg,
 			},
 		],
 	},
@@ -34,68 +46,62 @@ export const leadGenIntegrations: TechStack[] = [
 		category: "Popular CRM & Marketing Platforms",
 		libraries: [
 			{
-				name: "GoHighLevel",
+				name: "Salesforce",
 				description:
-					"Directly import your lead lists to power your funnels, automate marketing, and manage client communication within the GoHighLevel platform.",
+					"Export normalized leads directly to Salesforce. Automatic field mapping, duplicate detection, and bulk import for enterprise sales teams.",
+				customSvg: salesforceSvg,
+			},
+			{
+				name: "HubSpot",
+				description:
+					"Sync scraped leads to HubSpot CRM with automatic contact creation, deal association, and custom property mapping. Real-time webhook integration available.",
 				customSvg: gohighlevelSvg,
 			},
 			{
-				name: "Podio",
+				name: "GoHighLevel",
 				description:
-					"A favorite for its customizability. Directly import your Deal Scale lead lists to manage your entire wholesaling and investment workflow in Podio.",
+					"Export lead lists to GoHighLevel for automated marketing funnels, SMS campaigns, and client communication workflows.",
+				customSvg: gohighlevelSvg,
+			},
+			{
+				name: "Pipedrive",
+				description:
+					"Import scraped leads into Pipedrive with automatic pipeline assignment and activity tracking. Perfect for sales teams managing lead flow.",
 				customSvg: podioSvg,
-			},
-			{
-				name: "REISift",
-				description:
-					"The go-to for data management. Upload your lists to stack data, filter, and manage your leads with precision before pushing to your dialer or CRM.",
-				customSvg: reisiftSvg,
-			},
-			{
-				name: "FreedomSoft",
-				description:
-					"Easily import your lead lists into this all-in-one   system to manage deals, run marketing campaigns, and automate your real estate business.",
-				customSvg: freedomsoftSvg,
-			},
-			{
-				name: "REsimpli",
-				description:
-					"Export your lists from Deal Scale and import into REsimpli to track your KPIs, manage leads, and run your entire business from one place.",
-				customSvg: resimpliSvg,
-			},
-			{
-				name: "Salesforce",
-				description:
-					"For larger teams. Seamlessly upload your lead lists to Salesforce to leverage its powerful deal tracking and enterprise-grade automation.",
-				customSvg: salesforceSvg,
 			},
 		],
 	},
 	{
-		category: "Outreach & General Tools",
+		category: "Workflow Engines & Automation",
 		libraries: [
 			{
-				name: "Instantly.ai",
+				name: "n8n",
 				description:
-					"Upload your lead lists to Instantly to launch and scale your cold email outreach campaigns with industry-leading deliverability.",
-				customSvg: instantlySvg,
+					"Connect Lead Orchestra to n8n workflows for automated scraping jobs, data processing, and multi-step automation. Pre-built templates available.",
+				customSvg: zapierSvg,
 			},
 			{
-				name: "Superhuman",
+				name: "Zapier",
 				description:
-					"Import contacts from your CSV exports to the fastest email experience ever made, perfect for high-touch, individual outreach to key prospects.",
-				customSvg: superhumanSvg,
+					"Connect Lead Orchestra to thousands of apps via Zapier. Automatically send scraped leads to your CRM, trigger marketing campaigns, or sync data across platforms.",
+				customSvg: zapierSvg,
 			},
 			{
-				name: "SMS & Dialer Platforms",
+				name: "Make (Integromat)",
 				description:
-					"Easily import your lists into any major dialing or SMS platform (e.g., BatchDialer, Smarter Contact, ReadyMode) to begin outreach immediately.",
-				customSvg: dialerSvg,
+					"Build complex automation workflows with Make. Connect Lead Orchestra scraping jobs to data processing, enrichment, and export pipelines.",
+				customSvg: zapierSvg,
+			},
+			{
+				name: "Kestra",
+				description:
+					"Orchestrate Lead Orchestra scraping jobs with Kestra workflows. Schedule automated scraping, data normalization, and export tasks with enterprise-grade reliability.",
+				customSvg: zapierSvg,
 			},
 			{
 				name: "Google Sheets / Excel",
 				description:
-					"Directly export your targeted lead lists to Google Sheets or Microsoft Excel for easy analysis, sharing, and manual tracking.",
+					"Export scraped leads directly to Google Sheets or Microsoft Excel for easy analysis, sharing, and manual tracking. Perfect for quick data review.",
 				customSvg: googleSheetsSvg,
 			},
 		],

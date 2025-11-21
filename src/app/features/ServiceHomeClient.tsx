@@ -133,7 +133,7 @@ export default function ServiceHomeClient() {
 			{integrationsStatus === "ready" ? (
 				<TechStackSection
 					title="Integrations"
-					description="Connect Deal Scale seamlessly with your CRM, marketing tools, and workflow apps. Effortlessly sync leads, automate outreach, and streamline your pipeline with integrations trusted by top real estate professionals."
+					description="Connect Lead Orchestra seamlessly with your CRM, databases, workflow engines, and data platforms. Export scraped leads to any system via CSV, JSON, Database, S3, or API. Integrate with n8n, Make, Zapier, Kestra, and other automation tools trusted by developers and agencies."
 					stacks={resolvedStacks}
 				/>
 			) : (
@@ -146,9 +146,9 @@ export default function ServiceHomeClient() {
 			{bentoStatus === "ready" && resolvedBentoFeatures.length > 0 ? (
 				<BentoPage
 					features={resolvedBentoFeatures}
-					title={"Why Real Estate Leaders Choose Deal Scale"}
+					title={"Why Developers & Agencies Choose Lead Orchestra"}
 					subtitle={
-						"We deliver a scalable and automated solution to keep your deal pipeline consistently full."
+						"Open-source scraping that plugs into anything. Scrape any website, normalize data, and export to your stack—no vendor lock-in."
 					}
 				/>
 			) : (
@@ -159,7 +159,7 @@ export default function ServiceHomeClient() {
 			)}
 			<div className="my-12">
 				<Header
-					title="How Deal Scales Works"
+					title="How Lead Orchestra Works"
 					subtitle="Here's a timeline of our journey."
 				/>
 				{timelineStatus === "ready" && resolvedTimeline.length > 0 ? (
@@ -173,9 +173,9 @@ export default function ServiceHomeClient() {
 				<Separator className="my-8" />
 			</div>
 			<CTASection
-				title="Ready to Fill Your Calendar on Autopilot?"
-				description="Deal Scale is your 24/7 AI team for automated lookalike audience expansion inspired by How to Win Friends and Influence People and nurturing. Let us handle the repetitive follow-ups so you can focus on high-value conversations and closing."
-				buttonText="Automate My Outreach"
+				title="Ready to Scrape Fresh Leads?"
+				description="Lead Orchestra is your open-source scraping engine for extracting leads from any website. Scrape, normalize, and export—get fresh data no one else has. Built for developers, agencies, and data teams."
+				buttonText="Start Scraping"
 				href="/get-started"
 			/>
 		</>

@@ -3,6 +3,7 @@
 import ExitIntentBoundary from "@/components/exit-intent/ExitIntentBoundary";
 import CatalogPricing from "@/components/pricing/CatalogPricing";
 import { exitIntentEnabled } from "@/lib/config/exitIntent";
+import { usePersonaStore } from "@/stores/usePersonaStore";
 import type { PricingCatalog } from "@/types/service/plans";
 import { useSearchParams } from "next/navigation";
 
@@ -22,6 +23,11 @@ const PricingClient: React.FC<PricingProps> = ({
 }: PricingProps) => {
 	const searchParams = useSearchParams();
 	const callbackUrl = searchParams?.get("callbackUrl") || undefined;
+	const persona = usePersonaStore((state) => state.persona);
+
+	// Show open source preview for developers, free trial for agencies
+	const showFreePreview = persona === "developer" || persona === "agency";
+	const showOpenSource = persona === "developer";
 
 	const shouldRenderExitIntent = exitIntentEnabled();
 	const content = (
@@ -31,6 +37,8 @@ const PricingClient: React.FC<PricingProps> = ({
 				subtitle={subtitle}
 				catalog={catalog}
 				callbackUrl={callbackUrl}
+				showFreePreview={showFreePreview}
+				showOpenSource={showOpenSource}
 			/>
 		</div>
 	);

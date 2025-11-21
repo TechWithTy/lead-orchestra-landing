@@ -14,11 +14,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Ava Moretti",
 			role: "Principal, Moretti Capital Holdings",
 			content:
-				"DealScale transformed our acquisitions team almost overnight. It is the first AI real estate tool that genuinely adds capacity instead of adding complexity.",
+				"Lead Orchestra transformed our data pipeline almost overnight. It is the first scraping tool that genuinely adds capacity instead of adding complexity. We scrape property data from Zillow and Realtor, normalize it automatically, and export to our deal pipeline—all without maintaining fragile scripts.",
 			problem:
-				"Our analysts were overwhelmed by inconsistent lead flow, manual screening, and tools that did not communicate with each other. We were losing 3 to 5 solid opportunities every month.",
+				"Our analysts were overwhelmed by inconsistent lead sources, manual data extraction, and scraping scripts that broke constantly. We were losing 3 to 5 solid opportunities every month because we couldn't get fresh data fast enough.",
 			solution:
-				"DealScale centralized everything through AI qualification, enriched data, and automated follow up. We cut our analysis time by more than 50 percent and increased high quality deal flow across three markets.",
+				"Lead Orchestra centralized our scraping through the MCP API aggregator, automatic data normalization, and flexible export options. We cut our data acquisition time by more than 50 percent and increased high quality deal flow across three markets with fresh, unique leads.",
 			rating: 5,
 			company: "Moretti Capital Holdings",
 		},
@@ -28,11 +28,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Raj Patel",
 			role: "Managing Director, Horizon Equity Investments",
 			content:
-				"As a multi market investor, DealScale is the closest thing to having a full time acquisitions analyst and pipeline manager running 24 hours a day.",
+				"As a multi market investor, Lead Orchestra is the closest thing to having a full time data engineer running 24 hours a day. We set up automated scraping jobs for each market, and fresh property data flows into our pipeline automatically.",
 			problem:
-				"We were drowning in spreadsheets and inconsistent underwriting. Even with a strong team, we missed time sensitive off market opportunities because our workflow was too slow.",
+				"We were drowning in manual data entry and inconsistent scraping. Even with a strong team, we missed time sensitive off market opportunities because our data pipeline was too slow and unreliable.",
 			solution:
-				"DealScale screens and routes opportunities instantly, runs automated outreach, and surfaces top tier leads for review. Our underwriting load dropped by nearly 40 percent and our pipeline is more predictable than ever.",
+				"Lead Orchestra's automated scraping jobs, data normalization layer, and export to CRM gave us reliable daily data flow. Our data acquisition costs dropped by nearly 40 percent and our pipeline is more predictable than ever with fresh leads.",
 			rating: 5,
 			company: "Horizon Equity Investments",
 		},
@@ -42,11 +42,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Sophia Kim",
 			role: "Lead Acquisitions Strategist, Kim Equity Partners",
 			content:
-				"I recommend DealScale to every serious investor. It is built for fast moving acquisitions teams that need reliable automation and consistent high intent leads.",
+				"I recommend Lead Orchestra to every serious investor. It is built for fast moving acquisitions teams that need reliable data pipelines and consistent fresh leads. The open-source nature means we have full control over our data.",
 			problem:
-				"We were losing track of conversations across channels, especially in high volume weeks. Follow up delays cost us competitive deals in multiple markets.",
+				"We were losing track of data sources and spending too much on list providers, especially in high volume weeks. Stale data cost us competitive deals in multiple markets.",
 			solution:
-				"DealScale's AI driven follow up, lookalike audience engine, and unified Command Center gave us reliable daily deal flow. Our conversion rate increased by roughly 27 percent in the first month.",
+				"Lead Orchestra's unified scraping interface, automatic normalization, and export capabilities gave us reliable daily deal flow. Our data quality increased by roughly 27 percent in the first month, and we're getting leads no one else has.",
 			rating: 5,
 			company: "Kim Equity Partners",
 		},
@@ -58,11 +58,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Jordan Alvarez",
 			role: "Founder, Alvarez Off Market Group",
 			content:
-				"DealScale automated our wholesaling operations more effectively than any dialer, SMS platform, or VA team we ever used.",
+				"Lead Orchestra automated our lead scraping more effectively than any list provider, manual extraction, or VA team we ever used. We scrape property listings from Zillow, Realtor, and MLS, normalize the data automatically, and export to our deal tracker—all in minutes.",
 			problem:
-				"Our outreach was scattered across five tools, leading to disorganized follow up and dropped conversations. We were constantly playing catch up.",
+				"Our lead sources were scattered across multiple list providers and manual extraction, leading to inconsistent data quality and high costs. We were constantly paying for stale, oversold lists.",
 			solution:
-				"DealScale unified skip tracing, AI calls, SMS automation, and lead routing. Our assignment fee volume increased by more than 30 percent in 60 days.",
+				"Lead Orchestra unified our scraping from multiple sources, automatic data normalization, and export to our pipeline. Our lead acquisition costs dropped by more than 30 percent in 60 days, and we're getting fresh leads no one else has.",
 			rating: 5,
 			company: "Alvarez Off Market Group",
 		},
@@ -72,11 +72,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Marcus Bishop",
 			role: "CEO, Bishop Property Solutions",
 			content:
-				"My wholesaling business finally feels scalable. DealScale replaced inconsistent manual hustle with a predictable automated system.",
+				"My wholesaling business finally feels scalable. Lead Orchestra replaced inconsistent manual data extraction with a predictable automated scraping system. We set up daily scraping jobs, and fresh property data flows into our pipeline automatically.",
 			problem:
-				"Fast moving sellers slipped through the cracks because we could not respond quickly enough or track conversations properly.",
+				"Fast moving deals slipped through the cracks because we couldn't get fresh property data quickly enough. Our manual scraping was slow and unreliable.",
 			solution:
-				"AI agents make first contact instantly, and automated workflows keep every seller engaged. We secured 4 contracts in the first two weeks of using the platform.",
+				"Lead Orchestra's automated scraping jobs make data extraction instant, and the normalization layer ensures consistent data quality. We secured 4 contracts in the first two weeks using fresh leads we scraped ourselves.",
 			rating: 5,
 			company: "Bishop Property Solutions",
 		},
@@ -86,11 +86,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Lila Torres",
 			role: "Co Founder, Torres Home Buyers",
 			content:
-				"DealScale feels like hiring a full acquisitions team without the overhead. It is incredibly consistent and removes all guesswork.",
+				"Lead Orchestra feels like hiring a full data engineering team without the overhead. It is incredibly consistent and removes all guesswork from lead acquisition. We scrape, normalize, and export—that's it.",
 			problem:
-				"Lead intake was slow, VAs delivered inconsistent quality, and we were losing momentum with cold leads.",
+				"Lead intake was slow, list providers delivered inconsistent quality, and we were losing momentum because we couldn't get fresh data fast enough.",
 			solution:
-				"DealScale's structured follow up and Command Center kept our entire pipeline warm. We increased our follow up rate by more than 50 percent and our deal flow stabilized immediately.",
+				"Lead Orchestra's automated scraping and data normalization kept our entire pipeline fed with fresh leads. We increased our lead volume by more than 50 percent and our deal flow stabilized immediately with unique, high-quality data.",
 			rating: 5,
 			company: "Torres Home Buyers",
 		},
@@ -102,11 +102,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Maya Thompson",
 			role: "Top Producing Agent, Thompson and Co.",
 			content:
-				"DealScale is like having a personal ISA and marketing system working behind the scenes. My pipeline has never been this active.",
+				"Lead Orchestra is like having a personal data engineer working behind the scenes. I scrape listing data from Zillow and Realtor, normalize it automatically, and export to my CRM. My pipeline has never been this active with fresh, unique leads.",
 			problem:
-				"I could not keep up with inquiries, cold leads, and follow ups during peak season. Opportunities were slipping away.",
+				"I could not keep up with finding new listings and extracting property data during peak season. Opportunities were slipping away because I was spending too much time on manual data entry.",
 			solution:
-				"AI agents respond instantly, automated nurture sequences keep buyers engaged, and the Command Center organizes my entire lead flow. Appointments doubled within 30 days.",
+				"Lead Orchestra scrapes listings instantly, normalizes the data automatically, and exports to my CRM. I set up daily scraping jobs, and fresh property data flows into my pipeline automatically. My lead volume doubled within 30 days.",
 			rating: 5,
 			company: "Thompson and Co.",
 		},
@@ -116,11 +116,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Chris Delgado",
 			role: "Realtor, Delgado Realty Group",
 			content:
-				"I have tried every CRM and AI assistant, but DealScale is the only platform that keeps deals moving automatically without constant babysitting.",
+				"I have tried every list provider and scraping tool, but Lead Orchestra is the only platform that keeps my data pipeline moving automatically without constant maintenance. The MCP plugins make it easy to add new sources.",
 			problem:
-				"Manual qualification and inconsistent outreach slowed me down and cost me listing opportunities.",
+				"Manual data extraction and inconsistent scraping scripts slowed me down and cost me listing opportunities. List providers sold me stale data everyone else already had.",
 			solution:
-				"DealScale qualifies every lead, handles follow ups, and prioritizes high intent prospects. I spend my time meeting clients instead of chasing them.",
+				"Lead Orchestra scrapes any source, normalizes every lead automatically, and exports to my systems. I spend my time meeting clients instead of maintaining scrapers or buying stale lists.",
 			rating: 5,
 			company: "Delgado Realty Group",
 		},
@@ -130,11 +130,11 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: "Rebecca Shaw",
 			role: "Associate Broker, Shaw Realty Advisors",
 			content:
-				"DealScale supercharged my listing pipeline and helped me win more seller appointments in a competitive market.",
+				"Lead Orchestra supercharged my listing pipeline and helped me find more seller opportunities in a competitive market. I scrape fresh property data that no one else has access to.",
 			problem:
-				"My responses were too slow and competing agents beat me to new leads. My follow up was inconsistent on busy weeks.",
+				"My data sources were too slow and competing agents beat me to new listings. My lead acquisition was inconsistent on busy weeks because I relied on list providers.",
 			solution:
-				"AI outreach, instant responses, and voice workflows helped maintain trust with sellers. My listing appointments increased by 35 percent in the first month.",
+				"Lead Orchestra's automated scraping, data normalization, and export capabilities helped me get fresh property data faster. My listing opportunities increased by 35 percent in the first month with unique leads I scraped myself.",
 			rating: 5,
 			company: "Shaw Realty Advisors",
 		},

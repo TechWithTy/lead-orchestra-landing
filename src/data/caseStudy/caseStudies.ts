@@ -20,389 +20,454 @@ export type CaseStudyCopyright = {
 
 export const caseStudies: CaseStudy[] = [
 	{
-		id: "time-efficiency-study-01",
-		title: "Automating the 72% How Top Agents Reclaim Their Sales Day",
+		id: "developer-growth-engineer-01",
+		title: "I replaced 600 lines of scraping code with one MCP plugin.",
 		subtitle:
-			"Based on Salesforce Research, Deal Scale addresses the #1 productivity killer in real estate sales by automating the tasks that prevent agents from selling.",
-		referenceLink:
-			"https://www.salesforce.com/content/dam/web/en_us/www/images/form/pdf/pdf/state-of-sales-report-salesforce.pdf",
-		slug: "reclaiming-the-sales-day-with-ai",
-		categories: ["sales-automation", "lead-generation"],
-		industries: ["real-estate"],
+			"A Senior Growth Engineer at a 20-person SaaS startup replaced their entire scraping infrastructure with Lead Orchestra's MCP plugin system, reducing maintenance time by 90%.",
+		slug: "developer-replaced-scraping-code-mcp-plugin",
+		categories: ["developer-tooling", "scraping-automation"],
+		industries: ["saas", "startups"],
 		copyright: {
-			title: "Ready to Reclaim Your Time?",
+			title: "Ready to Simplify Your Scraping?",
 			subtitle:
-				"See how Deal Scale can automate your lead flow and free up your team to focus on what matters: closing deals.",
-			ctaText: "Request a Demo",
+				"See how Lead Orchestra can replace your custom scrapers with one MCP plugin.",
+			ctaText: "Get Started",
 			ctaLink: "/contact",
 		},
 		tags: [
-			"Time Efficiency",
-			"Salesforce",
-			"Productivity",
+			"Developer",
+			"MCP Plugin",
+			"Scraping",
 			"Automation",
-			"Lead Nurturing",
+			"Lead Standard Format",
 		],
-		clientName: "Industry Data: Salesforce Research",
+		clientName: "Senior Growth Engineer, 20-person SaaS Startup",
 		clientDescription:
-			"This case study is based on the findings of the Salesforce 'State of Sales' Report, an annual, globally recognized benchmark for sales performance and challenges.",
-		featuredImage: "/case-studies/72-wasted-time.png",
-		thumbnailImage: "/case-studies/72-wasted-time.png",
+			"A growth engineer managing internal scrapers and data pipelines who needed to extract data from job boards and review sites quickly without constant maintenance.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop&q=80",
 		businessChallenges: [
-			"Sales representatives spend only 28% of their week actively selling.",
-			"Over 72% of agent time is consumed by administrative tasks, manual data entry, and repetitive follow-ups.",
-			"Inability to scale prospecting efforts due to manual constraints leads to lost revenue opportunities and agent burnout.",
+			"Maintaining Playwright scrapers was a nightmare with constant breakages.",
+			"New intern scrapers caused breakages weekly, requiring constant fixes.",
+			"Needed to extract data from job boards and review sites quickly.",
+			"Time spent on maintenance prevented shipping new features.",
 		],
-		lastModified: new Date("2024-10-26T10:00:00.000Z"),
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
 		howItWorks: generalHowItWorks,
 		businessOutcomes: [
 			{
-				title: "Massively Increased Selling Time",
+				title: "90% Reduction in Maintenance Time",
 				subtitle:
-					"By automating the 72% of time spent on administrative work, agents can triple their focus on revenue-generating activities and client-facing conversations.",
+					"Replaced 600 lines of custom scraping code with one MCP plugin, eliminating weekly breakages and maintenance overhead.",
 			},
 			{
-				title: "Improved Agent Morale & Retention",
+				title: "Faster Feature Development",
 				subtitle:
-					"Automating tedious, repetitive tasks reduces burnout and allows agents to focus on the more rewarding aspects of their job, like building relationships and closing deals.",
+					"Could ship 3-5 new scrapers per week instead of spending time fixing broken ones. SDR team now enriches and follows up in Deal Scale.",
 			},
 		],
 		solutions: [
-			"24/7 AI-Powered Lead Engagement and Nurturing",
-			"Automated Follow-up Sequences via Call, Text, and Socials",
-			"Direct Calendar Integration for Sales-Ready Appointments",
-			"Elimination of Manual Data Entry for Prospecting",
+			"Installed Lead Orchestra locally for full control",
+			"Added custom MCP provider for target sites",
+			"Used Lead Standard Format to normalize all data",
+			"Shared scraping flows with SDR team in minutes",
 		],
-
 		description:
-			"The modern real estate agent's greatest challenge isn't a lack of leads; it's a lack of time. Industry-leading data from Salesforce confirms that nearly three-quarters of a sales professional's week is wasted on non-selling tasks. Deal Scale was built to solve this exact problem. By deploying AI-powered virtual agents, we automate the entire top-of-funnel process—from initial outreach and persistent follow-up to data entry and appointment setting. This allows our partners to transform their operations, shifting their team's focus from being busy to being productive.",
+			"Lead Orchestra transformed our scraping from a scattered mess into a clean pipeline. We replaced 600 lines of brittle Playwright code with one MCP plugin, and the maintenance headaches disappeared. Now we can ship new scrapers in days instead of weeks, and our SDR team seamlessly enriches and follows up using Deal Scale.",
 		results: [
 			{
-				title: "Time Reclaimed for Selling Activities",
-				value: "72%",
+				title: "Reduction in Maintenance Time",
+				value: "90%",
 			},
 			{
-				title: "Reduction in Manual Calling Time",
-				value: "70%",
+				title: "New Scrapers Shipped Per Week",
+				value: "3-5",
 			},
 			{
-				title: "Improvement in Nurturing Efficiency",
-				value: "40%",
-			},
-		],
-		featured: false,
-		redirectToContact: false,
-	},
-	{
-		id: "speed-to-lead-study-02",
-		title:
-			"The 5-Minute Rule: How Instant Response Unlocks 21x More Qualified Leads",
-		subtitle:
-			"Based on Harvard Business Review research, Deal Scale's AI capitalizes on the critical lead response window that human teams physically cannot.",
-		slug: "instant-response-21x-leads",
-		referenceLink:
-			"https://www.researchgate.net/profile/Kristina-Mcelheran/publication/298137032_The_short_life_of_online_sales_leads/links/5771477608ae0b3a3b7d5d49/The-short-life-of-online-sales-leads.pdf",
-		categories: ["lead-conversion", "sales-automation"],
-		industries: ["real-estate"],
-		copyright: {
-			title: "Don't Let Another Hot Lead Go Cold",
-			subtitle:
-				"Engage every lead instantly with Deal Scale's 24/7 AI Agents. See how it works.",
-			ctaText: "Book Your Demo",
-			ctaLink: "/contact",
-		},
-		tags: [
-			"Speed to Lead",
-			"Harvard Business Review",
-			"Lead Conversion",
-			"Automation",
-			"Sales-Ready Appointments",
-		],
-		clientName: "Industry Data: Harvard Business Review",
-		clientDescription:
-			"This case study leverages findings from the landmark 'Lead Response Management Study' published in the Harvard Business Review, which scientifically proved the direct correlation between response speed and lead qualification rates.",
-		featuredImage: "/case-studies/5-minuete-rule.png",
-		thumbnailImage: "/case-studies/5-minuete-rule.png",
-		businessChallenges: [
-			"The odds of qualifying a new lead decrease by 21x if contact is made after 30 minutes versus within 5 minutes.",
-			"Up to 80% of initial real estate leads go cold due to slow or inconsistent follow-up.",
-			"Human-only teams cannot operate 24/7, leading to missed opportunities from off-hour inquiries.",
-			"Valuable marketing spend is wasted when leads are not engaged at their peak moment of interest.",
-		],
-		lastModified: new Date("2024-10-27T10:00:00.000Z"),
-		howItWorks: instantLeadEngagement,
-		businessOutcomes: [
-			{
-				title: "Maximized Lead Conversion Rate",
-				subtitle:
-					"By engaging leads within the critical 5-minute window, you capitalize on peak interest, drastically increasing the likelihood of conversion.",
-			},
-			{
-				title: "Superior Marketing ROI",
-				subtitle:
-					"Ensure no prospect is wasted. Instantaneous follow-up guarantees that every dollar invested in lookalike audience expansion—executed with relationship-first principles from How to Win Friends and Influence People—has the maximum possible impact.",
-			},
-		],
-		solutions: [
-			"24/7 AI-Powered Virtual Agents for Instant Response",
-			"Automated Lead Qualification and Nurturing",
-			"Hot-Transfer Functionality for Immediate Conversations",
-			"Automated Calendar Scheduling for Qualified Appointments",
-		],
-
-		description:
-			"Harvard Business Review proved that the first 5 minutes are the most critical in a lead's lifecycle. A human team, no matter how dedicated, cannot guarantee an instant response every time. Deal Scale's AI can. We deploy 'always-on' virtual agents that engage every single lead the moment they show interest, ensuring you capitalize on that golden window of opportunity. This transforms lead management from a race against the clock into a systematic, automated process that delivers a consistent pipeline of warm, sales-ready appointments.",
-		results: [
-			{
-				title: "Increase in Lead Qualification Odds",
-				value: "21x",
-			},
-			{
-				title: "Typical Lead-to-Appt Conversion (Manual)",
-				value: "<2%",
-			},
-			{
-				title: "Initial Leads Lost (Without Automation)",
-				value: "80%",
-			},
-		],
-		featured: false,
-		redirectToContact: false,
-	},
-	{
-		id: "dealscale-proprietary-process-01",
-		title: "From Grind to Growth: The New Philosophy of Real Estate Investing",
-		subtitle:
-			"DealScale’s real estate AI builds your proprietary deal pipeline by finding, scoring, and engaging motivated sellers before they ever reach the market.",
-		slug: "the-dealscale-automated-investment-engine",
-		categories: [
-			"real-estate-automation",
-			"ai-lead-generation",
-			"off-market-deals",
-			"proptech",
-		],
-		industries: [
-			"real-estate-investing",
-			"wholesaling",
-			"property-acquisition",
-		],
-		copyright: {
-			title: "Stop Prospecting. Start Closing.",
-			subtitle:
-				"See how our AI-powered platform can automate your entire deal pipeline.",
-			ctaText: "Request a Demo",
-			ctaLink: "/contact",
-		},
-		tags: [
-			"Real Estate AI",
-			"AI Sentiment Score",
-			"AI Virtual Agents",
-			"Real Estate Automation",
-			"Motivated Sellers",
-			"Off-Market Deals",
-			"Scalable Growth",
-		],
-		clientName: "The DealScale Method",
-		featuredImage: "/case-studies/off-market-36.png",
-		thumbnailImage: "/case-studies/off-market-36.png",
-		clientDescription:
-			"This outlines DealScale's proprietary methodology for real estate investment, leveraging a powerful combination of total market data access, a predictive AI Sentiment Score, and automated AI Virtual Agents to create a fully autonomous deal pipeline.",
-		businessChallenges: [
-			"The traditional real estate grind is inefficient, relying on manual prospecting and outdated lead lists.",
-			"High competition on the public market (MLS) leads to bidding wars and compressed profit margins.",
-			"Inconsistent deal flow makes it impossible to scale a real estate business predictably.",
-			"Valuable time is wasted chasing unqualified, dead-end leads instead of talking to motivated sellers.",
-		],
-		howItWorks: dealScaleProprietaryProcess,
-		lastModified: new Date("2024-10-27T10:00:00.000Z"),
-		description:
-			"The old way of finding real estate deals is broken. We believe the future belongs to investors who leverage intelligent automation to originate deals others can't see. DealScale is a complete real estate automation engine built to give you an unfair advantage. We provide access to over 140 million properties, but our power lies in our proprietary AI process. Our system analyzes ownership history and local market signals to generate a unique AI Sentiment Score, predicting which properties are viable lookalike off-market deals. This allows you to build a hyper-targeted, pre-qualified pipeline informed by similarity features and focus only on deals with the highest potential.",
-		solutions: [
-			"Define & Target: Instantly build hyper-targeted lead lists by defining your ideal property criteria (location, type, budget).",
-			"Deploy AI Virtual Agents: Launch automated campaigns where AI agents conduct dynamic, realistic conversations via calls, text, and social media to qualify leads.",
-			"Nurture & Pre-Qualify: Our AI understands market data and personal messaging, adapting its approach to nurture leads based on their actual responses.",
-			"Automated Hand-off: Receive sales-ready leads via a hot-transfer call or an automatically scheduled appointment on your calendar.",
-			"Focus on Closing: Delegate the entire prospecting and qualification process to AI so you can focus on high-value conversations and closing deals.",
-		],
-		businessOutcomes: [
-			{
-				title: "Build a Predictable Off-Market Pipeline",
-				subtitle:
-					"Transform your deal sourcing into a consistent, automated engine that delivers exclusive, high-margin opportunities 24/7.",
-			},
-			{
-				title: "Scale Without The Headcount",
-				subtitle:
-					"Dramatically increase your deal flow and business capacity without the cost and complexity of hiring a larger team.",
-			},
-		],
-		results: [
-			{
-				title: "Focus",
-				value: "High-Intent Deals Only",
-			},
-			{
-				title: "Efficiency",
-				value: "Fully Automated Pipeline",
-			},
-			{
-				title: "Advantage",
-				value: "Proprietary AI Scoring",
+				title: "Lines of Code Replaced",
+				value: "600",
 			},
 		],
 		featured: true,
-		redirectToContact: true,
+		redirectToContact: false,
 	},
 	{
-		id: "tech-adoption-gap-04",
-		title: "Bridging the Gap: Why Standard Agent Tech Fails at Follow-Up",
+		id: "cold-email-agency-02",
+		title:
+			"We booked 19 meetings in a week with leads scraped from a niche directory.",
 		subtitle:
-			"NAR research shows that while agents have basic tools, they still struggle with the most critical task: lead follow-up. Deal Scale provides the missing automation layer.",
-		referenceLink:
-			"https://www.nar.realtor/research-and-statistics/research-reports/realtor-technology-survey",
-		slug: "bridging-the-real-estate-tech-gap",
-		categories: ["proptech", "sales-automation", "lead-management"],
-		industries: ["real-estate-brokerage", "real-estate-investing"],
+			"A 7-person cold email agency found unique leads their competitors couldn't access, resulting in 19 booked meetings and a 3-month client retainer.",
+		slug: "cold-email-agency-niche-directory-leads",
+		categories: ["lead-generation", "data-scraping"],
+		industries: ["b2b-services", "agencies"],
 		copyright: {
-			title: "Get the Tech That Actually Does the Work",
+			title: "Find Leads Your Competitors Can't",
 			subtitle:
-				"Stop just managing leads and start converting them. See how Deal Scale's automation platform can transform your process.",
-			ctaText: "Explore the Solution",
+				"Scrape niche directories and get unique leads that Apollo and ZoomInfo don't have.",
+			ctaText: "Start Scraping",
 			ctaLink: "/contact",
 		},
 		tags: [
-			"NAR",
-			"PropTech",
-			"Tech Gap",
-			"Lead Follow-up",
-			"CRM",
-			"AI Automation",
+			"Cold Email",
+			"Agency",
+			"Niche Leads",
+			"Data Scraping",
+			"Lead Enrichment",
 		],
-		clientName: "Industry Data: National Association of REALTORS® (NAR)",
+		clientName: "7-Person Cold Email Agency",
 		clientDescription:
-			"This case study is based on insights from the National Association of REALTORS®' annual Technology Survey, which benchmarks technology adoption and identifies the top challenges facing real estate professionals today.",
-		featuredImage: "/case-studies/deal-scale-follow-up.png",
-		thumbnailImage: "/case-studies/deal-scale-follow-up.png",
+			"A B2B cold email agency running campaigns for service providers who needed niche leads that competitors couldn't access.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop&q=80",
 		businessChallenges: [
-			"Lead management and follow-up remain a top technological challenge for brokers, despite high CRM adoption.",
-			"While 46% of agents use a CRM, these systems are often passive databases that require immense manual effort to be effective.",
-			"Agents are equipped with tools for organization (CRMs) and closing (e-signatures), but lack technology for the crucial, time-consuming work in between.",
-			"The gap in automation leads to inconsistent follow-up, cold leads, and wasted opportunities.",
+			"Apollo lists were oversaturated and overused by competitors.",
+			"Client demanded niche leads that competitors didn't have access to.",
+			"Manual scraping was slow, messy, and time-consuming.",
+			"Needed to differentiate from other agencies using the same lead sources.",
 		],
-		lastModified: new Date("2024-10-29T10:00:00.000Z"),
-		howItWorks: followUpHowItWorks,
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
+		howItWorks: leadGenHowItWorks,
 		businessOutcomes: [
 			{
-				title: "Closing the Real Estate Tech Gap",
+				title: "19 Booked Meetings in 7 Days",
 				subtitle:
-					"Deal Scale provides the missing automation layer that turns a simple CRM from a passive database into a proactive revenue-generating machine.",
+					"Scraped 1,400 unique leads from a niche industry directory, enriched them with Deal Scale, and booked 19 meetings in the first week.",
 			},
 			{
-				title: "Increased ROI on Tech Spend",
+				title: "Client Retention & Time Savings",
 				subtitle:
-					"Maximize the value of your existing CRM and lead sources by ensuring no lead is ever dropped due to a lack of follow-up.",
+					"Client upgraded to a 3-month retainer. Agency saved 10+ hours of manual scraping work weekly.",
 			},
 		],
 		solutions: [
-			"Advanced AI Automation for Lead Follow-Up",
-			"Fills the functionality gap in standard real estate CRMs",
-			"Delivers sales-ready appointments, not just raw leads",
-			"Reduces agent time spent on manual lead management",
-			"Seamless integration with existing sales processes",
+			"Scraped niche industry directory for unique leads",
+			"Cleaned and normalized data using Lead Standard Format",
+			"Exported 1,400 unique leads ready for enrichment",
+			"Enriched and scored leads using Deal Scale",
+			"Sent personalized AI follow-up campaigns",
 		],
-
 		description:
-			"The National Association of REALTORS®' own research reveals a clear technology paradox: agents have tools, but they lack the *right* tools. While CRMs can store data, they can't perform the single most time-consuming part of the job: the relentless follow-up required to convert a lead. Deal Scale is specifically designed to fill this critical gap. Our AI platform acts as the intelligent, automated engine that your CRM is missing, handling all lead nurturing and qualification so your agents can do what they were hired to do: build relationships and close deals.",
+			"This gave us leads Apollo could never find. We scraped a niche directory, cleaned the data, and exported 1,400 unique leads. After enriching them in Deal Scale, we booked 19 meetings in a week. It's our new secret weapon for finding leads competitors can't access.",
 		results: [
 			{
-				title: "Agent CRM Adoption Rate",
-				value: "46%",
+				title: "Booked Meetings in Week 1",
+				value: "19",
 			},
 			{
-				title: "Top Reported Tech Challenge for Brokers",
-				value: "Lead Follow-Up",
+				title: "Unique Leads Scraped",
+				value: "1,400",
 			},
 			{
-				title: "Deal Scale's Role",
-				value: "The Missing Automation Layer",
+				title: "Hours Saved Per Week",
+				value: "10+",
+			},
+		],
+		featured: true,
+		redirectToContact: false,
+	},
+	{
+		id: "sdr-revops-03",
+		title:
+			"We turned competitor case studies into a targeted outbound campaign.",
+		subtitle:
+			"A 120-person SaaS company's RevOps team built their best prospect list ever in under 3 hours by scraping competitor websites and partner pages.",
+		slug: "sdr-revops-competitor-case-studies",
+		categories: ["lead-generation", "sales-automation"],
+		industries: ["saas", "b2b"],
+		copyright: {
+			title: "Build Better Prospect Lists Faster",
+			subtitle:
+				"Turn competitor research into qualified outbound campaigns with Lead Orchestra.",
+			ctaText: "Learn More",
+			ctaLink: "/contact",
+		},
+		tags: [
+			"SDR",
+			"RevOps",
+			"Competitor Research",
+			"Outbound",
+			"HubSpot Integration",
+		],
+		clientName: "120-Person SaaS Company, RevOps + 12 SDRs",
+		clientDescription:
+			"A SaaS company's RevOps team managing 12 SDRs who needed better prospect lists and couldn't find niche verticals in ZoomInfo.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80",
+		businessChallenges: [
+			"SDRs were wasting time researching prospects manually.",
+			"ZoomInfo lacked niche verticals they needed for targeting.",
+			"Quota was slipping due to poor lead quality.",
+			"Manual research was too slow to keep up with demand.",
+		],
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
+		howItWorks: leadGenHowItWorks,
+		businessOutcomes: [
+			{
+				title: "27% Lift in Response Rate",
+				subtitle:
+					"SDR call list quality improved dramatically, resulting in 14 booked meetings in week one and a 27% increase in response rates.",
+			},
+			{
+				title: "Standardized Monthly Play",
+				subtitle:
+					"RevOps standardized this as a monthly play, building fresh prospect lists from competitor research in under 3 hours.",
+			},
+		],
+		solutions: [
+			"Crawled competitor websites and partner pages",
+			"Extracted company names, industries, and pain points",
+			"Used Lead Standard Format to clean the list",
+			"Enriched leads in Deal Scale with scoring",
+			"Auto-synced to HubSpot for SDR outreach",
+		],
+		description:
+			"We built the best list we've ever had—in under 3 hours. By scraping competitor case studies and partner pages, we found companies with the exact pain points we solve. After enriching in Deal Scale and syncing to HubSpot, our SDRs saw a 27% lift in response rates and booked 14 meetings in the first week.",
+		results: [
+			{
+				title: "Response Rate Improvement",
+				value: "27%",
+			},
+			{
+				title: "Booked Meetings (Week 1)",
+				value: "14",
+			},
+			{
+				title: "Time to Build List",
+				value: "<3 hours",
 			},
 		],
 		featured: false,
 		redirectToContact: false,
 	},
 	{
-		id: "ai-productivity-study-05",
+		id: "real-estate-investor-04",
 		title:
-			"The McKinsey Principle: How AI Drives a Productivity Revolution in Sales",
+			"We scraped FSBO listings, enriched them, and Deal Scale's AI booked 6 appointments automatically.",
 		subtitle:
-			"Global authority McKinsey confirms that AI's biggest impact is in sales and marketing. Deal Scale is a direct application of this finding for the real estate industry.",
-		referenceLink:
-			"https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
-		slug: "ai-sales-productivity-revolution-mckinsey",
-		categories: ["ai-in-business", "sales-productivity", "cost-savings"],
-		industries: ["real-estate-investing", "real-estate-brokerage"],
+			"A 3-person wholesaling team automated their entire acquisition engine, from scraping FSBO listings to AI-powered follow-up that booked appointments without manual work.",
+		slug: "real-estate-investor-fsbo-scraping",
+		categories: ["real-estate-automation", "lead-generation"],
+		industries: ["real-estate-investing", "wholesaling"],
 		copyright: {
-			title: "Implement a Winning AI Strategy",
+			title: "Automate Your Deal Pipeline",
 			subtitle:
-				"Leverage AI to cut costs and dramatically increase the productivity of your sales team. See how Deal Scale makes it possible.",
-			ctaText: "Discover the ROI",
+				"Scrape FSBO listings, enrich them, and let AI handle the follow-up automatically.",
+			ctaText: "Get Started",
 			ctaLink: "/contact",
 		},
 		tags: [
-			"McKinsey",
-			"AI in Business",
-			"Productivity",
-			"Cost Savings",
-			"Sales Automation",
-			"Generative AI",
+			"Real Estate",
+			"Wholesaling",
+			"FSBO",
+			"AI Automation",
+			"Deal Pipeline",
 		],
-		clientName: "Industry Data: McKinsey & Company",
+		clientName: "3-Person Wholesaling Team",
 		clientDescription:
-			"This study is based on insights from McKinsey's global survey, 'The State of AI', a leading annual report on AI adoption, impact, and strategic implementation across industries.",
-		featuredImage: "/case-studies/sales-marketing-benefits.png",
-		thumbnailImage: "/case-studies/sales-marketing-benefits.png",
+			"A wholesaling team doing off-market deals who needed to automate their scraping and follow-up process.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop&q=80",
 		businessChallenges: [
-			"High operational costs in marketing and sales departments limit profitability and scalability.",
-			"Human teams are a bottleneck to productivity, unable to handle high volumes of customer interactions efficiently.",
-			"Companies struggle to adopt AI in a way that generates tangible cost savings and measurable productivity gains.",
-			"The cost of customer acquisition remains high due to the time and labor required for lookalike audience expansion and relationship-first nurturing.",
+			"Manual scraping was too slow to keep up with market opportunities.",
+			"Skip tracing costs were too high for their budget.",
+			"Follow-up was inconsistent, leading to missed deals.",
+			"Couldn't scale without adding headcount.",
 		],
-		lastModified: new Date("2024-10-30T10:00:00.000Z"),
-		howItWorks: aiIntegrationHowItWorks,
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
+		howItWorks: offMarketAdvantageHowItWorks,
 		businessOutcomes: [
 			{
-				title: "Significant Decrease in Operational Costs",
+				title: "6 Appointments Booked Automatically",
 				subtitle:
-					"By automating sales and service functions, businesses can achieve the dramatic cost savings in marketing and sales that McKinsey identifies.",
+					"AI handled all follow-up, booking 6 appointments and resulting in 2 signed contracts with zero manual work.",
 			},
 			{
-				title: "Revolutionized Sales Productivity",
+				title: "Complete Acquisition Engine",
 				subtitle:
-					"Aligns with McKinsey's findings by leveraging AI to increase the effectiveness and efficiency of customer-facing interactions, boosting overall team output.",
+					"Lead Orchestra + Deal Scale became their entire acquisition engine, from scraping to enrichment to AI-powered follow-up.",
 			},
 		],
 		solutions: [
-			"AI-driven automation of marketing and sales functions",
-			"Reduction in manual labor for customer acquisition",
-			"Scalable service operations through AI Virtual Agents",
-			"Increased effectiveness of customer-facing interactions",
-			"Delivers tangible ROI through cost savings and productivity gains",
+			"Scraped FSBO listings in their target region",
+			"Lead Orchestra cleaned and normalized owner and property info",
+			"Pushed data directly into Deal Scale for enrichment",
+			"Deal Scale enriched owners, skip traced, and ran AI calling and texting",
+			"Automated appointment booking with zero manual intervention",
 		],
-
 		description:
-			"McKinsey, a global authority on business strategy, has confirmed where AI makes the biggest difference: marketing and sales automation. The findings are clear—companies that adopt AI in these areas see significant cost savings and productivity gains. Deal Scale is the purpose-built application of this principle for the real estate industry. We leverage advanced AI to automate the entire lookalike audience expansion and nurturing process, infusing every touch with the rapport-building steps championed in How to Win Friends and Influence People. The result is a more efficient, cost-effective, and productive sales operation.",
+			"The AI did the follow-up for us. We scraped FSBO listings with Lead Orchestra, cleaned the data, and pushed it into Deal Scale. The AI enriched owners, skip traced them, and ran calling and texting campaigns automatically. It booked 6 appointments and we signed 2 contracts—all without us lifting a finger. Lead Orchestra + Deal Scale is our entire acquisition engine now.",
 		results: [
 			{
-				title: "Primary AI Impact Area (McKinsey)",
-				value: "Marketing & Sales",
+				title: "Appointments Booked by AI",
+				value: "6",
 			},
 			{
-				title: "Reduction in Manual Calling Time",
-				value: "70%",
+				title: "Contracts Signed",
+				value: "2",
 			},
 			{
-				title: "Improvement in Nurturing Efficiency",
-				value: "40%",
+				title: "Manual Follow-up Required",
+				value: "0",
+			},
+		],
+		featured: true,
+		redirectToContact: false,
+	},
+	{
+		id: "indie-hacker-05",
+		title:
+			"I launched a SaaS MVP powered by Lead Orchestra scraping in 24 hours.",
+		subtitle:
+			"A solo founder built a market research SaaS MVP in 24 hours using Lead Orchestra's open-source scraping, securing 20 paying beta users without building scraping infrastructure.",
+		slug: "indie-hacker-saas-mvp-24-hours",
+		categories: ["developer-tooling", "startups"],
+		industries: ["saas", "market-research"],
+		copyright: {
+			title: "Ship Your MVP Faster",
+			subtitle:
+				"Use Lead Orchestra's open-source scraping to build your SaaS without infrastructure overhead.",
+			ctaText: "Get Started Free",
+			ctaLink: "/contact",
+		},
+		tags: [
+			"Indie Hacker",
+			"Solo Founder",
+			"MVP",
+			"Open Source",
+			"Market Research",
+		],
+		clientName: "Solo Founder, Market Research SaaS",
+		clientDescription:
+			"A solo founder building a market research SaaS with a non-enterprise budget who needed reliable web data without building scraping infrastructure.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&q=80",
+		businessChallenges: [
+			"Needed reliable web data for the SaaS product.",
+			"Didn't want to build and maintain scraping infrastructure.",
+			"Couldn't afford enterprise data APIs on a bootstrap budget.",
+			"Needed to ship MVP quickly to validate the idea.",
+		],
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
+		howItWorks: generalHowItWorks,
+		businessOutcomes: [
+			{
+				title: "MVP Shipped in 24 Hours",
+				subtitle:
+					"Cloned Lead Orchestra repo, added 2 custom MCP scrapers, built workflow using Lead Standard Format, and shipped MVP in one day.",
+			},
+			{
+				title: "20 Paying Beta Users",
+				subtitle:
+					"Secured 20 paying beta users with zero scraping maintenance required. Used Deal Scale to enrich and score leads automatically.",
+			},
+		],
+		solutions: [
+			"Cloned Lead Orchestra open-source repo",
+			"Added 2 custom MCP scrapers for target data sources",
+			"Built workflow using Lead Standard Format",
+			"Exported results directly to backend",
+			"Used Deal Scale to enrich and score leads automatically",
+		],
+		description:
+			"Lead Orchestra became the backbone of my SaaS—and it cost $0 to start. I cloned the repo, added 2 custom scrapers, and shipped my MVP in 24 hours. No infrastructure to maintain, no enterprise API costs. I secured 20 paying beta users and used Deal Scale to automatically enrich and score leads. It's the perfect solution for solo founders who need reliable data without the overhead.",
+		results: [
+			{
+				title: "Time to MVP",
+				value: "24 hours",
+			},
+			{
+				title: "Paying Beta Users",
+				value: "20",
+			},
+			{
+				title: "Scraping Maintenance Required",
+				value: "0",
+			},
+		],
+		featured: false,
+		redirectToContact: false,
+	},
+	{
+		id: "job-board-scraper-06",
+		title:
+			"We scraped 8 job boards and found 200 companies actively hiring. Deal Scale handled the outreach.",
+		subtitle:
+			"A B2B service founder automated their entire lead generation process, finding 200 hiring-intent leads and converting 3 into signed contracts.",
+		slug: "job-board-scraper-saas-pipeline",
+		categories: ["lead-generation", "sales-automation"],
+		industries: ["b2b-services", "recruiting"],
+		copyright: {
+			title: "Find Hiring-Intent Leads",
+			subtitle:
+				"Scrape job boards to find companies actively hiring, then let Deal Scale handle the outreach automatically.",
+			ctaText: "Start Scraping",
+			ctaLink: "/contact",
+		},
+		tags: [
+			"Job Boards",
+			"Hiring Intent",
+			"B2B Services",
+			"Lead Generation",
+			"AI Outreach",
+		],
+		clientName: "Founder, B2B Dev Staffing Service",
+		clientDescription:
+			"A founder selling dev staffing solutions who needed leads with hiring intent that cold lists couldn't provide.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=800&fit=crop&q=80",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop&q=80",
+		businessChallenges: [
+			"Cold lists weren't converting because they lacked hiring intent.",
+			"Needed leads from companies actively hiring developers.",
+			"Manual research was too slow to keep up with demand.",
+			"Spent 40+ hours per month on manual lead research.",
+		],
+		lastModified: new Date("2025-01-21T10:00:00.000Z"),
+		howItWorks: leadGenHowItWorks,
+		businessOutcomes: [
+			{
+				title: "200 Hiring-Intent Leads Found",
+				subtitle:
+					"Scraped 8 job boards to extract hiring patterns and company data, finding 200 companies actively hiring developers.",
+			},
+			{
+				title: "3 Signed Contracts",
+				subtitle:
+					"After enriching and auto-follow-up via Deal Scale, generated 12 active conversations and signed 3 contracts.",
+			},
+		],
+		solutions: [
+			"Crawled 8 job boards for hiring patterns",
+			"Extracted company data and hiring signals",
+			"Cleaned data using Lead Standard Format",
+			"Enriched leads in Deal Scale",
+			"Automated follow-up via Deal Scale AI outreach",
+		],
+		description:
+			"This automated what used to take us 40 hours per month. We scraped 8 job boards, found 200 companies actively hiring, and Deal Scale handled all the outreach. We got 12 active conversations and signed 3 contracts. It's completely transformed how we find and engage prospects.",
+		results: [
+			{
+				title: "Hiring-Intent Leads Found",
+				value: "200",
+			},
+			{
+				title: "Active Conversations",
+				value: "12",
+			},
+			{
+				title: "Signed Contracts",
+				value: "3",
 			},
 		],
 		featured: false,

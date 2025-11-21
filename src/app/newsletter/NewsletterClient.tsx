@@ -7,15 +7,48 @@ import Testimonials from "@/components/home/Testimonials";
 import Hero from "@/components/home/heros/Hero";
 import { Separator } from "@/components/ui/separator";
 import { useDataModule } from "@/stores/useDataModuleStore";
+import { usePersonaStore } from "@/stores/usePersonaStore";
 import type { BeehiivPost } from "@/types/behiiv";
+import { useMemo } from "react";
 
 export const offerImg =
-	"/sales/offerings/re_investors_guide_financial_freedom.png";
+	"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop&q=80";
 
 // ! Newsletter landing page for user signup, incentives, and confirmation
 // * Uses reusable components and follows Clean Code, DRY, and UX best practices
 
+// Persona-specific newsletter hero content
+const PERSONA_NEWSLETTER_HERO: Record<
+	string,
+	{
+		headline: string;
+		subheadline: string;
+	}
+> = {
+	developer: {
+		headline: "Automate Your Scraping Workflows",
+		subheadline:
+			"Join our newsletter for ready-to-use n8n lead gen workflows that connect Lead Orchestra MCP plugins to n8n for end-to-end automation. Get exclusive access to pre-built workflows for automated scraping, data normalization, and export to Database, S3, and APIs.",
+	},
+	agency: {
+		headline: "Automate Your Lead Generation Pipeline",
+		subheadline:
+			"Join our newsletter for ready-to-use n8n lead gen workflows that connect Lead Orchestra scraping to your CRM, automate data processing, and scale your client delivery. Get exclusive access to multi-source scraping workflows and white-label export automation.",
+	},
+	startup: {
+		headline: "Build Your MVP Faster",
+		subheadline:
+			"Join our newsletter for ready-to-use n8n lead gen workflows that help you automate lead scraping, data normalization, and export without building infrastructure from scratch. Get quick-start templates and integration guides for popular tools.",
+	},
+	enterprise: {
+		headline: "Scale Your Data Operations",
+		subheadline:
+			"Join our newsletter for enterprise-grade n8n lead gen workflows that integrate Lead Orchestra with your existing stack. Get compliance automation templates, SSO integration guides, and custom MCP provider workflows.",
+	},
+};
+
 export default function NewsletterClient({ posts }: { posts: BeehiivPost[] }) {
+	const { persona } = usePersonaStore();
 	const {
 		status: testimonialsStatus,
 		testimonials,
@@ -28,6 +61,13 @@ export default function NewsletterClient({ posts }: { posts: BeehiivPost[] }) {
 			error,
 		}),
 	);
+
+	// Get persona-specific hero content
+	const heroContent = useMemo(() => {
+		return (
+			PERSONA_NEWSLETTER_HERO[persona] || PERSONA_NEWSLETTER_HERO.developer
+		);
+	}, [persona]);
 	const {
 		status: logosStatus,
 		companyLogos,
@@ -75,15 +115,15 @@ export default function NewsletterClient({ posts }: { posts: BeehiivPost[] }) {
 		<main className="flex min-h-screen flex-col bg-background">
 			{/* ! Hero section for strong visual impact with embedded newsletter email input */}
 			<Hero
-				badgeLeft="Investor Insights"
-				badgeRight="AI-Powered Strategies"
-				headline="Get an Unfair Advantage"
-				subheadline="Join our newsletter for exclusive strategies on finding lookalike off-market deals with similarity-driven features, automating seller outreach, and getting a first look at the AI tools top investors use to build their pipelines."
-				highlight="in Your Market"
+				badgeLeft="N8N Lead Gen Workflows"
+				badgeRight="Automation Templates"
+				headline={heroContent.headline}
+				subheadline={heroContent.subheadline}
+				highlight="with n8n"
 				ctaVariant="form"
 				ctaForm={<NewsletterEmailInput />}
-				image={offerImg} // Recommend updating this image to something real estate or deal-flow related
-				imageAlt="An illustration of an AI agent automatically adding appointments to a calendar"
+				image={offerImg}
+				imageAlt="n8n lead gen workflow showing Lead Orchestra scraping automation"
 			/>
 			{showLogosError ? (
 				<div className="mx-auto my-12 max-w-5xl text-center text-destructive">

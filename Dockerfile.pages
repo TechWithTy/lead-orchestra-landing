@@ -1,0 +1,61 @@
+# Cloudflare Pages Build Dockerfile
+# Optimized for Cloudflare Pages deployment using next-on-pages
+# This builds the Next.js app and converts it to Cloudflare Pages format
+
+FROM node:20-alpine AS base
+
+# Install dependencies
+FROM base AS deps
+RUN apk add --no-cache libc6-compat git
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-lock.yaml* ./
+COPY pnpm-workspace.yaml ./
+COPY landing/package.json ./landing/
+COPY packages ./packages
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile
+
+# Build stage
+FROM base AS builder
+WORKDIR /app
+
+# Copy dependencies
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy source code
+COPY . .
+
+# Build for Cloudflare Pages
+WORKDIR /app/landing
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV SKIP_HUSKY=1
+ENV NODE_ENV=production
+ENV CF_PAGES=1
+
+# Build Next.js app
+RUN pnpm run build
+
+# Convert to Cloudflare Pages format
+# This generates .vercel/output/static for Cloudflare Pages
+RUN pnpm run build:cf
+
+# Output stage - minimal image with just the build output
+FROM scratch AS output
+
+# Copy the Cloudflare Pages build output
+COPY --from=builder /app/landing/.vercel/output/static /output
+
+# The output directory contains:
+# - Static HTML/CSS/JS files
+# - _worker.js for Cloudflare Pages Functions
+# - All assets optimized for Cloudflare's edge network
+
+
+

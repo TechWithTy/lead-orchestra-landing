@@ -14,37 +14,37 @@ const BADGE_ROTATION_INTERVAL_MS = 3000;
 
 const ACTION_BADGES = [
 	{
-		id: "enrich",
-		label: "Enrich Leads",
-		icon: Bookmark,
+		id: "scrape",
+		label: "Scrape Sources",
+		icon: Upload,
 		color:
 			"bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900 dark:text-blue-100 dark:border-blue-700",
 	},
 	{
-		id: "outreach",
-		label: "Send Outreach",
-		icon: AtSign,
+		id: "normalize",
+		label: "Normalize Data",
+		icon: Hash,
 		color:
 			"bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900 dark:text-purple-100 dark:border-purple-700",
 	},
 	{
-		id: "followup",
-		label: "Schedule Follow-ups",
-		icon: Hash,
+		id: "export",
+		label: "Export CSV/JSON",
+		icon: Bookmark,
 		color:
 			"bg-green-100 text-green-800 border-green-200 dark:bg-green-900 dark:text-green-100 dark:border-green-700",
 	},
 	{
-		id: "crm",
-		label: "Update CRM",
-		icon: Bookmark,
+		id: "integrate",
+		label: "Integrate MCP",
+		icon: AtSign,
 		color:
 			"bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900 dark:text-orange-100 dark:border-orange-700",
 	},
 	{
-		id: "track",
-		label: "Track Performance",
-		icon: Hash,
+		id: "enrich",
+		label: "Export & Integrate",
+		icon: Play,
 		color:
 			"bg-pink-100 text-pink-800 border-pink-200 dark:bg-pink-900 dark:text-pink-100 dark:border-pink-700",
 	},
@@ -78,7 +78,7 @@ export function UploadLeadsHero(): JSX.Element {
 		<section
 			className={cn(
 				"relative flex w-full flex-col items-center justify-center overflow-hidden",
-				"min-h-[400px] bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 sm:min-h-[450px] sm:py-20 md:min-h-[500px] lg:py-24",
+				"min-h-[400px] bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 sm:min-h-[450px] sm:py-20 md:min-h-[500px] lg:py-24 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950",
 				gpuContainerClass,
 			)}
 		>
@@ -94,7 +94,7 @@ export function UploadLeadsHero(): JSX.Element {
 						{/* Input Field */}
 						<Input
 							type="text"
-							placeholder="Upload Leads & Perform Actions"
+							placeholder="Scrape Sources & Export Data"
 							value={inputValue}
 							onChange={(e) => setInputValue(e.target.value)}
 							onKeyDown={(e) => {
@@ -155,10 +155,10 @@ export function UploadLeadsHero(): JSX.Element {
 					initial={{ opacity: 0, y: 10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-					className="mt-8 max-w-2xl text-center text-slate-600 text-sm dark:text-slate-300 md:text-base"
+					className="mt-8 max-w-2xl text-center text-slate-600 text-sm md:text-base dark:text-slate-300"
 				>
-					Upload your lead lists, enrich data, automate outreach, and sync
-					everything back to your CRM—all in one seamless workflow.
+					Paste a URL → scrape all the leads → clean them → export to CSV/JSON.
+					Fresh leads, not rented lists.
 				</motion.p>
 			</div>
 		</section>

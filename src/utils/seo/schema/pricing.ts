@@ -121,10 +121,6 @@ const buildCreditsSummary = (credits?: PricingCredits): string => {
 		parts.push(`${formatUnlimitedValue(credits.ai)} AI credits`);
 	}
 
-	if (credits.skipTrace !== undefined) {
-		parts.push(`${formatUnlimitedValue(credits.skipTrace)} skip-trace lookups`);
-	}
-
 	if (credits.lead !== undefined) {
 		parts.push(`${formatUnlimitedValue(credits.lead)} lead enrichments`);
 	}

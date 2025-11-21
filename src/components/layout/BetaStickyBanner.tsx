@@ -33,7 +33,7 @@ export function BetaStickyBanner() {
 					</span>
 				</span>
 				<p className="text-white/80 text-xs sm:text-sm md:text-sm lg:text-base dark:text-white/70">
-					Try DealScale free before public launch.
+					Get started free with open-source scraping. View on GitHub.
 				</p>
 			</div>
 

@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useHasMounted } from "@/hooks/useHasMounted";
 import { useDataModule } from "@/stores/useDataModuleStore";
+import { usePersonaStore } from "@/stores/usePersonaStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Bell, Mail } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -18,8 +19,64 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+// Persona-specific n8n workflow content
+const PERSONA_N8N_CONTENT: Record<
+	string,
+	{
+		title: string;
+		description: string;
+		features: string[];
+	}
+> = {
+	developer: {
+		title: "N8N Lead Gen Workflows",
+		description:
+			"Ready-to-use n8n workflows for automating Lead Orchestra scraping jobs. Connect your MCP plugins to n8n for end-to-end automation, from scraping to data export.",
+		features: [
+			"n8n workflows for MCP plugin automation",
+			"Automated data export to Database, S3, and APIs",
+			"Error handling and retry logic for scraping jobs",
+			"GitHub Actions integration templates",
+		],
+	},
+	agency: {
+		title: "N8N Lead Gen Workflows",
+		description:
+			"Automate your lead generation pipeline with n8n. Connect Lead Orchestra scraping to your CRM, automate data processing, and scale your client delivery.",
+		features: [
+			"Multi-source scraping workflows (Zillow, Realtor, LinkedIn)",
+			"Automated CRM sync and lead enrichment",
+			"Client reporting and data delivery automation",
+			"White-label export workflows",
+		],
+	},
+	startup: {
+		title: "N8N Lead Gen Workflows",
+		description:
+			"Build your MVP faster with pre-built n8n workflows. Automate lead scraping, data normalization, and export without building infrastructure from scratch.",
+		features: [
+			"Quick-start workflows for common scraping tasks",
+			"Database and API export automation",
+			"Error handling and monitoring templates",
+			"Integration with popular tools (Zapier, Make, Kestra)",
+		],
+	},
+	enterprise: {
+		title: "N8N Lead Gen Workflows",
+		description:
+			"Enterprise-grade n8n workflows for scaling your data operations. Integrate Lead Orchestra with your existing stack, automate compliance, and ensure data quality.",
+		features: [
+			"Enterprise data pipeline workflows",
+			"SSO and security integration templates",
+			"Compliance and audit logging automation",
+			"Custom MCP provider integration guides",
+		],
+	},
+};
+
 export const Newsletter = () => {
 	const hasMounted = useHasMounted();
+	const { persona } = usePersonaStore();
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [isSubscribed, setIsSubscribed] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -32,6 +89,11 @@ export const Newsletter = () => {
 		company: data?.companyData,
 		error: companyLoadError,
 	}));
+
+	// Get persona-specific content
+	const n8nContent = useMemo(() => {
+		return PERSONA_N8N_CONTENT[persona] || PERSONA_N8N_CONTENT.developer;
+	}, [persona]);
 
 	useEffect(() => {
 		if (!hasMounted) return;
@@ -105,15 +167,12 @@ export const Newsletter = () => {
 					<Bell className="h-6 w-6 text-primary" />
 				</div>
 				<h2 className="mb-4 font-bold text-3xl text-black dark:text-white">
-					Pipeline & Profit
+					{n8nContent.title}
 				</h2>
 				<p className="mx-auto max-w-2xl text-black dark:text-white/70">
-					Get actionable AI-powered strategies to fill your calendar with
-					qualified sellers, uncover exclusive lookalike off-market deals
-					powered by our similarity features, and scale your real estate
-					business—without the burnout. Join Deal Scale’s Pipeline & Profit for
-					proven automation tactics, expert insights, and real results. No
-					fluff, just what moves the needle.
+					{n8nContent.description} Join Lead Orchestra's newsletter for
+					ready-to-use n8n templates, expert automation insights, and real
+					results. No fluff, just what moves the needle.
 				</p>
 			</div>
 			{isSubscribed ? (
@@ -203,33 +262,24 @@ export const Newsletter = () => {
 				</form>
 			)}
 			<div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-				<div className="rounded-xl border-2 border-primary/30 bg-background-dark/20 p-6 text-center shadow-lg shadow-primary/10/10 backdrop-blur-sm transition-all duration-300 hover:border-primary/50">
-					<h3 className="mb-2 font-medium text-black text-lg text-primary dark:text-primary dark:text-white">
-						AI Deal Flow Hacks
-					</h3>
-					<p className="text-black text-sm dark:text-white/80">
-						Automate follow-up, qualify leads 24/7, and turn your CRM into a
-						conversion machine
-					</p>
-				</div>
-				<div className="rounded-xl border-2 border-primary/30 bg-background-dark/20 p-6 text-center shadow-lg shadow-primary/10/10 backdrop-blur-sm transition-all duration-300 hover:border-primary/50">
-					<h3 className="mb-2 font-medium text-black text-lg text-primary dark:text-primary dark:text-white">
-						Off-Market Opportunities
-					</h3>
-					<p className="text-black text-sm dark:text-white/80">
-						Discover hidden, high-margin properties before anyone else using
-						real estate AI
-					</p>
-				</div>
-				<div className="rounded-xl border-2 border-primary/30 bg-background-dark/20 p-6 text-center shadow-lg shadow-primary/10/10 backdrop-blur-sm transition-all duration-300 hover:border-primary/50">
-					<h3 className="mb-2 font-medium text-black text-lg text-primary dark:text-primary dark:text-white">
-						Scale Smarter
-					</h3>
-					<p className="text-black text-sm dark:text-white/80">
-						Get exclusive automation tips, portfolio growth tactics, and early
-						access to Deal Scale tools
-					</p>
-				</div>
+				{n8nContent.features.slice(0, 3).map((feature, index) => (
+					<div
+						key={index}
+						className="rounded-xl border-2 border-primary/30 bg-background-dark/20 p-6 text-center shadow-lg shadow-primary/10/10 backdrop-blur-sm transition-all duration-300 hover:border-primary/50"
+					>
+						<h3 className="mb-2 font-medium text-black text-lg text-primary dark:text-primary dark:text-white">
+							{feature}
+						</h3>
+						<p className="text-black text-sm dark:text-white/80">
+							{index === 0 &&
+								"Ready-to-use n8n workflows for automating Lead Orchestra scraping jobs and data exports"}
+							{index === 1 &&
+								"Learn how to build reliable scraping pipelines, handle errors, and scale your data workflows with n8n and Lead Orchestra"}
+							{index === 2 &&
+								"Step-by-step guides for connecting Lead Orchestra to Make, Zapier, Kestra, and other workflow engines"}
+						</p>
+					</div>
+				))}
 			</div>
 		</div>
 	);

@@ -21,35 +21,35 @@ export const PERSONA_OPTIONS: Array<{ key: PersonaKey; label: string }> = [
 
 export const PERSONA_FAQ_ITEMS: PersonaFaqItem[] = [
 	{
-		id: "what-is-dealscale",
-		question: "What is DealScale and how does it help me?",
+		id: "what-is-lead-orchestra",
+		question: "What is Lead Orchestra and how does it help me?",
 		answers: {
 			agent:
-				"DealScale is your AI-powered sales coworker that finds, qualifies, and follows up with seller and listing leads using your own cloned voice. It automates outreach, books appointments, and syncs with your CRM so you can focus on closing listings.",
+				"Lead Orchestra is an open-source lead scraping platform that helps you gather fresh listing and seller leads from Zillow, Realtor, MLS, and social platforms. Scrape any source, normalize the data automatically, and export to CSV/JSON or your CRM. Get fresh leads, not rented lists, and plug the data into your existing workflow.",
 			investor:
-				"DealScale is an AI sales coworker that automates skip tracing, AI cold calling, and seller qualification for agents and investors. Unlike list providers, it handles outreach, follow-up, and appointment booking so you can focus on closing deals. For investors like you, DealScale ships with playbooks that spark seller trust, convert influencer partners, and keep you top-of-mind without extra hiring.",
+				"Lead Orchestra is an open-source scraping engine that lets you extract property and owner data from Zillow, Realtor, LinkedIn, MLS, and other sources. Unlike list providers, you scrape fresh data directly from the source, normalize it automatically, and export to your deal pipeline. Built for investors who want unlimited, accurate lead data without per-record costs.",
 			wholesaler:
-				"DealScale automates lead qualification for wholesalers. It calls and texts property owners, pre-screens motivation, and drops warm leads straight into your CRM or pipeline automatically.",
+				"Lead Orchestra automates lead scraping for wholesalers. Scrape property listings, owner information, and deal signals from multiple sources, normalize the data, and export directly to your CRM or deal tracker. Get fresh leads daily without manual data entry.",
 			agency:
-				"DealScale lets marketing and sales agencies deliver AI outreach at scale. You can manage multiple clients, automate campaigns, and provide compliant AI calling, texting, and CRM syncing under your own brand.",
+				"Lead Orchestra lets marketing and sales agencies build custom scraping pipelines for clients. Use pre-built plugins for Zillow, Realtor, LinkedIn, and more, or create custom scrapers. Normalize and export data to any format. White-label options available for agency use.",
 			enterprise:
-				"DealScale is an AI automation platform that enables enterprise teams to deploy secure, compliant outreach and qualification workflows across departments or clients, with options for self-hosting and private data environments.",
+				"Lead Orchestra is an open-source data ingestion platform that enables enterprise teams to deploy scalable scraping workflows across departments. Self-host for full control, use the MCP API aggregator for unified data sources, and export to CRM, Database, S3, or any system. Built for data teams who need reliable, normalized lead data at scale.",
 		},
 	},
 	{
-		id: "voice-cloning",
-		question: "How does voice cloning work?",
+		id: "scraping-sources",
+		question: "What sources can I scrape with Lead Orchestra?",
 		answers: {
 			agent:
-				"You record a short voice sample and DealScale securely trains a private model that replicates your tone and pacing. Your AI sounds like you—authentic, human, and fully exclusive to your account.",
+				"Lead Orchestra includes pre-built plugins for Zillow, Realtor, MLS, LinkedIn, Facebook, Reddit, and Twitter. You can also use the Playwright-based engine to scrape any website with custom selectors. All sources are normalized to Lead Standard Format (LSF) schemas for consistent output.",
 			investor:
-				"Record a brief voice sample once and DealScale creates your AI voice clone. It’s private, secure, and sounds like you when calling or texting sellers—building trust and saving time.",
+				"Scrape property data from Zillow and Realtor, owner information from LinkedIn and social platforms, and deal signals from MLS and other sources. The MCP API aggregator provides a unified interface for all sources, and you can add custom scrapers for any website.",
 			wholesaler:
-				"After a quick setup, DealScale clones your voice so sellers hear your tone and style when the AI calls. This builds trust and boosts response rates while you focus on deal analysis.",
+				"Scrape property listings, owner contact info, and deal opportunities from Zillow, Realtor, MLS, Facebook, and Reddit. The data normalization layer automatically extracts addresses, phone numbers, and emails, then exports to your pipeline.",
 			agency:
-				"Each client can upload a short sample to generate a unique AI voice model for their brand or agent. Voice data stays encrypted and limited to that workspace only.",
+				"Use pre-built plugins for Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, and Twitter. The unified MCP spec makes it easy to add new sources or create custom scrapers for client-specific needs. All data is normalized before export.",
 			enterprise:
-				"DealScale’s enterprise voice cloning supports per-user models with encryption, audit trails, and full compliance. Voice data never leaves your controlled environment.",
+				"Lead Orchestra's MCP API aggregator provides a unified interface for scraping Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, Twitter, and custom sources. The Playwright engine can scrape any website. Enterprise plans include priority plugin development and custom source integration.",
 		},
 	},
 	{
@@ -57,58 +57,58 @@ export const PERSONA_FAQ_ITEMS: PersonaFaqItem[] = [
 		question: "What kind of ROI can I expect?",
 		answers: {
 			agent:
-				"Most agents see around a 3×–7× ROI within 60 days. Every $1 spent on DealScale returns roughly $5 in additional commissions from converted listings or referrals.",
+				"Agents save 10-20 hours per week by automating lead scraping instead of manual data entry. Fresh leads from Zillow and Realtor convert 3-5× better than rented lists. Many agents recover their annual plan cost after one converted listing from scraped leads.",
 			investor:
-				"Investors typically generate $3–$8 in closed-deal revenue for every $1 spent within 90 days—often covering an annual plan with one wholesale or flip deal.",
+				"Investors save thousands on list costs by scraping fresh data directly from sources. Unlimited scraping means no per-record fees. Many investors find one deal from scraped leads that pays for years of Lead Orchestra usage.",
 			wholesaler:
-				"Wholesalers usually see 4×–10× ROI. For example, closing one $10,000 assignment deal often pays for an entire year of DealScale Pro.",
+				"Wholesalers eliminate list provider costs and get fresher, more accurate data. Automated scraping runs 24/7, finding deals faster than manual methods. One $10,000 assignment deal often pays for multiple years of Lead Orchestra.",
 			agency:
-				"Agencies report 4×–6× ROI from client retainers and labor savings when automating outreach with DealScale’s AI engine.",
+				"Agencies save 20-40 hours per week per client by automating lead scraping. White-label options let you offer scraping as a service, creating new revenue streams. Most agencies see 4×–6× ROI from time savings and client retention.",
 			enterprise:
-				"Enterprise teams typically achieve 5× ROI through reduced labor costs, faster conversions, and higher data accuracy across campaigns.",
+				"Enterprise teams reduce data acquisition costs by 60-80% compared to list providers. Self-hosting gives full control and eliminates vendor lock-in. Typical ROI is 5× through reduced costs, faster data pipelines, and higher data quality.",
 		},
 	},
 	{
 		id: "compliance",
 		question:
-			"Is DealScale compliant with TCPA, GDPR, and the Colorado AI Act?",
+			"Is Lead Orchestra compliant with data privacy and scraping regulations?",
 		answers: {
 			agent:
-				"Yes. DealScale automatically filters Do Not Call numbers, respects time-zone safe windows, and provides compliant voicemail drops. We also include disclosure templates to stay ahead of the 2026 Colorado AI Act.",
+				"Yes. Lead Orchestra respects robots.txt, includes rate limiting to avoid overloading servers, and follows ethical scraping practices. Scraped data is processed with privacy-by-design principles. Always check terms of service for the sites you scrape.",
 			investor:
-				"DealScale handles compliance for every outreach—TCPA filtering, consent tracking, and AI transparency for upcoming laws like Colorado’s 2026 AI Act.",
+				"Lead Orchestra includes built-in rate limiting, proxy rotation, and stealth modes to scrape responsibly. The platform follows ethical scraping guidelines and respects website terms. Data is encrypted at rest and in transit.",
 			wholesaler:
-				"Yes. All calls, texts, and voicemails are fully TCPA and carrier-compliant. Colorado AI transparency updates will be built in before 2026.",
+				"Yes. Lead Orchestra's anti-bot modules and rate limiting help you scrape responsibly without violating terms of service. All scraped data is encrypted and can be exported securely to your systems.",
 			agency:
-				"DealScale offers compliance documentation for TCPA, GDPR, and the Colorado AI Act so agencies can safely use AI outreach for clients.",
+				"Lead Orchestra provides documentation on ethical scraping practices and compliance considerations. The platform includes rate limiting and respects robots.txt. Agencies should review terms of service for each source they scrape.",
 			enterprise:
-				"Compliance is built into every layer. DealScale aligns with TCPA, GDPR, CCPA, and Colorado AI Act standards, including AI labeling, audit logs, and opt-out controls.",
+				"Compliance is built into the platform. Lead Orchestra includes rate limiting, robots.txt respect, ethical scraping practices, and data encryption. Enterprise plans include compliance documentation and audit trails for all scraping activity.",
 		},
 	},
 	{
-		id: "crm",
-		question: "Does DealScale integrate with my CRM?",
+		id: "export-integration",
+		question: "How can I export and integrate scraped data?",
 		answers: {
 			agent:
-				"Yes. DealScale connects with CRMs like HubSpot, Lofty, GoHighLevel, Zoho, and FollowUpBoss for instant two-way sync of leads, calls, and appointments.",
+				"Export scraped data to CSV or JSON for spreadsheets, or use the API to push directly to CRMs like HubSpot, Lofty, GoHighLevel, Zoho, and FollowUpBoss. Webhooks can trigger actions in other tools when new leads are scraped.",
 			investor:
-				"Yes. It integrates with REI tools like Podio, InvestorFuse, and REsimpli, or any major CRM through API and webhooks.",
+				"Export to CRM for immediate use, CSV/JSON for analysis, Database for storage, or S3 for cloud storage. Use the API to integrate with REI tools like Podio, InvestorFuse, and REsimpli, or any system via webhooks.",
 			wholesaler:
-				"Yes. DealScale pushes qualified leads and call summaries directly into your CRM or deal tracker using built-in integrations.",
+				"Export normalized leads directly to CSV/JSON for your deal tracker, or use the API to push to your CRM automatically. Webhooks can notify you when new deals are scraped.",
 			agency:
-				"Yes. Agencies can link multiple CRMs and manage data sync per client workspace from a unified dashboard.",
+				"Export to any format (CRM, CSV, JSON, Database, S3) or use the API for custom integrations. Webhooks let you trigger actions in client systems. White-label options available for agency branding.",
 			enterprise:
-				"Yes. DealScale supports custom API integrations with enterprise CRMs such as Salesforce, HubSpot Enterprise, and Microsoft Dynamics.",
+				"Export to CRM, Database, S3, or any system via API. Enterprise plans include custom integrations with Salesforce, HubSpot Enterprise, Microsoft Dynamics, and other enterprise systems. Full API access for custom workflows.",
 		},
 	},
 ];
 
 export const FEATURED_FAQ_BY_PERSONA: Record<PersonaKey, PersonaFaqItem["id"]> =
 	{
-		agent: "what-is-dealscale",
-		investor: "what-is-dealscale",
+		agent: "what-is-lead-orchestra",
+		investor: "what-is-lead-orchestra",
 		wholesaler: "roi",
-		agency: "what-is-dealscale",
+		agency: "what-is-lead-orchestra",
 		enterprise: "compliance",
 	};
 
@@ -120,29 +120,29 @@ export const PERSONA_NEXT_STEP_FAQ: Record<
 	}
 > = {
 	agent: {
-		question: "Agent Playbook: How do I launch my first AI campaign?",
+		question: "Agent Playbook: How do I start scraping leads?",
 		answer:
-			'Upload your hottest seller list, clone your voice in under five minutes, and choose the "Seller Revival" template. DealScale will start booking listing appointments while syncing every conversation back to your CRM automatically.',
+			'Paste a URL from Zillow or Realtor, configure your scraping parameters (or use defaults), and let Lead Orchestra extract listing and seller data. The data is automatically normalized and exported to CSV/JSON or your CRM. You can set up scheduled scraping to get fresh leads daily.',
 	},
 	investor: {
-		question: "Investor Playbook: How do I turn skip tracing into deals fast?",
+		question: "Investor Playbook: How do I scrape property data at scale?",
 		answer:
-			'Drop in your driving-for-dollars or probate leads, enable the "Outreach Surge" workflow, and let DealScale run AI voice + SMS follow-up instantly. You’ll get qualified callbacks and hot leads posted to your CRM the same day.',
+			'Use the MCP plugins for Zillow, Realtor, and MLS to scrape property listings and owner information. Set up automated scraping jobs via CLI or SDKs to run daily. Export normalized data to CRM, Database, S3, or your deal pipeline. One scraping job can find hundreds of fresh leads.',
 	},
 	wholesaler: {
-		question: "Wholesaler Playbook: How do I keep my pipeline full?",
+		question: "Wholesaler Playbook: How do I keep my deal pipeline full?",
 		answer:
-			'Import tired landlord or absentee-owner lists and activate the "Assignment Accelerator" cadence. DealScale will pre-screen motivation, confirm property condition, and send warm leads straight to your acquisitions board.',
+			'Scrape property listings and owner data from Zillow, Realtor, Facebook, and Reddit. Use the data normalization layer to extract addresses, phone numbers, and emails automatically. Export to CSV or push directly to your deal tracker via API. Set up webhooks to get notified when new deals are found.',
 	},
 	agency: {
-		question: "Agency Playbook: How do I roll this out to clients?",
+		question: "Agency Playbook: How do I offer scraping as a service?",
 		answer:
-			'Spin up a client workspace, clone their brand voice, and launch the "Client Retainer Saver" campaign. DealScale keeps their pipeline working 24/7 while you report on booked appointments and retained revenue.',
+			'Use Lead Orchestra's white-label options to offer scraping services under your brand. Set up custom scraping pipelines for each client using pre-built plugins or custom scrapers. Export data to client systems via API or webhooks. The CLI and SDKs make it easy to automate client workflows.',
 	},
 	enterprise: {
-		question: "Enterprise Playbook: What does go-live look like?",
+		question: "Enterprise Playbook: What does deployment look like?",
 		answer:
-			'Connect your CRM sandbox, provision AI agents for each region, and deploy the "Enterprise Compliance Guardrail" sequence. DealScale handles outreach, consent tracking, and audit-ready reporting to keep every team aligned.',
+			'Self-host Lead Orchestra on your infrastructure for full control. Use the MCP API aggregator to unify scraping from multiple sources. Set up automated scraping jobs via GitHub Actions or your CI/CD pipeline. Export to CRM, Database, S3, or enterprise systems via API. Enterprise plans include priority support and custom integrations.',
 	},
 };
 
@@ -156,33 +156,33 @@ export const PERSONA_ADVANCED_FAQ: Record<
 > = {
 	agent: {
 		id: "agent-advanced",
-		question: "How do I scale results after my first listings go live?",
+		question: "How do I scale scraping across multiple markets?",
 		answer:
-			"Layer DealScale into your expired, FSBO, and circle prospecting lists. Activate nurture cadences that drip market updates and prep videos from your AI voice so sellers stay warm until they are ready to list.",
+			"Set up automated scraping jobs for each market using the CLI or SDKs. Use the MCP plugins to scrape Zillow and Realtor listings across different zip codes. Schedule daily scraping via GitHub Actions or cron jobs. Export all data to a central database or CRM for unified lead management.",
 	},
 	investor: {
 		id: "investor-advanced",
-		question: "What’s the move once my first wholesale deal closes?",
+		question: "How do I build a custom scraping pipeline for my strategy?",
 		answer:
-			"Clone the winning script, duplicate the campaign, and let DealScale retarget the entire owner cluster. Add AI SMS follow-up to surface referral properties the owner might sell next.",
+			"Use the Playwright engine to create custom scrapers for niche sources. Combine multiple MCP plugins to scrape Zillow, Realtor, and MLS simultaneously. Use the data normalization layer to merge and deduplicate records. Export to CRM for immediate use, Database for analysis, or S3 for archival. The webhook system can trigger alerts when high-value deals are found.",
 	},
 	wholesaler: {
 		id: "wholesaler-advanced",
-		question: "How can I keep dispositions humming automatically?",
+		question: "How can I automate deal discovery across multiple sources?",
 		answer:
-			"Hook DealScale to your buyers list, enable AI text follow-up, and broadcast new deals the instant acquisitions tags them. The AI handles reply sorting, proof of funds checks, and scheduling property walkthroughs.",
+			"Set up parallel scraping jobs for Zillow, Realtor, Facebook, and Reddit. Use the data normalization layer to extract owner contact info automatically. Configure webhooks to push new leads directly to your deal tracker. Schedule scraping to run multiple times per day for the freshest data.",
 	},
 	agency: {
 		id: "agency-advanced",
 		question:
-			"What’s the best way to upsell clients once campaigns are working?",
+			"How do I manage scraping pipelines for multiple clients?",
 		answer:
-			"Package DealScale automations into premium retainers. Spin up additional vertical-specific cadences, sync results into their analytics dashboard, and show incremental ROI from AI voice + SMS blends.",
+			"Use Lead Orchestra's workspace features to organize scraping jobs by client. Each client can have custom scrapers, export destinations, and webhook configurations. Use the API to build a unified dashboard showing scraping activity across all clients. White-label the interface with your agency branding.",
 	},
 	enterprise: {
 		id: "enterprise-advanced",
-		question: "How do I orchestrate multiple business units in one view?",
+		question: "How do I orchestrate scraping across multiple departments?",
 		answer:
-			"Use DealScale’s workspace hierarchy to group regions, assign AI voices, and enforce compliance templates. Central reporting highlights campaign lift by unit while individual teams manage their own playbooks.",
+			"Self-host Lead Orchestra for full control. Use the MCP API aggregator to provide a unified interface for all scraping sources. Set up department-specific workspaces with custom export destinations. Use the API and webhooks to integrate with enterprise systems. Central analytics track scraping activity and data quality across all departments.",
 	},
 };

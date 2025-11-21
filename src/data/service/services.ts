@@ -167,8 +167,8 @@ export const services: ServicesData = {
 			],
 			price: "Core Feature",
 			showBanner: true,
-			bannerText: "Access 140M+ Leads",
-			bannerColor: "bg-gradient-to-r from-blue-500 to-indigo-600",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_GENERATION,
 				SERVICE_CATEGORIES.AI_FEATURES,
@@ -245,7 +245,7 @@ export const services: ServicesData = {
 			],
 			price: "Usage-Based",
 			showBanner: true,
-			bannerText: "Autopilot Direct Mail",
+			bannerText: "Automated Direct Mail",
 			bannerColor: "bg-gradient-to-r from-teal-500 to-blue-500",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_GENERATION,
@@ -286,8 +286,8 @@ export const services: ServicesData = {
 			],
 			price: "Custom Pricing", // Or refer to plans like "Starts at $499/mo"
 			showBanner: true,
-			bannerText: "Leads on Autopilot ",
-			bannerColor: "bg-gradient-to-r from-orange-500 to-amber-500",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
 				SERVICE_CATEGORIES.AI_FEATURES,
@@ -327,8 +327,8 @@ export const services: ServicesData = {
 			],
 			price: "Usage-Based",
 			showBanner: true,
-			bannerText: "Mailbox To Motivated",
-			bannerColor: "bg-gradient-to-r from-blue-500 to-sky-500",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_GENERATION,
 				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
@@ -370,8 +370,8 @@ export const services: ServicesData = {
 			],
 			price: "Usage-Based",
 			showBanner: true,
-			bannerText: "Qualify Inbound Calls",
-			bannerColor: "bg-gradient-to-r from-green-500 to-teal-500",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
 				SERVICE_CATEGORIES.AI_FEATURES,
@@ -408,8 +408,8 @@ export const services: ServicesData = {
 			],
 			price: "Usage-Based",
 			showBanner: true,
-			bannerText: "Comments into Deals",
-			bannerColor: "bg-gradient-to-r from-blue-600 to-purple-600",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
 				SERVICE_CATEGORIES.AI_FEATURES,
@@ -446,8 +446,8 @@ export const services: ServicesData = {
 			],
 			price: "Usage-Based",
 			showBanner: true,
-			bannerText: "Blue Bubble Deals",
-			bannerColor: "bg-gradient-to-r from-blue-500 to-cyan-500",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [
 				SERVICE_CATEGORIES.AI_FEATURES,
 				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
@@ -471,109 +471,143 @@ export const services: ServicesData = {
 	},
 
 	[SERVICE_CATEGORIES.SKIP_TRACING]: {
-		phoneNumberHunter: {
-			id: "phone-number-hunter-skip-trace",
-			iconName: "Search",
-			title: "Phone Number Hunter (Free Skip Trace) Limited Time",
+		scrapingEngine: {
+			id: "scraping-crawling-engine",
+			iconName: "Code",
+			title: "Scraping & Crawling Engine",
 			description:
-				"Instantly enrich any phone number with critical data. Before you even dial, uncover the owner's name, line type, location, and spam score. A free, unlimited tool for all subscribers.",
+				"PlaywrightCrawler-based engine with anti-bot modules, headless browser cluster, proxy rotation, stealth mode, and captcha bypass. Multi-step navigation, DOM selectors, automatic retries, and rate limiting.",
 			features: [
-				"Owner Name Lookup",
-				"Line Type (Mobile/VoIP/Landline)",
-				"Carrier and Location Data",
-				"Spam & Reputation Score",
-				"Free & Unlimited for Early Subscribers",
+				"PlaywrightCrawler-based scraping engine",
+				"Anti-bot modules and stealth mode",
+				"Proxy rotation and captcha bypass",
+				"Multi-step navigation and DOM selectors",
+				"Automatic retries and rate limiting",
 			],
-			price: "Free For Early Subscribers",
+			price: "Open Source",
 			showBanner: true,
-			bannerText: "Pilot Tester Perk",
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-blue-500 to-indigo-600",
+			categories: [
+				SERVICE_CATEGORIES.LEAD_GENERATION,
+				SERVICE_CATEGORIES.SKIP_TRACING,
+			],
+			slugDetails: {
+				integrations: [],
+				defaultZoom: 1,
+				slug: "scraping-crawling-engine",
+				dilemma:
+					"Building scrapers from scratch is time-consuming and fragile. Managing proxies, handling anti-bot systems, and dealing with site changes requires constant maintenance and expertise.",
+				solution:
+					"Lead Orchestra's scraping engine handles all the complexity. Built on PlaywrightCrawler with anti-bot modules, proxy rotation, and stealth mode, it reliably extracts data from any website without breaking when sites change.",
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				copyright: {
+					title: "Start Scraping Today",
+					subtitle: "Open-source scraping engine that works out of the box.",
+					ctaText: "View on GitHub",
+					ctaLink: "/get-started",
+				},
+				faq: {
+					title: "Scraping Engine FAQs",
+					subtitle:
+						"Everything you need to know about Lead Orchestra's scraping engine.",
+					items: [],
+				},
+			},
+		},
+		mcpApiAggregator: {
+			id: "mcp-api-aggregator",
+			iconName: "Network",
+			title: "MCP API Aggregator",
+			description:
+				"Unified MCP spec for scraping targets. Plugins for Zillow, Realtor, LinkedIn, MLS, Facebook, Reddit, Twitter. All sources normalized to Lead Standard Format (LSF) schemas.",
+			features: [
+				"Unified MCP spec interface",
+				"Pre-built plugins for Zillow, Realtor, LinkedIn, MLS",
+				"Facebook, Reddit, Twitter integrations",
+				"Lead Standard Format (LSF) normalization",
+				"Extensible plugin architecture",
+			],
+			price: "Open Source",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-purple-500 to-pink-500",
+			categories: [
+				SERVICE_CATEGORIES.LEAD_GENERATION,
+				SERVICE_CATEGORIES.SKIP_TRACING,
+			],
+			slugDetails: {
+				integrations: [],
+				defaultZoom: 1,
+				slug: "mcp-api-aggregator",
+				dilemma:
+					"Every scraping source requires different code, different APIs, and different data formats. You waste time rebuilding the same logic for each new source, and your data is inconsistent across projects.",
+				solution:
+					"Lead Orchestra's MCP API Aggregator provides a unified interface for all scraping sources. Pre-built plugins for popular sites plus an extensible architecture means you can scrape any source with consistent, normalized data.",
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				copyright: {
+					title: "Unified Scraping Interface",
+					subtitle: "One API for all your scraping needs.",
+					ctaText: "Explore Plugins",
+					ctaLink: "/get-started",
+				},
+				faq: {
+					title: "MCP API Aggregator FAQs",
+					subtitle: "Everything you need to know about our MCP aggregator.",
+					items: [],
+				},
+			},
+		},
+		dataNormalization: {
+			id: "data-normalization-layer",
+			iconName: "Database",
+			title: "Data Normalization Layer",
+			description:
+				"Address parsing, phone/email extraction, metadata tagging, de-duping, and entity resolution. Export to CRM, CSV, JSON, Database, S3, or any system.",
+			features: [
+				"Address parsing and validation",
+				"Phone and email extraction",
+				"Metadata tagging and de-duplication",
+				"Entity resolution and data cleaning",
+				"Export to CRM, CSV, JSON, Database, S3",
+			],
+			price: "Open Source",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
 			bannerColor: "bg-gradient-to-r from-green-500 to-teal-500",
 			categories: [
+				SERVICE_CATEGORIES.LEAD_GENERATION,
 				SERVICE_CATEGORIES.SKIP_TRACING,
-				SERVICE_CATEGORIES.LEAD_PREQUALIFICATION,
 			],
 			slugDetails: {
-				integrations: [], // This is a self-contained tool
+				integrations: [],
 				defaultZoom: 1,
-				slug: "phone-number-hunter-skip-trace",
+				slug: "data-normalization-layer",
 				dilemma:
-					"You get an inbound call or a raw phone number, but you have no context. Is it a real lead? A landline? A known spammer? You waste time calling back dead-end numbers and sound unprofessional without knowing who you're calling.",
+					"Scraped data is messy and inconsistent. Addresses are in different formats, phone numbers are missing area codes, and duplicate records waste your time. You spend hours cleaning data before you can use it.",
 				solution:
-					"Our Phone Number Hunter instantly enriches any phone number with critical data. Before you dial, you'll know the owner's name, carrier, and line type, allowing you to prioritize real leads and personalize your first contact.",
-				problemsAndSolutions: phoneNumberHunterProblemsSolutions,
-				howItWorks: phoneNumberHunterHowItWorks,
-				testimonials: phoneNumberHunterTestimonials,
+					"Lead Orchestra's data normalization layer automatically cleans and standardizes all scraped data. Addresses are parsed, contacts are de-duplicated, and metadata is tagged, ensuring your leads are always ready to use.",
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
 				pricing: PricingPlans,
-				copyright: phoneNumberHunterCopyright,
-				faq: phoneNumberHunterFAQ,
-			},
-		},
-		emailIntelligence: {
-			id: "email-intelligence",
-			iconName: "MailCheck",
-			title: "Email Intelligence (Free Discovery Tool)",
-			description:
-				"Go beyond the inbox. Instantly find associated social profiles and generate likely email combinations to turn any contact into a warm lead. A free, unlimited tool for all subscribers.",
-			features: [
-				"Social Media Account Discovery",
-				"Likely Email Address Generation",
-				"Digital Footprint Verification",
-				"Free & Unlimited for Subscribers",
-			],
-			price: "Free Tool",
-			showBanner: true,
-			bannerText: "Pilot Tester Perk",
-			bannerColor: "bg-gradient-to-r from-cyan-500 to-blue-500",
-			categories: [SERVICE_CATEGORIES.LEAD_PREQUALIFICATION],
-			slugDetails: {
-				integrations: [], // Self-contained tool
-				defaultZoom: 1,
-				slug: "email-intelligence-discovery",
-				dilemma:
-					"You have a name and a company, but you don't know their email. Or you have an email, but no context. Your outreach is generic, your bounce rates are high, and your messages get ignored.",
-				solution:
-					"Our Email Intelligence tool solves both problems. It generates the most likely email addresses from a name and domain, and uncovers the social profiles linked to an email, giving you the data you need to connect and personalize.",
-				problemsAndSolutions: emailIntelligenceProblemsSolutions,
-				howItWorks: emailIntelligenceHowItWorks,
-				testimonials: emailIntelligenceTestimonials,
-				pricing: PricingPlans,
-				copyright: emailIntelligenceCopyright,
-				faq: emailIntelligenceFAQ,
-			},
-		},
-
-		domainRecon: {
-			id: "domain-recon",
-			iconName: "Fingerprint",
-			title: "Domain Recon (Website Intelligence)",
-			description:
-				"Go beyond the homepage. Enter any domain to uncover associated emails, subdomains, employee names, and the technologies a company uses. Features a free tier and a premium, deep-dive search.",
-			features: [
-				"Email and Name Discovery",
-				"Subdomain & IP Enumeration",
-				"Technology Stack Identification",
-				"Free Public Search Tier",
-				"Premium Deep-Dive (Credit-Based)",
-			],
-			price: "Freemium Tool",
-			showBanner: true,
-			bannerText: "Pilot Tester Perk",
-			bannerColor: "bg-gradient-to-r from-gray-700 to-gray-900",
-			categories: [SERVICE_CATEGORIES.SKIP_TRACING],
-			slugDetails: {
-				integrations: [], // Self-contained tool
-				defaultZoom: 1,
-				slug: "domain-recon-intelligence",
-				dilemma:
-					"You find a property owned by an LLC with a basic website. The contact form is a black hole, and you have no idea who works there, what they do, or how to reach a real person.",
-				solution:
-					"Our Domain Recon tool acts as your digital investigator. It transforms a simple domain name into actionable intelligence—revealing direct emails, key names, and hidden assets so you can bypass gatekeepers and personalize your outreach.",
-				problemsAndSolutions: domainReconProblemsSolutions,
-				howItWorks: domainReconHowItWorks,
-				testimonials: domainReconTestimonials,
-				pricing: PricingPlans,
-				copyright: domainReconCopyright,
-				faq: domainReconFAQ,
+				copyright: {
+					title: "Clean Data, Automatically",
+					subtitle: "Normalize and export your scraped data in seconds.",
+					ctaText: "Get Started",
+					ctaLink: "/get-started",
+				},
+				faq: {
+					title: "Data Normalization FAQs",
+					subtitle: "Everything you need to know about data normalization.",
+					items: [],
+				},
 			},
 		},
 		socialProfileHunter: {
@@ -659,8 +693,8 @@ export const services: ServicesData = {
 			],
 			price: "Premium Tool",
 			showBanner: true,
-			bannerText: "Premium Data Tools",
-			bannerColor: "bg-gradient-to-r from-blue-600 to-indigo-700",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [SERVICE_CATEGORIES.SKIP_TRACING],
 			slugDetails: {
 				integrations: [], // Self-contained within Deal Scale
@@ -980,8 +1014,8 @@ export const services: ServicesData = {
 			],
 			price: "Freemium",
 			showBanner: true,
-			bannerText: "AI Rent Estimator",
-			bannerColor: "bg-gradient-to-r from-green-600 to-cyan-600",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [SERVICE_CATEGORIES.AI_FEATURES],
 			slugDetails: {
 				slug: "ai-rent-estimator-and-comps",
@@ -1014,8 +1048,8 @@ export const services: ServicesData = {
 			],
 			price: "Freemium",
 			showBanner: true,
-			bannerText: "AI Rental Market Analyzer",
-			bannerColor: "bg-gradient-to-r from-indigo-500 to-sky-600",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [SERVICE_CATEGORIES.AI_FEATURES],
 			slugDetails: {
 				slug: "rental-market-analyzer",
@@ -1049,8 +1083,8 @@ export const services: ServicesData = {
 			],
 			price: "Enterprise Tier",
 			showBanner: true,
-			bannerText: "Portfolio Command Center",
-			bannerColor: "bg-gradient-to-r from-gray-800 to-blue-900",
+			bannerText: "Deal Scale Feature",
+			bannerColor: "bg-gradient-to-r from-orange-500 to-red-600",
 			categories: [SERVICE_CATEGORIES.REAL_ESTATE_TOOLS],
 			slugDetails: {
 				slug: "enterprise-portfolio-dashboard",
@@ -1066,6 +1100,190 @@ export const services: ServicesData = {
 				pricing: PricingPlans,
 				faq: portfolioDashboardFAQ,
 				copyright: portfolioDashboardCopyright,
+			},
+		},
+		// Lead Orchestra Tools for Developers
+		developerCli: {
+			id: "developer-cli",
+			iconName: "Code",
+			title: "CLI & Developer Tools",
+			description:
+				"Command-line interface and developer tools for building custom scrapers, automating workflows, and integrating Lead Orchestra into your development pipeline. Full API access, SDKs, and GitHub Actions templates.",
+			features: [
+				"Command-line interface (CLI) for scraping operations",
+				"JavaScript, Python, and Go SDKs",
+				"REST API with full documentation",
+				"GitHub Actions templates for CI/CD",
+				"Webhook system for real-time integrations",
+				"API key management and usage analytics",
+			],
+			price: "Open Source",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-blue-500 to-indigo-600",
+			categories: [SERVICE_CATEGORIES.REAL_ESTATE_TOOLS],
+			slugDetails: {
+				slug: "developer-cli-tools",
+				dilemma:
+					"Building scrapers requires writing custom code, managing infrastructure, and handling edge cases. You waste time on boilerplate instead of focusing on your core product.",
+				solution:
+					"Lead Orchestra's CLI and SDKs let you build scrapers in minutes, not days. Use our command-line tools, SDKs, and API to integrate scraping into your workflow without managing infrastructure.",
+				defaultZoom: 1,
+				integrations: [],
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				faq: {
+					title: "Developer Tools FAQs",
+					subtitle:
+						"Everything you need to know about Lead Orchestra's developer tools.",
+					items: [],
+				},
+				copyright: {
+					title: "Start Building Today",
+					subtitle: "Developer-friendly tools for building scrapers fast.",
+					ctaText: "View Documentation",
+					ctaLink: "/get-started",
+				},
+			},
+		},
+		// Lead Orchestra Tools for Agencies
+		agencyWhiteLabel: {
+			id: "agency-white-label",
+			iconName: "Users",
+			title: "White-Label & Agency Tools",
+			description:
+				"White-label Lead Orchestra for your agency clients. Custom branding, client management dashboards, and automated reporting. Scale your lead generation services without building infrastructure.",
+			features: [
+				"White-label branding and custom domains",
+				"Client management and multi-tenant dashboards",
+				"Automated client reporting and delivery",
+				"Custom export formats per client",
+				"Usage analytics and billing integration",
+				"Priority support for agency accounts",
+			],
+			price: "Agency Tier",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-purple-500 to-pink-500",
+			categories: [SERVICE_CATEGORIES.REAL_ESTATE_TOOLS],
+			slugDetails: {
+				slug: "agency-white-label-tools",
+				dilemma:
+					"Delivering scraping services to clients requires custom infrastructure, manual reporting, and time-consuming setup. You can't scale without building your own platform.",
+				solution:
+					"Lead Orchestra's white-label tools let you deliver professional scraping services under your brand. Manage multiple clients, automate reporting, and scale without building infrastructure.",
+				defaultZoom: 1,
+				integrations: [],
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				faq: {
+					title: "Agency Tools FAQs",
+					subtitle:
+						"Everything you need to know about white-label and agency tools.",
+					items: [],
+				},
+				copyright: {
+					title: "Scale Your Agency",
+					subtitle:
+						"White-label tools for delivering scraping services to clients.",
+					ctaText: "Contact Sales",
+					ctaLink: "/contact",
+				},
+			},
+		},
+		// Lead Orchestra Tools for Startups
+		startupQuickStart: {
+			id: "startup-quick-start",
+			iconName: "Rocket",
+			title: "Quick-Start Templates",
+			description:
+				"Pre-built scraping templates and workflows to get your MVP running fast. No infrastructure setup required. Focus on product-market fit, not scraping infrastructure.",
+			features: [
+				"Pre-built scraping templates for common sources",
+				"One-click deployment and configuration",
+				"Automated data normalization and export",
+				"Integration templates for popular tools",
+				"Documentation and best practices",
+				"Community support and examples",
+			],
+			price: "Free Tier",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-green-500 to-teal-500",
+			categories: [SERVICE_CATEGORIES.REAL_ESTATE_TOOLS],
+			slugDetails: {
+				slug: "startup-quick-start-templates",
+				dilemma:
+					"Building scraping infrastructure from scratch takes weeks or months. You need to focus on your product, not on building data pipelines and managing servers.",
+				solution:
+					"Lead Orchestra's quick-start templates let you launch scraping workflows in minutes. Use pre-built templates, deploy with one click, and focus on building your product.",
+				defaultZoom: 1,
+				integrations: [],
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				faq: {
+					title: "Quick-Start Templates FAQs",
+					subtitle: "Everything you need to know about getting started fast.",
+					items: [],
+				},
+				copyright: {
+					title: "Launch Fast",
+					subtitle: "Pre-built templates to get your MVP running in minutes.",
+					ctaText: "Get Started",
+					ctaLink: "/get-started",
+				},
+			},
+		},
+		// Lead Orchestra Tools for Enterprise
+		enterpriseTools: {
+			id: "enterprise-tools",
+			iconName: "ShieldCheck",
+			title: "Enterprise Tools & Compliance",
+			description:
+				"Enterprise-grade tools for compliance, security, and scale. SSO integration, audit logging, custom MCP providers, and dedicated support. Built for teams that need reliability and control.",
+			features: [
+				"SSO and enterprise authentication (SAML, OAuth)",
+				"Audit logging and compliance reporting",
+				"Custom MCP provider development",
+				"Dedicated technical support and SLA",
+				"Private cloud and on-premise deployment",
+				"Custom integrations and API development",
+			],
+			price: "Enterprise Tier",
+			showBanner: true,
+			bannerText: "Lead Orchestra",
+			bannerColor: "bg-gradient-to-r from-gray-800 to-blue-900",
+			categories: [SERVICE_CATEGORIES.REAL_ESTATE_TOOLS],
+			slugDetails: {
+				slug: "enterprise-tools-compliance",
+				dilemma:
+					"Enterprise teams need compliance, security, and reliability that open-source tools can't provide. You need SSO, audit logs, and dedicated support to integrate scraping into your stack.",
+				solution:
+					"Lead Orchestra's enterprise tools provide the security, compliance, and support your team needs. SSO integration, audit logging, and dedicated support ensure reliable, compliant data operations.",
+				defaultZoom: 1,
+				integrations: [],
+				problemsAndSolutions: [],
+				howItWorks: [],
+				testimonials: [],
+				pricing: PricingPlans,
+				faq: {
+					title: "Enterprise Tools FAQs",
+					subtitle:
+						"Everything you need to know about enterprise features and compliance.",
+					items: [],
+				},
+				copyright: {
+					title: "Enterprise Ready",
+					subtitle: "Security, compliance, and support for enterprise teams.",
+					ctaText: "Contact Sales",
+					ctaLink: "/contact",
+				},
 			},
 		},
 	},

@@ -61,7 +61,7 @@ export const mockDiscountCodes: DiscountCode[] = [
 		created: new Date(),
 		discountPercent: 50,
 		isActive: true,
-		description: "Limited-time 50% launch coupon for AI Conversation Credits.",
+		description: "Limited-time 50% launch coupon for Lead Credits.",
 		productCategoryIds: [ProductCategory.Credits, ProductCategory.Automation],
 		planIds: [
 			"basic",

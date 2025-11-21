@@ -163,9 +163,9 @@ export default function CaseStudyPageClient({
 				) : hasBentoFeatures ? (
 					<BentoPage
 						features={bentoFeatures}
-						title={"Why Real Estate Leaders Choose Deal Scale"}
+						title={"Why Developers & Agencies Choose Lead Orchestra"}
 						subtitle={
-							"We deliver a scalable and automated solution to keep your deal pipeline consistently full."
+							"Open-source scraping that plugs into anything. Scrape any website, normalize data, and export to your stack—no vendor lock-in."
 						}
 					/>
 				) : (

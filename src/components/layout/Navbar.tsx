@@ -454,7 +454,7 @@ const MobileNav = ({
 						width={400}
 						height={400}
 						src="/company/logos/DealScale_Horizontal_Black.png"
-						alt="Deal Scale"
+						alt="Lead Orchestra"
 						className="block h-auto w-full dark:hidden"
 					/>
 					{/* White logo for dark mode */}
@@ -462,7 +462,7 @@ const MobileNav = ({
 						width={400}
 						height={400}
 						src="/company/logos/Deal_Scale_Horizontal_White.png"
-						alt="Deal Scale"
+						alt="Lead Orchestra"
 						className="hidden h-auto w-full dark:block"
 					/>
 				</div>
@@ -610,7 +610,7 @@ export default function Navbar() {
 						{/* Black logo for light mode */}
 						<Image
 							src="/company/logos/DealScale_Horizontal_Black.png"
-							alt="Deal Scale"
+							alt="Lead Orchestra"
 							width={100}
 							height={10}
 							className="block h-auto dark:hidden"
@@ -618,7 +618,7 @@ export default function Navbar() {
 						{/* White logo for dark mode */}
 						<Image
 							src="/company/logos/Deal_Scale_Horizontal_White.png"
-							alt="Deal Scale"
+							alt="Lead Orchestra"
 							width={100}
 							height={10}
 							className="hidden h-auto dark:block"

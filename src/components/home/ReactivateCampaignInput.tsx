@@ -1,27 +1,7 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-	Search,
-	Upload,
-	FileIcon,
-	X,
-	Loader2,
-	Play,
-	Info,
-	Download,
-} from "lucide-react";
+import { useHeroTrialCheckout } from "@/components/home/heros/useHeroTrialCheckout";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover";
 import {
 	Dialog,
 	DialogContent,
@@ -29,25 +9,34 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import dynamic from "next/dynamic";
-import { useHeroTrialCheckout } from "@/components/home/heros/useHeroTrialCheckout";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-import { parseContactFile, type ContactData } from "@/utils/csvParser";
-import {
-	ReactivateCampaignBadges,
-	type BadgeMetrics,
-} from "./ReactivateCampaignBadges";
 import { TypingAnimation } from "@/components/ui/typing-animation";
-import { ProcessingStatusList } from "./ProcessingStatusList";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { File, Info, Loader2, Play, Search, Upload } from "lucide-react";
 import {
-	Phone,
-	MessageSquare,
-	Database,
 	CheckCircle2,
+	Database,
+	MessageSquare,
+	Phone,
 	Zap,
 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { ProcessingStatusList } from "./ProcessingStatusList";
+import {
+	type BadgeMetrics,
+	ReactivateCampaignBadges,
+} from "./ReactivateCampaignBadges";
 
 interface ReactivateCampaignInputProps {
 	onActivationComplete?: (metrics: BadgeMetrics) => void;
@@ -55,12 +44,15 @@ interface ReactivateCampaignInputProps {
 }
 
 const PLACEHOLDER_OPTIONS = [
-	"Reactivate leads",
-	"Follow up on deal leads",
-	"Automate outreach sequence",
-	"Enrich contact data",
-	"Re-engage cold prospects",
-	"Schedule follow-up calls",
+	"Scrape leads from Zillow",
+	"Extract data from any website",
+	"Normalize and export lead data",
+	"Scrape niche sources competitors miss",
+	"Export to CRM, CSV, or Database",
+	"Integrate with Zapier, Make, or n8n",
+	"Create lookalike audience",
+	"Scrape niche create lookalike audience",
+	"Extract leads create lookalike audience",
 ];
 
 const PricingCheckoutDialog = dynamic(
@@ -73,8 +65,6 @@ export function ReactivateCampaignInput({
 	className,
 }: ReactivateCampaignInputProps) {
 	const [searchValue, setSearchValue] = useState("");
-	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-	const [contacts, setContacts] = useState<ContactData[]>([]);
 	const [skipTrace, setSkipTrace] = useState(false);
 	const [isProcessing, setIsProcessing] = useState(false);
 	const [metrics, setMetrics] = useState<BadgeMetrics | null>(null);
@@ -87,163 +77,66 @@ export function ReactivateCampaignInput({
 			status: "pending" | "processing" | "completed";
 		}>
 	>([]);
-	const [showPaymentModal, setShowPaymentModal] = useState(false);
 	const [paymentCompleted, setPaymentCompleted] = useState(false);
 	const [showEnrichInfo, setShowEnrichInfo] = useState(false);
-	const fileInputRef = useRef<HTMLInputElement>(null);
+	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+	const [uploadMode, setUploadMode] = useState<"url" | "file">("url");
 	const inputRef = useRef<HTMLInputElement>(null);
-	const { checkoutState, startTrial, closeCheckout, isTrialLoading } =
-		useHeroTrialCheckout();
+	const fileInputRef = useRef<HTMLInputElement>(null);
+	const { checkoutState, startTrial, closeCheckout } = useHeroTrialCheckout();
 
-	const handleFileSelect = useCallback(
-		async (e: React.ChangeEvent<HTMLInputElement>) => {
-			const file = e.target.files?.[0];
-			if (!file) return;
+	const resetActivationState = useCallback(() => {
+		setIsProcessing(false);
+		setProcessingSteps([]);
+		setPaymentCompleted(false);
+		setUploadedFile(null);
+		closeCheckout();
+	}, [closeCheckout]);
 
-			// Validate file type
-			const fileName = file.name.toLowerCase();
-			const extension = fileName.split(".").pop();
-			if (!["csv", "xlsx", "xls"].includes(extension || "")) {
-				toast.error("Please upload a CSV or Excel file");
-				return;
-			}
-
-			setUploadedFile(file);
-			setContacts([]);
-			setMetrics(null);
-
-			// Parse file
-			try {
-				const result = await parseContactFile(file);
-				if (result.errors.length > 0) {
-					toast.warning(
-						`Parsed with ${result.errors.length} error(s). Check console for details.`,
-					);
-					console.warn("Parse errors:", result.errors);
+	const handleFileUpload = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			const file = event.target.files?.[0];
+			if (file) {
+				setUploadedFile(file);
+				setUploadMode("file");
+				// Optionally read file content and set as search value
+				if (file.type === "text/plain" || file.name.endsWith(".txt")) {
+					const reader = new FileReader();
+					reader.onload = (e) => {
+						const text = e.target?.result as string;
+						setSearchValue(text.trim().split("\n")[0] || "");
+					};
+					reader.readAsText(file);
 				}
-
-				if (result.contacts.length === 0) {
-					toast.error("No valid contacts found in file");
-					setUploadedFile(null);
-					return;
-				}
-
-				setContacts(result.contacts);
-				toast.success(`Found ${result.contacts.length} contacts`);
-			} catch (error) {
-				toast.error(
-					error instanceof Error ? error.message : "Failed to parse file",
-				);
-				setUploadedFile(null);
 			}
 		},
 		[],
 	);
 
-	const handleRemoveFile = useCallback(() => {
-		setUploadedFile(null);
-		setContacts([]);
-		setMetrics(null);
-		if (fileInputRef.current) {
-			fileInputRef.current.value = "";
-		}
+	const handleFileClick = useCallback(() => {
+		fileInputRef.current?.click();
 	}, []);
-
-	const resetActivationState = useCallback(() => {
-		setIsProcessing(false);
-		setProcessingSteps([]);
-		setShowPaymentModal(false);
-		setPaymentCompleted(false);
-		closeCheckout();
-	}, [closeCheckout]);
 
 	const handlePaymentSuccess = useCallback(() => {
 		setPaymentCompleted(true);
-		setShowPaymentModal(false);
 		closeCheckout();
 
 		// Continue with activation after payment success
 		// The useEffect will trigger handleActivate when paymentCompleted becomes true
 	}, [closeCheckout]);
 
-	const handleDownloadExample = useCallback(() => {
-		// Create example CSV content
-		const exampleData = [
-			{
-				name: "John Doe",
-				email: "john.doe@example.com",
-				phone: "+1-555-0123",
-				address: "123 Main St, Denver, CO 80202",
-			},
-			{
-				name: "Jane Smith",
-				email: "jane.smith@example.com",
-				phone: "+1-555-0124",
-				address: "456 Oak Ave, Boulder, CO 80301",
-			},
-			{
-				name: "Bob Johnson",
-				email: "bob.johnson@example.com",
-				phone: "+1-555-0125",
-				address: "789 Pine Rd, Colorado Springs, CO 80903",
-			},
-		];
-
-		// Convert to CSV
-		const headers = Object.keys(exampleData[0]);
-		const csvRows = [
-			headers.join(","),
-			...exampleData.map((row) =>
-				headers
-					.map((header) => {
-						const value = row[header as keyof typeof row] || "";
-						// Escape commas and quotes in values
-						if (
-							typeof value === "string" &&
-							(value.includes(",") || value.includes('"'))
-						) {
-							return `"${value.replace(/"/g, '""')}"`;
-						}
-						return value;
-					})
-					.join(","),
-			),
-		];
-
-		const csvContent = csvRows.join("\n");
-		const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-		const link = document.createElement("a");
-		const url = URL.createObjectURL(blob);
-
-		link.setAttribute("href", url);
-		link.setAttribute("download", "example-contacts.csv");
-		link.style.visibility = "hidden";
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-		URL.revokeObjectURL(url);
-	}, []);
-
 	const handleActivate = useCallback(async () => {
 		console.log("[ReactivateCampaign] Activation started", {
-			contactsCount: contacts.length,
 			searchValue: searchValue.trim(),
 			skipTrace,
 		});
 
-		if (contacts.length === 0) {
-			const errorMsg = "Please upload a file with contacts first";
-			console.error("[ReactivateCampaign]", errorMsg);
-			toast.error(errorMsg);
-			return;
-		}
-
 		// Make search value optional - use default if empty
 		const workflowRequirements =
-			searchValue.trim() || "Reactivate leads and follow up";
+			searchValue.trim() || "Scrape leads and export data";
 
 		console.log("[ReactivateCampaign] Calling API with:", {
-			contactsCount: contacts.length,
+			url: searchValue.trim(),
 			workflowRequirements,
 			skipTrace,
 		});
@@ -252,31 +145,31 @@ export function ReactivateCampaignInput({
 		const initialSteps = [
 			{
 				id: "enrich",
-				label: skipTrace ? "Enriching contact data" : "Preparing contacts",
+				label: skipTrace ? "Normalizing data" : "Preparing scrape job",
 				icon: <Database className="h-4 w-4" />,
 				status: "pending" as const,
 			},
 			{
 				id: "activate",
-				label: `Activating ${contacts.length} contacts`,
+				label: "Scraping leads",
 				icon: <Zap className="h-4 w-4" />,
 				status: "pending" as const,
 			},
 			{
 				id: "calling",
-				label: "Initiating calls",
-				icon: <Phone className="h-4 w-4" />,
+				label: "Extracting data points",
+				icon: <Database className="h-4 w-4" />,
 				status: "pending" as const,
 			},
 			{
 				id: "texting",
-				label: "Sending text messages",
-				icon: <MessageSquare className="h-4 w-4" />,
+				label: "Cleaning and validating",
+				icon: <CheckCircle2 className="h-4 w-4" />,
 				status: "pending" as const,
 			},
 			{
 				id: "complete",
-				label: "Campaign activated",
+				label: "Export ready",
 				icon: <CheckCircle2 className="h-4 w-4" />,
 				status: "pending" as const,
 			},
@@ -299,7 +192,6 @@ export function ReactivateCampaignInput({
 		setTimeout(async () => {
 			try {
 				await startTrial();
-				setShowPaymentModal(true);
 			} catch (error) {
 				console.error("[ReactivateCampaign] Failed to start trial:", error);
 				// Reset state on error
@@ -307,7 +199,7 @@ export function ReactivateCampaignInput({
 				toast.error("Failed to start payment process. Please try again.");
 			}
 		}, 1000);
-	}, [contacts, skipTrace, searchValue, startTrial, resetActivationState]);
+	}, [skipTrace, searchValue, startTrial, resetActivationState]);
 
 	// Handle activation API call (separate from payment flow)
 	const handleActivation = useCallback(async () => {
@@ -317,7 +209,7 @@ export function ReactivateCampaignInput({
 		}
 
 		const workflowRequirements =
-			searchValue.trim() || "Reactivate leads and follow up";
+			searchValue.trim() || "Scrape leads and export data";
 
 		// Update step function for activation
 		const updateStep = (stepId: string, status: "processing" | "completed") => {
@@ -336,7 +228,7 @@ export function ReactivateCampaignInput({
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					contacts,
+					url: searchValue.trim(),
 					skipTrace,
 					workflowRequirements,
 				}),
@@ -407,13 +299,7 @@ export function ReactivateCampaignInput({
 		} finally {
 			setIsProcessing(false);
 		}
-	}, [
-		contacts,
-		skipTrace,
-		searchValue,
-		onActivationComplete,
-		paymentCompleted,
-	]);
+	}, [skipTrace, searchValue, onActivationComplete, paymentCompleted]);
 
 	// Trigger activation API call when payment completes
 	useEffect(() => {
@@ -435,57 +321,104 @@ export function ReactivateCampaignInput({
 				className="w-full"
 			>
 				{/* Search/Upload Bar Container */}
-				<div className="relative flex w-full flex-col gap-3 rounded-2xl border border-sky-500/30 bg-white/10 px-4 py-4 shadow-[0_8px_30px_rgba(59,130,246,0.2)] backdrop-blur-xl transition-all duration-300 focus-within:border-sky-400 focus-within:shadow-[0_8px_30px_rgba(59,130,246,0.4)] dark:border-sky-500/40 dark:bg-slate-800/30 dark:focus-within:border-sky-500 dark:focus-within:shadow-[0_8px_30px_rgba(59,130,246,0.3)] bg-white/80 dark:bg-white/10 border-sky-400/50 dark:border-sky-500/40">
-					{/* Search Input */}
+				<div className="relative flex w-full flex-col gap-3 rounded-2xl border border-sky-400/50 bg-white/80 px-4 py-4 shadow-[0_8px_30px_rgba(59,130,246,0.2)] backdrop-blur-xl transition-all duration-300 focus-within:border-sky-400 focus-within:shadow-[0_8px_30px_rgba(59,130,246,0.4)] dark:border-sky-500/40 dark:bg-white/10 dark:focus-within:border-sky-500 dark:focus-within:shadow-[0_8px_30px_rgba(59,130,246,0.3)]">
+					{/* Search Input / File Upload */}
 					<div className="relative flex flex-col gap-2">
 						<div className="relative flex items-center gap-3">
-							<Search className="h-5 w-5 shrink-0 text-sky-500 opacity-70 dark:text-sky-400" />
+							{uploadMode === "file" && uploadedFile ? (
+								<File className="h-5 w-5 shrink-0 text-sky-500 opacity-70 dark:text-sky-400" />
+							) : (
+								<Search className="h-5 w-5 shrink-0 text-sky-500 opacity-70 dark:text-sky-400" />
+							)}
 							<div className="relative flex-1">
-								<Input
-									ref={inputRef}
-									type="text"
-									value={searchValue}
-									onChange={(e) => setSearchValue(e.target.value)}
-									onFocus={() => setIsFocused(true)}
-									onBlur={() => setIsFocused(false)}
-									onKeyDown={(e) => {
-										if (e.key === "Enter" && !isProcessing) {
-											handleActivate();
-										}
-									}}
-									className="flex-1 border-0 bg-transparent text-base text-slate-900 placeholder:text-transparent focus-visible:ring-0 focus-visible:ring-offset-0 dark:text-white"
-									disabled={isProcessing}
-								/>
-								{/* Animated Placeholder Overlay */}
-								{!searchValue && !isFocused && (
-									<div className="pointer-events-none absolute inset-0 flex items-center">
-										<TypingAnimation
-											words={PLACEHOLDER_OPTIONS}
-											typeSpeed={80}
-											deleteSpeed={40}
-											pauseDelay={2000}
-											loop={true}
-											startOnView={false}
-											showCursor={true}
-											blinkCursor={true}
-											cursorStyle="line"
-											className="text-base text-slate-500 dark:text-slate-400"
-											as="span"
-										/>
+								{uploadMode === "file" && uploadedFile ? (
+									<div className="flex items-center gap-2 rounded-lg bg-slate-100/50 px-3 py-2 dark:bg-slate-800/50">
+										<File className="h-4 w-4 text-sky-500" />
+										<span className="flex-1 truncate text-slate-700 text-sm dark:text-slate-300">
+											{uploadedFile.name}
+										</span>
+										<Button
+											type="button"
+											variant="ghost"
+											size="sm"
+											onClick={() => {
+												setUploadedFile(null);
+												setUploadMode("url");
+												setSearchValue("");
+											}}
+											className="h-6 w-6 p-0 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+										>
+											×
+										</Button>
 									</div>
+								) : (
+									<>
+										<Input
+											ref={inputRef}
+											type="text"
+											value={searchValue}
+											onChange={(e) => setSearchValue(e.target.value)}
+											onFocus={() => setIsFocused(true)}
+											onBlur={() => setIsFocused(false)}
+											onKeyDown={(e) => {
+												if (e.key === "Enter" && !isProcessing) {
+													handleActivate();
+												}
+											}}
+											className="flex-1 border-0 bg-transparent text-base text-slate-900 placeholder:text-transparent focus-visible:ring-0 focus-visible:ring-offset-0 dark:text-white"
+											disabled={isProcessing}
+										/>
+										{/* Animated Placeholder Overlay */}
+										{!searchValue && !isFocused && (
+											<div className="pointer-events-none absolute inset-0 flex items-center">
+												<TypingAnimation
+													words={PLACEHOLDER_OPTIONS}
+													typeSpeed={80}
+													deleteSpeed={40}
+													pauseDelay={2000}
+													loop={true}
+													startOnView={false}
+													showCursor={true}
+													blinkCursor={true}
+													cursorStyle="line"
+													className="text-base text-slate-500 dark:text-slate-400"
+													as="span"
+												/>
+											</div>
+										)}
+									</>
 								)}
 							</div>
+							{/* File Upload Button */}
+							<Button
+								type="button"
+								onClick={handleFileClick}
+								disabled={isProcessing}
+								variant="ghost"
+								className="h-10 w-10 shrink-0 rounded-full border border-sky-500/30 p-0 text-sky-500 transition-all hover:border-sky-500/50 hover:bg-sky-500/10 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 dark:border-sky-400/30 dark:text-sky-400 dark:hover:bg-sky-500/20"
+								aria-label="Upload file"
+								title="Upload file"
+							>
+								<Upload className="h-5 w-5" />
+							</Button>
+							<input
+								ref={fileInputRef}
+								type="file"
+								accept=".txt,.csv,.json"
+								onChange={handleFileUpload}
+								className="hidden"
+								disabled={isProcessing}
+							/>
 							<Button
 								type="button"
 								onClick={handleActivate}
-								disabled={isProcessing || contacts.length === 0}
-								className="h-10 w-10 shrink-0 rounded-full bg-sky-500 p-0 text-white shadow-lg transition-all hover:bg-sky-600 hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
-								aria-label="Activate campaign"
-								title={
-									contacts.length === 0
-										? "Upload a file first"
-										: "Activate campaign"
+								disabled={
+									isProcessing ||
+									(uploadMode === "url" && !searchValue.trim() && !uploadedFile)
 								}
+								className="h-10 w-10 shrink-0 rounded-full bg-sky-500 p-0 text-white shadow-lg transition-all hover:bg-sky-600 hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+								aria-label="Start scraping"
+								title="Start scraping"
 							>
 								{isProcessing ? (
 									<Loader2 className="h-5 w-5 animate-spin" />
@@ -495,163 +428,97 @@ export function ReactivateCampaignInput({
 							</Button>
 						</div>
 						{/* Mobile-only hint */}
-						<p className="text-xs text-slate-600 dark:text-white/60 sm:hidden">
-							Upload your lead list
+						<p className="text-slate-600 text-xs sm:hidden dark:text-white/60">
+							Enter a URL, search term, or upload a file
 						</p>
 					</div>
 
-					{/* File Upload Section */}
-					<div className="flex flex-col gap-3 border-slate-200/50 dark:border-white/10 border-t pt-3">
-						<input
-							ref={fileInputRef}
-							type="file"
-							accept=".csv,.xlsx,.xls"
-							onChange={handleFileSelect}
-							className="hidden"
-							disabled={isProcessing}
-						/>
-						{/* File Upload Buttons Row with Enrich Toggle on same line when no file */}
-						<div className={`flex flex-wrap items-center gap-2 sm:gap-3 ${uploadedFile ? "flex-col sm:flex-row" : ""}`}>
-							<div className="flex flex-wrap items-center gap-2 sm:gap-3">
-								<Button
+					{/* Enrich Toggle with Info */}
+					<div className="flex items-center justify-end gap-1.5 border-slate-200/50 border-t pt-3 sm:gap-2 dark:border-white/10">
+						<Label
+							htmlFor="enrich"
+							className="flex cursor-pointer items-center gap-1 text-slate-700 text-sm sm:gap-1.5 dark:text-white/90"
+						>
+							<span className="hidden sm:inline">Enrich</span>
+							{/* Mobile: Use Dialog, Desktop: Use Popover */}
+							<>
+								<button
 									type="button"
-									variant="outline"
-									size="sm"
-									onClick={() => fileInputRef.current?.click()}
-									disabled={isProcessing}
-									className="shrink-0 border-slate-300/50 bg-slate-50/80 text-slate-700 hover:bg-slate-100 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-									title="Upload CSV/Excel"
-									aria-label="Upload CSV/Excel"
+									className="focus:outline-none sm:hidden"
+									aria-label="Learn more about enrichment"
+									onClick={(e) => {
+										e.preventDefault();
+										e.stopPropagation();
+										setShowEnrichInfo(true);
+									}}
 								>
-									<Upload className="h-4 w-4 sm:mr-2" />
-									<span className="hidden sm:inline">Upload CSV/Excel</span>
-								</Button>
-								<Button
-									type="button"
-									variant="ghost"
-									size="sm"
-									onClick={handleDownloadExample}
-									disabled={isProcessing}
-									className="shrink-0 border-slate-300/30 bg-slate-50/60 text-slate-600 hover:bg-slate-100 hover:text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
-									title="Example CSV"
-									aria-label="Example CSV"
-								>
-									<Download className="h-4 w-4 sm:mr-2" />
-									<span className="hidden sm:inline">Example CSV</span>
-								</Button>
-							</div>
-
-							{uploadedFile && (
-								<div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg bg-slate-50/80 dark:bg-white/5 px-2 py-1.5 sm:px-3 sm:py-2">
-									<FileIcon className="h-4 w-4 shrink-0 text-sky-500 dark:text-sky-400" />
-									<span className="min-w-0 truncate text-xs text-slate-700 dark:text-white sm:text-sm">
-										{uploadedFile.name}
-									</span>
-									{contacts.length > 0 && (
-										<Badge variant="secondary" className="ml-auto shrink-0 sm:ml-2">
-											{contacts.length} contacts
-										</Badge>
-									)}
-									<button
-										type="button"
-										onClick={handleRemoveFile}
-										disabled={isProcessing}
-										className="ml-1 shrink-0 rounded-full p-1 text-slate-500 hover:bg-slate-200 hover:text-slate-700 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white sm:ml-2"
-										aria-label="Remove file"
-									>
-										<X className="h-3 w-3" />
-									</button>
-								</div>
-							)}
-
-							{/* Enrich Toggle with Info - on same line when no file, new line when file uploaded */}
-							<div className={`flex items-center gap-1.5 sm:gap-2 ${uploadedFile ? "w-full sm:w-auto sm:ml-auto" : "ml-auto"}`}>
-							<Label
-								htmlFor="enrich"
-								className="flex cursor-pointer items-center gap-1 text-sm text-slate-700 dark:text-white/90 sm:gap-1.5"
-							>
-								<span className="hidden sm:inline">Enrich</span>
-								{/* Mobile: Use Dialog, Desktop: Use Popover */}
-								<>
-									<button
-										type="button"
-										className="focus:outline-none sm:hidden"
-										aria-label="Learn more about enrichment"
-										onClick={(e) => {
-											e.preventDefault();
-											e.stopPropagation();
-											setShowEnrichInfo(true);
-										}}
-									>
-										<Info className="h-4 w-4 text-sky-500 opacity-90 transition-opacity active:opacity-100 dark:text-sky-400" />
-									</button>
-									<Popover>
-										<PopoverTrigger asChild>
-											<button
-												type="button"
-												className="hidden focus:outline-none sm:block"
-												aria-label="Learn more about enrichment"
-											>
-												<Info className="h-3.5 w-3.5 text-sky-500 opacity-80 transition-opacity hover:opacity-100 dark:text-sky-400" />
-											</button>
-										</PopoverTrigger>
-										<PopoverContent
-											className="z-50 w-80 border-sky-500/30 bg-background-dark text-white"
-											side="top"
-											align="end"
+									<Info className="h-4 w-4 text-sky-500 opacity-90 transition-opacity active:opacity-100 dark:text-sky-400" />
+								</button>
+								<Popover>
+									<PopoverTrigger asChild>
+										<button
+											type="button"
+											className="hidden focus:outline-none sm:block"
+											aria-label="Learn more about enrichment"
 										>
-											<div className="space-y-3">
-												<div>
-													<h4 className="mb-2 font-semibold text-base text-white">
-														What is Enrichment?
-													</h4>
-													<p className="text-sm text-white/80 leading-relaxed">
-														Automatically enhance your contact data with verified
-														phone numbers, email addresses, and additional
-														information to improve your outreach success rate.
-													</p>
-												</div>
-												<div>
-													<h5 className="mb-2 font-semibold text-sky-400 text-sm">
-														What you get:
-													</h5>
-													<ul className="space-y-1.5 text-sm text-white/80">
-														<li className="flex items-start gap-2">
-															<span className="mt-0.5 text-sky-400">✓</span>
-															<span>
-																Verified contact information (phone, email)
-															</span>
-														</li>
-														<li className="flex items-start gap-2">
-															<span className="mt-0.5 text-sky-400">✓</span>
-															<span>Enhanced lead data for better targeting</span>
-														</li>
-														<li className="flex items-start gap-2">
-															<span className="mt-0.5 text-sky-400">✓</span>
-															<span>
-																Higher conversion rates with accurate contacts
-															</span>
-														</li>
-														<li className="flex items-start gap-2">
-															<span className="mt-0.5 text-sky-400">✓</span>
-															<span>Time saved on manual data verification</span>
-														</li>
-													</ul>
-												</div>
+											<Info className="h-3.5 w-3.5 text-sky-500 opacity-80 transition-opacity hover:opacity-100 dark:text-sky-400" />
+										</button>
+									</PopoverTrigger>
+									<PopoverContent
+										className="z-50 w-80 border-sky-500/30 bg-background-dark text-white"
+										side="top"
+										align="end"
+									>
+										<div className="space-y-3">
+											<div>
+												<h4 className="mb-2 font-semibold text-base text-white">
+													What is Enrichment?
+												</h4>
+												<p className="text-sm text-white/80 leading-relaxed">
+													Automatically enhance your contact data with verified
+													phone numbers, email addresses, and additional
+													metadata to improve data quality rate.
+												</p>
 											</div>
-										</PopoverContent>
-									</Popover>
-								</>
-							</Label>
-							<Switch
-								id="enrich"
-								checked={skipTrace}
-								onCheckedChange={setSkipTrace}
-								disabled={isProcessing}
-								className="shrink-0 h-7 w-12 border-2 border-slate-300/50 data-[state=checked]:bg-sky-500 data-[state=checked]:border-sky-500 data-[state=unchecked]:bg-slate-200/80 dark:border-slate-600/50 dark:data-[state=checked]:bg-sky-500 dark:data-[state=checked]:border-sky-500 dark:data-[state=unchecked]:bg-slate-700/80 [&>span]:h-6 [&>span]:w-6 [&>span]:shadow-md"
-							/>
-							</div>
-						</div>
+											<div>
+												<h5 className="mb-2 font-semibold text-sky-400 text-sm">
+													What you get:
+												</h5>
+												<ul className="space-y-1.5 text-sm text-white/80">
+													<li className="flex items-start gap-2">
+														<span className="mt-0.5 text-sky-400">✓</span>
+														<span>
+															Verified contact information (phone, email)
+														</span>
+													</li>
+													<li className="flex items-start gap-2">
+														<span className="mt-0.5 text-sky-400">✓</span>
+														<span>Enhanced lead data for better targeting</span>
+													</li>
+													<li className="flex items-start gap-2">
+														<span className="mt-0.5 text-sky-400">✓</span>
+														<span>
+															Higher conversion rates with accurate contacts
+														</span>
+													</li>
+													<li className="flex items-start gap-2">
+														<span className="mt-0.5 text-sky-400">✓</span>
+														<span>Time saved on manual data verification</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</PopoverContent>
+								</Popover>
+							</>
+						</Label>
+						<Switch
+							id="enrich"
+							checked={skipTrace}
+							onCheckedChange={setSkipTrace}
+							disabled={isProcessing}
+							className="h-7 w-12 shrink-0 border-2 border-slate-300/50 data-[state=checked]:border-sky-500 data-[state=checked]:bg-sky-500 data-[state=unchecked]:bg-slate-200/80 dark:border-slate-600/50 dark:data-[state=checked]:border-sky-500 dark:data-[state=checked]:bg-sky-500 dark:data-[state=unchecked]:bg-slate-700/80 [&>span]:h-6 [&>span]:w-6 [&>span]:shadow-md"
+						/>
 					</div>
 				</div>
 
@@ -662,10 +529,10 @@ export function ReactivateCampaignInput({
 					<DialogContent className="border-sky-500/30 bg-slate-900/95 backdrop-blur-xl sm:max-w-md">
 						<DialogHeader>
 							<DialogTitle className="text-white">
-								Processing Campaign
+								Processing Scrape Job
 							</DialogTitle>
 							<DialogDescription className="text-white/70">
-								Activating your contacts and setting up workflows
+								Processing your scrape job and preparing data export
 							</DialogDescription>
 						</DialogHeader>
 						<div className="mt-4">
@@ -676,33 +543,39 @@ export function ReactivateCampaignInput({
 
 				{/* Enrich Info Dialog for Mobile */}
 				<Dialog open={showEnrichInfo} onOpenChange={setShowEnrichInfo}>
-					<DialogContent className="border-sky-500/30 bg-slate-900/95 backdrop-blur-xl sm:max-w-md [&>button]:text-white [&>button]:hover:text-white/80 [&>button]:hover:bg-white/10">
+					<DialogContent className="border-sky-500/30 bg-slate-900/95 backdrop-blur-xl sm:max-w-md [&>button]:text-white [&>button]:hover:bg-white/10 [&>button]:hover:text-white/80">
 						<DialogHeader>
 							<DialogTitle className="text-white">
-								Enrichment & AI Outreach
+								Data Enrichment & Export
 							</DialogTitle>
 							<DialogDescription className="text-white/70">
-								Learn about our data enrichment and AI automation features
+								Learn about our data enrichment and export features
 							</DialogDescription>
 						</DialogHeader>
 						<Tabs defaultValue="enrichment" className="w-full">
 							<TabsList className="grid w-full grid-cols-2 bg-slate-800/50">
-								<TabsTrigger value="enrichment" className="text-white data-[state=active]:bg-sky-500 data-[state=active]:text-white">
+								<TabsTrigger
+									value="enrichment"
+									className="text-white data-[state=active]:bg-sky-500 data-[state=active]:text-white"
+								>
 									Enrichment
 								</TabsTrigger>
-								<TabsTrigger value="ai-outreach" className="text-white data-[state=active]:bg-sky-500 data-[state=active]:text-white">
-									AI Outreach
+								<TabsTrigger
+									value="export"
+									className="text-white data-[state=active]:bg-sky-500 data-[state=active]:text-white"
+								>
+									Export
 								</TabsTrigger>
 							</TabsList>
 							<TabsContent value="enrichment" className="space-y-3 pt-4">
 								<div>
 									<h4 className="mb-2 font-semibold text-base text-white">
-										What is Enrichment?
+										What is Data Enrichment?
 									</h4>
 									<p className="text-sm text-white/80 leading-relaxed">
-										Automatically enhance your contact data with verified
-										phone numbers, email addresses, and additional
-										information to improve your outreach success rate.
+										Automatically enhance your scraped data with verified phone
+										numbers, email addresses, and additional metadata to improve
+										data quality and completeness.
 									</p>
 								</div>
 								<div>
@@ -712,64 +585,70 @@ export function ReactivateCampaignInput({
 									<ul className="space-y-1.5 text-sm text-white/80">
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>
-												Verified contact information (phone, email)
-											</span>
+											<span>Verified contact information (phone, email)</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>Enhanced lead data for better targeting</span>
+											<span>Normalized data in Lead Standard Format (LSF)</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>
-												Higher conversion rates with accurate contacts
-											</span>
+											<span>De-duplication and data validation</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>Time saved on manual data verification</span>
+											<span>Time saved on manual data cleaning</span>
 										</li>
 									</ul>
 								</div>
 							</TabsContent>
-							<TabsContent value="ai-outreach" className="space-y-3 pt-4">
+							<TabsContent value="export" className="space-y-3 pt-4">
 								<div>
 									<h4 className="mb-2 font-semibold text-base text-white">
-										What is AI Outreach?
+										Export Your Data
 									</h4>
 									<p className="text-sm text-white/80 leading-relaxed">
-										AI Outreach is DealScale's intelligent automation system that handles your entire lead engagement workflow. It uses advanced AI to make calls, send personalized messages, and nurture leads automatically—so you can focus on closing deals instead of chasing contacts.
+										Lead Orchestra exports scraped data to CRM, CSV/JSON,
+										Database, S3, or any system. Integrate with MCP protocol,
+										APIs, webhooks, and workflow engines like Kestra, Make,
+										Zapier, and n8n. Connect directly to CRMs, data warehouses,
+										and automation platforms.
 									</p>
 								</div>
 								<div>
 									<h5 className="mb-2 font-semibold text-sky-400 text-sm">
-										Key Features:
+										Export Options:
 									</h5>
 									<ul className="space-y-1.5 text-sm text-white/80">
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
 											<span>
-												AI-powered voice calls that sound natural and human
+												CSV and JSON exports for spreadsheets and tools
 											</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>Automated SMS and email follow-up sequences</span>
+											<span>Direct Database and S3 integration</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
 											<span>
-												CRM integration that syncs every interaction automatically
+												CRM integration (HubSpot, Salesforce, and more)
 											</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>24/7 lead nurturing that never sleeps</span>
+											<span>Workflow engines: Kestra, Make, Zapier, n8n</span>
 										</li>
 										<li className="flex items-start gap-2">
 											<span className="mt-0.5 text-sky-400">✓</span>
-											<span>Personalized messaging based on lead behavior and data</span>
+											<span>REST API, webhooks, and MCP protocol support</span>
+										</li>
+										<li className="flex items-start gap-2">
+											<span className="mt-0.5 text-sky-400">✓</span>
+											<span>
+												GitHub Actions templates for CI/CD integration
+											</span>
 										</li>
 									</ul>
 								</div>

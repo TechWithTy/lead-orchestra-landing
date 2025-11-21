@@ -347,7 +347,7 @@ export function getBlogSeo(post: BeehiivPost): SeoMeta {
 		) || datePublished;
 
 	return {
-		title: `${post.title} | Blog | Deal Scale`,
+		title: `${post.title} | Blog | Lead Orchestra`,
 		description,
 		canonical: post.web_url || undefined,
 		keywords,
@@ -372,7 +372,7 @@ export function getCaseStudySeo(cs: CaseStudy): SeoMeta {
 }
 export function getServiceSeo(service: ServiceItemData): SeoMeta {
 	return {
-		title: `${service.title} | Services | Deal Scale`,
+		title: `${service.title} | Services | Lead Orchestra`,
 		description: service.description || defaultSeo.description,
 		canonical: `https://dealscale.io/features/${service.slugDetails.slug}`,
 		keywords: defaultSeo.keywords,

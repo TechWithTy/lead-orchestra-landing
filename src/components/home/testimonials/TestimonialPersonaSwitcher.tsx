@@ -19,7 +19,7 @@ export const PersonaSwitcher = () => {
 						key={option}
 						type="button"
 						className={cn(
-							"relative z-10 flex flex-1 items-center justify-center rounded-full px-4 py-2 font-medium text-xs uppercase tracking-wide transition-colors sm:text-sm",
+							"relative z-10 flex flex-1 flex-col items-center justify-center rounded-full px-4 py-2 font-medium text-xs uppercase tracking-wide transition-colors sm:text-sm",
 							isActive
 								? "text-black dark:text-white"
 								: "text-black/70 hover:text-black focus-visible:text-black dark:text-white/80 dark:focus-visible:text-white dark:hover:text-white",
@@ -38,7 +38,14 @@ export const PersonaSwitcher = () => {
 								}
 							/>
 						)}
-						<span className="relative z-10">{PERSONA_LABELS[option]}</span>
+						<span className="relative z-10 flex flex-col items-center leading-tight">
+							{PERSONA_LABELS[option].split(" ").slice(0, 2).join(" ")}
+							{PERSONA_LABELS[option].split(" ").length > 2 && (
+								<span>
+									{PERSONA_LABELS[option].split(" ").slice(2).join(" ")}
+								</span>
+							)}
+						</span>
 					</button>
 				);
 			})}

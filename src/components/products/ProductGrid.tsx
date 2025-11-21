@@ -43,7 +43,7 @@ const CATEGORY_LABELS: Record<ProductCategory, string> = {
 	"free-resources": "Free Resources",
 	"sales-scripts": "Sales Scripts",
 	prompts: "Prompts",
-	"remote-closers": "Remote Closers",
+	"remote-closers": "Virtual Assistants (VA's)",
 };
 
 const MONETIZE_PORTAL_URL = "https://app.dealscale.io";
@@ -173,35 +173,51 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, callbackUrl }) => {
 						.includes(activeCategory),
 			);
 		}
-		
+
 		// For Monetize category: Only show marketplace entry points where users can EARN income
 		if (activeCategory === ProductCategory.Monetize) {
 			filtered = filtered.filter((product) => {
 				// Exclude products where users BUY things (they don't earn from these):
-				// 1. Individual closers (users hire them, closers earn but buyers don't)
-				const isIndividualCloser = product.id?.startsWith("closer-") || product.sku?.startsWith("DS-CLOSER-");
+				// 1. Individual VAs (users hire them, VAs earn but buyers don't)
+				const isIndividualCloser =
+					product.id?.startsWith("va-") || product.sku?.startsWith("LO-VA-");
 				// 2. Individual workflows (users BUY these, they don't earn from them)
-				const isIndividualWorkflow = product.id?.includes("-workflow") || product.sku?.startsWith("WF-");
+				const isIndividualWorkflow =
+					product.id?.includes("-workflow") || product.sku?.startsWith("WF-");
 				// 3. Individual agents (users BUY these, they don't earn from them)
-				const isIndividualAgent = product.id?.includes("-agent") || product.id?.includes("-concierge") || product.sku?.startsWith("AG-");
+				const isIndividualAgent =
+					product.id?.includes("-agent") ||
+					product.id?.includes("-concierge") ||
+					product.sku?.startsWith("AG-");
 				// 4. Free resources (users download these for free, they don't earn from them)
-				const isFreeResource = product.categories?.includes(ProductCategory.FreeResources);
+				const isFreeResource = product.categories?.includes(
+					ProductCategory.FreeResources,
+				);
 				// 5. Products with price > 0 where users pay (not earn)
-				const isBuyableProduct = product.price > 0 && !product.id?.includes("marketplace") && !product.sku?.includes("MARKETPLACE");
-				
+				const isBuyableProduct =
+					product.price > 0 &&
+					!product.id?.includes("marketplace") &&
+					!product.sku?.includes("MARKETPLACE");
+
 				// Exclude these - only show marketplace entry points where users can APPLY/SELL to earn
-				if (isIndividualCloser || isIndividualWorkflow || isIndividualAgent || isFreeResource || isBuyableProduct) {
+				if (
+					isIndividualCloser ||
+					isIndividualWorkflow ||
+					isIndividualAgent ||
+					isFreeResource ||
+					isBuyableProduct
+				) {
 					return false;
 				}
-				
+
 				// Include only marketplace entry points where users can EARN:
-				// - Remote Closers marketplace (users can APPLY to become closers and earn)
+				// - Virtual Assistants marketplace (users can APPLY to become VAs and earn)
 				// - Sales Scripts marketplace (users can SELL scripts and earn)
 				// - Other marketplace entry points (where users can monetize their content)
 				return true;
 			});
 		}
-		
+
 		if (searchTerm.trim()) {
 			const term = searchTerm.trim().toLowerCase();
 			filtered = filtered.filter(

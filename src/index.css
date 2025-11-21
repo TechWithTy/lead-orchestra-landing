@@ -72,106 +72,148 @@
 		--shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); /* glassy shadow */
 	}
 
-	/* Deal Scale Brand Theme - Light Mode */
+	/* Lead Orchestra Brand Theme - Light Mode */
+	.theme-lead-orchestra-light,
 	.theme-dealscale-light {
 		--radius: 0.75rem;
-		/* Brand Colors - Light Mode */
-		--brand-primary: 200 85% 32%; /* #0C6398 */
-		--brand-primary-hover: 200 85% 27%; /* #0A547F */
-		--brand-accent: 195 77% 41%; /* #1890B7 */
-		--brand-accent-hover: 195 77% 34%; /* #147A98 */
-		--brand-warm: 30 95% 55%; /* #F98D21 */
-		--brand-warm-hover: 30 95% 44%; /* #D97706 */
-		/* Surface System - Light Mode */
-		--surface: 0 0% 100%; /* #FFFFFF */
-		--surface-alt: 210 33% 98%; /* #F7FAFC */
-		--surface-elevated: 210 33% 95%; /* #EDF2F7 */
-		/* Text System - Light Mode */
-		--text-main: 222 47% 11%; /* #0F172A */
-		--text-subtle: 215 19% 35%; /* #475569 */
-		--text-muted: 215 16% 47%; /* #64748B */
-		/* Semantic Tokens - Mapped to Brand Colors */
-		--primary: 200 85% 32%; /* Maps to brand-primary */
+		/* Lead Orchestra Brand Colors - Light Mode (from Notion Brand Guidelines) */
+		--lo-primary: 220 75% 15%; /* #0A1F44 - Brand Blue */
+		--lo-teal: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--lo-purple: 260 100% 67%; /* #7D4BFF - Orchestra Purple */
+		--lo-orange: 25 100% 62%; /* #FF8B3D - Automation Orange */
+		--lo-green: 160 100% 59%; /* #2DFF9F - Signal Green */
+		--lo-sapphire: 230 85% 56%; /* #2643E9 - Sapphire Gradient Top */
+		--lo-violet: 260 85% 56%; /* #6C1EF2 - Violet Gradient Bottom */
+		--lo-black: 222 47% 11%; /* #0F172A */
+		--lo-white: 0 0% 100%; /* #FFFFFF */
+		/* Lead Orchestra Neutral Palette - Light Mode */
+		--lo-bg: 0 0% 100%; /* #FFFFFF - White */
+		--lo-surface: 220 13% 91%; /* #E5E7EB - Neutral Gray 200 */
+		--lo-border: 220 13% 91%; /* #E5E7EB - Neutral Gray 200 */
+		--lo-text: 220 75% 15%; /* #0A1F44 - Brand Blue */
+		--lo-text-secondary: 215 16% 47%; /* #9CA3AF - Neutral Gray 400 */
+		/* Status Colors - Light Mode (from Brand Guidelines) */
+		--lo-success: 142 76% 36%; /* #16A34A - Success Green */
+		--lo-error: 0 84% 60%; /* #DC2626 - Error Red */
+		--lo-info: 199 89% 48%; /* #0EA5E9 - Info Sky Blue */
+		--lo-warning: 38 92% 50%; /* #F59E0B - Warning Orange */
+		/* Semantic Tokens - Mapped to Lead Orchestra Colors (from Notion Brand Guidelines) */
+		--brand-primary: 220 75% 15%; /* #0A1F44 - Brand Blue */
+		--brand-primary-hover: 220 75% 12%;
+		--brand-accent: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--brand-accent-hover: 170 85% 45%;
+		--brand-warm: 25 100% 62%; /* #FF8B3D - Automation Orange */
+		--brand-warm-hover: 25 100% 55%;
+		--primary: 220 75% 15%; /* #0A1F44 - Brand Blue */
 		--primary-foreground: 0 0% 100%;
-		--accent: 195 77% 41%; /* Maps to brand-accent */
-		--accent-foreground: 0 0% 100%;
-		--tertiary: 30 95% 55%; /* Maps to brand-warm */
+		--accent: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--accent-foreground: 220 75% 15%; /* Brand Blue for contrast */
+		--tertiary: 25 100% 62%; /* #FF8B3D - Automation Orange */
 		--tertiary-foreground: 0 0% 100%;
+		/* Surface System - Light Mode */
+		--surface: 0 0% 100%; /* lo-surface */
+		--surface-alt: 210 40% 98%; /* lo-bg */
+		--surface-elevated: 210 33% 95%;
+		/* Text System - Light Mode */
+		--text-main: 222 47% 11%; /* lo-text */
+		--text-subtle: 215 19% 35%; /* lo-text-secondary */
+		--text-muted: 215 16% 47%;
 		/* Background & Foreground */
-		--background: 0 0% 100%; /* surface */
-		--background-dark: 210 33% 95%; /* surface-elevated */
-		--foreground: 222 47% 11%; /* text-main */
+		--background: 210 40% 98%; /* lo-bg */
+		--background-dark: 210 33% 95%;
+		--foreground: 222 47% 11%; /* lo-text */
 		/* Card & Popover */
-		--card: 210 33% 98%; /* surface-alt */
-		--card-foreground: 222 47% 11%; /* text-main */
-		--popover: 0 0% 100%; /* surface */
-		--popover-foreground: 222 47% 11%; /* text-main */
+		--card: 0 0% 100%; /* lo-surface */
+		--card-foreground: 222 47% 11%; /* lo-text */
+		--popover: 0 0% 100%; /* lo-surface */
+		--popover-foreground: 222 47% 11%; /* lo-text */
 		/* Secondary & Muted */
 		--secondary: 195 77% 90%; /* Light teal tint */
-		--secondary-foreground: 222 47% 11%; /* text-main */
-		--muted: 210 33% 95%; /* surface-elevated */
-		--muted-foreground: 215 19% 35%; /* text-subtle */
+		--secondary-foreground: 222 47% 11%; /* lo-text */
+		--muted: 210 33% 95%;
+		--muted-foreground: 215 19% 35%; /* lo-text-secondary */
 		/* Destructive */
-		--destructive: 0 84% 68%;
+		--destructive: 0 72% 51%; /* lo-error */
 		--destructive-foreground: 0 0% 100%;
 		/* Border & Input */
-		--border: 214 27% 84%; /* #CBD5E1 */
-		--input: 210 33% 98%; /* surface-alt */
-		--ring: 200 85% 32%; /* brand-primary */
+		--border: 214 32% 91%; /* lo-border */
+		--input: 210 40% 98%; /* lo-bg */
+		--ring: 200 85% 32%; /* lo-primary */
 		/* Focus */
-		--focus: 195 77% 41%; /* brand-accent */
+		--focus: 195 77% 41%; /* lo-teal */
 		/* Shadow */
 		--shadow: 0 8px 32px 0 rgba(12, 99, 152, 0.08);
 	}
 
-	/* Deal Scale Brand Theme - Dark Mode */
+	/* Lead Orchestra Brand Theme - Dark Mode */
+	.theme-lead-orchestra,
 	.theme-dealscale {
 		--radius: 0.75rem;
-		/* Brand Colors - Dark Mode */
-		--brand-primary: 200 78% 46%; /* #1A8FD0 */
-		--brand-primary-hover: 200 78% 36%; /* #1473A6 */
-		--brand-accent: 190 70% 50%; /* #26B6D7 */
-		--brand-accent-hover: 190 70% 41%; /* #1F97B3 */
-		--brand-warm: 30 100% 60%; /* #FF9A34 */
-		--brand-warm-hover: 30 83% 47%; /* #DB7E14 */
-		/* Surface System - Dark Mode */
-		--surface: 210 27% 6%; /* #0B0F13 */
-		--surface-alt: 210 23% 10%; /* #141A20 */
-		--surface-elevated: 210 24% 15%; /* #1E2731 */
-		/* Text System - Dark Mode */
-		--text-main: 210 33% 96%; /* #F1F5F9 */
-		--text-subtle: 220 18% 82%; /* #C7CED9 */
-		--text-muted: 215 20% 65%; /* #94A3B8 */
-		/* Semantic Tokens - Mapped to Brand Colors */
-		--primary: 200 78% 46%; /* Maps to brand-primary */
-		--primary-foreground: 0 0% 100%;
-		--accent: 190 70% 50%; /* Maps to brand-accent */
-		--accent-foreground: 0 0% 100%;
-		--tertiary: 30 100% 60%; /* Maps to brand-warm */
+		/* Lead Orchestra Brand Colors - Dark Mode (from Notion Brand Guidelines) */
+		--lo-primary: 220 75% 15%; /* #0A1F44 - Brand Blue (for headers/nav) */
+		--lo-teal: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--lo-purple: 260 100% 67%; /* #7D4BFF - Orchestra Purple */
+		--lo-orange: 25 100% 62%; /* #FF8B3D - Automation Orange */
+		--lo-green: 160 100% 59%; /* #2DFF9F - Signal Green */
+		--lo-sapphire: 230 85% 56%; /* #2643E9 - Sapphire Gradient Top */
+		--lo-violet: 260 85% 56%; /* #6C1EF2 - Violet Gradient Bottom */
+		--lo-black: 0 0% 100%; /* #FFFFFF - White (inverted for dark mode) */
+		--lo-white: 0 0% 10%; /* #1A1A1A */
+		/* Lead Orchestra Neutral Palette - Dark Mode (from Notion Brand Guidelines) */
+		--lo-bg: 220 40% 8%; /* #0D1117 - Dark Surface */
+		--lo-surface: 220 30% 11%; /* #111827 - Neutral Gray 900 */
+		--lo-border: 220 13% 23%; /* #374151 - Neutral Gray 700 */
+		--lo-text: 0 0% 100%; /* #FFFFFF - White */
+		--lo-text-secondary: 215 16% 47%; /* #9CA3AF - Neutral Gray 400 */
+		/* Status Colors - Dark Mode (from Brand Guidelines) */
+		--lo-success: 142 76% 36%; /* #16A34A - Success Green */
+		--lo-error: 0 84% 60%; /* #DC2626 - Error Red */
+		--lo-info: 199 89% 48%; /* #0EA5E9 - Info Sky Blue */
+		--lo-warning: 38 92% 50%; /* #F59E0B - Warning Orange */
+		/* Semantic Tokens - Mapped to Lead Orchestra Colors (from Notion Brand Guidelines) */
+		--brand-primary: 220 75% 15%; /* #0A1F44 - Brand Blue */
+		--brand-primary-hover: 220 75% 18%;
+		--brand-accent: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--brand-accent-hover: 170 85% 58%;
+		--brand-warm: 25 100% 62%; /* #FF8B3D - Automation Orange */
+		--brand-warm-hover: 25 100% 68%;
+		--primary: 170 85% 52%; /* #1EF2C9 - Electric Teal (for CTAs in dark mode) */
+		--primary-foreground: 220 75% 15%; /* Brand Blue for contrast */
+		--accent: 170 85% 52%; /* #1EF2C9 - Electric Teal */
+		--accent-foreground: 220 75% 15%; /* Brand Blue for contrast */
+		--tertiary: 25 100% 62%; /* #FF8B3D - Automation Orange */
 		--tertiary-foreground: 0 0% 100%;
+		/* Surface System - Dark Mode (from Notion Brand Guidelines) */
+		--surface: 220 30% 11%; /* #111827 - Neutral Gray 900 */
+		--surface-alt: 220 40% 8%; /* #0D1117 - Dark Surface */
+		--surface-elevated: 220 30% 13%;
+		/* Text System - Dark Mode */
+		--text-main: 0 0% 100%; /* #FFFFFF - White */
+		--text-subtle: 215 16% 47%; /* #9CA3AF - Neutral Gray 400 */
+		--text-muted: 215 16% 47%;
 		/* Background & Foreground */
-		--background: 210 27% 6%; /* surface */
-		--background-dark: 210 27% 3%; /* darker variant */
-		--foreground: 210 33% 96%; /* text-main */
+		--background: 220 40% 8%; /* #0D1117 - Dark Surface */
+		--background-dark: 220 40% 5%; /* darker variant */
+		--foreground: 0 0% 100%; /* #FFFFFF - White */
 		/* Card & Popover */
-		--card: 210 24% 15%; /* surface-elevated */
-		--card-foreground: 210 33% 96%; /* text-main */
-		--popover: 210 23% 10%; /* surface-alt */
-		--popover-foreground: 210 33% 96%; /* text-main */
+		--card: 210 20% 13%; /* lo-surface */
+		--card-foreground: 214 32% 91%; /* lo-text */
+		--popover: 210 20% 13%; /* lo-surface */
+		--popover-foreground: 214 32% 91%; /* lo-text */
 		/* Secondary & Muted */
-		--secondary: 190 70% 40%; /* Darker teal */
-		--secondary-foreground: 210 33% 96%; /* text-main */
-		--muted: 210 24% 15%; /* surface-elevated */
-		--muted-foreground: 220 18% 82%; /* text-subtle */
+		--secondary: 170 85% 40%; /* Darker teal */
+		--secondary-foreground: 0 0% 100%; /* White */
+		--muted: 220 30% 13%;
+		--muted-foreground: 215 16% 47%; /* Neutral Gray 400 */
 		/* Destructive */
-		--destructive: 0 63% 31%;
+		--destructive: 0 84% 60%; /* #DC2626 - Error Red */
 		--destructive-foreground: 0 0% 100%;
 		/* Border & Input */
-		--border: 210 13% 20%; /* #2D333A */
-		--input: 210 23% 10%; /* surface-alt */
-		--ring: 200 78% 46%; /* brand-primary */
+		--border: 220 13% 23%; /* #374151 - Neutral Gray 700 */
+		--input: 220 30% 11%; /* #111827 - Neutral Gray 900 */
+		--ring: 170 85% 52%; /* Electric Teal */
 		/* Focus */
-		--focus: 190 70% 50%; /* brand-accent */
+		--focus: 170 85% 52%; /* #1EF2C9 - Electric Teal */
 	}
 
 	* {
@@ -203,22 +245,26 @@
 		);
 	}
 
-	/* Deal Scale theme gradients */
+	/* Lead Orchestra theme gradients (from Notion Brand Guidelines) */
+	.theme-lead-orchestra body.dark,
 	.theme-dealscale body.dark,
+	.dark .theme-lead-orchestra body,
 	.dark .theme-dealscale body {
 		background: linear-gradient(
 			180deg,
-			hsl(210, 27%, 6%) 0%,
-			hsl(210, 27%, 4%) 100%
+			hsl(220, 40%, 8%) 0% /* #0D1117 - Dark Surface */,
+			hsl(220, 40%, 5%) 100% /* darker variant */
 		);
 	}
 
+	.theme-lead-orchestra-light body:not(.dark),
 	.theme-dealscale-light body:not(.dark),
+	.light .theme-lead-orchestra-light body,
 	.light .theme-dealscale-light body {
 		background: linear-gradient(
 			180deg,
-			hsl(0, 0%, 100%) 0%,
-			hsl(210, 33%, 98%) 100%
+			hsl(0, 0%, 100%) 0% /* #FFFFFF - White */,
+			hsl(220, 13%, 91%) 100% /* #E5E7EB - Neutral Gray 200 */
 		);
 	}
 	.theme {

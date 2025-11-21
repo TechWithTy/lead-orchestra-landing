@@ -11,65 +11,66 @@ export type ActivityEvent = {
 /**
  * Curated activity feed for the FeatureSectionActivity component.
  *
- * The copy mirrors the investor automation storyline used across the
+ * The copy mirrors the Lead Orchestra scraping storyline used across the
  * live hero and service flows so the visuals remain consistent.
  */
 export const activityStream: ActivityEvent[] = [
 	{
-		id: "lead-sync",
-		label: "Pipeline Sync",
-		actor: "DealScale AI Router",
+		id: "scrape-job",
+		label: "Scraping Job",
+		actor: "Lead Orchestra MCP Engine",
 		action:
-			"Synced 48 lookalike off-market seller leads from InvestorFuse CRM using similarity clustering.",
+			"Scraped 248 leads from Zillow using MCP plugin, normalized and cleaned, exported to S3.",
 		timeAgo: "2m ago",
-		impact: "+12% response SLA",
-		tags: ["sync", "crm"],
+		impact: "+248 leads",
+		tags: ["scraping", "mcp"],
 	},
 	{
-		id: "warm-transfer",
-		label: "Warm Transfer",
-		actor: "AI Concierge",
-		action: "Handed off a motivated seller to Acquisitions Partner Taylor.",
+		id: "data-export",
+		label: "Data Export",
+		actor: "Export Engine",
+		action:
+			"Exported normalized lead data to Deal Scale for AI enrichment and scoring.",
 		timeAgo: "5m ago",
-		impact: "Booked intro call",
-		tags: ["handoff", "voice"],
+		impact: "Export complete",
+		tags: ["export", "csv"],
 	},
 	{
-		id: "drip-campaign",
-		label: "Nurture Sequence",
-		actor: "Follow-Up Engine",
-		action: "Triggered a 3-step SMS and voice drip for cold seller prospects.",
+		id: "plugin-install",
+		label: "Plugin Installed",
+		actor: "Plugin Marketplace",
+		action: "Installed Realtor.com MCP plugin from community marketplace.",
 		timeAgo: "11m ago",
-		impact: "Queue refreshed",
-		tags: ["drip", "automation"],
+		impact: "New source added",
+		tags: ["plugin", "mcp"],
 	},
 	{
-		id: "compliance-audit",
-		label: "Compliance Audit",
-		actor: "Audit Bot",
+		id: "normalization",
+		label: "Data Normalization",
+		actor: "Normalization Engine",
 		action:
-			"Archived diligence calls and attached transcripts to the investor CRM.",
+			"Normalized 1,200 scraped records, deduplicated, and tagged with metadata.",
 		timeAgo: "18m ago",
-		impact: "Audit ready",
-		tags: ["compliance"],
+		impact: "1,200 normalized",
+		tags: ["normalization"],
 	},
 	{
-		id: "rate-alert",
-		label: "Funding Alert",
-		actor: "Market Pulse",
-		action: "Pushed instant funding readiness alerts to 23 equity partners.",
+		id: "api-export",
+		label: "API Export",
+		actor: "API Bridge",
+		action: "Exported 500 leads via webhook to customer's data warehouse.",
 		timeAgo: "26m ago",
-		impact: "Action window 2h",
-		tags: ["alerts", "rates"],
+		impact: "500 exported",
+		tags: ["api", "webhook"],
 	},
 	{
-		id: "campaign-report",
-		label: "Campaign Report",
-		actor: "Insights Engine",
+		id: "scrape-report",
+		label: "Scraping Report",
+		actor: "Analytics Engine",
 		action:
-			"Published weekly deal flow uplift report for the acquisitions desk.",
+			"Published weekly scraping performance report: 5,000+ leads scraped across 8 sources.",
 		timeAgo: "1h ago",
-		impact: "+31% demos",
-		tags: ["reporting", "insights"],
+		impact: "+5,000 leads",
+		tags: ["reporting", "analytics"],
 	},
 ];

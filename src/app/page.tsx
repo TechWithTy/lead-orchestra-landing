@@ -277,7 +277,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	).slice(0, 48);
 	const heroDescription =
 		LIVE_COPY.subtitle ||
-		"Automate investor deal flow, keep motivated sellers warm, and close more profitable real estate deals with Deal Scale's AI Sales Assistants.";
+		"Scrape Anything. Export Everywhere. Open-source lead scraping and data ingestion that plugs into anything. Fresh leads, not rented lists.";
 	const aiOutreachDescription = AI_OUTREACH_STUDIO_SEO.description;
 	const combinedDescriptionSegments = [
 		outreachTagline,
@@ -292,7 +292,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const enrichedSeo = mapSeoMetaToMetadata({
 		...seo,
 		title:
-			"Deal Scale AI Outreach Studio | Turn Conversations into Conversions Automatically",
+			"Lead Orchestra | Open-Source Lead Scraping & Data Ingestion That Plugs Into Anything",
 		description: combinedDescription,
 		keywords: combinedKeywords,
 	});
@@ -338,10 +338,10 @@ const Index = async ({
 	const canonicalUrl = homepageSeo.canonical ?? "https://dealscale.io";
 	const heroDescription =
 		LIVE_COPY.subtitle ||
-		"Automate investor deal flow, keep motivated sellers warm, and close more profitable real estate deals with Deal Scale's AI Sales Assistants.";
+		"Scrape Anything. Export Everywhere. Open-source lead scraping and data ingestion that plugs into anything. Fresh leads, not rented lists.";
 	const personaAudienceLabel =
 		PERSONA_LABEL.replace(/^For\s+/i, "").trim() || PERSONA_LABEL;
-	const personaPromise = `We orchestrate every deal touchpoint so ${personaAudienceLabel} stay in deal mode.`;
+	const personaPromise = `Scrape Anything. Export Everywhere.`;
 	const heroServiceDescription = [personaPromise, heroDescription]
 		.filter((segment) => segment && segment.length > 0)
 		.join(" ");
@@ -352,27 +352,29 @@ const Index = async ({
 	]
 		.filter((segment) => segment && segment.length > 0)
 		.join(" ");
-	const activityNarrative = `Live automation notifications that help ${personaAudienceLabel} stay in deal mode with AI-personalized follow-ups.`;
-	const aiOutreachFeatureDescription = `${AI_OUTREACH_STUDIO_TAGLINE} Persona-aware workflows keep ${personaAudienceLabel} in deal mode.`;
+	const activityNarrative = `Open-source scraping engine that helps ${personaAudienceLabel} access fresh leads with zero credit limits.`;
+	const aiOutreachFeatureDescription = `${AI_OUTREACH_STUDIO_TAGLINE} Scrape any source, normalize data, and export seamlessly.`;
 	const {
 		reviews: testimonialReviews,
 		aggregateRating: testimonialAggregateRating,
 	} = getTestimonialReviewData();
 	const blogSchema = buildBlogSchema({
 		canonicalUrl: `${canonicalUrl}/blogs`,
-		name: homepageSeo.title ? `${homepageSeo.title} Blog` : "DealScale Blog",
+		name: homepageSeo.title
+			? `${homepageSeo.title} Blog`
+			: "Lead Orchestra Blog",
 		description:
 			homepageSeo.description ??
-			"DealScale's latest deep dives on AI sales assistants, automation, and real estate growth.",
+			"Lead Orchestra's latest insights on open-source scraping, MCP protocol, data ingestion, and developer tools.",
 		posts,
 	});
 	const heroServiceSchema = buildServiceSchema({
 		name: PERSONA_LABEL,
 		description: heroServiceDescription,
-		url: `${canonicalUrl}#investor-hero-top`,
+		url: `${canonicalUrl}#lead-orchestra-hero`,
 		serviceType: PERSONA_GOAL,
-		category: "Real Estate Investor Automation",
-		areaServed: ["United States"],
+		category: "Open-Source Lead Scraping & Data Ingestion",
+		areaServed: ["United States", "Global"],
 		offers: {
 			price: "0",
 			priceCurrency: "USD",
@@ -382,12 +384,12 @@ const Index = async ({
 		reviews: testimonialReviews,
 	});
 	const aiOutreachServiceSchema = buildServiceSchema({
-		name: `${AI_OUTREACH_STUDIO_SEO.name} by Deal Scale`,
+		name: `${AI_OUTREACH_STUDIO_SEO.name} by Lead Orchestra`,
 		description: aiOutreachNarrative,
 		url: `${canonicalUrl}#${AI_OUTREACH_STUDIO_ANCHOR}`,
-		serviceType: "AI Outreach Automation",
-		category: "Sales Enablement",
-		areaServed: ["United States"],
+		serviceType: "Open-Source Data Ingestion",
+		category: "Developer Tools & Data Infrastructure",
+		areaServed: ["United States", "Global"],
 		offers: {
 			price: "0",
 			priceCurrency: "USD",
@@ -433,7 +435,7 @@ const Index = async ({
 			<SectionWrapper
 				id="feature-activity"
 				lazy={false}
-				fallbackLabel="Live Automations"
+				fallbackLabel="Lead Orchestra Features"
 			>
 				<>
 					<FeatureSectionActivity />
@@ -479,9 +481,9 @@ const Index = async ({
 			>
 				<Testimonials
 					testimonials={generalDealScaleTestimonials}
-					title={"What Our Clients Say"}
+					title={"What Developers & Agencies Say"}
 					subtitle={
-						"Hear from our clients about their experiences with our services"
+						"Hear from developers, agencies, and data teams about their experiences with Lead Orchestra"
 					}
 				/>
 			</SectionWrapper>
@@ -492,8 +494,8 @@ const Index = async ({
 				fallback={<PricingFallback />}
 			>
 				<MarketingCatalogPricing
-					title="Success-Based Pricing"
-					subtitle="Pay for outcomes, not promises—pilot pricing stays locked for 2 years."
+					title="Free Open-Source + Enterprise Options"
+					subtitle="100% free and open-source with no credit card required. Self-hosted enterprise licensing available for teams needing compliance and control."
 					catalog={pricingCatalog}
 					showFreePreview={false}
 					showUpgradeStack={false}
@@ -525,7 +527,7 @@ const Index = async ({
 			<SectionWrapper id="faq" rootMargin="1200px" fallback={<FaqFallback />}>
 				<Faq
 					title="Frequently Asked Questions"
-					subtitle="Find answers to common questions about our services, process, and technology expertise."
+					subtitle="Find answers to common questions about Lead Orchestra, open-source scraping, MCP protocol, and data ingestion."
 					faqItems={faqItems}
 				/>
 			</SectionWrapper>

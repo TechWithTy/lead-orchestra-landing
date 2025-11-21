@@ -25,7 +25,7 @@ export interface ProductCategoryOption {
 // const CATEGORY_LABELS: Record<ProductCategory, string> = {
 //   credits: "Credits",
 //   workflows: "Workflows",
-//   essentials: "Essentials",
+//   "free-resources": "Lead Magnets",
 //   notion: "Notion",
 //   leads: "Leads",
 //   data: "Data",

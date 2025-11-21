@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ProductCategory } from "@/types/products";
+import Link from "next/link";
 import type { ProductHeaderProps } from "./types";
 
 const ProductHeader = ({
@@ -10,10 +10,10 @@ const ProductHeader = ({
 	categories,
 }: ProductHeaderProps) => {
 	const productPath = slug ?? id;
-	// Redirect Remote Closers products to application page
+	// Redirect Virtual Assistants products to application page
 	const isRemoteCloser =
 		categories?.includes(ProductCategory.RemoteClosers) ?? false;
-	const href = isRemoteCloser ? "/closers/apply" : `/products/${productPath}`;
+	const href = isRemoteCloser ? "/vas/apply" : `/products/${productPath}`;
 
 	return (
 		<div className="relative text-center">

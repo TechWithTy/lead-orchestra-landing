@@ -76,13 +76,13 @@ const ProductCardNew = (props: CardProps) => {
 	const addToCart = useCartStore((state) => state.addItem);
 	useWaitCursor(isCheckoutLoading);
 
-	// Check if this is the Remote Closers marketplace product (not individual closers)
-	// Only show BecomeACloserCard for the marketplace product itself, not individual closer products
+	// Check if this is the Virtual Assistants marketplace product
+	// Only show BecomeACloserCard for the marketplace product itself
 	const isRemoteCloserMarketplace =
 		(categories?.includes(ProductCategory.RemoteClosers) ?? false) &&
-		(id === "remote-closers-marketplace" ||
-			slug === "remote-closers" ||
-			sku === "DS-REMOTE-CLOSERS");
+		(id === "virtual-assistants-marketplace" ||
+			slug === "virtual-assistants" ||
+			sku === "LO-VA-MARKETPLACE");
 
 	// Check if this is a monetization marketplace entry point (Sales Scripts, Workflows, Voices marketplaces)
 	const isMonetizeMarketplace =
@@ -111,25 +111,25 @@ const ProductCardNew = (props: CardProps) => {
 		window.open(url.toString(), "_blank", "noopener");
 	}, [id]);
 
-	// Check if this is an individual closer product (has RemoteClosers category but is not the marketplace product)
+	// Check if this is an individual VA product (has RemoteClosers category but is not the marketplace product)
 	const isIndividualCloser =
 		(categories?.includes(ProductCategory.RemoteClosers) ?? false) &&
 		!isRemoteCloserMarketplace &&
-		(id?.startsWith("closer-") || sku?.startsWith("DS-CLOSER-"));
+		(id?.startsWith("va-") || sku?.startsWith("LO-VA-"));
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	const handleAddToCart = useCallback(() => {
-		// Open closers marketplace modal for Remote Closers marketplace product only
+		// Open VA marketplace modal for Virtual Assistants marketplace product only
 		if (isRemoteCloserMarketplace) {
 			setIsClosersModalOpen(true);
 			return;
 		}
 
-		// For individual closers, open messaging/booking flow
+		// For individual VAs, open messaging/booking flow
 		if (isIndividualCloser) {
-			// TODO: Open closer messaging/booking modal or redirect to booking page
+			// TODO: Open VA messaging/booking modal or redirect to booking page
 			toast.success(`Messaging ${name}...`);
-			console.log("Message closer:", id || sku);
+			console.log("Message VA:", id || sku);
 			return;
 		}
 
@@ -173,19 +173,19 @@ const ProductCardNew = (props: CardProps) => {
 	]);
 
 	const handleInitiateCheckout = async () => {
-		// Open closers marketplace modal for Remote Closers marketplace product only
+		// Open VA marketplace modal for Virtual Assistants marketplace product only
 		if (isRemoteCloserMarketplace) {
 			setIsClosersModalOpen(true);
 			return;
 		}
 
-		// For individual closers, open hiring/booking flow
+		// For individual VAs, open hiring/booking flow
 		if (isIndividualCloser) {
-			// TODO: Open closer hiring/booking modal or redirect to booking page
+			// TODO: Open VA hiring/booking modal or redirect to booking page
 			toast.success(`Hiring ${name}...`);
-			console.log("Hire closer:", id || sku);
+			console.log("Hire VA:", id || sku);
 			// Could open a booking modal or redirect to booking page
-			// router.push(`/closers/${slug || id}/book`);
+			// router.push(`/vas/${slug || id}/book`);
 			return;
 		}
 
@@ -308,7 +308,7 @@ const ProductCardNew = (props: CardProps) => {
 			<div className="mt-6 flex w-full flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
 				{isIndividualCloser ? (
 					<>
-						{/* Message Button for Closers */}
+						{/* Message Button for VAs */}
 						<button
 							type="button"
 							className="flex items-center justify-center gap-2 rounded-lg border border-slate-200/80 bg-white px-4 py-2.5 font-medium text-slate-700 text-sm transition-colors hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:focus:ring-offset-slate-950 dark:hover:bg-slate-900"
@@ -333,7 +333,7 @@ const ProductCardNew = (props: CardProps) => {
 							</svg>
 							<span>Message</span>
 						</button>
-						{/* Hire Button for Closers */}
+						{/* Hire Button for VAs */}
 						<button
 							type="button"
 							className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 font-medium text-sm text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-500 dark:focus:ring-offset-slate-950 dark:hover:bg-blue-600"

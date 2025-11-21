@@ -7,8 +7,8 @@
 	},
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "pnpm run check:env && next dev",
-		"dev-turbo": "pnpm run check:env && next dev --turbopack",
+		"dev": "pnpm run check:env && next dev -p 3555",
+		"dev-turbo": "pnpm run check:env && next dev --turbopack -p 3555",
 		"build": "pnpm run check:chunk && pnpm run check:meta && next build",
 		"typecheck": "tsc --noEmit",
 		"postbuild": "pnpm run submit:sitemap",

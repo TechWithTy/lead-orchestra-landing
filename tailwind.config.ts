@@ -78,7 +78,28 @@ export default {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
 				},
-				// Deal Scale Brand Colors
+				// Lead Orchestra Brand Colors (from Notion Brand Guidelines)
+				lo: {
+					primary: "hsl(var(--lo-primary))", // Brand Blue #0A1F44
+					teal: "hsl(var(--lo-teal))", // Electric Teal #1EF2C9
+					purple: "hsl(var(--lo-purple))", // Orchestra Purple #7D4BFF
+					orange: "hsl(var(--lo-orange))", // Automation Orange #FF8B3D
+					green: "hsl(var(--lo-green))", // Signal Green #2DFF9F
+					sapphire: "hsl(var(--lo-sapphire))", // Sapphire Gradient Top #2643E9
+					violet: "hsl(var(--lo-violet))", // Violet Gradient Bottom #6C1EF2
+					black: "hsl(var(--lo-black))",
+					white: "hsl(var(--lo-white))",
+					bg: "hsl(var(--lo-bg))",
+					surface: "hsl(var(--lo-surface))",
+					border: "hsl(var(--lo-border))",
+					text: "hsl(var(--lo-text))",
+					"text-secondary": "hsl(var(--lo-text-secondary))",
+					success: "hsl(var(--lo-success))",
+					error: "hsl(var(--lo-error))",
+					info: "hsl(var(--lo-info))",
+					warning: "hsl(var(--lo-warning))",
+				},
+				// Deal Scale Brand Colors (backward compatibility)
 				brand: {
 					primary: "hsl(var(--brand-primary))",
 					primaryHover: "hsl(var(--brand-primary-hover))",
