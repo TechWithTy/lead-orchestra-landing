@@ -1,18 +1,18 @@
-import { Head, Header, Layout, LayoutSpacing } from 'components'
-import { PlaygroundSection } from './Playground'
-import { OverviewSection } from './Overview'
-import { meta } from 'shared/constants'
+import { Head, Header, Layout, LayoutSpacing } from 'components';
+import { meta } from 'shared/constants';
+import { OverviewSection } from './Overview';
+import { PlaygroundSection } from './Playground';
 
 export function HomeTemplate() {
-  return (
-    <Layout>
-      <Head meta={meta} />
-      <Header />
+	return (
+		<Layout>
+			<Head meta={meta} />
+			<Header />
 
-      <OverviewSection />
-      <LayoutSpacing size="small" />
-      <PlaygroundSection />
-      <LayoutSpacing size="small" />
-    </Layout>
-  )
+			<OverviewSection />
+			<LayoutSpacing size="small" />
+			<PlaygroundSection />
+			<LayoutSpacing size="small" />
+		</Layout>
+	);
 }

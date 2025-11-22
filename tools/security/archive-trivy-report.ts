@@ -1,13 +1,13 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
+import { execFile } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 
-const REPORT_ROOT = path.resolve("reports", "security");
-const SOURCE_DIR = path.join(REPORT_ROOT, "trivy");
-const HISTORY_DIR = path.join(REPORT_ROOT, "history");
+const REPORT_ROOT = path.resolve('reports', 'security');
+const SOURCE_DIR = path.join(REPORT_ROOT, 'trivy');
+const HISTORY_DIR = path.join(REPORT_ROOT, 'history');
 
 type ReportCandidate = { path: string; suffix: string };
 
@@ -25,12 +25,12 @@ async function fileExists(filePath: string) {
 }
 
 async function archiveTrivyReports() {
-	const jsonReport = path.join(SOURCE_DIR, "latest-report.json");
-	const summaryReport = path.join(SOURCE_DIR, "latest-report.txt");
+	const jsonReport = path.join(SOURCE_DIR, 'latest-report.json');
+	const summaryReport = path.join(SOURCE_DIR, 'latest-report.txt');
 
 	const candidates: ReportCandidate[] = [
-		{ path: jsonReport, suffix: ".json" },
-		{ path: summaryReport, suffix: ".txt" },
+		{ path: jsonReport, suffix: '.json' },
+		{ path: summaryReport, suffix: '.txt' },
 	];
 
 	const existing: ReportCandidate[] = [];
@@ -42,16 +42,16 @@ async function archiveTrivyReports() {
 
 	if (existing.length === 0) {
 		console.warn(
-			"[archive:trivy] No Trivy reports detected. Ensure the scan runs before archiving.",
+			'[archive:trivy] No Trivy reports detected. Ensure the scan runs before archiving.'
 		);
 		return;
 	}
 
 	const now = new Date();
 	const isoString = now.toISOString();
-	const [dateSegmentRaw, rawTimePart = "00:00:00.000Z"] = isoString.split("T");
+	const [dateSegmentRaw, rawTimePart = '00:00:00.000Z'] = isoString.split('T');
 	const dateSegment = dateSegmentRaw ?? isoString.slice(0, 10);
-	const timeSegment = rawTimePart.replace("Z", "").replace(/[:.]/g, "-");
+	const timeSegment = rawTimePart.replace('Z', '').replace(/[:.]/g, '-');
 	const destinationDir = path.join(HISTORY_DIR, dateSegment);
 	await ensureDirectory(destinationDir);
 
@@ -62,18 +62,14 @@ async function archiveTrivyReports() {
 		await stageFile(destinationPath);
 	}
 
-	console.info("[archive:trivy] Trivy reports archived and staged.");
+	console.info('[archive:trivy] Trivy reports archived and staged.');
 }
 
 async function stageFile(filePath: string) {
-	await execFileAsync("git", ["add", filePath]);
+	await execFileAsync('git', ['add', filePath]);
 }
 
 archiveTrivyReports().catch((error) => {
-	console.error("[archive:trivy] Failed to archive Trivy reports.", error);
+	console.error('[archive:trivy] Failed to archive Trivy reports.', error);
 	process.exitCode = 1;
 });
-
-
-
-

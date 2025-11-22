@@ -1,53 +1,41 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { useState, type RefObject } from "react";
+import { type RefObject, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-import { intersection, codes } from "shared/constants";
-import { useElementIntersection } from "hooks";
+import { useElementIntersection } from 'hooks';
+import { codes, intersection } from 'shared/constants';
 
-import {
-	Title,
-	Header,
-	Section,
-	Description,
-	FeatureCard,
-	CodeContainer,
-} from "./styles";
+import { CodeContainer, Description, FeatureCard, Header, Section, Title } from './styles';
 
-import { codeTheme } from "styles";
+import { codeTheme } from 'styles';
 
-type CodeStateVariants = "0" | "1" | "2" | "3" | "4";
+type CodeStateVariants = '0' | '1' | '2' | '3' | '4';
 type CodeExampleKeys = keyof typeof codes.overview;
 type LIEvent = React.SyntheticEvent<HTMLLIElement>;
 
 export function OverviewSection() {
-	const { ref, onIntersect } = useElementIntersection<HTMLDivElement>(
-		intersection.options,
-	);
+	const { ref, onIntersect } = useElementIntersection<HTMLDivElement>(intersection.options);
 
-	const [codeExampleVariant, setCodeExampleVariant] =
-		useState<CodeStateVariants>("0");
+	const [codeExampleVariant, setCodeExampleVariant] = useState<CodeStateVariants>('0');
 
-	const [codeExample, setCodeExample] = useState<CodeExampleKeys>("default");
+	const [codeExample, setCodeExample] = useState<CodeExampleKeys>('default');
 
-	onIntersect("overview", ({ element }) => {
+	onIntersect('overview', ({ element }) => {
 		if (element?.id) {
-			history.replaceState(null, "", `#${element.id}`);
+			history.replaceState(null, '', `#${element.id}`);
 		}
 	});
 
 	function handleDefaultCodeExample() {
-		setCodeExample("default");
-		setCodeExampleVariant("0");
+		setCodeExample('default');
+		setCodeExampleVariant('0');
 	}
 
 	function handleCodeExample(event: LIEvent) {
-		setCodeExampleVariant(
-			(event.currentTarget.dataset.id as CodeStateVariants) || "0",
-		);
+		setCodeExampleVariant((event.currentTarget.dataset.id as CodeStateVariants) || '0');
 	}
 
 	function handleConfigurableCodeExample(event: LIEvent) {
-		setCodeExample("config");
+		setCodeExample('config');
 		handleCodeExample(event);
 	}
 
@@ -57,15 +45,13 @@ export function OverviewSection() {
 				<Title>Simple to use</Title>
 
 				<Description>
-					The Exit Intent strategy is a great way to increase your conversion
-					rate. That strategy is commonly used to show a modal/popup when the
-					user is about to leave your website.
+					The Exit Intent strategy is a great way to increase your conversion rate. That strategy is
+					commonly used to show a modal/popup when the user is about to leave your website.
 				</Description>
 
 				<Description>
-					<strong>useExitIntent</strong> hook is simple to use and you can
-					customize it to your needs. Just import it and call it in your
-					component as in the example on the right.{" "}
+					<strong>useExitIntent</strong> hook is simple to use and you can customize it to your
+					needs. Just import it and call it in your component as in the example on the right.{' '}
 					<strong>Here are the main features</strong>:
 				</Description>
 

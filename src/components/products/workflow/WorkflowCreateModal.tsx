@@ -1,36 +1,31 @@
-import { betaTesterFormFields } from "@/data/contact/formFields";
+import { betaTesterFormFields } from '@/data/contact/formFields';
 // WorkflowCreateModal.tsx
 // * Modal to create and submit a workflow for monetization
-import { longTermAbsenteeOwnerNurtureDsl } from "@/data/worklow/dsl";
-import React, { useState } from "react";
-import AiCard from "./AiCard";
-import TestingCard from "./TestingCard";
-import VariablesComponent from "./VariablesComponent";
+import { longTermAbsenteeOwnerNurtureDsl } from '@/data/worklow/dsl';
+import React, { useState } from 'react';
+import AiCard from './AiCard';
+import TestingCard from './TestingCard';
+import VariablesComponent from './VariablesComponent';
 
 interface WorkflowCreateModalProps {
 	open: boolean;
 	onClose: () => void;
 }
 
-const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
-	open,
-	onClose,
-}) => {
-	const [name, setName] = useState("");
-	const [description, setDescription] = useState("");
-	const [aiPrompt, setAiPrompt] = useState("");
+const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({ open, onClose }) => {
+	const [name, setName] = useState('');
+	const [description, setDescription] = useState('');
+	const [aiPrompt, setAiPrompt] = useState('');
 	const [submitting, setSubmitting] = useState(false);
 	const [success, setSuccess] = useState(false);
 	// Step: 'form' | 'testing' | 'fail' | 'success'
-	const [step, setStep] = useState<"form" | "testing" | "fail" | "success">(
-		"form",
-	);
+	const [step, setStep] = useState<'form' | 'testing' | 'fail' | 'success'>('form');
 	// * File upload state
 	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 	// * Show/hide AI prompt & example prompt
 	const [showAIPrompt, setShowAIPrompt] = useState(false);
 	// * AI result message
-	const [aiResult, setAiResult] = useState<string>("");
+	const [aiResult, setAiResult] = useState<string>('');
 	// * Show/hide Example prompt
 	const [showExamplePrompt, setShowExamplePrompt] = useState(false);
 
@@ -60,20 +55,20 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setSubmitting(true);
-		setStep("testing");
+		setStep('testing');
 		// Simulate testing (random success/fail after 1.5s)
 		setTimeout(() => {
 			setSubmitting(false);
 			if (Math.random() < 0.5) {
-				setStep("fail");
+				setStep('fail');
 			} else {
-				setStep("success");
+				setStep('success');
 			}
 		}, 1500);
 	};
 
 	const handleRetry = () => {
-		setStep("form");
+		setStep('form');
 		setSuccess(false);
 		setSubmitting(false);
 	};
@@ -81,13 +76,13 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 	// Reset state when modal opens
 	React.useEffect(() => {
 		if (open) {
-			setStep("form");
+			setStep('form');
 			setSuccess(false);
 			setSubmitting(false);
 			setUploadedFile(null);
-			setName("");
-			setDescription("");
-			setAiPrompt("");
+			setName('');
+			setDescription('');
+			setAiPrompt('');
 		}
 	}, [open]);
 
@@ -103,13 +98,11 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 				>
 					×
 				</button>
-				{step === "testing" || step === "fail" || step === "success" ? (
+				{step === 'testing' || step === 'fail' || step === 'success' ? (
 					<TestingCard status={step} onRetry={handleRetry} onClose={onClose} />
 				) : (
 					<form onSubmit={handleSubmit} className="flex flex-col gap-4">
-						<h2 className="mb-2 font-semibold text-xl">
-							Monetize Your Workflow
-						</h2>
+						<h2 className="mb-2 font-semibold text-xl">Monetize Your Workflow</h2>
 						<input
 							className="rounded border px-3 py-2"
 							placeholder="Workflow Name"
@@ -128,19 +121,14 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 						{/* File upload for document files */}
 						<div className="mb-2 flex flex-col gap-1">
 							<label className="mb-1 block font-medium">
-								Attach Document{" "}
-								<span className="text-gray-500 text-xs">(PDF, DOCX, TXT)</span>
+								Attach Document <span className="text-gray-500 text-xs">(PDF, DOCX, TXT)</span>
 							</label>
 							<input
 								type="file"
 								accept=".pdf,.doc,.docx,.txt,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
 								className="file:mr-2 file:cursor-pointer file:rounded-full file:border-2 file:border-primary file:bg-primary/10 file:px-3 file:py-1 file:font-semibold file:text-primary file:text-xs"
 								onChange={(e) =>
-									setUploadedFile(
-										e.target.files && e.target.files[0]
-											? e.target.files[0]
-											: null,
-									)
+									setUploadedFile(e.target.files && e.target.files[0] ? e.target.files[0] : null)
 								}
 							/>
 							{uploadedFile && (
@@ -159,14 +147,14 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 									const next = !v;
 									if (next)
 										setAiResult(
-											"// AI generated workflow logic example...\nfunction run() {\n  // ...\n}",
+											'// AI generated workflow logic example...\nfunction run() {\n  // ...\n}'
 										);
 									return next;
 								});
 							}}
 							aria-expanded={showAIPrompt}
 						>
-							{showAIPrompt ? "Hide AI Prompt" : "Generate with AI"}
+							{showAIPrompt ? 'Hide AI Prompt' : 'Generate with AI'}
 						</button>
 
 						{/* AI Prompt and Example Prompt Section (collapsible) */}
@@ -187,7 +175,7 @@ const WorkflowCreateModal: React.FC<WorkflowCreateModalProps> = ({
 							className="rounded bg-primary px-4 py-2 text-white disabled:opacity-50"
 							disabled={submitting}
 						>
-							{submitting ? "Submitting..." : "Submit for Monetization"}
+							{submitting ? 'Submitting...' : 'Submit for Monetization'}
 						</button>
 					</form>
 				)}

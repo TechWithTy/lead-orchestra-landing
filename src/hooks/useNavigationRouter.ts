@@ -1,44 +1,37 @@
-"use client";
+'use client';
 
-import { useRouter as useNextRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useRouter as useNextRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
-import { useNavigationLoaderStore } from "@/stores/navigation-loader";
+import { useNavigationLoaderStore } from '@/stores/navigation-loader';
 
 export function useNavigationRouter() {
 	const router = useNextRouter();
-	const startNavigation = useNavigationLoaderStore(
-		(state) => state.startNavigation,
-	);
-	const finishNavigation = useNavigationLoaderStore(
-		(state) => state.finishNavigation,
-	);
+	const startNavigation = useNavigationLoaderStore((state) => state.startNavigation);
+	const finishNavigation = useNavigationLoaderStore((state) => state.finishNavigation);
 
 	const handleNavigationResult = useCallback(
 		(result: unknown, navigationId: number) => {
 			if (
-				typeof result === "object" &&
+				typeof result === 'object' &&
 				result !== null &&
-				"catch" in result &&
+				'catch' in result &&
 				typeof (
 					result as {
 						catch: (onRejected: (reason: unknown) => void) => unknown;
 					}
-				).catch === "function"
+				).catch === 'function'
 			) {
 				(result as Promise<unknown>).catch(() => {
 					finishNavigation(navigationId);
 				});
 			}
 		},
-		[finishNavigation],
+		[finishNavigation]
 	);
 
 	const push = useCallback(
-		(
-			href: Parameters<typeof router.push>[0],
-			options?: Parameters<typeof router.push>[1],
-		) => {
+		(href: Parameters<typeof router.push>[0], options?: Parameters<typeof router.push>[1]) => {
 			const navigationId = startNavigation();
 			try {
 				const result = router.push(href, options);
@@ -49,13 +42,13 @@ export function useNavigationRouter() {
 				throw error;
 			}
 		},
-		[finishNavigation, handleNavigationResult, router, startNavigation],
+		[finishNavigation, handleNavigationResult, router, startNavigation]
 	);
 
 	const replace = useCallback(
 		(
 			href: Parameters<typeof router.replace>[0],
-			options?: Parameters<typeof router.replace>[1],
+			options?: Parameters<typeof router.replace>[1]
 		) => {
 			const navigationId = startNavigation();
 			try {
@@ -67,7 +60,7 @@ export function useNavigationRouter() {
 				throw error;
 			}
 		},
-		[finishNavigation, handleNavigationResult, router, startNavigation],
+		[finishNavigation, handleNavigationResult, router, startNavigation]
 	);
 
 	const back = useCallback(() => {

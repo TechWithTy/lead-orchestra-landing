@@ -1,1 +1,1 @@
-export * from './ExitIntent'
+export * from './ExitIntent';

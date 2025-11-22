@@ -1,42 +1,38 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import { getPublicPath } from 'shared/utils'
-import { getCssText } from 'styles'
+import { getPublicPath } from 'shared/utils';
+import { getCssText } from 'styles';
 
 export default class CustomDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          <meta name="theme-color" content="#121214" />
+	render() {
+		return (
+			<Html>
+				<Head>
+					<meta name="theme-color" content="#121214" />
 
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
 
-          <link rel="icon" href={getPublicPath('/favicon.ico')} />
+					<link rel="icon" href={getPublicPath('/favicon.ico')} />
 
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin=""
-          />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
+					<link
+						href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+						rel="stylesheet"
+					/>
 
-          <style
-            id="stitches"
-            // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-            dangerouslySetInnerHTML={{ __html: getCssText() }}
-          />
-        </Head>
+					<style
+						id="stitches"
+						// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+						dangerouslySetInnerHTML={{ __html: getCssText() }}
+					/>
+				</Head>
 
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+				<body>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		);
+	}
 }

@@ -1,4 +1,4 @@
-const DEFAULT_CANONICAL = "https://dealscale.io";
+const DEFAULT_CANONICAL = 'https://dealscale.io';
 
 /**
  * Resolve the canonical base URL for sitemap submissions.
@@ -7,7 +7,7 @@ const DEFAULT_CANONICAL = "https://dealscale.io";
 function resolveCanonicalBase() {
 	const fromEnv = process.env.SITEMAP_CANONICAL_BASE?.trim();
 	if (fromEnv) {
-		return fromEnv.replace(/\/$/, "");
+		return fromEnv.replace(/\/$/, '');
 	}
 	return DEFAULT_CANONICAL;
 }
@@ -18,58 +18,56 @@ function resolveCanonicalBase() {
  * @returns {string[]}
  */
 function resolveSitemapUrls(base) {
-	const raw = process.env.SITEMAP_PATHS?.split(",")
+	const raw = process.env.SITEMAP_PATHS?.split(',')
 		.map((entry) => entry.trim())
 		.filter(Boolean);
-	const paths = raw && raw.length > 0 ? raw : ["sitemap.xml"];
+	const paths = raw && raw.length > 0 ? raw : ['sitemap.xml'];
 	return paths.map((path) => {
 		if (/^https?:\/\//i.test(path)) {
 			return path;
 		}
-		const normalized = path.replace(/^\//, "");
+		const normalized = path.replace(/^\//, '');
 		return `${base}/${normalized}`;
 	});
 }
 
 const SEARCH_ENGINES = [
 	{
-		name: "google",
+		name: 'google',
 		buildPingUrl: (sitemapUrl) =>
 			`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`,
 	},
 	{
-		name: "bing",
+		name: 'bing',
 		buildPingUrl: (sitemapUrl) =>
 			`https://www.bing.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`,
 	},
 ];
 
 function resolveFetch() {
-	if (typeof globalThis.fetch === "function") {
+	if (typeof globalThis.fetch === 'function') {
 		return globalThis.fetch.bind(globalThis);
 	}
 
 	throw new Error(
-		"[sitemap] Global fetch implementation is unavailable. Provide a polyfill before running submissions.",
+		'[sitemap] Global fetch implementation is unavailable. Provide a polyfill before running submissions.'
 	);
 }
 
 async function submitSitemaps() {
-	if (process.env.SITEMAP_SUBMIT_DISABLE === "1") {
-		console.log("[sitemap] Submission disabled via SITEMAP_SUBMIT_DISABLE.");
+	if (process.env.SITEMAP_SUBMIT_DISABLE === '1') {
+		console.log('[sitemap] Submission disabled via SITEMAP_SUBMIT_DISABLE.');
 		return 0;
 	}
 
-	if (process.env.NODE_ENV === "test") {
-		console.log("[sitemap] Skipping submission in test environment.");
+	if (process.env.NODE_ENV === 'test') {
+		console.log('[sitemap] Skipping submission in test environment.');
 		return 0;
 	}
 
 	const canonicalBase = resolveCanonicalBase();
 	const sitemapUrls = resolveSitemapUrls(canonicalBase);
-	console.log(
-		`[sitemap] Submitting ${sitemapUrls.length} sitemap(s) for ${canonicalBase}.`,
-	);
+	console.log(`[sitemap] Submitting ${sitemapUrls.length} sitemap(s) for ${canonicalBase}.`);
 
 	const fetchFn = resolveFetch();
 
@@ -78,53 +76,48 @@ async function submitSitemaps() {
 		for (const engine of SEARCH_ENGINES) {
 			const endpoint = engine.buildPingUrl(sitemapUrl);
 			try {
-				const response = await fetchFn(endpoint, { method: "GET" });
+				const response = await fetchFn(endpoint, { method: 'GET' });
 				if (response.ok) {
 					console.log(
-						`[sitemap] ${engine.name} accepted submission for ${sitemapUrl} (status ${response.status}).`,
+						`[sitemap] ${engine.name} accepted submission for ${sitemapUrl} (status ${response.status}).`
 					);
 				} else {
 					failureCount += 1;
 					console.warn(
-						`[sitemap] ${engine.name} responded with status ${response.status} for ${sitemapUrl}.`,
+						`[sitemap] ${engine.name} responded with status ${response.status} for ${sitemapUrl}.`
 					);
 				}
 			} catch (error) {
 				failureCount += 1;
-				console.warn(
-					`[sitemap] Failed to submit ${sitemapUrl} to ${engine.name}:`,
-					error,
-				);
+				console.warn(`[sitemap] Failed to submit ${sitemapUrl} to ${engine.name}:`, error);
 			}
 		}
 	}
 
 	if (failureCount > 0) {
-		console.warn(
-			`[sitemap] Completed with ${failureCount} submission warning(s).`,
-		);
+		console.warn(`[sitemap] Completed with ${failureCount} submission warning(s).`);
 	} else {
-		console.log("[sitemap] Completed all submissions successfully.");
+		console.log('[sitemap] Completed all submissions successfully.');
 	}
 
 	return failureCount;
 }
 
 async function submitIndexNow(canonicalBase, sitemapUrls) {
-	if (process.env.INDEXNOW_SUBMIT_DISABLE === "1") {
-		console.log("[indexnow] Submission disabled via INDEXNOW_SUBMIT_DISABLE.");
+	if (process.env.INDEXNOW_SUBMIT_DISABLE === '1') {
+		console.log('[indexnow] Submission disabled via INDEXNOW_SUBMIT_DISABLE.');
 		return;
 	}
 
-	if (process.env.NODE_ENV === "test") {
-		console.log("[indexnow] Skipping submission in test environment.");
+	if (process.env.NODE_ENV === 'test') {
+		console.log('[indexnow] Skipping submission in test environment.');
 		return;
 	}
 
 	const key =
 		process.env.INDEXNOW_KEY ||
 		process.env.PRIVATE_INDEX_NOW_KEY ||
-		"fccf3556b5fa455699db2554f79a235e";
+		'fccf3556b5fa455699db2554f79a235e';
 	const hostname = new URL(canonicalBase).hostname;
 
 	// RSS feed URLs to submit
@@ -144,31 +137,28 @@ async function submitIndexNow(canonicalBase, sitemapUrls) {
 		urlList: urlList,
 	};
 
-	const endpoint =
-		process.env.INDEXNOW_ENDPOINT || "https://www.bing.com/indexnow";
+	const endpoint = process.env.INDEXNOW_ENDPOINT || 'https://www.bing.com/indexnow';
 
 	try {
 		console.log(
-			`[indexnow] Submitting ${urlList.length} URL(s) for host ${hostname} to ${endpoint}.`,
+			`[indexnow] Submitting ${urlList.length} URL(s) for host ${hostname} to ${endpoint}.`
 		);
 		const response = await fetch(endpoint, {
-			method: "POST",
-			headers: { "Content-Type": "application/json; charset=utf-8" },
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json; charset=utf-8' },
 			body: JSON.stringify(payload),
 		});
 
 		if (response.ok) {
-			console.log(
-				`[indexnow] Submission accepted (status ${response.status}).`,
-			);
+			console.log(`[indexnow] Submission accepted (status ${response.status}).`);
 		} else {
-			const body = await response.text().catch(() => "<unavailable>");
+			const body = await response.text().catch(() => '<unavailable>');
 			console.warn(
-				`[indexnow] Submission failed with status ${response.status} (${response.statusText}). Response: ${body}`,
+				`[indexnow] Submission failed with status ${response.status} (${response.statusText}). Response: ${body}`
 			);
 		}
 	} catch (error) {
-		console.warn("[indexnow] Submission encountered an error:", error);
+		console.warn('[indexnow] Submission encountered an error:', error);
 	}
 }
 
@@ -184,16 +174,12 @@ async function run() {
 		const sitemapUrls = resolveSitemapUrls(canonicalBase);
 		await submitIndexNow(canonicalBase, sitemapUrls);
 	} catch (error) {
-		console.warn("[sitemap] Unexpected error during submission:", error);
+		console.warn('[sitemap] Unexpected error during submission:', error);
 		process.exitCode = 0;
 	}
 }
 
-if (
-	typeof require !== "undefined" &&
-	typeof module !== "undefined" &&
-	require.main === module
-) {
+if (typeof require !== 'undefined' && typeof module !== 'undefined' && require.main === module) {
 	void run();
 }
 

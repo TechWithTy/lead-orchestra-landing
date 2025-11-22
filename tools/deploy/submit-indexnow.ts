@@ -1,19 +1,17 @@
-const DEFAULT_HOST = "https://dealscale.io";
-const DEFAULT_KEY = "fccf3556b5fa455699db2554f79a235e";
-const DEFAULT_ENDPOINT = "https://www.bing.com/indexnow";
+const DEFAULT_HOST = 'https://dealscale.io';
+const DEFAULT_KEY = 'fccf3556b5fa455699db2554f79a235e';
+const DEFAULT_ENDPOINT = 'https://www.bing.com/indexnow';
 
 function resolveHost(): string {
 	const fromEnv = process.env.INDEXNOW_HOST?.trim();
 	if (fromEnv) {
 		try {
-			const url = new URL(
-				fromEnv.startsWith("http") ? fromEnv : `https://${fromEnv}`,
-			);
-			url.pathname = url.pathname.replace(/\/$/, "");
-			return url.toString().replace(/\/$/, "");
+			const url = new URL(fromEnv.startsWith('http') ? fromEnv : `https://${fromEnv}`);
+			url.pathname = url.pathname.replace(/\/$/, '');
+			return url.toString().replace(/\/$/, '');
 		} catch (error) {
 			throw new Error(
-				`[indexnow] INDEXNOW_HOST is invalid (${fromEnv}): ${(error as Error).message}`,
+				`[indexnow] INDEXNOW_HOST is invalid (${fromEnv}): ${(error as Error).message}`
 			);
 		}
 	}
@@ -22,11 +20,7 @@ function resolveHost(): string {
 }
 
 function resolveKey(): string {
-	const candidates = [
-		process.env.PRIVATE_INDEX_NOW_KEY,
-		process.env.INDEXNOW_KEY,
-		DEFAULT_KEY,
-	];
+	const candidates = [process.env.PRIVATE_INDEX_NOW_KEY, process.env.INDEXNOW_KEY, DEFAULT_KEY];
 
 	for (const candidate of candidates) {
 		const value = candidate?.trim();
@@ -35,9 +29,7 @@ function resolveKey(): string {
 		}
 	}
 
-	throw new Error(
-		"[indexnow] Missing API key. Set PRIVATE_INDEX_NOW_KEY or INDEXNOW_KEY.",
-	);
+	throw new Error('[indexnow] Missing API key. Set PRIVATE_INDEX_NOW_KEY or INDEXNOW_KEY.');
 }
 
 function resolveKeyLocation(host: string, key: string): string {
@@ -53,7 +45,7 @@ function resolveKeyLocation(host: string, key: string): string {
 		throw new Error(
 			`[indexnow] Unable to build keyLocation using host (${host}) and key (${key}): ${
 				(error as Error).message
-			}`,
+			}`
 		);
 	}
 }
@@ -63,7 +55,7 @@ function resolveEndpoint(): string {
 }
 
 function resolveUrlList(host: string): string[] {
-	const fromEnv = process.env.INDEXNOW_URLS?.split(",")
+	const fromEnv = process.env.INDEXNOW_URLS?.split(',')
 		.map((entry) => entry.trim())
 		.filter(Boolean);
 
@@ -71,38 +63,38 @@ function resolveUrlList(host: string): string[] {
 		fromEnv && fromEnv.length > 0
 			? fromEnv
 			: [
-					"/",
-					"/portfolio",
-					"/blogs",
-					"/rss.xml",
-					"/rss/hybrid.xml",
-					"/rss/youtube.xml",
-					"/rss/github.xml",
-					"/sitemap.xml",
+					'/',
+					'/portfolio',
+					'/blogs',
+					'/rss.xml',
+					'/rss/hybrid.xml',
+					'/rss/youtube.xml',
+					'/rss/github.xml',
+					'/sitemap.xml',
 				];
 
 	return relativeUrls.map((path) => {
 		try {
-			const url = new URL(path, host.endsWith("/") ? `${host}` : `${host}/`);
+			const url = new URL(path, host.endsWith('/') ? `${host}` : `${host}/`);
 			return url.toString();
 		} catch (error) {
 			throw new Error(
 				`[indexnow] Failed to build URL for path "${path}" with host "${host}": ${
 					(error as Error).message
-				}`,
+				}`
 			);
 		}
 	});
 }
 
 function shouldSkip(): boolean {
-	if (process.env.INDEXNOW_SUBMIT_DISABLE === "1") {
-		console.log("[indexnow] Submission disabled via INDEXNOW_SUBMIT_DISABLE.");
+	if (process.env.INDEXNOW_SUBMIT_DISABLE === '1') {
+		console.log('[indexnow] Submission disabled via INDEXNOW_SUBMIT_DISABLE.');
 		return true;
 	}
 
-	if (process.env.NODE_ENV === "test") {
-		console.log("[indexnow] Skipping submission in test environment.");
+	if (process.env.NODE_ENV === 'test') {
+		console.log('[indexnow] Skipping submission in test environment.');
 		return true;
 	}
 
@@ -119,9 +111,7 @@ export async function submitIndexNow(): Promise<void> {
 	const urlList = resolveUrlList(host);
 	const endpoint = resolveEndpoint();
 
-	console.log(
-		`[indexnow] Submitting ${urlList.length} URL(s) for host ${host} to ${endpoint}.`,
-	);
+	console.log(`[indexnow] Submitting ${urlList.length} URL(s) for host ${host} to ${endpoint}.`);
 
 	const payload = {
 		host: new URL(host).hostname,
@@ -130,8 +120,8 @@ export async function submitIndexNow(): Promise<void> {
 	};
 
 	const response = await fetch(endpoint, {
-		method: "POST",
-		headers: { "Content-Type": "application/json; charset=utf-8" },
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json; charset=utf-8' },
 		body: JSON.stringify(payload),
 	});
 
@@ -140,9 +130,9 @@ export async function submitIndexNow(): Promise<void> {
 		return;
 	}
 
-	const body = await response.text().catch(() => "<unavailable>");
+	const body = await response.text().catch(() => '<unavailable>');
 	throw new Error(
-		`[indexnow] Submission failed with status ${response.status} (${response.statusText}). Response: ${body}`,
+		`[indexnow] Submission failed with status ${response.status} (${response.statusText}). Response: ${body}`
 	);
 }
 
@@ -150,7 +140,7 @@ async function run(): Promise<void> {
 	try {
 		await submitIndexNow();
 	} catch (error) {
-		console.warn("[indexnow] Submission encountered an error:", error);
+		console.warn('[indexnow] Submission encountered an error:', error);
 		process.exitCode = 0;
 	}
 }

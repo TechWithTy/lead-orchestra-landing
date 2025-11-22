@@ -1,6 +1,6 @@
-import { createPaymentIntent } from "@/lib/externalRequests/stripe";
-import { NextResponse } from "next/server";
-import type stripe from "stripe";
+import { createPaymentIntent } from '@/lib/externalRequests/stripe';
+import { NextResponse } from 'next/server';
+import type stripe from 'stripe';
 
 interface PaymentIntentRequest {
 	price: number;
@@ -16,10 +16,9 @@ interface ErrorResponse {
 
 export async function POST(request: Request) {
 	try {
-		const { price, description, metadata } =
-			(await request.json()) as PaymentIntentRequest;
+		const { price, description, metadata } = (await request.json()) as PaymentIntentRequest;
 
-		console.log("Creating payment intent for:", { price, description });
+		console.log('Creating payment intent for:', { price, description });
 		const paymentIntent = await createPaymentIntent({
 			price,
 			description,
@@ -37,13 +36,13 @@ export async function POST(request: Request) {
 			created: paymentIntent.created,
 		});
 	} catch (error) {
-		console.error("Payment intent error:", error);
+		console.error('Payment intent error:', error);
 
 		const errorResponse: ErrorResponse = {
-			error: "Failed to create payment intent",
+			error: 'Failed to create payment intent',
 		};
 
-		if (typeof error === "object" && error !== null) {
+		if (typeof error === 'object' && error !== null) {
 			const stripeError = error as stripe.StripeRawError;
 			if (stripeError.code) {
 				errorResponse.details = stripeError.message;

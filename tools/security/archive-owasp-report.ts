@@ -1,13 +1,13 @@
-import path from "node:path";
-import fs from "node:fs/promises";
-import { promisify } from "node:util";
-import { execFile } from "node:child_process";
+import { execFile } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 
-const REPORT_ROOT = path.resolve("reports", "security");
-const SOURCE_DIR = path.join(REPORT_ROOT, "owasp");
-const HISTORY_DIR = path.join(REPORT_ROOT, "history");
+const REPORT_ROOT = path.resolve('reports', 'security');
+const SOURCE_DIR = path.join(REPORT_ROOT, 'owasp');
+const HISTORY_DIR = path.join(REPORT_ROOT, 'history');
 
 async function ensureDirectory(dirPath: string) {
 	await fs.mkdir(dirPath, { recursive: true });
@@ -23,13 +23,13 @@ async function fileExists(filePath: string) {
 }
 
 async function archiveOwaspReports() {
-	const htmlReport = path.join(SOURCE_DIR, "latest-report.html");
-	const logReport = path.join(SOURCE_DIR, "latest-report.log");
+	const htmlReport = path.join(SOURCE_DIR, 'latest-report.html');
+	const logReport = path.join(SOURCE_DIR, 'latest-report.log');
 
 	type ReportCandidate = { path: string; suffix: string };
 	const candidates: ReportCandidate[] = [
-		{ path: htmlReport, suffix: ".html" },
-		{ path: logReport, suffix: ".log" },
+		{ path: htmlReport, suffix: '.html' },
+		{ path: logReport, suffix: '.log' },
 	];
 
 	const existing: ReportCandidate[] = [];
@@ -41,16 +41,16 @@ async function archiveOwaspReports() {
 
 	if (existing.length === 0) {
 		console.warn(
-			"[archive:owasp] No OWASP reports detected. Ensure the scan runs before archiving.",
+			'[archive:owasp] No OWASP reports detected. Ensure the scan runs before archiving.'
 		);
 		return;
 	}
 
 	const now = new Date();
 	const isoString = now.toISOString();
-	const [dateSegmentRaw, rawTimePart = "00:00:00.000Z"] = isoString.split("T");
+	const [dateSegmentRaw, rawTimePart = '00:00:00.000Z'] = isoString.split('T');
 	const dateSegment = dateSegmentRaw ?? isoString.slice(0, 10);
-	const timeSegment = rawTimePart.replace("Z", "").replace(/[:.]/g, "-");
+	const timeSegment = rawTimePart.replace('Z', '').replace(/[:.]/g, '-');
 	const destinationDir = path.join(HISTORY_DIR, dateSegment);
 	await ensureDirectory(destinationDir);
 
@@ -61,14 +61,14 @@ async function archiveOwaspReports() {
 		await stageFile(destinationPath);
 	}
 
-	console.info("[archive:owasp] OWASP reports archived and staged.");
+	console.info('[archive:owasp] OWASP reports archived and staged.');
 }
 
 async function stageFile(filePath: string) {
-	await execFileAsync("git", ["add", filePath]);
+	await execFileAsync('git', ['add', filePath]);
 }
 
 archiveOwaspReports().catch((error) => {
-	console.error("[archive:owasp] Failed to archive OWASP reports.", error);
+	console.error('[archive:owasp] Failed to archive OWASP reports.', error);
 	process.exitCode = 1;
 });

@@ -1,7 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-const DEALSCALE_API_BASE =
-	process.env.DEALSCALE_API_BASE || "https://api.dealscale.io";
+const DEALSCALE_API_BASE = process.env.DEALSCALE_API_BASE || 'https://api.dealscale.io';
 
 /**
  * Get application metrics for monitoring.
@@ -12,22 +11,18 @@ export async function GET() {
 	try {
 		// Call DealScale backend API for metrics
 		const metricsResponse = await fetch(`${DEALSCALE_API_BASE}/metrics`, {
-			method: "GET",
+			method: 'GET',
 			headers: {
-				"Content-Type": "text/plain",
+				'Content-Type': 'text/plain',
 			},
 		});
 
 		if (!metricsResponse.ok) {
-			console.error(
-				"Failed to get metrics:",
-				metricsResponse.status,
-				await metricsResponse.text(),
-			);
-			return new NextResponse("# Failed to fetch backend metrics\n", {
+			console.error('Failed to get metrics:', metricsResponse.status, await metricsResponse.text());
+			return new NextResponse('# Failed to fetch backend metrics\n', {
 				status: 503,
 				headers: {
-					"Content-Type": "text/plain; charset=utf-8",
+					'Content-Type': 'text/plain; charset=utf-8',
 				},
 			});
 		}
@@ -54,16 +49,16 @@ frontend_memory_usage_bytes ${process.memoryUsage().heapUsed}
 
 		return new NextResponse(combinedMetrics, {
 			headers: {
-				"Content-Type": "text/plain; charset=utf-8",
-				"Cache-Control": "no-cache, no-store, must-revalidate",
+				'Content-Type': 'text/plain; charset=utf-8',
+				'Cache-Control': 'no-cache, no-store, must-revalidate',
 			},
 		});
 	} catch (error) {
-		console.error("Metrics error:", error);
-		return new NextResponse("# Metrics collection failed\n", {
+		console.error('Metrics error:', error);
+		return new NextResponse('# Metrics collection failed\n', {
 			status: 500,
 			headers: {
-				"Content-Type": "text/plain; charset=utf-8",
+				'Content-Type': 'text/plain; charset=utf-8',
 			},
 		});
 	}

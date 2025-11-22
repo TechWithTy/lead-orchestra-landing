@@ -1,3 +1,3 @@
 export function unslugify(slug: string) {
-  return slug.replace(/\-/g, ' ')
+	return slug.replace(/\-/g, ' ');
 }

@@ -139,3 +139,6 @@ npx tsx scripts/sync-seo-from-notion.ts
 4. Set up automated sync on build/deploy
 
 
+
+
+

@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import type { OrderSummaryProps } from "@/types/checkout";
-import { Loader2 } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import type { OrderSummaryProps } from '@/types/checkout';
+import { Loader2 } from 'lucide-react';
 
 export function OrderSummary({
 	product,
@@ -16,8 +16,7 @@ export function OrderSummary({
 	onPay,
 }: OrderSummaryProps) {
 	const { type, color, size, quantity } = selection;
-	const itemPrice =
-		product.types?.find((t) => t?.value === type)?.price ?? product.price ?? 0;
+	const itemPrice = product.types?.find((t) => t?.value === type)?.price ?? product.price ?? 0;
 
 	return (
 		<div className="mt-8 space-y-6 md:mt-0">
@@ -59,11 +58,9 @@ export function OrderSummary({
 					<span>
 						{shipping
 							? `$${
-									typeof shipping === "number"
-										? shipping.toFixed(2)
-										: shipping.amount.toFixed(2)
+									typeof shipping === 'number' ? shipping.toFixed(2) : shipping.amount.toFixed(2)
 								}`
-							: "Calculated"}
+							: 'Calculated'}
 					</span>
 				</div>
 				<div className="flex justify-between">

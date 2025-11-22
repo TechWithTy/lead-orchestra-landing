@@ -1,1 +1,1 @@
-export const getPublicPath = (assetUrl: string) => assetUrl
+export const getPublicPath = (assetUrl: string) => assetUrl;

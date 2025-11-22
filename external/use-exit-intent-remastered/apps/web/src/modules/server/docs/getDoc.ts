@@ -1,15 +1,15 @@
-import { serialize } from "next-mdx-remote/serialize";
-import { readFile } from "node:fs/promises";
-import matter from "gray-matter";
+import { readFile } from 'node:fs/promises';
+import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
 
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSlug from "rehype-slug";
-import remarkGFM from "remark-gfm";
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import remarkGFM from 'remark-gfm';
 
-import { getParsedDocPaths } from "./getParsedDocPaths";
+import { getParsedDocPaths } from './getParsedDocPaths';
 
-import type { Doc } from "shared/types";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import type { Doc } from 'shared/types';
 
 const fallbackDoc = {} as Doc;
 
@@ -21,16 +21,13 @@ export async function getDoc(path: string): Promise<Doc> {
 
 	if (!docPath) return fallbackDoc;
 
-	const { data, content } = matter(await readFile(docPath.fullPath, "utf8"));
+	const { data, content } = matter(await readFile(docPath.fullPath, 'utf8'));
 
 	const MDXSource = await serialize(content, {
 		mdxOptions: {
 			remarkPlugins: [remarkGFM],
 
-			rehypePlugins: [
-				rehypeSlug,
-				[rehypeAutolinkHeadings, { behavior: "wrap" }],
-			],
+			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]],
 		},
 	});
 
@@ -39,6 +36,6 @@ export async function getDoc(path: string): Promise<Doc> {
 		url: docPath.url,
 		slug: docPath.slug,
 		source: MDXSource as MDXRemoteSerializeResult,
-		title: data.title || docPath.slug.replace(/-/g, " "),
+		title: data.title || docPath.slug.replace(/-/g, ' '),
 	};
 }

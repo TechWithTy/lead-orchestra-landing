@@ -1,7 +1,6 @@
 {
-  "mode": "fast",
-  "runLint": true,
-  "runTypecheck": false,
-  "runTests": false
+	"mode": "fast",
+	"runLint": true,
+	"runTypecheck": false,
+	"runTests": false
 }
-

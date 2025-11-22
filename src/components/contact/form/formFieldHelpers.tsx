@@ -1,46 +1,43 @@
 // formFieldHelpers.tsx
 // * Shared helpers for field prop creation and rendering for all contact forms
 
-import MultiSelectDropdown from "@/components/ui/MultiSelectDropdown";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
+import MultiSelectDropdown from '@/components/ui/MultiSelectDropdown';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import type { FieldConfig, RenderFieldProps } from "@/types/contact/formFields";
-import { Eye, EyeOff, FileIcon } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
-import type { ControllerRenderProps, FieldValues } from "react-hook-form";
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import type { FieldConfig, RenderFieldProps } from '@/types/contact/formFields';
+import { Eye, EyeOff, FileIcon } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
+import type { ControllerRenderProps, FieldValues } from 'react-hook-form';
 
 // Helper to generate props for UI field renderer
-export const createFieldProps = <
-	T extends FieldConfig,
-	V extends FieldValues = FieldValues,
->(
+export const createFieldProps = <T extends FieldConfig, V extends FieldValues = FieldValues>(
 	field: T,
-	formField: ControllerRenderProps<V>,
+	formField: ControllerRenderProps<V>
 ): RenderFieldProps<T> => {
-	if (field.type === "checkbox") {
+	if (field.type === 'checkbox') {
 		return {
 			...field,
 			value: formField.value as boolean,
 			onChange: formField.onChange as (checked: boolean) => void,
 		} as RenderFieldProps<T>;
 	}
-	if (field.type === "multiselect") {
+	if (field.type === 'multiselect') {
 		return {
 			...field,
 			value: (formField.value as string[]) || [],
 			onChange: formField.onChange as (v: string[]) => void,
 		} as RenderFieldProps<T>;
 	}
-	if (field.type === "file") {
+	if (field.type === 'file') {
 		return {
 			...field,
 			value: (formField.value as File[]) || [],
@@ -51,9 +48,7 @@ export const createFieldProps = <
 	return {
 		...field,
 		value:
-			formField.value === undefined || formField.value === null
-				? ""
-				: (formField.value as string),
+			formField.value === undefined || formField.value === null ? '' : (formField.value as string),
 		onChange: formField.onChange as (v: string) => void,
 	} as RenderFieldProps<T>;
 };
@@ -61,12 +56,9 @@ export const createFieldProps = <
 // Helper to render the correct UI component based on field type
 export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 	switch (field.type) {
-		case "select":
+		case 'select':
 			return (
-				<Select
-					value={field.value as string}
-					onValueChange={field.onChange as (v: string) => void}
-				>
+				<Select value={field.value as string} onValueChange={field.onChange as (v: string) => void}>
 					<SelectTrigger>
 						<SelectValue placeholder={field.placeholder} />
 					</SelectTrigger>
@@ -79,7 +71,7 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 					</SelectContent>
 				</Select>
 			);
-		case "multiselect":
+		case 'multiselect':
 			return (
 				<MultiSelectDropdown
 					options={field.options || []}
@@ -89,20 +81,18 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 					className="border-white/10 bg-white/5 focus:border-primary"
 				/>
 			);
-		case "textarea":
+		case 'textarea':
 			return (
 				<Textarea
 					placeholder={field.placeholder}
 					className="border-white/10 bg-white/5 focus:border-primary"
 					value={field.value as string}
-					onChange={(e) =>
-						(field.onChange as (v: string) => void)(e.target.value)
-					}
+					onChange={(e) => (field.onChange as (v: string) => void)(e.target.value)}
 					minLength={field.minLength}
 					maxLength={field.maxLength}
 				/>
 			);
-		case "checkbox": {
+		case 'checkbox': {
 			const inputId = `checkbox-${field.name}`;
 			return (
 				<div className="flex items-center space-x-2">
@@ -117,7 +107,7 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 				</div>
 			);
 		}
-		case "file": {
+		case 'file': {
 			const files = (field.value as File[])?.slice(0, 4) || [];
 			const inputId = `file-upload-${field.name}`;
 			return (
@@ -132,7 +122,7 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 							const newFiles = Array.from(e.target.files || []);
 							const updated = [...files, ...newFiles].slice(0, 4);
 							(field.onChange as (v: File[]) => void)(updated);
-							e.target.value = "";
+							e.target.value = '';
 						}}
 						disabled={files.length >= 4}
 					/>
@@ -148,7 +138,7 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 								key={`${file.name}-${file.lastModified}-${file.size}`}
 								className="relative flex items-center space-x-2 rounded-md bg-white/10 p-2 text-xs"
 							>
-								{file.type.startsWith("image/") ? (
+								{file.type.startsWith('image/') ? (
 									<Image
 										src={URL.createObjectURL(file)}
 										alt={file.name}
@@ -173,7 +163,7 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 			return (
 				<div className="relative">
 					<Input
-						type={isSensitive && !showPassword ? "password" : "text"}
+						type={isSensitive && !showPassword ? 'password' : 'text'}
 						placeholder={field.placeholder}
 						className="border-white/10 bg-white/5 focus:border-primary"
 						value={field.value as string}
@@ -181,8 +171,8 @@ export const renderFormField = (field: RenderFieldProps<FieldConfig>) => {
 							let value = e.target.value;
 
 							// ! If pattern is for digits only (like zip code), filter out non-digits.
-							if (field.pattern === "^\\d{5}$") {
-								value = value.replace(/[^\d]/g, "");
+							if (field.pattern === '^\\d{5}$') {
+								value = value.replace(/[^\d]/g, '');
 							}
 
 							// * Enforce maxLength

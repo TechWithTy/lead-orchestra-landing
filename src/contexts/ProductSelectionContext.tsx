@@ -1,5 +1,5 @@
 // biome-ignore lint/style/useImportType: <explanation>
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 // * Unified product selection type
 export interface ProductSelection {
@@ -16,16 +16,13 @@ interface ProductSelectionContextValue {
 	resetSelection: () => void;
 }
 
-const ProductSelectionContext = createContext<
-	ProductSelectionContextValue | undefined
->(undefined);
+const ProductSelectionContext = createContext<ProductSelectionContextValue | undefined>(undefined);
 
 export const ProductSelectionProvider = ({
 	children,
 	initialSelection = {},
 }: { children: ReactNode; initialSelection?: ProductSelection }) => {
-	const [selection, setSelectionState] =
-		useState<ProductSelection>(initialSelection);
+	const [selection, setSelectionState] = useState<ProductSelection>(initialSelection);
 
 	// * Update only provided fields
 	const setSelection = (update: Partial<ProductSelection>) => {
@@ -35,9 +32,7 @@ export const ProductSelectionProvider = ({
 	const resetSelection = () => setSelectionState(initialSelection);
 
 	return (
-		<ProductSelectionContext.Provider
-			value={{ selection, setSelection, resetSelection }}
-		>
+		<ProductSelectionContext.Provider value={{ selection, setSelection, resetSelection }}>
 			{children}
 		</ProductSelectionContext.Provider>
 	);
@@ -45,9 +40,6 @@ export const ProductSelectionProvider = ({
 
 export const useProductSelection = () => {
 	const ctx = useContext(ProductSelectionContext);
-	if (!ctx)
-		throw new Error(
-			"useProductSelection must be used within a ProductSelectionProvider",
-		);
+	if (!ctx) throw new Error('useProductSelection must be used within a ProductSelectionProvider');
 	return ctx;
 };

@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef } from "react";
-import type { MutableRefObject, RefObject } from "react";
+import { useCallback, useEffect, useRef } from 'react';
+import type { MutableRefObject, RefObject } from 'react';
 
 /**
  * ! Custom hook for auto-scrolling marquee components with pause/resume support for mouse, touch, and keyboard.
@@ -9,16 +9,14 @@ import type { MutableRefObject, RefObject } from "react";
  * @param options - Optional config: { scrollAmount, intervalMs }
  */
 function isMobileDevice() {
-	if (typeof navigator === "undefined") return false;
-	return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-		navigator.userAgent,
-	);
+	if (typeof navigator === 'undefined') return false;
+	return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
 export function useMarqueeAutoScroll(
 	scrollRef: RefObject<HTMLDivElement>,
 	pausedRef: MutableRefObject<boolean>,
-	options?: { scrollAmount?: number; intervalMs?: number },
+	options?: { scrollAmount?: number; intervalMs?: number }
 ) {
 	if (isMobileDevice()) return; // No-op on mobile
 	const timerRef = useRef<number | null>(null);
@@ -30,7 +28,7 @@ export function useMarqueeAutoScroll(
 		(value: boolean) => {
 			if (pausedRef.current !== value) pausedRef.current = value;
 		},
-		[pausedRef],
+		[pausedRef]
 	);
 
 	// Keyboard navigation (left/right arrows)
@@ -38,16 +36,16 @@ export function useMarqueeAutoScroll(
 		const node = scrollRef.current;
 		if (!node) return;
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (e.key === "ArrowRight") {
-				node.scrollBy({ left: scrollAmount * 30, behavior: "smooth" });
+			if (e.key === 'ArrowRight') {
+				node.scrollBy({ left: scrollAmount * 30, behavior: 'smooth' });
 				setPaused(true);
-			} else if (e.key === "ArrowLeft") {
-				node.scrollBy({ left: -scrollAmount * 30, behavior: "smooth" });
+			} else if (e.key === 'ArrowLeft') {
+				node.scrollBy({ left: -scrollAmount * 30, behavior: 'smooth' });
 				setPaused(true);
 			}
 		};
-		node.addEventListener("keydown", handleKeyDown);
-		return () => node.removeEventListener("keydown", handleKeyDown);
+		node.addEventListener('keydown', handleKeyDown);
+		return () => node.removeEventListener('keydown', handleKeyDown);
 	}, [scrollRef, scrollAmount, setPaused]);
 
 	// Focus/blur for keyboard accessibility
@@ -56,11 +54,11 @@ export function useMarqueeAutoScroll(
 		if (!node) return;
 		const handleFocus = () => setPaused(true);
 		const handleBlur = () => setPaused(false);
-		node.addEventListener("focusin", handleFocus);
-		node.addEventListener("focusout", handleBlur);
+		node.addEventListener('focusin', handleFocus);
+		node.addEventListener('focusout', handleBlur);
 		return () => {
-			node.removeEventListener("focusin", handleFocus);
-			node.removeEventListener("focusout", handleBlur);
+			node.removeEventListener('focusin', handleFocus);
+			node.removeEventListener('focusout', handleBlur);
 		};
 	}, [scrollRef, setPaused]);
 
@@ -73,9 +71,9 @@ export function useMarqueeAutoScroll(
 			if (!node || pausedRef.current) return;
 			const { scrollLeft, scrollWidth, clientWidth } = node;
 			if (scrollLeft + clientWidth >= scrollWidth - 2) {
-				node.scrollTo({ left: 0, behavior: "smooth" });
+				node.scrollTo({ left: 0, behavior: 'smooth' });
 			} else {
-				node.scrollBy({ left: scrollAmount, behavior: "smooth" });
+				node.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 			}
 		}, intervalMs);
 		return () => {

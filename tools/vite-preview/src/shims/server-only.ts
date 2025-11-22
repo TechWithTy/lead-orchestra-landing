@@ -7,12 +7,8 @@ let hasWarned = false;
 export function serverOnly(): void {
 	if (!hasWarned) {
 		console.warn(
-			"server-only was imported within the Vite preview runtime. Ensure the module is safe for client-side usage.",
+			'server-only was imported within the Vite preview runtime. Ensure the module is safe for client-side usage.'
 		);
 		hasWarned = true;
 	}
 }
-
-
-
-

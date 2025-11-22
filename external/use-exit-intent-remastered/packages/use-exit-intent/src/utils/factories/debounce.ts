@@ -1,15 +1,15 @@
 export function createDebounce(fn: Function, delay = 200) {
-  let timer: ReturnType<typeof setTimeout>
+	let timer: ReturnType<typeof setTimeout>;
 
-  return {
-    execute(args?: any) {
-      clearTimeout(timer)
+	return {
+		execute(args?: any) {
+			clearTimeout(timer);
 
-      timer = setTimeout(() => fn(args), delay)
-    },
+			timer = setTimeout(() => fn(args), delay);
+		},
 
-    abort() {
-      clearTimeout(timer)
-    },
-  }
+		abort() {
+			clearTimeout(timer);
+		},
+	};
 }

@@ -1,70 +1,70 @@
-import { BoxStyles } from '../Box'
-import { styled } from 'styles'
+import { styled } from 'styles';
+import { BoxStyles } from '../Box';
 
 export const Button = styled('button', {
-  ...BoxStyles,
+	...BoxStyles,
 
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '0.5rem',
-  padding: '0.6em 1.2em',
-  borderRadius: 4,
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'center',
+	alignItems: 'center',
+	gap: '0.5rem',
+	padding: '0.6em 1.2em',
+	borderRadius: 4,
 
-  transition: 'all 0.2s ease',
+	transition: 'all 0.2s ease',
 
-  variants: {
-    variant: {
-      primary: {
-        '&:hover': {
-          background: '$accent-primary',
-          color: '$text-base',
-        },
+	variants: {
+		variant: {
+			primary: {
+				'&:hover': {
+					background: '$accent-primary',
+					color: '$text-base',
+				},
 
-        '&:active': {
-          filter: 'brightness(0.5)',
-        },
-      },
+				'&:active': {
+					filter: 'brightness(0.5)',
+				},
+			},
 
-      secondary: {
-        '&:hover': {
-          backgroundColor: '$accent-secondary',
-          color: '$text-base',
-        },
-      },
+			secondary: {
+				'&:hover': {
+					backgroundColor: '$accent-secondary',
+					color: '$text-base',
+				},
+			},
 
-      primaryFilled: {
-        color: '$shape-primary',
-        background: '$accent-primary',
+			primaryFilled: {
+				color: '$shape-primary',
+				background: '$accent-primary',
 
-        'svg path': {
-          fill: '$shape-primary',
-        },
+				'svg path': {
+					fill: '$shape-primary',
+				},
 
-        '&:hover': {
-          color: '$accent-primary',
-          backgroundColor: '$shape-primary',
-        },
-      },
+				'&:hover': {
+					color: '$accent-primary',
+					backgroundColor: '$shape-primary',
+				},
+			},
 
-      secondaryFilled: {
-        color: '$shape-primary',
-        background: '$accent-secondary',
+			secondaryFilled: {
+				color: '$shape-primary',
+				background: '$accent-secondary',
 
-        'svg path': {
-          fill: '$shape-primary',
-        },
+				'svg path': {
+					fill: '$shape-primary',
+				},
 
-        '&:hover': {
-          color: '$accent-primary',
-          backgroundColor: '$shape-primary',
-        },
-      },
-    },
-  },
+				'&:hover': {
+					color: '$accent-primary',
+					backgroundColor: '$shape-primary',
+				},
+			},
+		},
+	},
 
-  defaultVariants: {
-    variant: 'primary',
-  },
-})
+	defaultVariants: {
+		variant: 'primary',
+	},
+});

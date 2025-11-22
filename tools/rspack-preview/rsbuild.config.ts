@@ -1,34 +1,31 @@
-import path from "node:path";
-import { defineConfig } from "@rsbuild/core";
-import { pluginReact } from "@rsbuild/plugin-react";
+import path from 'node:path';
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
 
-const projectRoot = path.resolve(__dirname, "../../");
-const srcDir = path.resolve(projectRoot, "src");
-const dynamicHeroSrc = path.resolve(
-	projectRoot,
-	"src/components/dynamic-hero/src",
-);
-const shimDir = path.resolve(__dirname, "../vite-preview/src/shims");
+const projectRoot = path.resolve(__dirname, '../../');
+const srcDir = path.resolve(projectRoot, 'src');
+const dynamicHeroSrc = path.resolve(projectRoot, 'src/components/dynamic-hero/src');
+const shimDir = path.resolve(__dirname, '../vite-preview/src/shims');
 
 export default defineConfig({
 	root: __dirname,
 	plugins: [pluginReact()],
 	source: {
 		entry: {
-			main: "./src/main.tsx",
+			main: './src/main.tsx',
 		},
 		alias: {
-			"@": srcDir,
-			"@external/dynamic-hero": dynamicHeroSrc,
-			"@external/dynamic-hero/*": `${dynamicHeroSrc}/*`,
-			"next/image": path.resolve(shimDir, "next-image.tsx"),
-			"next/link": path.resolve(shimDir, "next-link.tsx"),
-			"server-only": path.resolve(shimDir, "server-only.ts"),
+			'@': srcDir,
+			'@external/dynamic-hero': dynamicHeroSrc,
+			'@external/dynamic-hero/*': `${dynamicHeroSrc}/*`,
+			'next/image': path.resolve(shimDir, 'next-image.tsx'),
+			'next/link': path.resolve(shimDir, 'next-link.tsx'),
+			'server-only': path.resolve(shimDir, 'server-only.ts'),
 		},
 	},
 	html: {
-		template: "./index.html",
-		title: "DealScale Rspack Preview",
+		template: './index.html',
+		title: 'DealScale Rspack Preview',
 	},
 	dev: {},
 	server: {
@@ -37,26 +34,24 @@ export default defineConfig({
 	},
 	output: {
 		distPath: {
-			root: path.resolve(projectRoot, "dist/rspack-preview"),
+			root: path.resolve(projectRoot, 'dist/rspack-preview'),
 		},
 	},
 	tools: {
 		postcss: (opts) => {
-			const resolvedConfigPath = path.resolve(projectRoot, "postcss.config.js");
+			const resolvedConfigPath = path.resolve(projectRoot, 'postcss.config.js');
 
 			type NormalizedPostcssOptions = Record<string, unknown> & {
 				config?: Record<string, unknown>;
 			};
 
-			const normalizePostcssOptions = (
-				options: unknown,
-			): NormalizedPostcssOptions => {
+			const normalizePostcssOptions = (options: unknown): NormalizedPostcssOptions => {
 				const base =
-					typeof options === "object" && options !== null
+					typeof options === 'object' && options !== null
 						? (options as Record<string, unknown>)
 						: {};
 				const existingConfig =
-					typeof base.config === "object" && base.config !== null
+					typeof base.config === 'object' && base.config !== null
 						? { ...(base.config as Record<string, unknown>) }
 						: {};
 
@@ -68,16 +63,16 @@ export default defineConfig({
 				return base as NormalizedPostcssOptions;
 			};
 
-			if (typeof opts.postcssOptions === "function") {
+			if (typeof opts.postcssOptions === 'function') {
 				const originalFactory = opts.postcssOptions;
 				opts.postcssOptions = ((loaderContext) => {
 					const originalOptions = originalFactory(loaderContext);
 					if (
 						originalOptions &&
-						typeof (originalOptions as PromiseLike<unknown>).then === "function"
+						typeof (originalOptions as PromiseLike<unknown>).then === 'function'
 					) {
 						return (originalOptions as PromiseLike<unknown>).then(
-							(result) => normalizePostcssOptions(result) as unknown,
+							(result) => normalizePostcssOptions(result) as unknown
 						);
 					}
 
@@ -87,9 +82,7 @@ export default defineConfig({
 			}
 
 			const normalized = normalizePostcssOptions(opts.postcssOptions);
-			opts.postcssOptions = normalized as unknown as NonNullable<
-				typeof opts.postcssOptions
-			>;
+			opts.postcssOptions = normalized as unknown as NonNullable<typeof opts.postcssOptions>;
 		},
 	},
 });

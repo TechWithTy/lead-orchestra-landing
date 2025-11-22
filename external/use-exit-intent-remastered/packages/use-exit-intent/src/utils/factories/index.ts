@@ -1,2 +1,2 @@
-export * from './idleEvents'
-export * from './debounce'
+export * from './idleEvents';
+export * from './debounce';

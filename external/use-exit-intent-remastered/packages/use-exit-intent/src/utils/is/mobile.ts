@@ -1,10 +1,10 @@
-import { isClientSide } from './clientSide'
+import { isClientSide } from './clientSide';
 
 export function isMobile() {
-  if (!isClientSide()) return
+	if (!isClientSide()) return;
 
-  return (
-    window.matchMedia('(hover: none)').matches ||
-    navigator.userAgent.toLowerCase().includes('mobile')
-  )
+	return (
+		window.matchMedia('(hover: none)').matches ||
+		navigator.userAgent.toLowerCase().includes('mobile')
+	);
 }

@@ -1,39 +1,35 @@
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import * as RadixDialog from "@radix-ui/react-dialog";
-import { useExitIntent } from "@external/use-exit-intent";
+import { useExitIntent } from '@external/use-exit-intent';
+import * as RadixDialog from '@radix-ui/react-dialog';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-import { useDisclosure, useElementIntersection, useMatchMedia } from "hooks";
-import { BaseLayout, Button, ExitIntentModal } from "components";
-import { intersection, sizes } from "shared/constants";
+import { BaseLayout, Button, ExitIntentModal } from 'components';
+import { useDisclosure, useElementIntersection, useMatchMedia } from 'hooks';
+import { intersection, sizes } from 'shared/constants';
 
 import {
-	Label,
-	Title,
-	Legend,
-	Header,
-	Footer,
-	Section,
-	Fieldset,
-	Separator,
 	Description,
+	Fieldset,
+	Footer,
+	Header,
+	Label,
+	Legend,
 	ResetControls,
+	Section,
 	SectionContent,
+	Separator,
 	StateContainer,
-} from "./styles";
+	Title,
+} from './styles';
 
-import type { RefObject } from "react";
+import type { RefObject } from 'react';
 
-import { codeTheme } from "styles";
+import { codeTheme } from 'styles';
 
 export function PlaygroundSection() {
 	const { isOpen, open, toggle } = useDisclosure(false);
-	const { ref, onIntersect } = useElementIntersection<HTMLDivElement>(
-		intersection.options,
-	);
+	const { ref, onIntersect } = useElementIntersection<HTMLDivElement>(intersection.options);
 
-	const matchesMobileWidth = useMatchMedia(
-		`(max-width: ${sizes.breakpoints.mobile}px)`,
-	);
+	const matchesMobileWidth = useMatchMedia(`(max-width: ${sizes.breakpoints.mobile}px)`);
 
 	const {
 		settings,
@@ -47,7 +43,7 @@ export function PlaygroundSection() {
 		willBeTriggered,
 	} = useExitIntent({
 		cookie: {
-			key: "use-exit-intent",
+			key: 'use-exit-intent',
 		},
 
 		desktop: {
@@ -62,30 +58,30 @@ export function PlaygroundSection() {
 	});
 
 	registerHandler({
-		id: "openModal",
+		id: 'openModal',
 		handler: () => {
-			console.log("event: trigger");
+			console.log('event: trigger');
 			open();
 		},
 	});
 
 	registerHandler({
-		id: "anotherHandler",
-		handler: () => console.log("Another handler"),
-		context: ["onDesktop"],
+		id: 'anotherHandler',
+		handler: () => console.log('Another handler'),
+		context: ['onDesktop'],
 	});
 
 	registerHandler({
-		id: "onUnsubscription",
-		handler: () => console.log("Unsubscription handler"),
-		context: ["onUnsubscribe", "onMobile"],
+		id: 'onUnsubscription',
+		handler: () => console.log('Unsubscription handler'),
+		context: ['onUnsubscribe', 'onMobile'],
 	});
 
-	onIntersect("playground", ({ element }) => {
+	onIntersect('playground', ({ element }) => {
 		const elementId = element?.id;
 
 		if (elementId) {
-			history.replaceState(null, "", `#${elementId}`);
+			history.replaceState(null, '', `#${elementId}`);
 		}
 	});
 
@@ -104,10 +100,9 @@ export function PlaygroundSection() {
 				<Title>Playground</Title>
 
 				<Description>
-					These are the settings available in the <strong>useExitIntent</strong>{" "}
-					hook, you can play around with them in the{" "}
-					{matchesMobileWidth ? "panes below" : "right panes"} and these changes
-					will be reflected in the exit intent modal on this page
+					These are the settings available in the <strong>useExitIntent</strong> hook, you can play
+					around with them in the {matchesMobileWidth ? 'panes below' : 'right panes'} and these
+					changes will be reflected in the exit intent modal on this page
 				</Description>
 			</Header>
 

@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 export function useMatchMedia(condition: string): boolean {
-  const [matches, setMatches] = useState(false)
+	const [matches, setMatches] = useState(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    function listener({ matches }: MediaQueryListEvent) {
-      setMatches(matches)
-    }
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	useEffect(() => {
+		function listener({ matches }: MediaQueryListEvent) {
+			setMatches(matches);
+		}
 
-    const matchMedia = window.matchMedia(`(${condition})`)
+		const matchMedia = window.matchMedia(`(${condition})`);
 
-    setMatches(matchMedia.matches)
+		setMatches(matchMedia.matches);
 
-    try {
-      matchMedia.addEventListener('change', listener)
+		try {
+			matchMedia.addEventListener('change', listener);
 
-      return () => matchMedia.removeEventListener('change', listener)
-    } catch (_) {
-      matchMedia.addListener(listener)
+			return () => matchMedia.removeEventListener('change', listener);
+		} catch (_) {
+			matchMedia.addListener(listener);
 
-      return () => matchMedia.removeListener(listener)
-    }
-  }, [])
+			return () => matchMedia.removeListener(listener);
+		}
+	}, []);
 
-  return matches
+	return matches;
 }

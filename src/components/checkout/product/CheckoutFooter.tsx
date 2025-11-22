@@ -1,13 +1,8 @@
-import { Button } from "@/components/ui/button";
-import type { CheckoutFooterProps } from "@/types/checkout";
-import { Loader2 } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import type { CheckoutFooterProps } from '@/types/checkout';
+import { Loader2 } from 'lucide-react';
 
-export function CheckoutFooter({
-	isLoading,
-	total,
-	error,
-	onPay,
-}: CheckoutFooterProps) {
+export function CheckoutFooter({ isLoading, total, error, onPay }: CheckoutFooterProps) {
 	return (
 		<div className="mt-8">
 			<Button
@@ -26,17 +21,14 @@ export function CheckoutFooter({
 					`Pay $${total.toFixed(2)}`
 				)}
 			</Button>
-			{error && (
-				<div className="mt-4 text-center text-destructive text-sm">{error}</div>
-			)}
+			{error && <div className="mt-4 text-center text-destructive text-sm">{error}</div>}
 
 			<p className="mt-4 text-center text-muted-foreground text-xs">
-				Your payment is secure and encrypted. By completing your purchase, you
-				agree to our{" "}
+				Your payment is secure and encrypted. By completing your purchase, you agree to our{' '}
 				<a href="/terms" className="text-primary hover:underline">
 					Terms of Service
-				</a>{" "}
-				and{" "}
+				</a>{' '}
+				and{' '}
 				<a href="/privacy" className="text-primary hover:underline">
 					Privacy Policy
 				</a>

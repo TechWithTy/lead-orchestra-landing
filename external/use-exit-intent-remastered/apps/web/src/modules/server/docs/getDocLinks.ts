@@ -1,55 +1,53 @@
-import { getMetaFile } from './getMetaFile'
-import { getAllDocs } from './getAllDocs'
+import { getAllDocs } from './getAllDocs';
+import { getMetaFile } from './getMetaFile';
 
-import type { LinkKeys, Links } from 'shared/types'
+import type { LinkKeys, Links } from 'shared/types';
 
 export async function getDocLinks() {
-  const paths = await getAllDocs()
-  const meta = await getMetaFile()
+	const paths = await getAllDocs();
+	const meta = await getMetaFile();
 
-  let links = paths.reduce((acc, path) => {
-    const [rootSection] = path.url.split('/') as LinkKeys[]
-    const { title, slug, url, order } = path
-    const links = acc[rootSection] || []
+	let links = paths.reduce((acc, path) => {
+		const [rootSection] = path.url.split('/') as LinkKeys[];
+		const { title, slug, url, order } = path;
+		const links = acc[rootSection] || [];
 
-    return {
-      ...acc,
+		return {
+			...acc,
 
-      [rootSection]: [
-        ...links,
+			[rootSection]: [
+				...links,
 
-        {
-          url,
-          order,
-          title: title || slug.replace(/-/g, ' '),
-        },
-      ],
-    }
-  }, {} as Links)
+				{
+					url,
+					order,
+					title: title || slug.replace(/-/g, ' '),
+				},
+			],
+		};
+	}, {} as Links);
 
-  if (meta?.order) {
-    const metaOrder = meta.order as LinkKeys[]
-    const orderedKeys = metaOrder.filter((key) => links[key])
+	if (meta?.order) {
+		const metaOrder = meta.order as LinkKeys[];
+		const orderedKeys = metaOrder.filter((key) => links[key]);
 
-    const keys = [
-      ...new Set([...orderedKeys, ...Object.keys(links)]),
-    ] as LinkKeys[]
+		const keys = [...new Set([...orderedKeys, ...Object.keys(links)])] as LinkKeys[];
 
-    links = keys.reduce((acc, rootSection) => {
-      const link = links[rootSection] || []
+		links = keys.reduce((acc, rootSection) => {
+			const link = links[rootSection] || [];
 
-      return {
-        ...acc,
+			return {
+				...acc,
 
-        [rootSection]: link?.sort((a, b) => {
-          const orderA = a.order === 0 ? 999 : a.order
-          const orderB = b.order === 0 ? 999 : b.order
+				[rootSection]: link?.sort((a, b) => {
+					const orderA = a.order === 0 ? 999 : a.order;
+					const orderB = b.order === 0 ? 999 : b.order;
 
-          return orderA - orderB
-        }),
-      }
-    }, {} as Links)
-  }
+					return orderA - orderB;
+				}),
+			};
+		}, {} as Links);
+	}
 
-  return links
+	return links;
 }

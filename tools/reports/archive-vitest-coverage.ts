@@ -1,19 +1,19 @@
-import { exec as execCb } from "node:child_process";
-import { promises as fs } from "node:fs";
-import path from "node:path";
-import { promisify } from "node:util";
+import { exec as execCb } from 'node:child_process';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import { promisify } from 'node:util';
 
 const exec = promisify(execCb);
 
-const COVERAGE_DIR = path.resolve("coverage");
-const ARCHIVE_ROOT = path.resolve("reports", "tests", "history");
+const COVERAGE_DIR = path.resolve('coverage');
+const ARCHIVE_ROOT = path.resolve('reports', 'tests', 'history');
 
 async function directoryExists(dirPath: string) {
 	try {
 		const stats = await fs.stat(dirPath);
 		return stats.isDirectory();
 	} catch (error) {
-		if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+		if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
 			return false;
 		}
 		throw error;
@@ -23,7 +23,7 @@ async function directoryExists(dirPath: string) {
 function formatDateSegments(date: Date) {
 	const iso = date.toISOString();
 	const daySegment = iso.slice(0, 10);
-	const timeSegment = iso.replace(/[:]/g, "-").replace(/\..+$/, "");
+	const timeSegment = iso.replace(/[:]/g, '-').replace(/\..+$/, '');
 	return { daySegment, timeSegment };
 }
 
@@ -31,16 +31,12 @@ async function ensureDirectory(dirPath: string) {
 	await fs.mkdir(dirPath, { recursive: true });
 }
 
-const FILES_TO_COPY = [
-	"lcov.info",
-	"coverage-summary.json",
-	"coverage-final.json",
-];
+const FILES_TO_COPY = ['lcov.info', 'coverage-summary.json', 'coverage-final.json'];
 
 async function copyCoverageArtifacts() {
 	const coverageExists = await directoryExists(COVERAGE_DIR);
 	if (!coverageExists) {
-		console.info("[coverage] No coverage directory found. Skipping archive.");
+		console.info('[coverage] No coverage directory found. Skipping archive.');
 		return null;
 	}
 
@@ -61,7 +57,7 @@ async function copyCoverageArtifacts() {
 			await fs.copyFile(sourcePath, path.join(destinationDir, relativePath));
 			copiedCount += 1;
 		} catch (error) {
-			if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+			if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
 				continue;
 			}
 			throw error;
@@ -69,24 +65,19 @@ async function copyCoverageArtifacts() {
 	}
 
 	if (copiedCount === 0) {
-		console.info(
-			"[coverage] No summary coverage files found. Skipping archive.",
-		);
+		console.info('[coverage] No summary coverage files found. Skipping archive.');
 		return null;
 	}
 
-	const lcovReportDir = path.join(COVERAGE_DIR, "lcov-report");
+	const lcovReportDir = path.join(COVERAGE_DIR, 'lcov-report');
 	const lcovReportExists = await directoryExists(lcovReportDir);
 	if (lcovReportExists) {
-		const htmlDestination = path.join(destinationDir, "lcov-report");
+		const htmlDestination = path.join(destinationDir, 'lcov-report');
 		await ensureDirectory(htmlDestination);
 		await fs
-			.copyFile(
-				path.join(lcovReportDir, "index.html"),
-				path.join(htmlDestination, "index.html"),
-			)
+			.copyFile(path.join(lcovReportDir, 'index.html'), path.join(htmlDestination, 'index.html'))
 			.catch((error) => {
-				if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
+				if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
 					throw error;
 				}
 			});
@@ -104,10 +95,7 @@ async function stagePath(targetPath: string | null) {
 	try {
 		await exec(`git add "${relativePath}"`);
 	} catch (error) {
-		console.warn(
-			"[coverage] Failed to stage archived coverage directory.",
-			error,
-		);
+		console.warn('[coverage] Failed to stage archived coverage directory.', error);
 	}
 }
 
@@ -123,7 +111,7 @@ async function main() {
 		const relativePath = path.relative(process.cwd(), destinationDir);
 		console.info(`[coverage] Archived coverage to ${relativePath}`);
 	} catch (error) {
-		console.warn("[coverage] Failed to archive coverage results.", error);
+		console.warn('[coverage] Failed to archive coverage results.', error);
 	}
 }
 

@@ -1,10 +1,10 @@
 {
-  "firstName": "",
-  "lastName": "",
-  "email": "",
-  "phone": "",
-  "password": "",
-  "confirmPassword": "",
-  "termsAccepted": false,
-  "marketingEmails": false
+	"firstName": "",
+	"lastName": "",
+	"email": "",
+	"phone": "",
+	"password": "",
+	"confirmPassword": "",
+	"termsAccepted": false,
+	"marketingEmails": false
 }

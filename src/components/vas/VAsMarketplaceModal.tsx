@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { mockVAs } from "@/data/vas/mockVAs";
-import type { VAProfile } from "@/types/va";
-import { ChevronLeft, ChevronRight, MessageCircle, X } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import BecomeAVACard from "./BecomeAVACard";
+import { mockVAs } from '@/data/vas/mockVAs';
+import type { VAProfile } from '@/types/va';
+import { ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import BecomeAVACard from './BecomeAVACard';
 
 interface VAsMarketplaceModalProps {
 	isOpen: boolean;
@@ -35,7 +35,7 @@ const LazyVACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 					observer.disconnect();
 				}
 			},
-			{ rootMargin: "50px" },
+			{ rootMargin: '50px' }
 		);
 
 		if (cardRef.current) {
@@ -59,14 +59,7 @@ const LazyVACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 		);
 	}
 
-	return (
-		<VACard
-			va={va}
-			onApplyClick={onApplyClick}
-			onHire={onHire}
-			onMessage={onMessage}
-		/>
-	);
+	return <VACard va={va} onApplyClick={onApplyClick} onHire={onHire} onMessage={onMessage} />;
 };
 
 const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
@@ -96,11 +89,7 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 				<div className="flex items-center gap-4">
 					<div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
 						{va.image ? (
-							<img
-								src={va.image}
-								alt={va.name}
-								className="h-full w-full object-cover"
-							/>
+							<img src={va.image} alt={va.name} className="h-full w-full object-cover" />
 						) : (
 							<div className="flex h-full w-full items-center justify-center font-semibold text-2xl text-slate-500">
 								{va.name.charAt(0)}
@@ -108,12 +97,8 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 						)}
 					</div>
 					<div>
-						<h3 className="font-semibold text-slate-900 dark:text-white">
-							{va.name}
-						</h3>
-						<p className="text-slate-600 text-sm dark:text-slate-400">
-							{va.title}
-						</p>
+						<h3 className="font-semibold text-slate-900 dark:text-white">{va.name}</h3>
+						<p className="text-slate-600 text-sm dark:text-slate-400">{va.title}</p>
 						<div className="mt-1 flex items-center gap-2">
 							<span className="font-medium text-sm text-yellow-600 dark:text-yellow-500">
 								★ {va.rating}
@@ -127,9 +112,7 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 			</div>
 
 			<div className="mb-4 flex-1">
-				<p className="mb-3 text-slate-700 text-sm dark:text-slate-300">
-					{va.bio}
-				</p>
+				<p className="mb-3 text-slate-700 text-sm dark:text-slate-300">{va.bio}</p>
 
 				<div className="mb-3">
 					<p className="mb-1 font-semibold text-slate-600 text-xs dark:text-slate-400">
@@ -165,9 +148,7 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 
 				<div className="mb-3 space-y-2 text-sm">
 					<div className="flex items-center justify-between">
-						<span className="text-slate-600 dark:text-slate-400">
-							Leads Managed:{" "}
-						</span>
+						<span className="text-slate-600 dark:text-slate-400">Leads Managed: </span>
 						<span className="font-semibold text-slate-900 dark:text-white">
 							{va.leadsManaged.toLocaleString()}
 						</span>
@@ -180,9 +161,7 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 					</div>
 					{va.commissionPercentage && (
 						<div className="flex items-center justify-between">
-							<span className="text-slate-600 dark:text-slate-400">
-								Commission:{" "}
-							</span>
+							<span className="text-slate-600 dark:text-slate-400">Commission: </span>
 							<span className="font-semibold text-green-600 dark:text-green-400">
 								{va.commissionPercentage}%
 							</span>
@@ -191,12 +170,9 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 					{va.hybridSaaS && (
 						<div className="rounded-md bg-purple-50 p-2 dark:bg-purple-900/20">
 							<div className="flex items-center justify-between text-xs">
-								<span className="text-slate-600 dark:text-slate-400">
-									Hybrid SaaS:{" "}
-								</span>
+								<span className="text-slate-600 dark:text-slate-400">Hybrid SaaS: </span>
 								<span className="font-semibold text-purple-700 dark:text-purple-300">
-									{va.hybridSaaS.commissionPercentage}% ({va.hybridSaaS.split}{" "}
-									split)
+									{va.hybridSaaS.commissionPercentage}% ({va.hybridSaaS.split} split)
 								</span>
 							</div>
 						</div>
@@ -216,7 +192,7 @@ const VACard = ({ va, onApplyClick, onHire, onMessage }: VACardProps) => {
 					onClick={handleHire}
 					className="flex-1 rounded-lg bg-blue-600 px-4 py-2 font-medium text-sm text-white transition-colors hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
 				>
-					Hire {va.name.split(" ")[0]}
+					Hire {va.name.split(' ')[0]}
 				</button>
 				<button
 					type="button"
@@ -246,7 +222,7 @@ const VAsMarketplaceModal = ({
 		if (onApplyClick) {
 			onApplyClick();
 		} else {
-			router.push("/vas/apply");
+			router.push('/vas/apply');
 		}
 	}, [onApplyClick, router]);
 
@@ -290,7 +266,7 @@ const VAsMarketplaceModal = ({
 			className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
 			onClick={onClose}
 			onKeyDown={(e) => {
-				if (e.key === "Escape") onClose();
+				if (e.key === 'Escape') onClose();
 			}}
 		>
 			<div
@@ -298,8 +274,8 @@ const VAsMarketplaceModal = ({
 				onClick={(e) => e.stopPropagation()}
 				onKeyDown={(e) => e.stopPropagation()}
 				style={{
-					scrollBehavior: "smooth",
-					scrollPaddingTop: "1rem",
+					scrollBehavior: 'smooth',
+					scrollPaddingTop: '1rem',
 				}}
 			>
 				<div className="sticky top-0 z-10 flex items-center justify-between border-slate-200 border-b bg-white p-6 dark:border-slate-700 dark:bg-slate-900">

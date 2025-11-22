@@ -2,13 +2,8 @@
  * Tester program and user acquisition type definitions
  */
 
-export type TesterType = "beta" | "pilot";
-export type TesterStatus =
-	| "applied"
-	| "approved"
-	| "rejected"
-	| "started"
-	| "completed";
+export type TesterType = 'beta' | 'pilot';
+export type TesterStatus = 'applied' | 'approved' | 'rejected' | 'started' | 'completed';
 
 export interface TesterApplicationRequest {
 	tester_type: TesterType;

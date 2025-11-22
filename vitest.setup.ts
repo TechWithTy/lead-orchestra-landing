@@ -1,16 +1,16 @@
-import "dotenv/config";
+import 'dotenv/config';
 import nodeFetch, {
 	Headers as NodeHeaders,
 	Request as NodeRequest,
 	Response as NodeResponse,
-} from "node-fetch";
-import "@testing-library/jest-dom";
-import * as React from "react";
-import { afterAll, expect, vi } from "vitest";
+} from 'node-fetch';
+import '@testing-library/jest-dom';
+import * as React from 'react';
+import { afterAll, expect, vi } from 'vitest';
 
-vi.mock("server-only", () => ({}));
+vi.mock('server-only', () => ({}));
 
-vi.mock("@plausible-analytics/tracker", () => ({
+vi.mock('@plausible-analytics/tracker', () => ({
 	__esModule: true,
 	init: vi.fn(),
 	trackEvent: vi.fn(),
@@ -18,7 +18,7 @@ vi.mock("@plausible-analytics/tracker", () => ({
 	enableAutoPageviews: vi.fn(),
 }));
 
-vi.mock("posthog-js", () => ({
+vi.mock('posthog-js', () => ({
 	__esModule: true,
 	init: vi.fn(),
 	capture: vi.fn(),
@@ -26,7 +26,7 @@ vi.mock("posthog-js", () => ({
 	reset: vi.fn(),
 }));
 
-vi.mock("@posthog/js-lite", () => ({
+vi.mock('@posthog/js-lite', () => ({
 	__esModule: true,
 	init: vi.fn(),
 	capture: vi.fn(),
@@ -35,7 +35,7 @@ vi.mock("@posthog/js-lite", () => ({
 }));
 
 const ensureJestFacade = () => {
-	if (typeof globalThis.jest !== "undefined") {
+	if (typeof globalThis.jest !== 'undefined') {
 		return;
 	}
 
@@ -45,7 +45,7 @@ const ensureJestFacade = () => {
 	const jestMock: typeof vi.mock = (...args) => {
 		const [moduleId, factory, options] = args;
 
-		if (typeof factory === "function") {
+		if (typeof factory === 'function') {
 			return originalMock(
 				moduleId,
 				() => {
@@ -53,7 +53,7 @@ const ensureJestFacade = () => {
 					moduleMockRegistry.set(moduleId, mockedModule);
 					return mockedModule;
 				},
-				options,
+				options
 			);
 		}
 
@@ -64,7 +64,7 @@ const ensureJestFacade = () => {
 	const requireMock = <T = unknown>(moduleId: string): T => {
 		if (!moduleMockRegistry.has(moduleId)) {
 			throw new Error(
-				"Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.",
+				'Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.'
 			);
 		}
 
@@ -81,7 +81,7 @@ const ensureJestFacade = () => {
 		isMockFunction: vi.isMockFunction.bind(vi),
 		requireActual: () => {
 			throw new Error(
-				"jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.",
+				'jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.'
 			);
 		},
 		requireMock,
@@ -91,12 +91,9 @@ const ensureJestFacade = () => {
 		},
 		setTimeout: (timeout: number) => {
 			if (
-				typeof (vi as unknown as { setTimeout?: (ms: number) => void })
-					.setTimeout === "function"
+				typeof (vi as unknown as { setTimeout?: (ms: number) => void }).setTimeout === 'function'
 			) {
-				(vi as unknown as { setTimeout: (ms: number) => void }).setTimeout(
-					timeout,
-				);
+				(vi as unknown as { setTimeout: (ms: number) => void }).setTimeout(timeout);
 			} else {
 				return undefined;
 			}
@@ -130,11 +127,11 @@ ensureJestFacade();
 
 (globalThis as Record<string, unknown>).React = React;
 
-if (typeof globalThis.fetch === "undefined") {
+if (typeof globalThis.fetch === 'undefined') {
 	globalThis.fetch = nodeFetch as unknown as typeof globalThis.fetch;
 }
 
-if (typeof globalThis.Request === "undefined") {
+if (typeof globalThis.Request === 'undefined') {
 	globalThis.Request = NodeRequest as unknown as typeof globalThis.Request;
 	globalThis.Response = NodeResponse as unknown as typeof globalThis.Response;
 	globalThis.Headers = NodeHeaders as unknown as typeof globalThis.Headers;
@@ -147,7 +144,7 @@ afterAll(async () => {
 		}
 	)?.__agent;
 
-	if (agent && typeof agent.destroy === "function") {
+	if (agent && typeof agent.destroy === 'function') {
 		agent.destroy();
 	}
 });

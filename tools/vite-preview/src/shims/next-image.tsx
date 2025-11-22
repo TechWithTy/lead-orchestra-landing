@@ -1,18 +1,11 @@
-import React from "react";
+import type React from 'react';
 
-type NextImageProps = React.ComponentProps<"img"> & {
+type NextImageProps = React.ComponentProps<'img'> & {
 	readonly priority?: boolean;
 };
 
-const NextImage: React.FC<NextImageProps> = ({
-	priority: _priority,
-	...props
-}) => {
+const NextImage: React.FC<NextImageProps> = ({ priority: _priority, ...props }) => {
 	return <img {...props} />;
 };
 
 export default NextImage;
-
-
-
-

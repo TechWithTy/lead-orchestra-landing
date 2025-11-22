@@ -1,6 +1,6 @@
 export const codes = {
-  overview: {
-    default: `
+	overview: {
+		default: `
     import { useExitIntent } from 'use-exit-intent'
 
     export default function App() {
@@ -23,7 +23,7 @@ export const codes = {
     }
     `,
 
-    config: `
+		config: `
     export default function App() {
       const exitIntent = useExitIntent({
         "cookie": {
@@ -46,5 +46,5 @@ export const codes = {
       })
       // ...
     `,
-  },
-} as const
+	},
+} as const;

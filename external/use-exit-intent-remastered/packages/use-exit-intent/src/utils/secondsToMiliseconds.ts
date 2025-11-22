@@ -1,3 +1,3 @@
 export function secondsToMiliseconds(seconds: number) {
-  return seconds * 1000
+	return seconds * 1000;
 }

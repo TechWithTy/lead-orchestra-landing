@@ -1,6 +1,6 @@
-import { useRef, useEffect, type RefObject, useCallback } from "react";
+import { type RefObject, useCallback, useEffect, useRef } from 'react';
 
-import { createDebounce } from "shared/utils";
+import { createDebounce } from 'shared/utils';
 
 const defaultOptions = {
 	offset: 0,
@@ -21,7 +21,7 @@ export type UseIntersectionOptions = typeof defaultOptions;
 export type Callback<T extends HTMLElement> = (props: CallbackProps<T>) => void;
 
 type CallbackProps<T extends HTMLElement> = {
-	position: IntersectionChecker["position"];
+	position: IntersectionChecker['position'];
 	element: T | null;
 };
 
@@ -43,7 +43,7 @@ function checkIntersection({ element, offset, position }: IntersectionChecker) {
 }
 
 export function useElementIntersection<T extends HTMLElement = HTMLElement>(
-	options: UseIntersectionOptions = defaultOptions,
+	options: UseIntersectionOptions = defaultOptions
 ) {
 	const ref = useRef<T | null>(null);
 	const lastIntersection = useRef<boolean>(false);
@@ -66,16 +66,12 @@ export function useElementIntersection<T extends HTMLElement = HTMLElement>(
 			position;
 
 			const left =
-				(window.pageXOffset || documentElement.scrollLeft) -
-				(documentElement.clientLeft || 0);
+				(window.pageXOffset || documentElement.scrollLeft) - (documentElement.clientLeft || 0);
 
 			const top =
-				(window.pageYOffset || documentElement.scrollTop) -
-				(documentElement.clientTop || 0);
+				(window.pageYOffset || documentElement.scrollTop) - (documentElement.clientTop || 0);
 
-			const homeCallbacks = callbacks.find(
-				(callback) => callback.id === "home",
-			);
+			const homeCallbacks = callbacks.find((callback) => callback.id === 'home');
 
 			if (homeCallbacks && top === 0) {
 				homeCallbacks.callback({ position, element });
@@ -111,19 +107,17 @@ export function useElementIntersection<T extends HTMLElement = HTMLElement>(
 			execute();
 		};
 
-		window.addEventListener("scroll", handleScrollDebounced);
+		window.addEventListener('scroll', handleScrollDebounced);
 
 		return () => {
 			abort();
-			window.removeEventListener("scroll", handleScrollDebounced);
+			window.removeEventListener('scroll', handleScrollDebounced);
 		};
 	});
 
 	const onIntersect = useCallback((id: string, callback: Callback<T>) => {
 		const callbacks = callbacksRef.current;
-		const existingIndex = callbacks.findIndex(
-			(prevCallback) => prevCallback.id === id,
-		);
+		const existingIndex = callbacks.findIndex((prevCallback) => prevCallback.id === id);
 
 		if (existingIndex >= 0) {
 			callbacks[existingIndex] = { id, callback };

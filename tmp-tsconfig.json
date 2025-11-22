@@ -1,4 +1,4 @@
 {
-  "extends": "./tsconfig.tests.json",
-  "include": ["tmp-check.ts"]
+	"extends": "./tsconfig.tests.json",
+	"include": ["tmp-check.ts"]
 }

@@ -1,11 +1,7 @@
-"use client";
-import { useEffect } from "react";
-import {
-	loadClarity,
-	loadFacebookPixel,
-	loadZohoSalesIQ,
-} from "./thirdPartyLoaders";
-import { useDeferredGate } from "./useDeferredGate";
+'use client';
+import { useEffect } from 'react';
+import { loadClarity, loadFacebookPixel, loadZohoSalesIQ } from './thirdPartyLoaders';
+import { useDeferredGate } from './useDeferredGate';
 
 type Props = {
 	consentGranted: boolean;
@@ -40,7 +36,7 @@ export default function ThirdPartyGate({
 
 	useEffect(() => {
 		if (!canLoad || !consentGranted) return;
-		if (process.env.NODE_ENV !== "production") return;
+		if (process.env.NODE_ENV !== 'production') return;
 		try {
 			if (facebookPixelId) loadFacebookPixel(facebookPixelId);
 			if (clarityTag) loadClarity(clarityTag);
@@ -49,14 +45,7 @@ export default function ThirdPartyGate({
 		} catch {
 			// swallow
 		}
-	}, [
-		canLoad,
-		consentGranted,
-		facebookPixelId,
-		clarityTag,
-		zohoSrc,
-		onAfterLoad,
-	]);
+	}, [canLoad, consentGranted, facebookPixelId, clarityTag, zohoSrc, onAfterLoad]);
 
 	return null;
 }

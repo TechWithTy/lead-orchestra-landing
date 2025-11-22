@@ -1,40 +1,34 @@
-import { defineConfig } from "vitest/config";
-import path from "node:path";
-import react from "@vitejs/plugin-react-swc";
+import path from 'node:path';
+import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vitest/config';
 
 // Temporary relaxed coverage thresholds while we diagnose failing suites.
 // Increase or remove once core tests are restored.
-const requestedCoverageFloor = Number.parseFloat(
-	process.env.VITEST_MIN_COVERAGE ?? "5",
-);
-const coverageFloor = Number.isFinite(requestedCoverageFloor)
-	? requestedCoverageFloor
-	: 5;
+const requestedCoverageFloor = Number.parseFloat(process.env.VITEST_MIN_COVERAGE ?? '5');
+const coverageFloor = Number.isFinite(requestedCoverageFloor) ? requestedCoverageFloor : 5;
 
 export default defineConfig({
 	plugins: [
 		react({
-			jsxRuntime: "automatic",
+			jsxRuntime: 'automatic',
 		}),
 	],
 	define: {
 		// Ensure NODE_ENV is set correctly for tests
-		"process.env.NODE_ENV": JSON.stringify(
-			process.env.NODE_ENV || "test",
-		),
+		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'test'),
 	},
 	test: {
 		globals: true,
-		environment: "jsdom",
-		setupFiles: ["./vitest.setup.ts"],
+		environment: 'jsdom',
+		setupFiles: ['./vitest.setup.ts'],
 		include: [
-			"**/__tests__/**/*.{test,spec}.{js,jsx,ts,tsx}",
-			"**/?(*.)+(spec|test).{js,jsx,ts,tsx}",
-			"**/*.__tests__.{js,jsx,ts,tsx}",
+			'**/__tests__/**/*.{test,spec}.{js,jsx,ts,tsx}',
+			'**/?(*.)+(spec|test).{js,jsx,ts,tsx}',
+			'**/*.__tests__.{js,jsx,ts,tsx}',
 		],
 		testTimeout: 30000,
 		coverage: {
-			provider: "v8",
+			provider: 'v8',
 			thresholds: {
 				lines: coverageFloor,
 				functions: coverageFloor,
@@ -45,50 +39,44 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: [
-			{ find: "@", replacement: path.resolve(__dirname, "./src") },
+			{ find: '@', replacement: path.resolve(__dirname, './src') },
 			{
-				find: "@external/dynamic-hero",
-				replacement: path.resolve(
-					__dirname,
-					"./src/components/dynamic-hero/src",
-				),
+				find: '@external/dynamic-hero',
+				replacement: path.resolve(__dirname, './src/components/dynamic-hero/src'),
 			},
 			{
 				find: /^@external\/dynamic-hero\/(.*)$/,
-				replacement: path.resolve(
-					__dirname,
-					"./src/components/dynamic-hero/src/$1",
-				),
+				replacement: path.resolve(__dirname, './src/components/dynamic-hero/src/$1'),
 			},
 			{
-				find: "@external/use-exit-intent",
+				find: '@external/use-exit-intent',
 				replacement: path.resolve(
 					__dirname,
-					"./external/use-exit-intent-remastered/packages/use-exit-intent/src",
+					'./external/use-exit-intent-remastered/packages/use-exit-intent/src'
 				),
 			},
 			{
 				find: /^@external\/use-exit-intent\/(.*)$/,
 				replacement: path.resolve(
 					__dirname,
-					"./external/use-exit-intent-remastered/packages/use-exit-intent/src/$1",
+					'./external/use-exit-intent-remastered/packages/use-exit-intent/src/$1'
 				),
 			},
 			{
-				find: "server-only",
-				replacement: path.resolve(__dirname, "./tests/stubs/server-only.ts"),
+				find: 'server-only',
+				replacement: path.resolve(__dirname, './tests/stubs/server-only.ts'),
 			},
 			{
-				find: "@plausible-analytics/tracker",
-				replacement: path.resolve(__dirname, "./tests/stubs/plausible.ts"),
+				find: '@plausible-analytics/tracker',
+				replacement: path.resolve(__dirname, './tests/stubs/plausible.ts'),
 			},
 			{
-				find: "posthog-js",
-				replacement: path.resolve(__dirname, "./tests/stubs/posthog.ts"),
+				find: 'posthog-js',
+				replacement: path.resolve(__dirname, './tests/stubs/posthog.ts'),
 			},
 			{
-				find: "@posthog/js-lite",
-				replacement: path.resolve(__dirname, "./tests/stubs/posthog.ts"),
+				find: '@posthog/js-lite',
+				replacement: path.resolve(__dirname, './tests/stubs/posthog.ts'),
 			},
 		],
 	},

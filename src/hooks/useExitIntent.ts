@@ -1,10 +1,7 @@
-"use client";
+'use client';
 
-import {
-	safeSessionStorageGetItem,
-	safeSessionStorageSetItem,
-} from "@/utils/storage/safeStorage";
-import { useEffect, useRef, useState } from "react";
+import { safeSessionStorageGetItem, safeSessionStorageSetItem } from '@/utils/storage/safeStorage';
+import { useEffect, useRef, useState } from 'react';
 
 export interface UseExitIntentOptions {
 	/**
@@ -34,7 +31,7 @@ export interface UseExitIntentOptions {
 	oncePerSession?: boolean;
 }
 
-const SESSION_STORAGE_KEY = "exit-intent-triggered";
+const SESSION_STORAGE_KEY = 'exit-intent-triggered';
 
 /**
  * Hook to detect when a user is about to leave the page (exit intent).
@@ -60,8 +57,7 @@ export function useExitIntent({
 	const [hasTriggered, setHasTriggered] = useState(false);
 	const pageLoadTime = useRef<number>(Date.now());
 	const hasTriggeredRef = useRef(false);
-	const envEnabled =
-		(process.env.NEXT_PUBLIC_ENABLE_EXIT_INTENT ?? "").toLowerCase() === "true";
+	const envEnabled = (process.env.NEXT_PUBLIC_ENABLE_EXIT_INTENT ?? '').toLowerCase() === 'true';
 
 	useEffect(() => {
 		if (!enabled || !envEnabled || !onExitIntent) {
@@ -70,8 +66,7 @@ export function useExitIntent({
 
 		// Check if already triggered this session
 		if (oncePerSession) {
-			const wasTriggered =
-				safeSessionStorageGetItem(SESSION_STORAGE_KEY) === "true";
+			const wasTriggered = safeSessionStorageGetItem(SESSION_STORAGE_KEY) === 'true';
 			if (wasTriggered || hasTriggeredRef.current) {
 				return;
 			}
@@ -89,7 +84,7 @@ export function useExitIntent({
 
 					if (oncePerSession) {
 						// Safe to fail silently - just won't persist across page reloads
-						safeSessionStorageSetItem(SESSION_STORAGE_KEY, "true");
+						safeSessionStorageSetItem(SESSION_STORAGE_KEY, 'true');
 					}
 
 					onExitIntent();
@@ -98,19 +93,12 @@ export function useExitIntent({
 		};
 
 		// Listen for mouse leaving the viewport at the top
-		document.addEventListener("mouseleave", handleMouseLeave);
+		document.addEventListener('mouseleave', handleMouseLeave);
 
 		return () => {
-			document.removeEventListener("mouseleave", handleMouseLeave);
+			document.removeEventListener('mouseleave', handleMouseLeave);
 		};
-	}, [
-		enabled,
-		envEnabled,
-		onExitIntent,
-		minTimeOnPage,
-		threshold,
-		oncePerSession,
-	]);
+	}, [enabled, envEnabled, onExitIntent, minTimeOnPage, threshold, oncePerSession]);
 
 	return { hasTriggered };
 }

@@ -1,129 +1,349 @@
-# DealScale - AI-Powered Business Solutions
+<div align="center">
 
-[![Proprietary](https://img.shields.io/badge/License-Proprietary-FF6B6B)](LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-13+-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3.0-06B6D4?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  <picture>
 
-## 🚀 Overview
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Lead-Orchestra/lead-orchestra-frontend/main/public/vite.svg">
 
-DealScale is a cutting-edge platform that leverages AI to transform business operations, providing intelligent solutions for deal management, customer engagement, and data-driven decision making.
+    <img src="https://raw.githubusercontent.com/Lead-Orchestra/lead-orchestra-frontend/main/public/vite.svg" alt="Lead Orchestra Logo" width="200"/>
+
+  </picture>
+
+
+
+  <h1>Lead Orchestra</h1>
+
+  <p><strong>Scrape Anything • Clean Everything • Export Everywhere</strong></p>
+
+
+
+  [![GitHub stars](https://img.shields.io/github/stars/Lead-Orchestra/lead-orchestra-frontend?logo=github)](https://github.com/Lead-Orchestra/lead-orchestra-frontend/stargazers)
+
+  [![License: MIT](https://img.shields.io/github/license/Lead-Orchestra/lead-orchestra-frontend)](LICENSE)
+
+  [![Next.js](https://img.shields.io/badge/Next.js-13+-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
+
+  [![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
+</div>
+
+
+
+---
+
+
+
+## 🚀 What is Lead Orchestra?
+
+
+
+Lead Orchestra is an open-source scraping engine built for modern growth teams and developers.
+
+
+
+You paste a URL (or list of URLs) → Lead Orchestra scrapes the pages → it normalizes & cleans the data → you export it (CSV/JSON) or push to your pipeline (e.g., for enrichment in Deal Scale).
+
+
+
+> Unlike traditional paid databases, you control the datasource — no credits, no rented lists, no stale data.
+
+
+
+---
+
+
+
+## 🔍 Why It Matters
+
+
+
+- **Outdated data**, generic lists and high costs plague outbound teams.  
+
+- **Scraping on your own** has been hard, brittle and complex.  
+
+- Lead Orchestra gives you *fresh*, *untouched*, *niche-specific* leads — an unfair advantage.
+
+
+
+---
+
+
 
 ## ✨ Features
 
-- **AI-Powered Analytics**: Get actionable insights from your business data
-- **Seamless Integration**: Works with your existing tools and workflows
-- **Real-time Collaboration**: Team-focused features for better productivity
-- **Customizable Dashboards**: Tailor your view to see what matters most
-- **Secure & Scalable**: Enterprise-grade security and performance
 
-## 🛠️ Getting Started
 
-### Prerequisites
+- **MCP Plugin Architecture**: Add new "provider" scrapers easily.  
 
-- Node.js 20.x or later
-- pnpm 6.0.0 or later
-- Git
+- **Lead Standard Format (LSF)**: All output normalized (name, email, phone, company, website, source, timestamp).  
 
-### Installation
+- **One-click scrape**: Enter URL(s), hit "Scrape", get results.  
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/deal-scale.git
-   cd deal-scale
-   ```
+- **Export**: CSV / JSON download.  
 
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   ```
+- **Upgrade-ready**: Send exported results to Deal Scale for enrichment, scoring, AI-follow-up.  
 
-3. **Set up environment variables**
-   Create a `.env.local` file in the root directory and add your configuration. The analytics loaders now expect the secure env vars first and fall back to the legacy `NEXT_PUBLIC_*` names only during development:
-   ```env
-   CLARITY_PROJECT_ID=your_clarity_project_id
-   GOOGLE_ANALYTICS_ID=your_ga_measurement_id
-   GOOGLE_TAG_MANAGER_ID=your_gtm_container_id
-   ZOHO_SALES_IQ_WIDGET_CODE=your_zoho_salesiq_widget_code
+- **Open Source**: No vendor lock-in, fully transparent.
 
-   # Optional dev fallbacks
-   NEXT_PUBLIC_CLARITY_PROJECT_ID=your_dev_clarity_id
-   NEXT_PUBLIC_GOOGLE_ANALYTICS=your_dev_ga_id
-   NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=your_dev_gtm_id
-   NEXT_PUBLIC_ZOHOSALESIQ_WIDGETCODE=your_dev_zoho_code
-   ```
-   The `_docs/_debug/deferred_third_parties_debug.md` guide contains a full checklist plus troubleshooting notes.
+- **Real-Time Dashboard**: Beautiful analytics and visualization of scraping performance
 
-4. **Start the development server**
-   ```bash
-   pnpm dev
-   ```
-   The `tools/checks/check-analytics-env.ts` helper runs automatically and will highlight any missing analytics configuration before Next.js boots. Open [http://localhost:3000](http://localhost:3000) in your browser.
+- **Multi-Source Scraping**: BiggerPockets forums, business directory, user profiles, and more
 
-## 🚀 Deployment
+- **AI-Powered Extraction**: ScrapeGraphAI integration for intelligent data extraction
 
-Deploy your own instance of DealScale with Vercel:
+- **Proxy Support**: Bright Data SDK integration for bypassing rate limits
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fdeal-scale&project-name=deal-scale&repository-name=deal-scale)
+- **Stealth Browsers**: Camoufox and Lightpanda support for anti-detection scraping
 
-## 🔁 CI/CD & Containers
 
-- Automated backend/front-end checks run via [`.github/workflows/ci.yml`](.github/workflows/ci.yml) on every push and pull request. The workflow installs dependencies with pnpm, runs linting, unit tests, a production build, and finally performs a smoke test against the Docker Compose stack.
-- A multi-stage [`Dockerfile`](Dockerfile) is available for building the production image. The new `docker-compose.ci.yml` spins up the app alongside Postgres and Redis with sensible defaults for CI or local smoke testing:
 
-  ```bash
-  docker compose -f docker-compose.ci.yml up --build
-  # open http://localhost:3000 once the services report healthy
-  ```
+---
 
-  Use `docker compose down -v` to tear everything back down when finished.
 
-- The dedicated landing-page pipeline in [`.github/workflows/landing.yml`](.github/workflows/landing.yml) exports static assets (`pnpm run landing:build`), validates required metadata/alt text, runs a Lighthouse SEO audit (`@lhci/cli`), pings the contact endpoint, and deploys the `dist/` bundle to Cloudflare Pages. Configure the following secrets before enabling deployments:
 
-  | Secret | Purpose |
-  | --- | --- |
-  | `CF_API_TOKEN` | Cloudflare Pages API token with `Pages=Edit` |
-  | `CF_ACCOUNT_ID` | Cloudflare account identifier |
-  | `CF_PAGES_PROJECT` | Target Pages project slug |
-  | `CONTACT_TEST_URL` *(optional)* | Override contact endpoint for smoke test |
-  | `SLACK_WEBHOOK` | Channel notifications for success/failure |
+## 🖼 Demo Screenshots
 
-## 📖 Documentation
 
-For detailed documentation, please visit our [Documentation Portal](https://docs.dealscale.com). Internal debug notes for the analytics loaders live in [`_docs/_debug/deferred_third_parties_debug.md`](./_docs/_debug/deferred_third_parties_debug.md).
 
-Key internal docs:
+<div align="center">
 
-- [`docs/commit-workflow.md`](docs/commit-workflow.md) — Husky hook behavior, staging shortcut, security scan flow.
-- [`docs/commitlint-conventions.md`](docs/commitlint-conventions.md) — required commit message structure and allowed types/scopes.
-- [`docs/opengrep.md`](docs/opengrep.md) — static analysis setup using Opengrep with SARIF archiving.
+  <img src="./public/images/charts/dashboard.png" alt="Dashboard Screenshot" width="800"/>
+
+  <p><em>Lead Orchestra Dashboard - Real-time analytics and performance monitoring</em></p>
+
+  
+
+  <img src="./public/images/charts/rechart.png" alt="Charts Screenshot" width="800"/>
+
+  <p><em>Advanced charting and data visualization capabilities</em></p>
+
+</div>
+
+
+
+---
+
+
+
+## 🧭 Getting Started
+
+
+
+### Prerequisites  
+
+- Node.js 20+  
+
+- pnpm 9.0.0+
+
+- Optionally Docker if you use the local mode
+
+
+
+### Installation  
+
+
+
+```bash
+
+git clone https://github.com/Lead-Orchestra/lead-orchestra-frontend.git
+
+cd lead-orchestra-frontend
+
+pnpm install
+
+```
+
+
+
+### Run locally
+
+
+
+```bash
+
+pnpm run dev
+
+```
+
+
+
+### Quick Start
+
+
+
+```bash
+
+# 1. Add a URL or upload list
+
+# 2. Click "Scrape"
+
+# 3. Download CSV/JSON
+
+# 4. (Optional) Push to Deal Scale for enrichment
+
+```
+
+
+
+---
+
+
+
+## 📦 Usage Example
+
+
+
+```js
+
+import { scrape } from 'lead-orchestra';
+
+
+
+const results = await scrape('https://example-domain.com/directory');
+
+console.log(results);
+
+/*
+
+[
+
+  {
+
+    name: "Jane Doe",
+
+    email: "jane@example.com",
+
+    phone: "123-456-7890",
+
+    company: "ExampleCo",
+
+    website: "example.com",
+
+    source_url: "https://example-domain.com/directory/jane-doe",
+
+    timestamp: "2025-11-21T12:34:56Z"
+
+  },
+
+  …
+
+]
+
+*/
+
+```
+
+
+
+---
+
+
+
+## 🎯 Use Cases
+
+
+
+* Grow unique lead lists for cold outreach, niche verticals.
+
+* Developers building scraper-based side-projects or SaaS.
+
+* Real-estate teams scraping FSBO or off-market sources.
+
+* Agencies seeking fresh data edge.
+
+* SDR teams wanting clean lists for high-volume outreach.
+
+
+
+---
+
+
+
+## 🤝 Contributing & Plugin System
+
+
+
+We welcome contributions!
+
+
+
+1. Fork the repo.
+
+2. Create a new branch: `feature/your-provider`.
+
+3. See `mcp/providers/README.md` for how to build a plugin.
+
+4. Submit a pull request.
+
+
+
+Please read our [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) and [CONTRIBUTING.md](CONTRIBUTING.md) before submitting.
+
+
+
+---
+
+
+
+## 📜 Roadmap
+
+
+
+| Version | Feature / Plan                                     |
+
+| ------- | -------------------------------------------------- |
+
+| v1.0.0  | MVP: Core scraping, export, LSF support            |
+
+| v1.1.0  | Plugin marketplace, UI enhancements                |
+
+| v2.0.0  | Hosted SaaS edition, direct Deal Scale integration |
+
+| v3.0.0+ | Multi-user, team plans, workflow automation        |
+
+
+
+---
+
+
+
+## 📞 Support
+
+
+
+Need help or want to say hi?
+
+
+
+* Issues: [https://github.com/Lead-Orchestra/lead-orchestra-frontend/issues](https://github.com/Lead-Orchestra/lead-orchestra-frontend/issues)
+
+
+
+---
+
+
 
 ## 📄 License
 
-This is proprietary software. All rights reserved. Unauthorized copying, modification, distribution, display, or use of this software, via any medium is strictly prohibited. For licensing inquiries, please contact us at [sam.scalerg@dealscale.io](mailto:sam.scalerg@dealscale.io).
 
-### Content Feeds
 
-- [`https://dealscale.io/rss.xml`](https://dealscale.io/rss.xml) — proxied Beehiiv newsletter feed.
-- [`https://dealscale.io/rss/youtube.xml`](https://dealscale.io/rss/youtube.xml) — proxied YouTube channel feed.
-- [`https://dealscale.io/rss/hybrid.xml`](https://dealscale.io/rss/hybrid.xml) — combined blog + video feed.
-- [`https://dealscale.io/videos/sitemap.xml`](https://dealscale.io/videos/sitemap.xml) — generated video sitemap. Run `pnpm run sitemap:videos` to refresh.
-- See [`docs/rss-feeds.md`](docs/rss-feeds.md) for implementation details and maintenance notes.
+Distributed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 📞 Contact
 
-For business inquiries or support, please [contact our team](mailto:supportg@dealscale.io).
 
-## 💼 Commercial Use
+---
 
-This software is available for commercial licensing. For pricing and licensing information, please contact our sales team at [sam.scaler@dealscale.io](mailto:sam.scaler@dealscale.io).
 
-## What technologies are used for this project?
 
-This project is built with .
+## 📎 Acknowledgments
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+
+
+Thanks to [jehna/readme-best-practices](https://github.com/jehna/readme-best-practices) for README templates and [othneildrew/Best-README-Template](https://github.com/othneildrew/Best-README-Template) for inspiration.
+
+
+
+---
+
+
+
+*Last updated: 2025-01-21*

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { dispatchMetric } from "@/app/reportWebVitals";
-import { useEffect, useRef } from "react";
+import { dispatchMetric } from '@/app/reportWebVitals';
+import { useEffect, useRef } from 'react';
 
 const RESOURCE_TRANSFER_THRESHOLD = 50_000;
 const RESOURCE_DURATION_THRESHOLD = 300;
@@ -13,20 +13,14 @@ function safeToFixed(value: number) {
 	return Number(value.toFixed(3));
 }
 
-function shouldReportResource(
-	entry: PerformanceResourceTiming,
-	isThirdParty: boolean,
-) {
+function shouldReportResource(entry: PerformanceResourceTiming, isThirdParty: boolean) {
 	const { transferSize = 0, duration = 0 } = entry;
 	const renderBlockingStatus = (
 		entry as PerformanceResourceTiming & {
 			renderBlockingStatus?: string;
 		}
 	).renderBlockingStatus;
-	if (
-		renderBlockingStatus === "blocking" ||
-		renderBlockingStatus === "queued"
-	) {
+	if (renderBlockingStatus === 'blocking' || renderBlockingStatus === 'queued') {
 		return true;
 	}
 
@@ -34,10 +28,7 @@ function shouldReportResource(
 		return transferSize > 0 || duration >= RESOURCE_DURATION_THRESHOLD;
 	}
 
-	return (
-		transferSize >= RESOURCE_TRANSFER_THRESHOLD ||
-		duration >= RESOURCE_DURATION_THRESHOLD
-	);
+	return transferSize >= RESOURCE_TRANSFER_THRESHOLD || duration >= RESOURCE_DURATION_THRESHOLD;
 }
 
 export function PerformanceMonitor() {
@@ -47,17 +38,14 @@ export function PerformanceMonitor() {
 	const longTaskReportCountRef = useRef(0);
 
 	useEffect(() => {
-		if (
-			typeof window === "undefined" ||
-			typeof PerformanceObserver === "undefined"
-		) {
+		if (typeof window === 'undefined' || typeof PerformanceObserver === 'undefined') {
 			return;
 		}
 
 		const supportedTypes = PerformanceObserver.supportedEntryTypes || [];
 		const cleanupCallbacks: Array<() => void> = [];
 
-		if (supportedTypes.includes("resource")) {
+		if (supportedTypes.includes('resource')) {
 			try {
 				const resourceObserver = new PerformanceObserver((list) => {
 					const origin = window.location.origin;
@@ -71,9 +59,7 @@ export function PerformanceMonitor() {
 							continue;
 						}
 
-						const isThirdParty = Boolean(
-							origin && !entry.name.startsWith(origin),
-						);
+						const isThirdParty = Boolean(origin && !entry.name.startsWith(origin));
 
 						if (!shouldReportResource(entry, isThirdParty)) {
 							continue;
@@ -83,7 +69,7 @@ export function PerformanceMonitor() {
 						resourceReportCountRef.current += 1;
 
 						dispatchMetric({
-							type: "resource-timing",
+							type: 'resource-timing',
 							id: key,
 							name: entry.name,
 							initiatorType: entry.initiatorType,
@@ -103,23 +89,21 @@ export function PerformanceMonitor() {
 							startTime: safeToFixed(entry.startTime),
 							isThirdParty: isThirdParty || undefined,
 							renderBlockingStatus:
-								"renderBlockingStatus" in entry
-									? entry.renderBlockingStatus
-									: undefined,
+								'renderBlockingStatus' in entry ? entry.renderBlockingStatus : undefined,
 							page: window.location.pathname,
 							timestamp: Date.now(),
 						});
 					}
 				});
 
-				resourceObserver.observe({ entryTypes: ["resource"] });
+				resourceObserver.observe({ entryTypes: ['resource'] });
 				cleanupCallbacks.push(() => resourceObserver.disconnect());
 			} catch {
 				// ! Ignore observer failures – not all browsers implement every entry type.
 			}
 		}
 
-		if (supportedTypes.includes("longtask")) {
+		if (supportedTypes.includes('longtask')) {
 			try {
 				const longTaskObserver = new PerformanceObserver((list) => {
 					for (const entry of list.getEntries()) {
@@ -146,9 +130,9 @@ export function PerformanceMonitor() {
 						).attribution?.[0]?.name;
 
 						dispatchMetric({
-							type: "long-task",
+							type: 'long-task',
 							id: key,
-							name: entry.name || "longtask",
+							name: entry.name || 'longtask',
 							duration: safeToFixed(entry.duration),
 							startTime: safeToFixed(entry.startTime),
 							attribution,
@@ -158,7 +142,7 @@ export function PerformanceMonitor() {
 					}
 				});
 
-				longTaskObserver.observe({ entryTypes: ["longtask"] });
+				longTaskObserver.observe({ entryTypes: ['longtask'] });
 				cleanupCallbacks.push(() => longTaskObserver.disconnect());
 			} catch {
 				// ! Ignore observer failures – longtask is not available in all environments.

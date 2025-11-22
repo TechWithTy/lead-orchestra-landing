@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface ErrorBoundaryProps {
 	children: React.ReactNode;
@@ -9,10 +9,7 @@ interface ErrorBoundaryState {
 	hasError: boolean;
 }
 
-class ErrorBoundary extends React.Component<
-	ErrorBoundaryProps,
-	ErrorBoundaryState
-> {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props);
 		this.state = { hasError: false };
@@ -23,16 +20,14 @@ class ErrorBoundary extends React.Component<
 	}
 
 	componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-		console.error("ErrorBoundary caught an error:", error, errorInfo);
+		console.error('ErrorBoundary caught an error:', error, errorInfo);
 	}
 
 	render() {
 		if (this.state.hasError) {
 			return (
 				this.props.fallback || (
-					<div className="p-4 text-red-500">
-						Something went wrong. Please refresh the page.
-					</div>
+					<div className="p-4 text-red-500">Something went wrong. Please refresh the page.</div>
 				)
 			);
 		}

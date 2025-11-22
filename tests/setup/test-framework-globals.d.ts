@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
-import type { vi } from "vitest";
+import type { vi } from 'vitest';
 
 declare global {
 	// eslint-disable-next-line no-var
@@ -20,13 +20,7 @@ declare global {
 		clearAllTimers(): void;
 		spyOn<T extends object, Key extends keyof T>(
 			obj: T,
-			method: Key,
+			method: Key
 		): ReturnType<typeof vi.spyOn<T, Key>>;
 	};
 }
-
-export {};
-
-
-
-

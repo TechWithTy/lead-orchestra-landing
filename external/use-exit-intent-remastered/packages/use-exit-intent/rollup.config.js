@@ -1,44 +1,44 @@
-import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import esbuild from 'rollup-plugin-esbuild'
-import dts from 'rollup-plugin-dts'
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import dts from 'rollup-plugin-dts';
+import esbuild from 'rollup-plugin-esbuild';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
-const packageJson = require('./package.json')
-const external = ['react']
+const packageJson = require('./package.json');
+const external = ['react'];
 
 /** @type {import('rollup').RollupOptions} */
 export default [
-  {
-    external,
-    input: 'src/index.ts',
+	{
+		external,
+		input: 'src/index.ts',
 
-    output: [
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
+		output: [
+			{
+				file: packageJson.main,
+				format: 'cjs',
+				sourcemap: true,
+			},
 
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
+			{
+				file: packageJson.module,
+				format: 'esm',
+				sourcemap: true,
+			},
+		],
 
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      esbuild({ tsconfig: './tsconfig.json', minify: true }),
-    ],
-  },
+		plugins: [
+			peerDepsExternal(),
+			resolve(),
+			commonjs(),
+			esbuild({ tsconfig: './tsconfig.json', minify: true }),
+		],
+	},
 
-  {
-    external,
-    input: 'dist/esm/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts({ respectExternal: true })],
-  },
-]
+	{
+		external,
+		input: 'dist/esm/index.d.ts',
+		output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+		plugins: [dts({ respectExternal: true })],
+	},
+];

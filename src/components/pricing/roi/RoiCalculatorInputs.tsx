@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import type { RoiInputs } from "@/lib/roi/types";
-import type { ROIEstimator } from "@/types/service/plans";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import type { RoiInputs } from '@/lib/roi/types';
+import type { ROIEstimator } from '@/types/service/plans';
 
 interface RoiCalculatorInputsProps {
 	inputs: RoiInputs;
@@ -11,14 +11,9 @@ interface RoiCalculatorInputsProps {
 	onChange: (field: keyof RoiInputs, value: number | string) => void;
 }
 
-export const RoiCalculatorInputs = ({
-	inputs,
-	estimator,
-	onChange,
-}: RoiCalculatorInputsProps) => {
+export const RoiCalculatorInputs = ({ inputs, estimator, onChange }: RoiCalculatorInputsProps) => {
 	const handleNumberChange =
-		(field: keyof RoiInputs) =>
-		(event: React.ChangeEvent<HTMLInputElement>) => {
+		(field: keyof RoiInputs) => (event: React.ChangeEvent<HTMLInputElement>) => {
 			onChange(field, Number(event.target.value));
 		};
 
@@ -37,7 +32,7 @@ export const RoiCalculatorInputs = ({
 					min={1000}
 					step={500}
 					value={inputs.averageDealAmount}
-					onChange={handleNumberChange("averageDealAmount")}
+					onChange={handleNumberChange('averageDealAmount')}
 					className="h-11 rounded-lg border-border/60 bg-background/60"
 				/>
 			</div>
@@ -54,7 +49,7 @@ export const RoiCalculatorInputs = ({
 					min={1}
 					step={1}
 					value={inputs.monthlyDealsClosed}
-					onChange={handleNumberChange("monthlyDealsClosed")}
+					onChange={handleNumberChange('monthlyDealsClosed')}
 					className="h-11 rounded-lg border-border/60 bg-background/60"
 				/>
 			</div>
@@ -71,7 +66,7 @@ export const RoiCalculatorInputs = ({
 					min={1}
 					step={1}
 					value={inputs.averageTimePerDealHours}
-					onChange={handleNumberChange("averageTimePerDealHours")}
+					onChange={handleNumberChange('averageTimePerDealHours')}
 					className="h-11 rounded-lg border-border/60 bg-background/60"
 				/>
 			</div>
@@ -88,21 +83,18 @@ export const RoiCalculatorInputs = ({
 					min={0}
 					step={100}
 					value={inputs.monthlyOperatingCost}
-					onChange={handleNumberChange("monthlyOperatingCost")}
+					onChange={handleNumberChange('monthlyOperatingCost')}
 					className="h-11 rounded-lg border-border/60 bg-background/60"
 				/>
 			</div>
 			<div className="grid gap-2">
-				<Label
-					htmlFor="industry"
-					className="font-medium text-muted-foreground text-xs uppercase"
-				>
+				<Label htmlFor="industry" className="font-medium text-muted-foreground text-xs uppercase">
 					Industry / Vertical
 				</Label>
 				<select
 					id="industry"
 					value={inputs.industry}
-					onChange={(event) => onChange("industry", event.target.value)}
+					onChange={(event) => onChange('industry', event.target.value)}
 					className="h-11 w-full rounded-lg border border-border/60 bg-background/60 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
 				>
 					{Object.keys(estimator.industryFactors).map((industry) => (

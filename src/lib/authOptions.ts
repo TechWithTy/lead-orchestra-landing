@@ -1,10 +1,9 @@
-import type { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import FacebookProvider from "next-auth/providers/facebook";
-import LinkedInProvider from "next-auth/providers/linkedin";
+import type { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import FacebookProvider from 'next-auth/providers/facebook';
+import LinkedInProvider from 'next-auth/providers/linkedin';
 
-const DEALSCALE_API_BASE =
-	process.env.DEALSCALE_API_BASE || "https://api.dealscale.io";
+const DEALSCALE_API_BASE = process.env.DEALSCALE_API_BASE || 'https://api.dealscale.io';
 
 interface DealScaleUser {
 	id?: string;
@@ -15,7 +14,7 @@ interface DealScaleUser {
 	[key: string]: unknown;
 }
 
-type ProfileSetupStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETED";
+type ProfileSetupStatus = 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
 
 interface DealScaleAuthResponse {
 	access_token: string;
@@ -29,15 +28,15 @@ interface DealScaleAuthResponse {
 
 type DealScaleTokens = Pick<
 	DealScaleAuthResponse,
-	| "access_token"
-	| "refresh_token"
-	| "token_type"
-	| "expires_in"
-	| "session_id"
-	| "profile_setup_status"
+	| 'access_token'
+	| 'refresh_token'
+	| 'token_type'
+	| 'expires_in'
+	| 'session_id'
+	| 'profile_setup_status'
 >;
 
-declare module "next-auth" {
+declare module 'next-auth' {
 	interface Session {
 		dsTokens?: DealScaleTokens;
 		user: {
@@ -54,7 +53,7 @@ declare module "next-auth" {
 	}
 }
 
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
 	interface JWT {
 		dsTokens?: DealScaleTokens;
 		user?: {
@@ -75,28 +74,25 @@ function getRequiredEnv(name: string): string {
 export const authOptions: NextAuthOptions = {
 	providers: [
 		CredentialsProvider({
-			name: "Email and Password",
+			name: 'Email and Password',
 			credentials: {
-				email: { label: "Email", type: "email" },
-				password: { label: "Password", type: "password" },
+				email: { label: 'Email', type: 'email' },
+				password: { label: 'Password', type: 'password' },
 			},
 			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
-					throw new Error("Missing email or password");
+					throw new Error('Missing email or password');
 				}
 
-				if (credentials.email.startsWith("phone:")) {
+				if (credentials.email.startsWith('phone:')) {
 					try {
-						const authData = JSON.parse(
-							credentials.password,
-						) as DealScaleAuthResponse;
-						const phoneNumber = credentials.email.replace("phone:", "");
+						const authData = JSON.parse(credentials.password) as DealScaleAuthResponse;
+						const phoneNumber = credentials.email.replace('phone:', '');
 
 						return {
-							id: authData.user?.id ?? authData.session_id ?? "user",
+							id: authData.user?.id ?? authData.session_id ?? 'user',
 							email: phoneNumber,
-							name:
-								authData.user?.name ?? authData.user?.first_name ?? undefined,
+							name: authData.user?.name ?? authData.user?.first_name ?? undefined,
 							dsTokens: {
 								access_token: authData.access_token,
 								refresh_token: authData.refresh_token,
@@ -108,31 +104,29 @@ export const authOptions: NextAuthOptions = {
 							raw: authData.user ?? {},
 						};
 					} catch {
-						throw new Error("Invalid phone authentication data");
+						throw new Error('Invalid phone authentication data');
 					}
 				}
 
 				let res: Response;
 				try {
 					res = await fetch(`${DEALSCALE_API_BASE}/api/v1/auth/login`, {
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({
 							email: credentials.email,
 							password: credentials.password,
-							device_info: { user_agent: "nextjs-app" },
+							device_info: { user_agent: 'nextjs-app' },
 							remember_me: false,
 						}),
 					});
 				} catch (error) {
-					console.error("DealScale login request failed", error);
-					throw new Error(
-						"Unable to reach authentication service. Please try again later.",
-					);
+					console.error('DealScale login request failed', error);
+					throw new Error('Unable to reach authentication service. Please try again later.');
 				}
 
 				if (!res.ok) {
-					let message = "Invalid credentials";
+					let message = 'Invalid credentials';
 					try {
 						const data = await res.json();
 						message = data?.detail ?? data?.message ?? message;
@@ -143,7 +137,7 @@ export const authOptions: NextAuthOptions = {
 				const data: DealScaleAuthResponse = await res.json();
 
 				return {
-					id: data.user?.id ?? data.session_id ?? "user",
+					id: data.user?.id ?? data.session_id ?? 'user',
 					email: credentials.email,
 					name: data.user?.name ?? data.user?.first_name ?? undefined,
 					dsTokens: {
@@ -159,45 +153,41 @@ export const authOptions: NextAuthOptions = {
 			},
 		}),
 		LinkedInProvider({
-			clientId: getRequiredEnv("LINKEDIN_CLIENT_ID"),
-			clientSecret: getRequiredEnv("LINKEDIN_CLIENT_SECRET"),
+			clientId: getRequiredEnv('LINKEDIN_CLIENT_ID'),
+			clientSecret: getRequiredEnv('LINKEDIN_CLIENT_SECRET'),
 		}),
 		FacebookProvider({
-			clientId: getRequiredEnv("FACEBOOK_CLIENT_ID"),
-			clientSecret: getRequiredEnv("FACEBOOK_CLIENT_SECRET"),
+			clientId: getRequiredEnv('FACEBOOK_CLIENT_ID'),
+			clientSecret: getRequiredEnv('FACEBOOK_CLIENT_SECRET'),
 		}),
 	],
-	session: { strategy: "jwt" },
+	session: { strategy: 'jwt' },
 	pages: {
-		signIn: "/signIn",
-		signOut: "/signOut",
-		error: "/signIn",
+		signIn: '/signIn',
+		signOut: '/signOut',
+		error: '/signIn',
 	},
 	events: {
 		async signIn(message) {
 			const provider = message.account?.provider;
 
-			if (provider !== "linkedin" && provider !== "facebook") {
+			if (provider !== 'linkedin' && provider !== 'facebook') {
 				return;
 			}
 
 			const baseUrl =
 				process.env.NEXTAUTH_URL ??
-				(process.env.VERCEL_URL
-					? `https://${process.env.VERCEL_URL}`
-					: undefined);
+				(process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined);
 
 			if (!baseUrl) {
-				console.warn(
-					"Missing NEXTAUTH_URL or VERCEL_URL; skipping social credential sync",
-				);
+				console.warn('Missing NEXTAUTH_URL or VERCEL_URL; skipping social credential sync');
 				return;
 			}
 
 			try {
 				await fetch(`${baseUrl}/api/auth/social-sign-in`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
 						provider,
 						accessToken: message.account?.access_token,
@@ -206,7 +196,7 @@ export const authOptions: NextAuthOptions = {
 					}),
 				});
 			} catch (error) {
-				console.error("Failed to call social credential sync endpoint", error);
+				console.error('Failed to call social credential sync endpoint', error);
 			}
 		},
 	},
@@ -216,7 +206,7 @@ export const authOptions: NextAuthOptions = {
 				return true;
 			}
 
-			if (account.provider === "linkedin" || account.provider === "facebook") {
+			if (account.provider === 'linkedin' || account.provider === 'facebook') {
 				console.info(`Social login detected for provider ${account.provider}`);
 			}
 

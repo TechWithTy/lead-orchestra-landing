@@ -1,10 +1,9 @@
-import { authOptions } from "@/lib/authOptions";
-import type { ContactData } from "@/utils/csvParser";
-import { getServerSession } from "next-auth";
-import { type NextRequest, NextResponse } from "next/server";
+import { authOptions } from '@/lib/authOptions';
+import type { ContactData } from '@/utils/csvParser';
+import { getServerSession } from 'next-auth';
+import { type NextRequest, NextResponse } from 'next/server';
 
-const DEALSCALE_API_BASE =
-	process.env.DEALSCALE_API_BASE || "https://api.dealscale.io";
+const DEALSCALE_API_BASE = process.env.DEALSCALE_API_BASE || 'https://api.dealscale.io';
 
 interface ReactivateRequest {
 	contacts: ContactData[];
@@ -31,35 +30,26 @@ export async function POST(req: NextRequest) {
 		const session = await getServerSession(authOptions);
 
 		// Allow unauthenticated requests in development mode for testing
-		const isDevelopment = process.env.NODE_ENV === "development";
+		const isDevelopment = process.env.NODE_ENV === 'development';
 		const hasAuth = session?.user && session?.dsTokens?.access_token;
 
 		if (!isDevelopment && !hasAuth) {
 			return NextResponse.json(
 				{
-					error: "Unauthorized",
-					message: "Please sign in to activate campaigns",
+					error: 'Unauthorized',
+					message: 'Please sign in to activate campaigns',
 				},
-				{ status: 401 },
+				{ status: 401 }
 			);
 		}
 
 		// Use a mock token in development if no session
-		const accessToken = hasAuth
-			? session.dsTokens.access_token
-			: "dev-mock-token";
+		const accessToken = hasAuth ? session.dsTokens.access_token : 'dev-mock-token';
 
 		const body: ReactivateRequest = await req.json();
 
-		if (
-			!body.contacts ||
-			!Array.isArray(body.contacts) ||
-			body.contacts.length === 0
-		) {
-			return NextResponse.json(
-				{ error: "Missing or empty contacts array" },
-				{ status: 400 },
-			);
+		if (!body.contacts || !Array.isArray(body.contacts) || body.contacts.length === 0) {
+			return NextResponse.json({ error: 'Missing or empty contacts array' }, { status: 400 });
 		}
 
 		const { contacts, skipTrace = false, workflowRequirements } = body;
@@ -69,12 +59,9 @@ export async function POST(req: NextRequest) {
 		if (skipTrace && hasAuth) {
 			try {
 				// Enrich contacts with skip trace data
-				enrichedContacts = await enrichContactsWithSkipTrace(
-					contacts,
-					accessToken,
-				);
+				enrichedContacts = await enrichContactsWithSkipTrace(contacts, accessToken);
 			} catch (error) {
-				console.error("Skip trace enrichment failed:", error);
+				console.error('Skip trace enrichment failed:', error);
 				// Continue with original contacts if skip trace fails
 			}
 		}
@@ -92,7 +79,7 @@ export async function POST(req: NextRequest) {
 			activationResults = await batchActivateContacts(
 				enrichedContacts,
 				accessToken,
-				workflowRequirements,
+				workflowRequirements
 			);
 		}
 
@@ -110,10 +97,7 @@ export async function POST(req: NextRequest) {
 
 		// Log failures if any
 		if (failedActivations.length > 0) {
-			console.warn(
-				`Failed to activate ${failedActivations.length} contacts:`,
-				failedActivations,
-			);
+			console.warn(`Failed to activate ${failedActivations.length} contacts:`, failedActivations);
 		}
 
 		return NextResponse.json({
@@ -124,14 +108,13 @@ export async function POST(req: NextRequest) {
 			errors: failedActivations.map((f) => f.error).filter(Boolean),
 		});
 	} catch (error) {
-		console.error("Campaign reactivation error:", error);
+		console.error('Campaign reactivation error:', error);
 		return NextResponse.json(
 			{
-				error: "Internal server error",
-				message:
-					error instanceof Error ? error.message : "Unknown error occurred",
+				error: 'Internal server error',
+				message: error instanceof Error ? error.message : 'Unknown error occurred',
 			},
-			{ status: 500 },
+			{ status: 500 }
 		);
 	}
 }
@@ -141,7 +124,7 @@ export async function POST(req: NextRequest) {
  */
 async function enrichContactsWithSkipTrace(
 	contacts: ContactData[],
-	accessToken: string,
+	accessToken: string
 ): Promise<ContactData[]> {
 	try {
 		// Enrich contacts using the data enrichment API
@@ -154,10 +137,10 @@ async function enrichContactsWithSkipTrace(
 					const enrichResponse = await fetch(
 						`${DEALSCALE_API_BASE}/api/v1/data_enrichment/contacts`,
 						{
-							method: "POST",
+							method: 'POST',
 							headers: {
 								Authorization: `Bearer ${accessToken}`,
-								"Content-Type": "application/json",
+								'Content-Type': 'application/json',
 							},
 							body: JSON.stringify({
 								address: contact.address,
@@ -165,7 +148,7 @@ async function enrichContactsWithSkipTrace(
 								phone: contact.phone,
 								name: contact.name,
 							}),
-						},
+						}
 					);
 
 					if (enrichResponse.ok) {
@@ -183,7 +166,7 @@ async function enrichContactsWithSkipTrace(
 					enrichedContacts.push(contact);
 				}
 			} catch (error) {
-				console.error("Error enriching contact:", error);
+				console.error('Error enriching contact:', error);
 				// On error, use original contact
 				enrichedContacts.push(contact);
 			}
@@ -191,7 +174,7 @@ async function enrichContactsWithSkipTrace(
 
 		return enrichedContacts;
 	} catch (error) {
-		console.error("Skip trace enrichment error:", error);
+		console.error('Skip trace enrichment error:', error);
 		// Return original contacts if enrichment fails
 		return contacts;
 	}
@@ -203,7 +186,7 @@ async function enrichContactsWithSkipTrace(
 async function batchActivateContacts(
 	contacts: ContactData[],
 	accessToken: string,
-	workflowRequirements?: string,
+	workflowRequirements?: string
 ): Promise<Array<{ success: boolean; contactId?: string; error?: string }>> {
 	const results: Array<{
 		success: boolean;
@@ -224,7 +207,7 @@ async function batchActivateContacts(
 				if (!contactId) {
 					return {
 						success: false,
-						error: "Failed to get/create contact ID",
+						error: 'Failed to get/create contact ID',
 					};
 				}
 
@@ -232,10 +215,10 @@ async function batchActivateContacts(
 				const activateResponse = await fetch(
 					`${DEALSCALE_API_BASE}/api/v1/ai/activate/${contactId}`,
 					{
-						method: "POST",
+						method: 'POST',
 						headers: {
 							Authorization: `Bearer ${accessToken}`,
-							"Content-Type": "application/json",
+							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify({
 							contact_data: contact,
@@ -247,7 +230,7 @@ async function batchActivateContacts(
 								skip_trace: false, // Already handled above
 							},
 						}),
-					},
+					}
 				);
 
 				if (!activateResponse.ok) {
@@ -266,10 +249,7 @@ async function batchActivateContacts(
 			} catch (error) {
 				return {
 					success: false,
-					error:
-						error instanceof Error
-							? error.message
-							: "Unknown error during activation",
+					error: error instanceof Error ? error.message : 'Unknown error during activation',
 				};
 			}
 		});
@@ -292,7 +272,7 @@ async function batchActivateContacts(
  */
 async function getOrCreateContactId(
 	contact: ContactData,
-	accessToken: string,
+	accessToken: string
 ): Promise<string | null> {
 	try {
 		// Try to find existing contact by email or phone
@@ -300,12 +280,12 @@ async function getOrCreateContactId(
 			const searchResponse = await fetch(
 				`${DEALSCALE_API_BASE}/api/v1/contacts/search?email=${encodeURIComponent(contact.email)}`,
 				{
-					method: "GET",
+					method: 'GET',
 					headers: {
 						Authorization: `Bearer ${accessToken}`,
-						"Content-Type": "application/json",
+						'Content-Type': 'application/json',
 					},
-				},
+				}
 			);
 
 			if (searchResponse.ok) {
@@ -317,17 +297,14 @@ async function getOrCreateContactId(
 		}
 
 		// Create new contact if not found
-		const createResponse = await fetch(
-			`${DEALSCALE_API_BASE}/api/v1/contacts`,
-			{
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(contact),
+		const createResponse = await fetch(`${DEALSCALE_API_BASE}/api/v1/contacts`, {
+			method: 'POST',
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+				'Content-Type': 'application/json',
 			},
-		);
+			body: JSON.stringify(contact),
+		});
 
 		if (createResponse.ok) {
 			const data = await createResponse.json();
@@ -337,13 +314,13 @@ async function getOrCreateContactId(
 		// If creation fails, generate a temporary ID based on contact data
 		// This is a fallback - ideally contacts should be created properly
 		return contact.email
-			? `temp_${contact.email.replace(/[^a-zA-Z0-9]/g, "_")}`
+			? `temp_${contact.email.replace(/[^a-zA-Z0-9]/g, '_')}`
 			: `temp_${Date.now()}_${Math.random().toString(36).substring(7)}`;
 	} catch (error) {
-		console.error("Error getting/creating contact ID:", error);
+		console.error('Error getting/creating contact ID:', error);
 		// Return a temporary ID as fallback
 		return contact.email
-			? `temp_${contact.email.replace(/[^a-zA-Z0-9]/g, "_")}`
+			? `temp_${contact.email.replace(/[^a-zA-Z0-9]/g, '_')}`
 			: `temp_${Date.now()}_${Math.random().toString(36).substring(7)}`;
 	}
 }
