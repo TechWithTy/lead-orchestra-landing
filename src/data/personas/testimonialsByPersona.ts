@@ -44,9 +44,9 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			name: 'Taylor Morgan',
 			role: 'Founder, Growth Marketing Agency',
 			content:
-				'Lead Orchestra lets us offer scraping as a service to clients. White-label options and custom pipelines mean we can deliver unique lead datasets competitors can\'t access. The API and webhooks integrate seamlessly with our client systems.',
+				"Lead Orchestra lets us offer scraping as a service to clients. White-label options and custom pipelines mean we can deliver unique lead datasets competitors can't access. The API and webhooks integrate seamlessly with our client systems.",
 			problem:
-				'We were using the same Apollo lists as every other agency. Premium scraping APIs were eating into profit margins, and we couldn\'t find unique leads for clients.',
+				"We were using the same Apollo lists as every other agency. Premium scraping APIs were eating into profit margins, and we couldn't find unique leads for clients.",
 			solution:
 				"Lead Orchestra's open-source scraping and white-label options let us scrape niche sources competitors ignore. We offer scraping as a service, creating new revenue streams. Client retention improved with unique datasets.",
 			rating: 5,
@@ -90,7 +90,7 @@ export const personaTestimonials: Record<PersonaKey, PersonaTestimonial[]> = {
 			content:
 				'Lead Orchestra is perfect for startups who need scraping without enterprise overhead. The free tier, MCP plugins, and simple API let us build data pipelines fast. We focus on product-market fit while Lead Orchestra handles scraping infrastructure.',
 			problem:
-				'Our MVP was delayed by infrastructure work. We needed scraping but couldn\'t afford enterprise tools or burn runway on vendor costs.',
+				"Our MVP was delayed by infrastructure work. We needed scraping but couldn't afford enterprise tools or burn runway on vendor costs.",
 			solution:
 				"Lead Orchestra's free tier and open-source approach let us add scraping without upfront costs. As we scale, we can self-host for full control. We launched faster and saved months of engineering time.",
 			rating: 5,

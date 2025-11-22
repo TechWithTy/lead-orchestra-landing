@@ -13,11 +13,7 @@ type ValidationResult = {
 };
 
 // Brand prefixes - supports both Lead Orchestra and DealScale brands
-const BRAND_PREFIXES = [
-	/^Lead Orchestra/i,
-	/^DealScale/i,
-	/^Deal Scale/i,
-];
+const BRAND_PREFIXES = [/^Lead Orchestra/i, /^DealScale/i, /^Deal Scale/i];
 // Title keywords - matches actual SEO strategy for lead scraping/data ingestion
 const TITLE_KEYWORD_REGEX =
 	/(Lead|Scraping|Data Ingestion|Open-Source|MCP|Export|Scrape|Developer|Agency|Automation|AI)/i;
@@ -57,7 +53,9 @@ export function validateSEO(title: string, description: string): ValidationResul
 		// Only fail if title is too short and has no brand
 		if (title.length < 50) {
 			results.title.pass = false;
-			results.title.errors.push('Title should include brand name (Lead Orchestra, DealScale, or Deal Scale).');
+			results.title.errors.push(
+				'Title should include brand name (Lead Orchestra, DealScale, or Deal Scale).'
+			);
 		}
 	}
 
@@ -65,7 +63,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 	if (!TITLE_KEYWORD_REGEX.test(title)) {
 		results.title.pass = false;
 		results.title.errors.push(
-			'Missing primary intent keyword (Lead, Scraping, Data Ingestion, Open-Source, MCP, Export, Developer, Agency, Automation, or AI).',
+			'Missing primary intent keyword (Lead, Scraping, Data Ingestion, Open-Source, MCP, Export, Developer, Agency, Automation, or AI).'
 		);
 	}
 
@@ -90,7 +88,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 	if (countMatches(description, DESCRIPTION_KEYWORDS_REGEX) < 1) {
 		results.description.pass = false;
 		results.description.errors.push(
-			'Description must contain at least one primary keyword (lead, scraping, data, ingestion, export, open-source, MCP, developer, agency, automation, AI, fresh leads, etc.).',
+			'Description must contain at least one primary keyword (lead, scraping, data, ingestion, export, open-source, MCP, developer, agency, automation, AI, fresh leads, etc.).'
 		);
 	}
 
@@ -98,7 +96,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 	if (!VALUE_PROPOSITION_REGEX.test(description)) {
 		results.description.pass = false;
 		results.description.errors.push(
-			'Description missing clear value proposition (scrape, export, data ingestion, fresh leads, open-source, plugs into, MCP, developer, agency, automation).',
+			'Description missing clear value proposition (scrape, export, data ingestion, fresh leads, open-source, plugs into, MCP, developer, agency, automation).'
 		);
 	}
 

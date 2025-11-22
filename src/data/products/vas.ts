@@ -11,11 +11,7 @@ export const vaProducts: ProductType[] = [
 		slug: 'virtual-assistants',
 		images: ['/products/vas.png'],
 		reviews: [],
-		categories: [
-			ProductCategory.Agents,
-			ProductCategory.Monetize,
-			ProductCategory.AddOn,
-		],
+		categories: [ProductCategory.Agents, ProductCategory.Monetize, ProductCategory.AddOn],
 		types: [],
 		colors: [],
 		sizes: [],
