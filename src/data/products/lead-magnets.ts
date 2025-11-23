@@ -556,3 +556,4 @@ export const leadMagnetProducts: ProductType[] = [
 	sizes: product.sizes ?? defaultSizes,
 	types: product.types ?? defaultTypes,
 }));
+
