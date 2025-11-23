@@ -1,6 +1,9 @@
 {
 	"compilerOptions": {
 		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"noEmit": true,
 		"target": "ES2020",
 		"useDefineForClassFields": true,
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -69,7 +72,7 @@
 			]
 		}
 	},
-	"include": ["src"],
+	"include": ["src", "src/types/**/*.d.ts"],
 	"exclude": [
 		"**/__tests__/**",
 		"**/*.test.ts",

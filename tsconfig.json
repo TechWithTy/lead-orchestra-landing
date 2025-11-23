@@ -67,6 +67,7 @@
 		"target": "ES2017",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"noEmit": true,
+		"declaration": false,
 		"module": "esnext",
 		"esModuleInterop": true,
 		"moduleResolution": "node",
@@ -88,7 +89,6 @@
 		"**/*.test.tsx",
 		"**/*.spec.ts",
 		"**/*.spec.tsx",
-		"**/*.d.ts",
 		"functions",
 		"landing/functions",
 		"src/testHelpers",
@@ -100,5 +100,5 @@
 		"scripts",
 		"scripts/**/*"
 	],
-	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"]
+	"include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/types/**/*.d.ts", "src/types/svg.d.ts"]
 }

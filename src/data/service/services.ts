@@ -531,7 +531,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'MCP API Aggregator FAQs',
 					subtitle: 'Everything you need to know about our MCP aggregator.',
-					items: [],
+					faqItems: [],
 				},
 			},
 		},
@@ -574,7 +574,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'Data Normalization FAQs',
 					subtitle: 'Everything you need to know about data normalization.',
-					items: [],
+					faqItems: [],
 				},
 			},
 		},
@@ -1105,7 +1105,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'Developer Tools FAQs',
 					subtitle: "Everything you need to know about Lead Orchestra's developer tools.",
-					items: [],
+					faqItems: [],
 				},
 				copyright: {
 					title: 'Start Building Today',
@@ -1150,7 +1150,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'Agency Tools FAQs',
 					subtitle: 'Everything you need to know about white-label and agency tools.',
-					items: [],
+					faqItems: [],
 				},
 				copyright: {
 					title: 'Scale Your Agency',
@@ -1195,7 +1195,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'Quick-Start Templates FAQs',
 					subtitle: 'Everything you need to know about getting started fast.',
-					items: [],
+					faqItems: [],
 				},
 				copyright: {
 					title: 'Launch Fast',
@@ -1240,7 +1240,7 @@ export const services: ServicesData = {
 				faq: {
 					title: 'Enterprise Tools FAQs',
 					subtitle: 'Everything you need to know about enterprise features and compliance.',
-					items: [],
+					faqItems: [],
 				},
 				copyright: {
 					title: 'Enterprise Ready',
