@@ -21,7 +21,7 @@ out/
 
 # Local environment files
 .env*
-
+.vercel/output
 .env.local
 .env.development.local
 .env.test.local
