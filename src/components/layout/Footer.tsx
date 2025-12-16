@@ -1,4 +1,4 @@
-import { NewsletterFooter } from '@/components/contact/newsletter/NewsletterFooter';
+import { NewsletterFooter } from "@/components/contact/newsletter/NewsletterFooter";
 import {
 	Facebook,
 	Github,
@@ -10,12 +10,12 @@ import {
 	Phone,
 	Twitter,
 	Youtube,
-} from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { v4 as uuidv4 } from 'uuid';
-import { FooterBetaCta } from './FooterBetaCta';
-import { FooterPersonaPrompt } from './FooterPersonaPrompt';
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { v4 as uuidv4 } from "uuid";
+import { FooterBetaCta } from "./FooterBetaCta";
+import { FooterPersonaPrompt } from "./FooterPersonaPrompt";
 
 export interface FooterProps {
 	companyName: string;
@@ -55,22 +55,25 @@ export const Footer: React.FC<FooterProps> = ({
 	cookiePolicyLink,
 }) => {
 	const currentYear = new Date().getFullYear();
-	type SocialLinkKey = Exclude<keyof FooterProps['socialLinks'], 'mediumUsername'>;
+	type SocialLinkKey = Exclude<
+		keyof FooterProps["socialLinks"],
+		"mediumUsername"
+	>;
 
 	const socialIconClass =
-		'group flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/80 text-black shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 hover:text-primary dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-primary/60 dark:hover:bg-primary/10';
+		"group flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/80 text-black shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary hover:-translate-y-0.5 hover:border-primary hover:bg-primary/10 hover:text-primary dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-primary/60 dark:hover:bg-primary/10";
 
 	const socialIconConfigs: Array<{
 		key: SocialLinkKey;
 		Icon: LucideIcon;
 		label: string;
 	}> = [
-		{ key: 'github', Icon: Github, label: 'GitHub' },
-		{ key: 'instagram', Icon: Instagram, label: 'Instagram' },
-		{ key: 'linkedin', Icon: Linkedin, label: 'LinkedIn' },
-		{ key: 'facebook', Icon: Facebook, label: 'Facebook' },
-		{ key: 'twitter', Icon: Twitter, label: 'Twitter / X' },
-		{ key: 'youtube', Icon: Youtube, label: 'YouTube' },
+		{ key: "github", Icon: Github, label: "GitHub" },
+		{ key: "instagram", Icon: Instagram, label: "Instagram" },
+		{ key: "linkedin", Icon: Linkedin, label: "LinkedIn" },
+		{ key: "facebook", Icon: Facebook, label: "Facebook" },
+		{ key: "twitter", Icon: Twitter, label: "Twitter / X" },
+		{ key: "youtube", Icon: Youtube, label: "YouTube" },
 	];
 
 	return (
@@ -82,18 +85,18 @@ export const Footer: React.FC<FooterProps> = ({
 					<div className="col-span-1 flex flex-col items-center text-center md:col-span-2 md:justify-center md:text-center lg:col-span-1 lg:items-start lg:text-left">
 						<div className="mb-4 flex w-full justify-center lg:justify-start">
 							<Link href="/" className="w-full max-w-[200px] lg:max-w-none">
-								{/* Show dark text logo on light mode */}
+								{/* Dark logo for light mode */}
 								<Image
-									src="/company/logos/DealScale_Horizontal_Black.png"
+									src="/logos/lead_orchestra/Transparent/Lead%20Orchestra%20Dark%20Horizontal%20LG.png"
 									alt="Lead Orchestra"
 									width={300}
 									height={76}
 									className="block h-auto w-full dark:hidden"
 									priority
 								/>
-								{/* Show light text logo on dark mode */}
+								{/* Light logo for dark mode */}
 								<Image
-									src="/company/logos/Deal_Scale_Horizontal_White.png"
+									src="/logos/lead_orchestra/Transparent/Lead%20Orchestra%20Light%20Horizontal%20Lg.png"
 									alt="Lead Orchestra"
 									width={300}
 									height={76}
@@ -186,7 +189,9 @@ export const Footer: React.FC<FooterProps> = ({
 					</div>
 
 					<div className="col-span-1 flex flex-col items-center md:col-span-2 md:text-center lg:col-span-1">
-						<h3 className="mb-4 text-center font-semibold text-lg">Subscribe to our newsletter</h3>
+						<h3 className="mb-4 text-center font-semibold text-lg">
+							Subscribe to our newsletter
+						</h3>
 						<div className="flex w-full justify-center">
 							<NewsletterFooter />
 						</div>
@@ -195,7 +200,7 @@ export const Footer: React.FC<FooterProps> = ({
 
 				<div className="mt-12 flex flex-col items-center border-white/10 border-t pt-8 md:items-center md:space-y-4 lg:flex-row lg:justify-between lg:space-y-0">
 					<p className="mb-4 text-center text-black text-sm md:mb-0 dark:text-white/60">
-						&copy; {currentYear} {companyName}. All rights reserved.
+						&copy; {currentYear} Deal Scale™. All rights reserved.
 					</p>
 					<div className="flex flex-col space-y-2 sm:flex-row sm:flex-wrap sm:justify-center sm:space-x-4 sm:space-y-2 lg:justify-end lg:space-x-6 lg:space-y-0">
 						<Link

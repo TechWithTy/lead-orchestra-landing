@@ -1,0 +1,72 @@
+﻿2025-12-16T05:35:19.2409470Z ##[group]Run actions/checkout@v4
+2025-12-16T05:35:19.2410839Z with:
+2025-12-16T05:35:19.2411765Z   repository: Lead-Orchestra/lead-orchestra-landing
+2025-12-16T05:35:19.2413300Z   token: ***
+2025-12-16T05:35:19.2414063Z   ssh-strict: true
+2025-12-16T05:35:19.2414857Z   ssh-user: git
+2025-12-16T05:35:19.2415657Z   persist-credentials: true
+2025-12-16T05:35:19.2416720Z   clean: true
+2025-12-16T05:35:19.2417532Z   sparse-checkout-cone-mode: true
+2025-12-16T05:35:19.2418526Z   fetch-depth: 1
+2025-12-16T05:35:19.2419303Z   fetch-tags: false
+2025-12-16T05:35:19.2420222Z   show-progress: true
+2025-12-16T05:35:19.2421044Z   lfs: false
+2025-12-16T05:35:19.2421788Z   submodules: false
+2025-12-16T05:35:19.2422617Z   set-safe-directory: true
+2025-12-16T05:35:19.2423763Z ##[endgroup]
+2025-12-16T05:35:19.3573169Z Syncing repository: Lead-Orchestra/lead-orchestra-landing
+2025-12-16T05:35:19.3575978Z ##[group]Getting Git version info
+2025-12-16T05:35:19.3578021Z Working directory is '/home/runner/work/lead-orchestra-landing/lead-orchestra-landing'
+2025-12-16T05:35:19.3580477Z [command]/usr/bin/git version
+2025-12-16T05:35:19.3639821Z git version 2.52.0
+2025-12-16T05:35:19.3667032Z ##[endgroup]
+2025-12-16T05:35:19.3689421Z Temporarily overriding HOME='/home/runner/work/_temp/a22b4d65-d745-4962-ae01-f93c51f9425a' before making global git config changes
+2025-12-16T05:35:19.3692292Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-16T05:35:19.3695964Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/lead-orchestra-landing/lead-orchestra-landing
+2025-12-16T05:35:19.3745161Z Deleting the contents of '/home/runner/work/lead-orchestra-landing/lead-orchestra-landing'
+2025-12-16T05:35:19.3749099Z ##[group]Initializing the repository
+2025-12-16T05:35:19.3755863Z [command]/usr/bin/git init /home/runner/work/lead-orchestra-landing/lead-orchestra-landing
+2025-12-16T05:35:19.3875159Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-16T05:35:19.3879087Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-16T05:35:19.3883461Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-16T05:35:19.3886664Z hint: call:
+2025-12-16T05:35:19.3887948Z hint:
+2025-12-16T05:35:19.3889516Z hint: 	git config --global init.defaultBranch <name>
+2025-12-16T05:35:19.3891424Z hint:
+2025-12-16T05:35:19.3893840Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-16T05:35:19.3897648Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-16T05:35:19.3900686Z hint:
+2025-12-16T05:35:19.3901899Z hint: 	git branch -m <name>
+2025-12-16T05:35:19.3903297Z hint:
+2025-12-16T05:35:19.3905465Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-16T05:35:19.3908569Z Initialized empty Git repository in /home/runner/work/lead-orchestra-landing/lead-orchestra-landing/.git/
+2025-12-16T05:35:19.3914826Z [command]/usr/bin/git remote add origin https://github.com/Lead-Orchestra/lead-orchestra-landing
+2025-12-16T05:35:19.3941005Z ##[endgroup]
+2025-12-16T05:35:19.3943516Z ##[group]Disabling automatic garbage collection
+2025-12-16T05:35:19.3946018Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-16T05:35:19.3982597Z ##[endgroup]
+2025-12-16T05:35:19.3983931Z ##[group]Setting up auth
+2025-12-16T05:35:19.3989782Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-16T05:35:19.4033035Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-16T05:35:19.4451678Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-16T05:35:19.4488874Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-16T05:35:19.4726928Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-16T05:35:19.4761328Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-16T05:35:19.4992183Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-16T05:35:19.5038237Z ##[endgroup]
+2025-12-16T05:35:19.5040406Z ##[group]Fetching the repository
+2025-12-16T05:35:19.5045694Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +bee6984b078461797ced1a0a2475f541cacb0ce6:refs/remotes/origin/cloudflare-deploy
+2025-12-16T05:35:20.8167239Z From https://github.com/Lead-Orchestra/lead-orchestra-landing
+2025-12-16T05:35:20.8169344Z  * [new ref]         bee6984b078461797ced1a0a2475f541cacb0ce6 -> origin/cloudflare-deploy
+2025-12-16T05:35:20.8213413Z ##[endgroup]
+2025-12-16T05:35:20.8214334Z ##[group]Determining the checkout info
+2025-12-16T05:35:20.8217362Z ##[endgroup]
+2025-12-16T05:35:20.8223376Z [command]/usr/bin/git sparse-checkout disable
+2025-12-16T05:35:20.8272191Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-16T05:35:20.8301127Z ##[group]Checking out the ref
+2025-12-16T05:35:20.8306504Z [command]/usr/bin/git checkout --progress --force -B cloudflare-deploy refs/remotes/origin/cloudflare-deploy
+2025-12-16T05:35:21.1219412Z Switched to a new branch 'cloudflare-deploy'
+2025-12-16T05:35:21.1222933Z branch 'cloudflare-deploy' set up to track 'origin/cloudflare-deploy'.
+2025-12-16T05:35:21.1251102Z ##[endgroup]
+2025-12-16T05:35:21.1302121Z [command]/usr/bin/git log -1 --format=%H
+2025-12-16T05:35:21.1329438Z bee6984b078461797ced1a0a2475f541cacb0ce6
