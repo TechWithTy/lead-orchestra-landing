@@ -1,7 +1,6 @@
+import toast from "react-hot-toast";
 import { useProductSelection } from "@/contexts/ProductSelectionContext";
 import { ProductCategory, type ProductType } from "@/types/products";
-import toast from "react-hot-toast";
-import TrustedBySection from "./TrustedBySection";
 import ProductActions from "./info/ProductActions";
 import ProductColorPicker from "./info/ProductColorPicker";
 import ProductQuantityPicker from "./info/ProductQuantitySelect";
@@ -10,6 +9,7 @@ import ProductStars from "./info/ProductStars";
 // ! ProductInfo Orchestrator (modular, clean, DRY)
 import ProductTitle from "./info/ProductTitle";
 import ProductTypePicker from "./info/ProductTypePicker";
+import TrustedBySection from "./TrustedBySection";
 import getAverageRating from "./utils/getAverageRating";
 
 interface ProductInfoProps {
