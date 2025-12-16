@@ -1,16 +1,17 @@
-import type { ProductType } from '@/types/products';
-import { agentProducts } from './agents';
-import { closerProducts } from './closers';
-import { creditProducts } from './credits';
-import { freeResourceProducts } from './free-resources';
-import { leadMagnetProducts } from './lead-magnets';
-import { monetizeProducts } from './monetize';
-import { notionProducts } from './notion';
-import { workflowProducts } from './workflow';
+import type { ProductType } from "@/types/products";
+import { agentProducts } from "./agents";
+import { closerProducts } from "./closers";
+import { creditProducts, leadProducts } from "./credits";
+import { freeResourceProducts } from "./free-resources";
+import { leadMagnetProducts } from "./lead-magnets";
+import { monetizeProducts } from "./monetize";
+import { notionProducts } from "./notion";
+import { workflowProducts } from "./workflow";
 
 export const mockProducts: ProductType[] = [
 	...freeResourceProducts,
 	...creditProducts,
+	...leadProducts,
 	...leadMagnetProducts, // Replaced essentialsProducts with lead magnets
 	...notionProducts,
 	...workflowProducts,
