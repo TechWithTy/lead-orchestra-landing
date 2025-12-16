@@ -72,7 +72,9 @@
 		"notion:schema:write": "node scripts/run-ts.js scripts/notion/fetchLinktreeSchema.ts --write"
 	},
 	"lint-staged": {
-		"**/*.{js,jsx,ts,tsx,json,css,md,html,scss}": ["pnpm exec biome format --write"]
+		"**/*.{js,jsx,ts,tsx,json,css,md,html,scss}": [
+			"pnpm exec biome format --write"
+		]
 	},
 	"pnpm": {
 		"overrides": {
@@ -89,7 +91,11 @@
 			"supports async-functions",
 			"supports object-values"
 		],
-		"development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"dependencies": {
 		"@analytics/google-analytics": "^1.1.0",
@@ -98,7 +104,7 @@
 		"@hookform/resolvers": "^3.9.0",
 		"@mdx-js/react": "^3.1.1",
 		"@microsoft/clarity": "^1.0.0",
-		"@next/third-parties": "^15.4.3",
+		"@next/third-parties": "^15.5.7",
 		"@notionhq/client": "^5.1.0",
 		"@plausible-analytics/tracker": "^0.4.3",
 		"@radix-ui/react-accordion": "^1.2.0",
@@ -170,7 +176,7 @@
 		"lucide-react": "^0.462.0",
 		"medium-blogs-fetcher": "^1.0.5",
 		"motion": "^12.19.1",
-		"next": "15.2.4",
+		"next": "15.5.7",
 		"next-auth": "^4.24.11",
 		"next-mdx-remote": "^5.0.0",
 		"next-themes": "^0.3.0",
@@ -200,11 +206,11 @@
 		"tailwind-merge": "^2.6.0",
 		"tailwindcss": "^3.4.11",
 		"tailwindcss-animate": "^1.0.7",
+		"use-sync-external-store": "^1.2.2",
 		"uuid": "^11.1.0",
 		"vaul": "^0.9.3",
 		"xlsx": "^0.18.5",
 		"zod": "^3.25.67",
-		"use-sync-external-store": "^1.2.2",
 		"zustand": "^5.0.6"
 	},
 	"devDependencies": {
