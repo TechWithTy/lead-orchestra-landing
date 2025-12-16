@@ -1,5 +1,5 @@
 {
-	"buildCommand": "pnpm run build",
+	"buildCommand": "next build",
 	"installCommand": "corepack enable && corepack prepare pnpm@8.15.4 --activate && SKIP_HUSKY=1 pnpm install --no-frozen-lockfile --prefer-offline",
 	"framework": "nextjs"
 }

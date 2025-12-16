@@ -1,2 +1,4 @@
-**/_depr/**
-**/_docs/****/content/**
+# Ignore .vercel/output directory to prevent Build Output API detection
+# This ensures Vercel uses the standard Next.js build process
+.vercel/output
+.vercel/output/**
