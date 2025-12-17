@@ -45,7 +45,18 @@ export function Analytics({ config }: AnalyticsProps) {
 		}
 	}, [gtmId]);
 
+	// Log when Analytics component renders
+	useEffect(() => {
+		console.warn('[Analytics] Component rendered', {
+			gaId,
+			gtmId,
+			hasGaId: Boolean(gaId),
+			hasGtmId: Boolean(gtmId),
+		});
+	}, [gaId, gtmId]);
+
 	if (!gaId && !gtmId) {
+		console.warn('[Analytics] No analytics IDs provided, returning null');
 		return null;
 	}
 

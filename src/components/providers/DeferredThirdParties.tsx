@@ -389,6 +389,7 @@ export function DeferredThirdParties({
 
 	const shouldRender =
 		hasConsented &&
+		shouldLoad &&
 		Boolean(
 			analyticsConfig.gaId ||
 				analyticsConfig.gtmId ||
@@ -459,6 +460,16 @@ export function DeferredThirdParties({
 		);
 		return null;
 	}
+
+	// Log when we're actually rendering analytics components
+	console.warn("[DeferredThirdParties] RENDERING Analytics Components", {
+		gaId: analyticsConfig.gaId,
+		gtmId: analyticsConfig.gtmId,
+		clarityId,
+		zohoCode,
+		facebookPixelId: resolvedFacebookPixelId,
+		plausibleDomain: plausibleConfig.domain,
+	});
 
 	return (
 		<>
