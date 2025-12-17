@@ -47,19 +47,27 @@ const ClientExperience = dynamic(
 				};
 			})
 			.catch((error) => {
-				console.error("[AppProviders] ClientExperience dynamic import FAILED", error);
+				console.error(
+					"[AppProviders] ClientExperience dynamic import FAILED",
+					error,
+				);
 				// Return a fallback component that logs the error
 				return {
 					default: () => {
-						console.error("[AppProviders] ClientExperience fallback rendered due to import error");
+						console.error(
+							"[AppProviders] ClientExperience fallback rendered due to import error",
+						);
 						return null;
 					},
 				};
 			}),
-	{ ssr: false, loading: () => {
-		console.log("[AppProviders] ClientExperience loading...");
-		return null;
-	} },
+	{
+		ssr: false,
+		loading: () => {
+			console.log("[AppProviders] ClientExperience loading...");
+			return null;
+		},
+	},
 );
 
 // Immediate top-level logging to verify env vars at module load time
