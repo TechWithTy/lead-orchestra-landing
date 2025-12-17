@@ -50,6 +50,20 @@ NEXT_PUBLIC_EXIT_INTENT_SNOOZE_MS=2000
 NEXT_PUBLIC_EXIT_INTENT_DEBUG=false
 ```
 
+### Google Analytics Configuration
+```bash
+# Google Analytics 4 Measurement ID (required for analytics tracking)
+NEXT_PUBLIC_GOOGLE_ANALYTICS=G-XXXXXXXXX
+
+# Enable automatic analytics consent (required for Google Analytics to load)
+# Set to "true" to automatically grant consent and load analytics
+# If not set or set to anything other than "true", analytics will be blocked
+# until user explicitly grants consent via consent UI
+NEXT_PUBLIC_ANALYTICS_AUTOLOAD=true
+```
+
+**Note:** Both `NEXT_PUBLIC_GOOGLE_ANALYTICS` and `NEXT_PUBLIC_ANALYTICS_AUTOLOAD=true` must be set for Google Analytics to load automatically. Without `NEXT_PUBLIC_ANALYTICS_AUTOLOAD=true`, analytics will be blocked by the consent mechanism.
+
 ## Environment Setup Instructions
 
 ### Development (.env.local)
@@ -83,6 +97,8 @@ Set the following environment variables in your deployment platform:
 4. **LINKEDIN_CLIENT_ID** & **LINKEDIN_CLIENT_SECRET** - LinkedIn app credentials
 5. **FACEBOOK_CLIENT_ID** & **FACEBOOK_CLIENT_SECRET** - Facebook app credentials
 6. **LINKEDIN_REDIRECT_URI** & **FACEBOOK_REDIRECT_URI** - OAuth callback URLs
+7. **NEXT_PUBLIC_GOOGLE_ANALYTICS** - Google Analytics 4 Measurement ID (e.g., G-XXXXXXXXX)
+8. **NEXT_PUBLIC_ANALYTICS_AUTOLOAD** - Set to `true` to enable automatic analytics consent
 
 ## OAuth Provider Setup
 
