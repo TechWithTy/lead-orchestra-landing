@@ -28,6 +28,15 @@ const {
 } = initialAnalyticsConfig;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+	// Log at root layout level (server-side)
+	if (typeof window === "undefined") {
+		console.log("[RootLayout] Server-side render", {
+			hasAnalyticsConfig: !!initialAnalyticsConfig,
+			gaId: initialAnalyticsConfig.gaId,
+			gtmId: initialAnalyticsConfig.gtmId,
+		});
+	}
+
 	return (
 		<html
 			lang="en"
@@ -35,6 +44,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 			suppressHydrationWarning
 		>
 			<head>
+				{/* Immediate client-side logging before React loads */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							console.log('[RootLayout Script] HTML loaded - BEFORE React', {
+								windowDefined: typeof window !== 'undefined',
+								documentDefined: typeof document !== 'undefined',
+								location: typeof window !== 'undefined' ? window.location.href : 'N/A'
+							});
+						`,
+					}}
+				/>
 				{/* Preload small hero logo to stabilize LCP visual */}
 				<link
 					rel="preload"

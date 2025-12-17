@@ -39,10 +39,27 @@ interface AppProvidersProps {
 
 const ClientExperience = dynamic(
 	() =>
-		import("./ClientExperience").then((mod) => ({
-			default: mod.ClientExperience,
-		})),
-	{ ssr: false, loading: () => null },
+		import("./ClientExperience")
+			.then((mod) => {
+				console.log("[AppProviders] ClientExperience dynamic import SUCCESS");
+				return {
+					default: mod.ClientExperience,
+				};
+			})
+			.catch((error) => {
+				console.error("[AppProviders] ClientExperience dynamic import FAILED", error);
+				// Return a fallback component that logs the error
+				return {
+					default: () => {
+						console.error("[AppProviders] ClientExperience fallback rendered due to import error");
+						return null;
+					},
+				};
+			}),
+	{ ssr: false, loading: () => {
+		console.log("[AppProviders] ClientExperience loading...");
+		return null;
+	} },
 );
 
 // Immediate top-level logging to verify env vars at module load time
@@ -63,6 +80,13 @@ export function AppProviders({
 	plausibleEndpoint,
 	initialAnalyticsConfig,
 }: AppProvidersProps) {
+	// Log immediately when component function is called
+	console.log("[AppProviders] Component function called", {
+		hasWindow: typeof window !== "undefined",
+		NEXT_PUBLIC_ANALYTICS_AUTOLOAD: process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
+	});
+
 	const [queryClient] = useState(() => new QueryClient());
 	const defaultAnalyticsConsent =
 		process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
