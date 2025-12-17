@@ -40,7 +40,7 @@ export function Analytics({ config }: AnalyticsProps) {
 		if (window.dataLayer.length === 0) {
 			window.dataLayer.push({
 				event: "gtm.js",
-				"gtm.start": new Date().getTime(),
+				"gtm.start": Date.now(),
 			});
 		}
 	}, [gtmId]);
