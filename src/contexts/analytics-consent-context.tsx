@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
 	type ReactNode,
@@ -8,9 +8,9 @@ import {
 	useEffect,
 	useMemo,
 	useState,
-} from 'react';
+} from "react";
 
-const STORAGE_KEY = 'dealscale-analytics-consent';
+const STORAGE_KEY = "dealscale-analytics-consent";
 
 type AnalyticsConsentValue = {
 	hasConsented: boolean;
@@ -18,7 +18,9 @@ type AnalyticsConsentValue = {
 	revokeConsent: () => void;
 };
 
-const AnalyticsConsentContext = createContext<AnalyticsConsentValue | undefined>(undefined);
+const AnalyticsConsentContext = createContext<
+	AnalyticsConsentValue | undefined
+>(undefined);
 
 interface AnalyticsConsentProviderProps {
 	children: ReactNode;
@@ -32,23 +34,25 @@ export function AnalyticsConsentProvider({
 	const [hasConsented, setHasConsented] = useState(defaultConsent);
 
 	useEffect(() => {
-		if (typeof window === 'undefined') {
+		if (typeof window === "undefined") {
 			return;
 		}
 
 		try {
 			const stored = window.localStorage.getItem(STORAGE_KEY);
-			if (stored === 'granted') {
+			if (stored === "granted") {
 				setHasConsented(true);
-				if (process.env.NODE_ENV === 'production') {
-					console.log('[AnalyticsConsent] Consent granted from localStorage');
+				if (process.env.NODE_ENV === "production") {
+					console.log("[AnalyticsConsent] Consent granted from localStorage");
 				}
 				return;
 			}
-			if (stored === 'denied') {
+			if (stored === "denied") {
 				setHasConsented(false);
-				if (process.env.NODE_ENV === 'production') {
-					console.warn('[AnalyticsConsent] Consent denied in localStorage - clearing to use defaultConsent');
+				if (process.env.NODE_ENV === "production") {
+					console.warn(
+						"[AnalyticsConsent] Consent denied in localStorage - clearing to use defaultConsent",
+					);
 					// If defaultConsent is true but localStorage has 'denied', clear it to allow autoload
 					if (defaultConsent) {
 						window.localStorage.removeItem(STORAGE_KEY);
@@ -59,28 +63,34 @@ export function AnalyticsConsentProvider({
 				return;
 			}
 		} catch (error) {
-			console.warn('[AnalyticsConsent] Failed to read local storage', error);
+			console.warn("[AnalyticsConsent] Failed to read local storage", error);
 		}
 		setHasConsented(defaultConsent);
-		if (process.env.NODE_ENV === 'production') {
-			console.log('[AnalyticsConsent] Using defaultConsent:', defaultConsent, 'from NEXT_PUBLIC_ANALYTICS_AUTOLOAD:', process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD);
-		}
+		// Always log for debugging
+		console.log(
+			"[AnalyticsConsent] Using defaultConsent:",
+			defaultConsent,
+			"from NEXT_PUBLIC_ANALYTICS_AUTOLOAD:",
+			process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+			"type:",
+			typeof process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+		);
 	}, [defaultConsent]);
 
 	const persist = useCallback((value: boolean, storageValue: string) => {
 		setHasConsented(value);
-		if (typeof window === 'undefined') {
+		if (typeof window === "undefined") {
 			return;
 		}
 		try {
 			window.localStorage.setItem(STORAGE_KEY, storageValue);
 		} catch (error) {
-			console.warn('[AnalyticsConsent] Failed to persist consent', error);
+			console.warn("[AnalyticsConsent] Failed to persist consent", error);
 		}
 	}, []);
 
-	const grantConsent = useCallback(() => persist(true, 'granted'), [persist]);
-	const revokeConsent = useCallback(() => persist(false, 'denied'), [persist]);
+	const grantConsent = useCallback(() => persist(true, "granted"), [persist]);
+	const revokeConsent = useCallback(() => persist(false, "denied"), [persist]);
 
 	const value = useMemo<AnalyticsConsentValue>(
 		() => ({
@@ -88,18 +98,22 @@ export function AnalyticsConsentProvider({
 			grantConsent,
 			revokeConsent,
 		}),
-		[grantConsent, hasConsented, revokeConsent]
+		[grantConsent, hasConsented, revokeConsent],
 	);
 
 	return (
-		<AnalyticsConsentContext.Provider value={value}>{children}</AnalyticsConsentContext.Provider>
+		<AnalyticsConsentContext.Provider value={value}>
+			{children}
+		</AnalyticsConsentContext.Provider>
 	);
 }
 
 export function useAnalyticsConsent(): AnalyticsConsentValue {
 	const context = useContext(AnalyticsConsentContext);
 	if (!context) {
-		throw new Error('useAnalyticsConsent must be used within an AnalyticsConsentProvider');
+		throw new Error(
+			"useAnalyticsConsent must be used within an AnalyticsConsentProvider",
+		);
 	}
 	return context;
 }
