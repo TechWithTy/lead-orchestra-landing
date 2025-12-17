@@ -231,10 +231,11 @@ export function DeferredThirdParties({
 	]);
 
 	const { hasConsented } = useAnalyticsConsent();
+	const analyticsAutoload = process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
 	const shouldLoad = useDeferredLoad({
 		enabled: hasConsented,
-		requireInteraction: true,
-		timeout: typeof maxWaitMs === "number" ? maxWaitMs : 0,
+		requireInteraction: !analyticsAutoload, // Don't require interaction if autoload is enabled
+		timeout: analyticsAutoload ? 2000 : (typeof maxWaitMs === "number" ? maxWaitMs : 0),
 	});
 	const [providerData, setProviderData] = useState<ProviderResponse | null>(
 		null,

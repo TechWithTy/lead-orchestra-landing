@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import dynamic from "next/dynamic";
 import type { ReactNode } from "react";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Toaster } from "@/components/ui/toaster";
