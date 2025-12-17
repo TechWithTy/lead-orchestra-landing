@@ -234,7 +234,9 @@ export function DeferredThirdParties({
 	const shouldLoad = useDeferredLoad({
 		enabled: hasConsented,
 		requireInteraction: true,
-		timeout: typeof maxWaitMs === "number" ? maxWaitMs : 0,
+		// Add small timeout fallback (1000ms) to ensure loading even if interaction events don't fire
+		// This provides a safety net while still prioritizing user interaction
+		timeout: typeof maxWaitMs === "number" ? maxWaitMs : 1000,
 	});
 	const [providerData, setProviderData] = useState<ProviderResponse | null>(
 		null,
@@ -396,9 +398,65 @@ export function DeferredThirdParties({
 				plausibleConfig.domain,
 		);
 
+	// Debug logging to diagnose production issues (using console.warn so it's visible)
+	useEffect(() => {
+		console.warn("[DeferredThirdParties] Debug State:", {
+			hasConsented,
+			shouldLoad,
+			shouldRender,
+			gaId: analyticsConfig.gaId,
+			gtmId: analyticsConfig.gtmId,
+			clarityId,
+			zohoCode,
+			hasAnalyticsIds: Boolean(
+				analyticsConfig.gaId ||
+					analyticsConfig.gtmId ||
+					clarityId ||
+					zohoCode ||
+					resolvedFacebookPixelId ||
+					plausibleConfig.domain,
+			),
+			needsServerConfig,
+			initialConfigGaId: initialConfig?.gaId,
+			configGaId: config.gaId,
+			providerDataGaId: providerData?.gaId,
+		});
+	}, [
+		hasConsented,
+		shouldLoad,
+		shouldRender,
+		analyticsConfig.gaId,
+		analyticsConfig.gtmId,
+		clarityId,
+		zohoCode,
+		resolvedFacebookPixelId,
+		plausibleConfig.domain,
+		needsServerConfig,
+		initialConfig?.gaId,
+		config.gaId,
+		providerData?.gaId,
+	]);
+
 	useZohoLoader(shouldRender, zohoCode);
 
 	if (!shouldRender) {
+		console.warn(
+			"[DeferredThirdParties] NOT RENDERING - shouldRender is false",
+			{
+				hasConsented,
+				shouldLoad,
+				hasAnalyticsIds: Boolean(
+					analyticsConfig.gaId ||
+						analyticsConfig.gtmId ||
+						clarityId ||
+						zohoCode ||
+						resolvedFacebookPixelId ||
+						plausibleConfig.domain,
+				),
+				gaId: analyticsConfig.gaId,
+				gtmId: analyticsConfig.gtmId,
+			},
+		);
 		return null;
 	}
 

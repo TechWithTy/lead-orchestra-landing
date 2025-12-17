@@ -45,6 +45,13 @@ export function AnalyticsConsentProvider({
 				return;
 			}
 			if (stored === "denied") {
+				// If defaultConsent is true (autoload enabled), override localStorage 'denied'
+				// to allow analytics to load automatically
+				if (defaultConsent) {
+					window.localStorage.removeItem(STORAGE_KEY);
+					setHasConsented(true);
+					return;
+				}
 				setHasConsented(false);
 				return;
 			}
