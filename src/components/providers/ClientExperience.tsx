@@ -3,7 +3,6 @@
 import { NavigationLoader } from "@/components/ui/navigation-loader";
 import { ScrollDistanceIndicator } from "@/components/ui/scroll-distance-indicator";
 import type { AnalyticsConfig } from "@/lib/analytics/config";
-import { useEffect } from "react";
 
 import { DeferredThirdParties } from "./DeferredThirdParties";
 import { PerformanceMonitor } from "./PerformanceMonitor";
@@ -17,11 +16,6 @@ type ClientExperienceProps = {
 	initialAnalyticsConfig?: Partial<AnalyticsConfig>;
 };
 
-// Immediate top-level logging
-if (typeof window !== "undefined") {
-	console.log("[ClientExperience] Module loaded");
-}
-
 export function ClientExperience({
 	clarityProjectId,
 	zohoWidgetCode,
@@ -30,10 +24,6 @@ export function ClientExperience({
 	plausibleEndpoint,
 	initialAnalyticsConfig,
 }: ClientExperienceProps) {
-	useEffect(() => {
-		console.log("[ClientExperience] mounted");
-	}, []);
-
 	return (
 		<>
 			<PerformanceMonitor />

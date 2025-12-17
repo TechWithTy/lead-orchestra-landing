@@ -29,15 +29,6 @@ const {
 } = initialAnalyticsConfig;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-	// Log at root layout level (server-side)
-	if (typeof window === "undefined") {
-		console.log("[RootLayout] Server-side render", {
-			hasAnalyticsConfig: !!initialAnalyticsConfig,
-			gaId: initialAnalyticsConfig.gaId,
-			gtmId: initialAnalyticsConfig.gtmId,
-		});
-	}
-
 	return (
 		<html
 			lang="en"
@@ -54,16 +45,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 				/>
 			</head>
 			<body className="theme-lead-orchestra theme-dealscale min-h-screen bg-background font-sans antialiased">
-				{/* Immediate client-side logging before React loads */}
-				<Script id="pre-react-logger" strategy="beforeInteractive">
-					{`
-						console.log('[RootLayout Script] HTML loaded - BEFORE React', {
-							windowDefined: typeof window !== 'undefined',
-							documentDefined: typeof document !== 'undefined',
-							location: typeof window !== 'undefined' ? window.location.href : 'N/A'
-						});
-					`}
-				</Script>
 				<SchemaInjector schema={KNOWLEDGE_GRAPH_SCHEMA} />
 				<AppProviders
 					clarityProjectId={clarityProjectId}

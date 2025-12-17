@@ -195,16 +195,6 @@ export function DeferredThirdParties({
 	maxWaitMs,
 	initialConfig,
 }: DeferredThirdPartiesProps) {
-	// Immediate logging at component start (before any early returns)
-	if (typeof window !== "undefined") {
-		console.log("[DeferredThirdParties] Component rendering", {
-			hasWindow: true,
-			NEXT_PUBLIC_ANALYTICS_AUTOLOAD:
-				process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
-			NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
-		});
-	}
-
 	const mergedInitialConfig = useMemo<AnalyticsConfig>(() => {
 		const base: AnalyticsConfig = {};
 
@@ -241,21 +231,11 @@ export function DeferredThirdParties({
 	]);
 
 	const { hasConsented } = useAnalyticsConsent();
-	const analyticsAutoload =
-		process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
-
-	// When autoload is enabled, immediately enable loading without deferred logic
-	// This matches the working implementation pattern
-	const deferredShouldLoad = useDeferredLoad({
-		enabled: hasConsented && !analyticsAutoload, // Only use deferred loading if autoload is disabled
+	const shouldLoad = useDeferredLoad({
+		enabled: hasConsented,
 		requireInteraction: true,
 		timeout: typeof maxWaitMs === "number" ? maxWaitMs : 0,
 	});
-
-	const shouldLoad =
-		analyticsAutoload && hasConsented
-			? true // Immediately enable if autoload is on and consent is granted
-			: deferredShouldLoad;
 	const [providerData, setProviderData] = useState<ProviderResponse | null>(
 		null,
 	);
@@ -405,71 +385,20 @@ export function DeferredThirdParties({
 		[config.gaId, config.gtmId, providerData?.gaId, providerData?.gtmId],
 	);
 
-	// When autoload is enabled, render if consent is granted and shouldLoad is true
-	// This allows the component to render and fetch IDs if needed via API
-	// Otherwise, require at least one analytics ID to be present
 	const shouldRender =
 		hasConsented &&
-		(analyticsAutoload && shouldLoad
-			? true // If autoload is enabled and shouldLoad is true, render to allow fetching
-			: Boolean(
-					analyticsConfig.gaId ||
-						analyticsConfig.gtmId ||
-						clarityId ||
-						zohoCode ||
-						resolvedFacebookPixelId ||
-						plausibleConfig.domain,
-				));
-
-	// Debug logging for troubleshooting (always log, not just production)
-	useEffect(() => {
-		console.log("[DeferredThirdParties] Debug:", {
-			hasConsented,
-			shouldLoad,
-			shouldRender,
-			analyticsAutoload,
-			gaId: analyticsConfig.gaId,
-			gtmId: analyticsConfig.gtmId,
-			clarityId,
-			needsServerConfig,
-			initialConfigGaId: initialConfig?.gaId,
-			configGaId: config.gaId,
-			providerDataGaId: providerData?.gaId,
-			nodeEnv: process.env.NODE_ENV,
-		});
-	}, [
-		hasConsented,
-		shouldLoad,
-		shouldRender,
-		analyticsAutoload,
-		analyticsConfig.gaId,
-		analyticsConfig.gtmId,
-		clarityId,
-		needsServerConfig,
-		initialConfig,
-		config.gaId,
-		providerData?.gaId,
-	]);
+		Boolean(
+			analyticsConfig.gaId ||
+				analyticsConfig.gtmId ||
+				clarityId ||
+				zohoCode ||
+				resolvedFacebookPixelId ||
+				plausibleConfig.domain,
+		);
 
 	useZohoLoader(shouldRender, zohoCode);
 
 	if (!shouldRender) {
-		// Log why we're not rendering
-		console.log(
-			"[DeferredThirdParties] NOT RENDERING - shouldRender is false",
-			{
-				hasConsented,
-				shouldLoad,
-				analyticsAutoload,
-				gaId: analyticsConfig.gaId,
-				gtmId: analyticsConfig.gtmId,
-				clarityId,
-				shouldRenderCondition:
-					analyticsAutoload && shouldLoad
-						? "autoload enabled and shouldLoad true"
-						: "requires analytics IDs",
-			},
-		);
 		return null;
 	}
 
