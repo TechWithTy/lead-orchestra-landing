@@ -389,6 +389,21 @@ export function DeferredThirdParties({
 				plausibleConfig.domain
 		);
 
+	// Debug logging for production troubleshooting
+	useEffect(() => {
+		if (process.env.NODE_ENV === 'production') {
+			console.log('[DeferredThirdParties] Debug:', {
+				hasConsented,
+				shouldLoad,
+				shouldRender,
+				gaId: analyticsConfig.gaId,
+				gtmId: analyticsConfig.gtmId,
+				clarityId,
+				analyticsAutoload: process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+			});
+		}
+	}, [hasConsented, shouldLoad, shouldRender, analyticsConfig.gaId, analyticsConfig.gtmId, clarityId]);
+
 	useZohoLoader(shouldRender, zohoCode);
 
 	if (!shouldRender) {
