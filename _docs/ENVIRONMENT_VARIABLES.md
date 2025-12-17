@@ -143,6 +143,37 @@ NEXT_PUBLIC_DATA_GUARD_ENDPOINT=https://your-domain.com/api/internal/data-guards
 3. **NextAuth errors**: Check NEXTAUTH_SECRET and NEXTAUTH_URL are set correctly
 4. **API connection issues**: Verify DEALSCALE_API_BASE is correct and accessible
 
+### Analytics Not Loading in Production
+
+**Symptom**: Google Analytics not loading, console shows `NEXT_PUBLIC_ANALYTICS_AUTOLOAD: undefined`
+
+**Root Cause**: `NEXT_PUBLIC_*` environment variables are inlined at BUILD TIME. If the variable isn't set in Vercel before the build, it becomes `undefined` in the bundle.
+
+**Solution**:
+
+1. **Verify Variable is Set in Vercel**:
+   - Go to Vercel Dashboard → Your Project → Settings → Environment Variables
+   - Ensure `NEXT_PUBLIC_ANALYTICS_AUTOLOAD` is set to `true` (exact string, not boolean)
+   - **CRITICAL**: Ensure it's set for **Production** environment (not just Preview/Development)
+   - Verify `NEXT_PUBLIC_GOOGLE_ANALYTICS` is also set for Production
+
+2. **Trigger New Build**:
+   - Variables set after a build won't be inlined until a new build
+   - Option 1: Push a new commit (even a small change)
+   - Option 2: In Vercel Dashboard → Deployments → Redeploy latest
+   - Option 3: Clear build cache and redeploy
+
+3. **Verify in Build Logs**:
+   - Check Vercel build logs to confirm variables are being read
+   - Look for any warnings about missing environment variables
+
+4. **Check Production Console**:
+   - After deployment, check browser console
+   - Should see: `NEXT_PUBLIC_ANALYTICS_AUTOLOAD: "true"` (string, not undefined)
+   - If still undefined, the variable wasn't set before the build
+
+**Note**: The code includes a fallback that enables autoload if `NEXT_PUBLIC_ANALYTICS_AUTOLOAD` is undefined but `NEXT_PUBLIC_GOOGLE_ANALYTICS` is present. However, you should still set the variable explicitly in Vercel for clarity.
+
 ### Testing OAuth Setup
 
 You can test if OAuth providers are configured correctly by checking the NextAuth configuration:

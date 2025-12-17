@@ -55,20 +55,40 @@ export function AppProviders({
 	initialAnalyticsConfig,
 }: AppProvidersProps) {
 	const [queryClient] = useState(() => new QueryClient());
-	const defaultAnalyticsConsent =
+
+	// Check if autoload is explicitly enabled
+	const explicitAutoload =
 		process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
+
+	// Fallback: If autoload variable is undefined but GA ID is present, enable autoload
+	// This provides a safety net if the variable is missing but analytics should load
+	const hasGoogleAnalytics = Boolean(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
+	const defaultAnalyticsConsent =
+		explicitAutoload ||
+		(process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === undefined &&
+			hasGoogleAnalytics);
 
 	// Verify environment variables at runtime (using console.warn so it's visible in production)
 	useEffect(() => {
+		const usingFallback =
+			process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === undefined &&
+			hasGoogleAnalytics;
 		console.warn("[AppProviders] Environment Variables Check:", {
 			NEXT_PUBLIC_ANALYTICS_AUTOLOAD:
 				process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
 			NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
 			defaultAnalyticsConsent,
+			explicitAutoload,
+			usingFallback,
 			type_AUTOLOAD: typeof process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
 			type_GA: typeof process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
 		});
-	}, [defaultAnalyticsConsent]);
+		if (usingFallback) {
+			console.warn(
+				"[AppProviders] WARNING: NEXT_PUBLIC_ANALYTICS_AUTOLOAD is undefined. Using fallback: enabling autoload because NEXT_PUBLIC_GOOGLE_ANALYTICS is present. Please set NEXT_PUBLIC_ANALYTICS_AUTOLOAD=true in Vercel Production environment.",
+			);
+		}
+	}, [defaultAnalyticsConsent, explicitAutoload, hasGoogleAnalytics]);
 
 	const analyticsProps = useMemo(
 		() => ({
