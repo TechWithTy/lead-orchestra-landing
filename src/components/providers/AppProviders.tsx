@@ -45,6 +45,15 @@ const ClientExperience = dynamic(
 	{ ssr: false, loading: () => null },
 );
 
+// Immediate top-level logging to verify env vars at module load time
+if (typeof window !== "undefined") {
+	console.log("[AppProviders] Module loaded - Env check:", {
+		NEXT_PUBLIC_ANALYTICS_AUTOLOAD: process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
+		NODE_ENV: process.env.NODE_ENV,
+	});
+}
+
 export function AppProviders({
 	children,
 	clarityProjectId,

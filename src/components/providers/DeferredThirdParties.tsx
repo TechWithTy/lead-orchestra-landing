@@ -195,6 +195,16 @@ export function DeferredThirdParties({
 	maxWaitMs,
 	initialConfig,
 }: DeferredThirdPartiesProps) {
+	// Immediate logging at component start (before any early returns)
+	if (typeof window !== "undefined") {
+		console.log("[DeferredThirdParties] Component rendering", {
+			hasWindow: true,
+			NEXT_PUBLIC_ANALYTICS_AUTOLOAD:
+				process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+			NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
+		});
+	}
+
 	const mergedInitialConfig = useMemo<AnalyticsConfig>(() => {
 		const base: AnalyticsConfig = {};
 
@@ -231,8 +241,9 @@ export function DeferredThirdParties({
 	]);
 
 	const { hasConsented } = useAnalyticsConsent();
-	const analyticsAutoload = process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
-	
+	const analyticsAutoload =
+		process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD === "true";
+
 	// When autoload is enabled, immediately enable loading without deferred logic
 	// This matches the working implementation pattern
 	const deferredShouldLoad = useDeferredLoad({
@@ -240,10 +251,11 @@ export function DeferredThirdParties({
 		requireInteraction: true,
 		timeout: typeof maxWaitMs === "number" ? maxWaitMs : 0,
 	});
-	
-	const shouldLoad = analyticsAutoload && hasConsented 
-		? true // Immediately enable if autoload is on and consent is granted
-		: deferredShouldLoad;
+
+	const shouldLoad =
+		analyticsAutoload && hasConsented
+			? true // Immediately enable if autoload is on and consent is granted
+			: deferredShouldLoad;
 	const [providerData, setProviderData] = useState<ProviderResponse | null>(
 		null,
 	);
@@ -442,6 +454,22 @@ export function DeferredThirdParties({
 	useZohoLoader(shouldRender, zohoCode);
 
 	if (!shouldRender) {
+		// Log why we're not rendering
+		console.log(
+			"[DeferredThirdParties] NOT RENDERING - shouldRender is false",
+			{
+				hasConsented,
+				shouldLoad,
+				analyticsAutoload,
+				gaId: analyticsConfig.gaId,
+				gtmId: analyticsConfig.gtmId,
+				clarityId,
+				shouldRenderCondition:
+					analyticsAutoload && shouldLoad
+						? "autoload enabled and shouldLoad true"
+						: "requires analytics IDs",
+			},
+		);
 		return null;
 	}
 

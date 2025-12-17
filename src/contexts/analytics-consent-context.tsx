@@ -31,6 +31,15 @@ export function AnalyticsConsentProvider({
 	children,
 	defaultConsent = false,
 }: AnalyticsConsentProviderProps) {
+	// Immediate logging at provider start
+	if (typeof window !== "undefined") {
+		console.log("[AnalyticsConsentProvider] Provider rendering", {
+			defaultConsent,
+			NEXT_PUBLIC_ANALYTICS_AUTOLOAD:
+				process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
+		});
+	}
+
 	const [hasConsented, setHasConsented] = useState(defaultConsent);
 
 	useEffect(() => {
