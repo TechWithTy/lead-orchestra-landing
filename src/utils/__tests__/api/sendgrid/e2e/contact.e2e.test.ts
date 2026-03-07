@@ -49,9 +49,7 @@ describe("POST /api/contact (E2E)", () => {
 
 		// Assert
 		expect(response.status).toBe(200);
-		expect(responseBody.message).toBe(
-			"Contact captured successfully.",
-		);
+		expect(responseBody.message).toBe("Contact captured successfully.");
 		expect(mockedAddToSendGrid).toHaveBeenCalledTimes(1);
 		expect(mockedAddToSendGrid).toHaveBeenCalledWith(
 			expect.objectContaining({
@@ -88,9 +86,7 @@ describe("POST /api/contact (E2E)", () => {
 
 		// Assert
 		expect(response.status).toBe(200);
-		expect(responseBody.message).toBe(
-			"Contact captured successfully.",
-		);
+		expect(responseBody.message).toBe("Contact captured successfully.");
 		expect(mockedAddToSendGrid).toHaveBeenCalledTimes(1);
 		expect(mockedAddToSendGrid).toHaveBeenCalledWith(
 			expect.objectContaining({

@@ -1,4 +1,4 @@
-import { library } from './library';
+import { library } from "./library";
 
 export const commands = {
 	npm: `npm i ${library.name}`,

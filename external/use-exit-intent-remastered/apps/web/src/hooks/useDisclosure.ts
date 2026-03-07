@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 export function useDisclosure(isOpenDefault = false) {
 	const [isOpen, setIsOpen] = useState(isOpenDefault);
@@ -7,7 +7,7 @@ export function useDisclosure(isOpenDefault = false) {
 	const close = useCallback(() => setIsOpen(false), []);
 
 	const toggle = useCallback((toSet?: boolean) => {
-		if (typeof toSet === 'undefined') {
+		if (typeof toSet === "undefined") {
 			setIsOpen((state) => !state);
 		} else {
 			setIsOpen(toSet);

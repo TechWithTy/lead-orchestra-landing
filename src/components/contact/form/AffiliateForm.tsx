@@ -47,6 +47,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { createFieldProps, renderFormField } from "./formFieldHelpers";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 type AffiliateFormProps = {
 	onSuccess?: (affiliateId: string, social: string) => void;
@@ -141,6 +142,7 @@ export default function AffiliateForm({
 						})}
 						className="space-y-4"
 					>
+						<HiddenAttributionFields />
 						{affiliateFormFields.map((fieldConfig) => (
 							<FormField
 								key={fieldConfig.name}

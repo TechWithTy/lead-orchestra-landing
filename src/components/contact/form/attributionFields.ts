@@ -28,7 +28,7 @@ const TRACKING_KEYS = [
 
 const ICP_URL_KEYS = ["utm_icp", "icp", "icpCategory", "icp_type"] as const;
 const ATTRIBUTION_STORAGE_KEY = "lo_attrib";
-const ATTRIBUTION_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+const ATTRIBUTION_TTL_MS = 180 * 24 * 60 * 60 * 1000; // 180 days
 
 const toNonEmptyString = (value: string | null): string | undefined => {
 	if (typeof value !== "string") return undefined;
@@ -113,8 +113,8 @@ export const getAttributionFieldsFromUrl = (
 	const fromUrl = readFromUrl(url);
 	const fromStorage = readStoredAttribution();
 	const merged: IntakeAttributionFields = {
-		...fromStorage,
 		...fromUrl,
+		...fromStorage,
 	};
 
 	if (Object.keys(merged).length > 0) {

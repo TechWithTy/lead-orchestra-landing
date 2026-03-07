@@ -17,7 +17,10 @@ export async function POST(request: Request) {
 		const metaEventId = providedEventId || generateServerEventId();
 		const providedEventSourceUrl =
 			typeof body.eventSourceUrl === "string" ? body.eventSourceUrl : undefined;
-		const eventSourceUrl = resolveEventSourceUrl(request, providedEventSourceUrl);
+		const eventSourceUrl = resolveEventSourceUrl(
+			request,
+			providedEventSourceUrl,
+		);
 		const testEventCode =
 			typeof body.testEventCode === "string" ? body.testEventCode : undefined;
 		const useTestEventCode = body.useTestEventCode === true;

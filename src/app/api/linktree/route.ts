@@ -14,15 +14,15 @@ export async function GET() {
 	try {
 		const notionKey = process.env.NOTION_KEY;
 		const rawId = process.env.NOTION_REDIRECTS_ID;
-		
-		console.log("[API] Env vars check:", { 
-			hasKey: !!notionKey, 
+
+		console.log("[API] Env vars check:", {
+			hasKey: !!notionKey,
 			keyLength: notionKey?.length,
-			rawId: rawId 
+			rawId: rawId,
 		});
 
 		if (!notionKey) throw new Error("Missing NOTION_KEY");
-		
+
 		const addDashes = (id: string) =>
 			id.replace(/^(\w{8})(\w{4})(\w{4})(\w{4})(\w{12})$/, "$1-$2-$3-$4-$5");
 		const dbId = !rawId
@@ -45,17 +45,20 @@ export async function GET() {
 
 		console.log("[API] Fetching from Notion...");
 		// Inline fetch to be absolutely sure
-		const response = await fetch(`https://api.notion.com/v1/databases/${dbId}/query`, {
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${notionKey}`,
-				"Notion-Version": "2022-06-28",
-				"Content-Type": "application/json",
+		const response = await fetch(
+			`https://api.notion.com/v1/databases/${dbId}/query`,
+			{
+				method: "POST",
+				headers: {
+					Authorization: `Bearer ${notionKey}`,
+					"Notion-Version": "2022-06-28",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ page_size: 100 }),
+				// cache: "no-store", // Next.js 13+ cache control
+				next: { revalidate: 0 },
 			},
-			body: JSON.stringify({ page_size: 100 }),
-			// cache: "no-store", // Next.js 13+ cache control
-            next: { revalidate: 0 }
-		});
+		);
 
 		console.log("[API] Notion response status:", response.status);
 
@@ -66,7 +69,10 @@ export async function GET() {
 		}
 
 		const data = await response.json();
-		console.log("[API] Notion data received. Results count:", data?.results?.length);
+		console.log(
+			"[API] Notion data received. Results count:",
+			data?.results?.length,
+		);
 
 		const results: NotionPage[] = Array.isArray(data?.results)
 			? data.results
@@ -85,14 +91,16 @@ export async function GET() {
 			.filter((m) =>
 				Boolean(
 					m &&
-					m.linkTreeEnabled &&
+						m.linkTreeEnabled &&
 						((m.destination && m.destination.length > 0) ||
 							(Array.isArray(m.files) && m.files.length > 0)),
 				),
 			);
-        
-        // Cast to remove nulls for valid return type although filter does it logic-wise
-        const validItems = items.filter((i): i is NonNullable<typeof i> => i !== null);
+
+		// Cast to remove nulls for valid return type although filter does it logic-wise
+		const validItems = items.filter(
+			(i): i is NonNullable<typeof i> => i !== null,
+		);
 
 		console.log("[API] Final items count:", validItems.length);
 		return NextResponse.json({ ok: true, items: validItems });

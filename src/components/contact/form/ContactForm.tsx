@@ -49,6 +49,7 @@ import type { FieldConfig, RenderFieldProps } from "@/types/contact/formFields";
 import { generateMetaEventId, trackLead } from "@/utils/seo/fbpixel";
 import { useRouter } from "next/navigation";
 import { mapBetaTesterApplication } from "./testerApplicationMappers";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 export default function ContactForm({
 	prefill,
@@ -237,6 +238,7 @@ export default function ContactForm({
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="space-y-4"
 					>
+						<HiddenAttributionFields />
 						<input type="hidden" {...form.register("firstName")} />
 						<input type="hidden" {...form.register("lastName")} />
 						<input type="hidden" {...form.register("email")} />

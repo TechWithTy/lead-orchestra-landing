@@ -259,6 +259,7 @@ export async function POST(request: Request) {
 			);
 		} else {
 			try {
+				console.log("[contact/intake] Attempting to sync to Notion with properties:", JSON.stringify(properties, null, 2));
 				await notion.pages.create({
 					parent: { database_id: DATABASE_ID },
 					properties: properties,
@@ -266,9 +267,13 @@ export async function POST(request: Request) {
 				notionSynced = true;
 			} catch (notionError: unknown) {
 				console.error(
-					"[contact/intake] Notion sync failed; continuing with successful intake response.",
+					"[contact/intake] Notion sync failed.",
 					notionError,
 				);
+				// If it's a validation error, we want to know WHICH property failed
+				if (typeof notionError === "object" && notionError !== null && "body" in notionError) {
+					console.error("[contact/intake] Notion Error Body:", (notionError as any).body);
+				}
 			}
 		}
 

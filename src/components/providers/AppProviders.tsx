@@ -82,8 +82,7 @@ export function AppProviders({
 			NEXT_PUBLIC_ANALYTICS_AUTOLOAD:
 				process.env.NEXT_PUBLIC_ANALYTICS_AUTOLOAD,
 			NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
-			NEXT_PUBLIC_FACEBOOK_PIXEL_ID:
-				process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID,
+			NEXT_PUBLIC_FACEBOOK_PIXEL_ID: process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID,
 			defaultAnalyticsConsent,
 			explicitAutoload,
 			usingFallback,

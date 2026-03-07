@@ -1,6 +1,6 @@
-import NextHead from 'next/head';
+import NextHead from "next/head";
 
-import type { meta } from 'shared/constants';
+import type { meta } from "shared/constants";
 
 interface HeadProps {
 	children?: React.ReactNode;

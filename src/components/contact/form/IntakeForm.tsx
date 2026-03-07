@@ -36,6 +36,7 @@ import {
 	generateMetaEventId,
 	trackIntakeFormSubmit,
 } from "@/utils/seo/fbpixel";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 export default function IntakeForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -192,6 +193,7 @@ export default function IntakeForm() {
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="space-y-6"
 					>
+						<HiddenAttributionFields />
 						{/* Render Fields */}
 						{visibleFields.map((field) => (
 							<FormField

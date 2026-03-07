@@ -1,10 +1,10 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from "framer-motion";
 
-import { Background, Footer, RootContainer } from 'components';
+import { Background, Footer, RootContainer } from "components";
 
-import type { AppProps } from 'next/app';
+import type { AppProps } from "next/app";
 
-import 'styles/global';
+import "styles/global";
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
 	return (

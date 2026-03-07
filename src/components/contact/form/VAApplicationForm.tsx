@@ -8,6 +8,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { type VAFormValues, vaFormSchema } from "@/data/contact/va";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 import MultiSelectDropdown from "@/components/ui/MultiSelectDropdown";
 import { Button } from "@/components/ui/button";
@@ -134,6 +135,7 @@ export default function VAApplicationForm() {
 					onSubmit={form.handleSubmit(onSubmit)}
 					className="space-y-6"
 				>
+					<HiddenAttributionFields />
 					<div className="space-y-4">
 						<h2 className="font-semibold text-slate-900 text-xl dark:text-white">
 							Personal Information

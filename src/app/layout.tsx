@@ -44,6 +44,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 					href="/logos/DealScale%20Transparent%20Logo/Deal%20Scale%20No%20Text.png"
 					// type omitted; browsers infer from extension
 				/>
+				<Script id="lo-attribution-capture" strategy="afterInteractive">
+					{`(function () {
+  const keys = ["gclid","wbraid","gbraid","utm_source","utm_medium","utm_campaign","utm_term","utm_content","fbclid","msclkid","utm_icp"];
+  const url = new URL(window.location.href);
+  const found = {};
+  keys.forEach(k => { const v = url.searchParams.get(k); if (v) found[k] = v; });
+
+  if (Object.keys(found).length) {
+    const existing = JSON.parse(localStorage.getItem("lo_attrib") || "{}");
+    localStorage.setItem("lo_attrib", JSON.stringify({ ...found, ...existing, ts: Date.now() }));
+  }
+})();`}
+				</Script>
 				<Script id="whatconverts-init" strategy="afterInteractive">
 					{
 						"var $wc_load=function(a){return JSON.parse(JSON.stringify(a))}; var $wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL), ref:$wc_load(document.referrer), search:$wc_load(location.search), hash:$wc_load(location.hash)}};"

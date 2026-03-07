@@ -1,14 +1,14 @@
-import { getAllDocs } from './getAllDocs';
-import { getMetaFile } from './getMetaFile';
+import { getAllDocs } from "./getAllDocs";
+import { getMetaFile } from "./getMetaFile";
 
-import type { LinkKeys, Links } from 'shared/types';
+import type { LinkKeys, Links } from "shared/types";
 
 export async function getDocLinks() {
 	const paths = await getAllDocs();
 	const meta = await getMetaFile();
 
 	let links = paths.reduce((acc, path) => {
-		const [rootSection] = path.url.split('/') as LinkKeys[];
+		const [rootSection] = path.url.split("/") as LinkKeys[];
 		const { title, slug, url, order } = path;
 		const links = acc[rootSection] || [];
 
@@ -21,7 +21,7 @@ export async function getDocLinks() {
 				{
 					url,
 					order,
-					title: title || slug.replace(/-/g, ' '),
+					title: title || slug.replace(/-/g, " "),
 				},
 			],
 		};
@@ -31,7 +31,9 @@ export async function getDocLinks() {
 		const metaOrder = meta.order as LinkKeys[];
 		const orderedKeys = metaOrder.filter((key) => links[key]);
 
-		const keys = [...new Set([...orderedKeys, ...Object.keys(links)])] as LinkKeys[];
+		const keys = [
+			...new Set([...orderedKeys, ...Object.keys(links)]),
+		] as LinkKeys[];
 
 		links = keys.reduce((acc, rootSection) => {
 			const link = links[rootSection] || [];

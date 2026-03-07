@@ -1,4 +1,4 @@
-import type { keyframes as Keyframes } from '.';
+import type { keyframes as Keyframes } from ".";
 
 export const createKeyframes = (keyframes: typeof Keyframes) => ({
 	fadeIn: keyframes({
@@ -12,65 +12,65 @@ export const createKeyframes = (keyframes: typeof Keyframes) => ({
 	}),
 
 	background: keyframes({
-		'0%': {
+		"0%": {
 			opacity: 0,
-			backgroundSize: '50%',
-			backgroundPosition: 'top center',
+			backgroundSize: "50%",
+			backgroundPosition: "top center",
 		},
 
-		'10%': {
+		"10%": {
 			opacity: 1,
 		},
 
-		'50%': {
-			backgroundSize: '300%',
+		"50%": {
+			backgroundSize: "300%",
 		},
 
-		'100%': {
-			backgroundSize: '100%',
-			backgroundPosition: 'center center',
+		"100%": {
+			backgroundSize: "100%",
+			backgroundPosition: "center center",
 		},
 	}),
 
 	backgroundCover: keyframes({
-		'0%': {
+		"0%": {
 			opacity: 0,
-			backgroundPosition: '50% 50%',
+			backgroundPosition: "50% 50%",
 		},
 
-		'5%': {
+		"5%": {
 			opacity: 1,
 		},
 
-		'90%': {
+		"90%": {
 			opacity: 1,
 		},
 
-		'100%': {
+		"100%": {
 			opacity: 0,
-			backgroundPosition: '30% 30%',
+			backgroundPosition: "30% 30%",
 		},
 	}),
 
 	reveal: keyframes({
 		from: {
 			opacity: 0,
-			transform: 'translateY(1rem)',
+			transform: "translateY(1rem)",
 		},
 
 		to: {
 			opacity: 1,
-			transform: 'translateY(0)',
+			transform: "translateY(0)",
 		},
 	}),
 
 	spin: keyframes({
 		from: {
-			transform: 'rotate(0deg)',
+			transform: "rotate(0deg)",
 		},
 
 		to: {
-			transform: 'rotate(360deg)',
+			transform: "rotate(360deg)",
 		},
 	}),
 });

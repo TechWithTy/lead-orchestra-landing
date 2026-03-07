@@ -1,13 +1,13 @@
 /**
  * Facebook Pixel Event Tracking Utility
- * 
+ *
  * Standard Events Reference:
  * - PageView: Tracked automatically on page load
  * - Lead: User submits a form expressing interest
  * - CompleteRegistration: User completes signup/registration
  * - ViewContent: User views specific content (e.g., landing pages)
  * - InitiateCheckout: User starts checkout process
- * 
+ *
  * Custom Events for Intake Form:
  * - IntakeFormStart: User starts filling the intake form
  * - IntakeFormProgress: User progresses through form fields
@@ -69,12 +69,17 @@ export const trackLead = (options?: {
 	eventId?: string;
 }): void => {
 	if (isFbqAvailable()) {
-		window.fbq("track", "Lead", {
-			content_name: options?.contentName || "Lead Form",
-			content_category: options?.contentCategory || "Intake",
-			value: options?.value || 0,
-			currency: options?.currency || "USD",
-		}, options?.eventId ? { eventID: options.eventId } : undefined);
+		window.fbq(
+			"track",
+			"Lead",
+			{
+				content_name: options?.contentName || "Lead Form",
+				content_category: options?.contentCategory || "Intake",
+				value: options?.value || 0,
+				currency: options?.currency || "USD",
+			},
+			options?.eventId ? { eventID: options.eventId } : undefined,
+		);
 	}
 };
 
@@ -172,8 +177,8 @@ export const trackIntakeFormProgress = (options: {
 		step_name: options.stepName,
 		fields_completed: options.fieldsCompleted,
 		total_fields: options.totalFields,
-		completion_percentage: options.totalFields 
-			? Math.round((options.fieldsCompleted || 0) / options.totalFields * 100)
+		completion_percentage: options.totalFields
+			? Math.round(((options.fieldsCompleted || 0) / options.totalFields) * 100)
 			: 0,
 	});
 };
@@ -195,19 +200,26 @@ export const trackIntakeFormSubmit = (options?: {
 		currency: "USD",
 		eventId: options?.eventId,
 	});
-	
+
 	// Also fire a custom event with more details
-	customEvent("IntakeFormSubmit", {
-		content_name: "Lead Orchestra Intake Form",
-		business_type: options?.businessType?.join(", "),
-		monthly_budget: options?.monthlyBudget,
-		priority: options?.priority,
-		timestamp: new Date().toISOString(),
-	}, options?.eventId ? { eventID: options.eventId } : undefined);
+	customEvent(
+		"IntakeFormSubmit",
+		{
+			content_name: "Lead Orchestra Intake Form",
+			business_type: options?.businessType?.join(", "),
+			monthly_budget: options?.monthlyBudget,
+			priority: options?.priority,
+			timestamp: new Date().toISOString(),
+		},
+		options?.eventId ? { eventID: options.eventId } : undefined,
+	);
 };
 
 export const generateMetaEventId = (): string => {
-	if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+	if (
+		typeof crypto !== "undefined" &&
+		typeof crypto.randomUUID === "function"
+	) {
 		return crypto.randomUUID();
 	}
 
@@ -229,7 +241,7 @@ export const trackIntakeFormAbandon = (options?: {
 		total_fields: options?.totalFields,
 		last_field: options?.lastField,
 		completion_percentage: options?.totalFields
-			? Math.round((options.fieldsCompleted || 0) / options.totalFields * 100)
+			? Math.round(((options.fieldsCompleted || 0) / options.totalFields) * 100)
 			: 0,
 		timestamp: new Date().toISOString(),
 	});
@@ -238,7 +250,7 @@ export const trackIntakeFormAbandon = (options?: {
 // Helper to estimate lead value based on monthly budget
 function getLeadValue(monthlyBudget?: string): number {
 	if (!monthlyBudget) return 0;
-	
+
 	// Map budget ranges to estimated lead values
 	const budgetValueMap: Record<string, number> = {
 		"<$250": 50,
@@ -248,6 +260,6 @@ function getLeadValue(monthlyBudget?: string): number {
 		"$3k+": 1000,
 		"$3k - $5k": 1200,
 	};
-	
+
 	return budgetValueMap[monthlyBudget] || 0;
 }

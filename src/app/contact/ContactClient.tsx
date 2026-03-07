@@ -53,24 +53,32 @@ const Contact = () => {
 	// * Fire ViewContent pixel event on mount
 	useEffect(() => {
 		const eventId = generateMetaEventId();
-		event("ViewContent", {
-			content_name: "Contact Page",
-		}, { eventID: eventId });
+		event(
+			"ViewContent",
+			{
+				content_name: "Contact Page",
+			},
+			{ eventID: eventId },
+		);
 		void trackMetaServerEvent({
 			eventName: "ViewContent",
 			eventId,
-			eventSourceUrl: typeof window !== "undefined" ? window.location.href : undefined,
+			eventSourceUrl:
+				typeof window !== "undefined" ? window.location.href : undefined,
 		});
 	}, []);
 
-	const handleTabChange = useCallback((value: string) => {
-		setActiveTab(value as "conversion" | "prequalification");
-		
-		const params = new URLSearchParams(searchParams?.toString() ?? "");
-		params.set("tab", value);
-		
-		router.push(`${pathname}?${params.toString()}`, { scroll: false });
-	}, [pathname, router, searchParams]);
+	const handleTabChange = useCallback(
+		(value: string) => {
+			setActiveTab(value as "conversion" | "prequalification");
+
+			const params = new URLSearchParams(searchParams?.toString() ?? "");
+			params.set("tab", value);
+
+			router.push(`${pathname}?${params.toString()}`, { scroll: false });
+		},
+		[pathname, router, searchParams],
+	);
 
 	// Sync active tab with URL if it changes (optional but good for UX)
 	useEffect(() => {
@@ -351,7 +359,10 @@ const Contact = () => {
 							<TabsContent value="conversion" className="mt-0 outline-none">
 								<ConversionForm />
 							</TabsContent>
-							<TabsContent value="prequalification" className="mt-0 outline-none">
+							<TabsContent
+								value="prequalification"
+								className="mt-0 outline-none"
+							>
 								<IntakeForm />
 							</TabsContent>
 						</Tabs>

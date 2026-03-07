@@ -1,6 +1,6 @@
-import 'tsconfig-paths/register';
+import "tsconfig-paths/register";
 
-import { DEFAULT_SEO, STATIC_SEO_META } from '../../src/data/constants/seo';
+import { DEFAULT_SEO, STATIC_SEO_META } from "../../src/data/constants/seo";
 
 type ValidationErrors = {
 	pass: boolean;
@@ -34,7 +34,10 @@ function containsDuplicateAI(source: string): boolean {
 	return countMatches(source, /AI/gi) > 1;
 }
 
-export function validateSEO(title: string, description: string): ValidationResult {
+export function validateSEO(
+	title: string,
+	description: string,
+): ValidationResult {
 	const results: ValidationResult = {
 		title: { pass: true, errors: [] },
 		description: { pass: true, errors: [] },
@@ -44,7 +47,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 	// More flexible length for SEO-optimized titles (50-90 chars is acceptable for key terms)
 	if (title.length < 30 || title.length > 90) {
 		results.title.pass = false;
-		results.title.errors.push('Title must be 30–90 characters.');
+		results.title.errors.push("Title must be 30–90 characters.");
 	}
 
 	// Brand prefix is optional but preferred - check if brand appears anywhere in title
@@ -54,7 +57,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 		if (title.length < 50) {
 			results.title.pass = false;
 			results.title.errors.push(
-				'Title should include brand name (Lead Orchestra, DealScale, or Deal Scale).'
+				"Title should include brand name (Lead Orchestra, DealScale, or Deal Scale).",
 			);
 		}
 	}
@@ -63,7 +66,7 @@ export function validateSEO(title: string, description: string): ValidationResul
 	if (!TITLE_KEYWORD_REGEX.test(title)) {
 		results.title.pass = false;
 		results.title.errors.push(
-			'Missing primary intent keyword (Lead, Scraping, Data Ingestion, Open-Source, MCP, Export, Developer, Agency, Automation, or AI).'
+			"Missing primary intent keyword (Lead, Scraping, Data Ingestion, Open-Source, MCP, Export, Developer, Agency, Automation, or AI).",
 		);
 	}
 
@@ -74,21 +77,21 @@ export function validateSEO(title: string, description: string): ValidationResul
 
 	if (SPAM_REGEX.test(title)) {
 		results.title.pass = false;
-		results.title.errors.push('Spam or salesy language detected.');
+		results.title.errors.push("Spam or salesy language detected.");
 	}
 
 	// Description validations
 	// More flexible length - 100-200 chars is acceptable for SEO
 	if (description.length < 100 || description.length > 200) {
 		results.description.pass = false;
-		results.description.errors.push('Description must be 100–200 characters.');
+		results.description.errors.push("Description must be 100–200 characters.");
 	}
 
 	// Check for relevant keywords - at least one should be present
 	if (countMatches(description, DESCRIPTION_KEYWORDS_REGEX) < 1) {
 		results.description.pass = false;
 		results.description.errors.push(
-			'Description must contain at least one primary keyword (lead, scraping, data, ingestion, export, open-source, MCP, developer, agency, automation, AI, fresh leads, etc.).'
+			"Description must contain at least one primary keyword (lead, scraping, data, ingestion, export, open-source, MCP, developer, agency, automation, AI, fresh leads, etc.).",
 		);
 	}
 
@@ -96,18 +99,20 @@ export function validateSEO(title: string, description: string): ValidationResul
 	if (!VALUE_PROPOSITION_REGEX.test(description)) {
 		results.description.pass = false;
 		results.description.errors.push(
-			'Description missing clear value proposition (scrape, export, data ingestion, fresh leads, open-source, plugs into, MCP, developer, agency, automation).'
+			"Description missing clear value proposition (scrape, export, data ingestion, fresh leads, open-source, plugs into, MCP, developer, agency, automation).",
 		);
 	}
 
 	if (/[\n\r]/.test(description)) {
 		results.description.pass = false;
-		results.description.errors.push('Description must be a single sentence (no line breaks).');
+		results.description.errors.push(
+			"Description must be a single sentence (no line breaks).",
+		);
 	}
 
 	if (SPAM_REGEX.test(description)) {
 		results.description.pass = false;
-		results.description.errors.push('Spam or salesy terms detected.');
+		results.description.errors.push("Spam or salesy terms detected.");
 	}
 
 	if (containsDuplicateAI(description)) {
@@ -119,19 +124,21 @@ export function validateSEO(title: string, description: string): ValidationResul
 }
 
 const seoTargets = [
-	{ label: 'DEFAULT_SEO', seo: DEFAULT_SEO },
-	{ label: 'STATIC_HOME', seo: STATIC_SEO_META['/'] },
+	{ label: "DEFAULT_SEO", seo: DEFAULT_SEO },
+	{ label: "STATIC_HOME", seo: STATIC_SEO_META["/"] },
 ];
 
 let hasFailures = false;
 
 for (const { label, seo } of seoTargets) {
-	const { title = '', description = '' } = seo;
+	const { title = "", description = "" } = seo;
 	const result = validateSEO(title, description);
-	const titlePass = result.title.pass ? 'PASS' : 'FAIL';
-	const descriptionPass = result.description.pass ? 'PASS' : 'FAIL';
+	const titlePass = result.title.pass ? "PASS" : "FAIL";
+	const descriptionPass = result.description.pass ? "PASS" : "FAIL";
 
-	console.log(`[${label}] Title: ${titlePass}, Description: ${descriptionPass}`);
+	console.log(
+		`[${label}] Title: ${titlePass}, Description: ${descriptionPass}`,
+	);
 	if (!result.title.pass || !result.description.pass) {
 		hasFailures = true;
 		console.dir(result, { depth: null });
@@ -139,8 +146,8 @@ for (const { label, seo } of seoTargets) {
 }
 
 if (hasFailures) {
-	console.error('Meta description/title validation failed.');
+	console.error("Meta description/title validation failed.");
 	process.exit(1);
 }
 
-console.log('Meta description/title validation passed.');
+console.log("Meta description/title validation passed.");

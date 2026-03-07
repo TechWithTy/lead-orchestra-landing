@@ -3,16 +3,16 @@ const nextConfig = {
 	reactStrictMode: true,
 
 	experimental: {
-		transpilePackages: ['use-exit-intent'],
+		transpilePackages: ["use-exit-intent"],
 	},
 
-	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+	pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
 
 	redirects() {
 		return [
 			{
-				source: '/docs',
-				destination: '/docs/getting-started/overview',
+				source: "/docs",
+				destination: "/docs/getting-started/overview",
 				permanent: false,
 			},
 		];

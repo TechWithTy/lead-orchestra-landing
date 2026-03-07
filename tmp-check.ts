@@ -1,3 +1,3 @@
-import { SchemaInjector } from '@/utils/seo/schema';
+import { SchemaInjector } from "@/utils/seo/schema";
 
-console.log('typeof SchemaInjector:', typeof SchemaInjector);
+console.log("typeof SchemaInjector:", typeof SchemaInjector);

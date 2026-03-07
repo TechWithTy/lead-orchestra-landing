@@ -1,6 +1,6 @@
-import type React from 'react';
+import type React from "react";
 
-type NextLinkProps = React.ComponentProps<'a'> & {
+type NextLinkProps = React.ComponentProps<"a"> & {
 	readonly href: string;
 	readonly prefetch?: boolean;
 };

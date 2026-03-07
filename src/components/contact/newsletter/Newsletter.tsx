@@ -1,6 +1,7 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { HiddenAttributionFields } from "../form/HiddenAttributionFields";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useHasMounted } from "@/hooks/useHasMounted";
@@ -205,6 +206,7 @@ export const Newsletter = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className="mx-auto max-w-md"
 				>
+					<HiddenAttributionFields />
 					<div className="flex flex-col gap-3 sm:flex-row">
 						<div className="relative flex-grow">
 							<Input

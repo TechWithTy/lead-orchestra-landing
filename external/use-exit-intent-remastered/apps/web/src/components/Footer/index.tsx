@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { ExternalLink, Layout } from 'components';
-import { library } from 'shared/constants';
+import { ExternalLink, Layout } from "components";
+import { library } from "shared/constants";
 
 import {
 	AuthorBox,
@@ -9,7 +9,7 @@ import {
 	FooterContent,
 	FooterLinksContainer,
 	LicenseContainer,
-} from './styles';
+} from "./styles";
 
 export function Footer() {
 	return (
@@ -24,7 +24,10 @@ export function Footer() {
 
 							<div>
 								Created by
-								<ExternalLink href={library.author.url}>{library.author.name}</ExternalLink>💜
+								<ExternalLink href={library.author.url}>
+									{library.author.name}
+								</ExternalLink>
+								💜
 							</div>
 						</AuthorBox>
 					</FooterLinksContainer>

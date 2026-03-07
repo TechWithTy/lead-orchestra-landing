@@ -1,19 +1,19 @@
 const moduleMockRegistry = /* @__PURE__ */ new Map();
-const isVitest = () => typeof globalThis.vi !== 'undefined';
+const isVitest = () => typeof globalThis.vi !== "undefined";
 const resolveExistingJest = () => {
-	if (typeof globalThis.jest !== 'undefined') {
+	if (typeof globalThis.jest !== "undefined") {
 		return globalThis.jest;
 	}
 	const globalRequire = (() => {
 		try {
-			return eval('require');
+			return eval("require");
 		} catch {
 			return void 0;
 		}
 	})();
-	if (typeof globalRequire === 'function') {
+	if (typeof globalRequire === "function") {
 		try {
-			const { jest } = globalRequire('@jest/globals');
+			const { jest } = globalRequire("@jest/globals");
 			return jest;
 		} catch {
 			return void 0;
@@ -26,7 +26,7 @@ const createVitestFacade = () => {
 	const expect = globalThis.expect;
 	if (!vi || !expect) {
 		throw new Error(
-			'Vitest globals were not detected. Ensure Vitest runs with the --globals flag.'
+			"Vitest globals were not detected. Ensure Vitest runs with the --globals flag.",
 		);
 	}
 	const fn = (impl) => vi.fn(impl);
@@ -40,7 +40,7 @@ const createVitestFacade = () => {
 					moduleMockRegistry.set(modulePath, mockedModule);
 					return mockedModule;
 				},
-				options
+				options,
 			);
 			return;
 		}
@@ -48,7 +48,7 @@ const createVitestFacade = () => {
 	};
 	const requireActual = (modulePath) => {
 		throw new Error(
-			'jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.'
+			"jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.",
 		);
 	};
 	const requireMock = (modulePath) => {
@@ -56,7 +56,7 @@ const createVitestFacade = () => {
 			return moduleMockRegistry.get(modulePath);
 		}
 		throw new Error(
-			'Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.'
+			"Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.",
 		);
 	};
 	const resetRegistry = () => moduleMockRegistry.clear();
@@ -97,22 +97,22 @@ const jestLike = (() => {
 		const existing = resolveExistingJest();
 		if (!existing) {
 			throw new Error(
-				'Neither Jest nor Vitest detected. Unified test framework adapter requires one of them.'
+				"Neither Jest nor Vitest detected. Unified test framework adapter requires one of them.",
 			);
 		}
-		if (typeof globalThis.jest === 'undefined') {
+		if (typeof globalThis.jest === "undefined") {
 			globalThis.jest = existing;
 		}
 		return existing;
 	}
 	return createVitestFacade();
 })();
-if (typeof globalThis.jest === 'undefined') {
+if (typeof globalThis.jest === "undefined") {
 	globalThis.jest = jestLike;
 }
-console.info('[test-framework-adapter] loaded', {
-	isVitest: typeof globalThis.vi !== 'undefined',
-	jestDefined: typeof globalThis.jest !== 'undefined',
+console.info("[test-framework-adapter] loaded", {
+	isVitest: typeof globalThis.vi !== "undefined",
+	jestDefined: typeof globalThis.jest !== "undefined",
 });
 const testFramework = jestLike;
 export { testFramework };

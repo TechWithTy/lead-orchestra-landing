@@ -38,6 +38,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { createFieldProps, renderFormField } from "./formFieldHelpers";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 type CloserApplicationFormProps = {
 	onSuccess?: () => void;
@@ -129,6 +130,7 @@ export default function CloserApplicationForm({
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="space-y-6"
 					>
+						<HiddenAttributionFields />
 						{closerFormFields.map((field) => (
 							<FormField
 								key={field.name}

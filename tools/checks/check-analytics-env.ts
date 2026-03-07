@@ -1,4 +1,4 @@
-import { loadEnvConfig } from '@next/env';
+import { loadEnvConfig } from "@next/env";
 
 interface FieldDescriptor {
 	privateName: string;
@@ -8,24 +8,24 @@ interface FieldDescriptor {
 
 const fields: FieldDescriptor[] = [
 	{
-		privateName: 'CLARITY_PROJECT_ID',
-		fallbackName: 'NEXT_PUBLIC_CLARITY_PROJECT_ID',
-		label: 'Microsoft Clarity project ID',
+		privateName: "CLARITY_PROJECT_ID",
+		fallbackName: "NEXT_PUBLIC_CLARITY_PROJECT_ID",
+		label: "Microsoft Clarity project ID",
 	},
 	{
-		privateName: 'GOOGLE_ANALYTICS_ID',
-		fallbackName: 'NEXT_PUBLIC_GOOGLE_ANALYTICS',
-		label: 'Google Analytics measurement ID',
+		privateName: "GOOGLE_ANALYTICS_ID",
+		fallbackName: "NEXT_PUBLIC_GOOGLE_ANALYTICS",
+		label: "Google Analytics measurement ID",
 	},
 	{
-		privateName: 'GOOGLE_TAG_MANAGER_ID',
-		fallbackName: 'NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID',
-		label: 'Google Tag Manager container ID',
+		privateName: "GOOGLE_TAG_MANAGER_ID",
+		fallbackName: "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID",
+		label: "Google Tag Manager container ID",
 	},
 	{
-		privateName: 'ZOHO_SALES_IQ_WIDGET_CODE',
-		fallbackName: 'NEXT_PUBLIC_ZOHOSALESIQ_WIDGETCODE',
-		label: 'Zoho SalesIQ widget code',
+		privateName: "ZOHO_SALES_IQ_WIDGET_CODE",
+		fallbackName: "NEXT_PUBLIC_ZOHOSALESIQ_WIDGETCODE",
+		label: "Zoho SalesIQ widget code",
 	},
 ];
 
@@ -34,7 +34,9 @@ export interface AnalyticsEnvReport {
 	fallbackWarnings: string[];
 }
 
-export const evaluateAnalyticsEnv = (env: NodeJS.ProcessEnv): AnalyticsEnvReport => {
+export const evaluateAnalyticsEnv = (
+	env: NodeJS.ProcessEnv,
+): AnalyticsEnvReport => {
 	const missing: string[] = [];
 	const fallbackWarnings: string[] = [];
 
@@ -44,14 +46,14 @@ export const evaluateAnalyticsEnv = (env: NodeJS.ProcessEnv): AnalyticsEnvReport
 
 		if (!privateValue && !fallbackValue) {
 			missing.push(
-				`• ${field.label} is missing. Add ${field.privateName} to your environment and restart the dev server.`
+				`• ${field.label} is missing. Add ${field.privateName} to your environment and restart the dev server.`,
 			);
 			continue;
 		}
 
 		if (!privateValue && fallbackValue) {
 			fallbackWarnings.push(
-				`• Using ${field.fallbackName} fallback for ${field.label}. Prefer configuring ${field.privateName}.`
+				`• Using ${field.fallbackName} fallback for ${field.label}. Prefer configuring ${field.privateName}.`,
 			);
 		}
 	}
@@ -59,23 +61,31 @@ export const evaluateAnalyticsEnv = (env: NodeJS.ProcessEnv): AnalyticsEnvReport
 	return { missing, fallbackWarnings };
 };
 
-const reportAnalyticsEnv = ({ missing, fallbackWarnings }: AnalyticsEnvReport): void => {
+const reportAnalyticsEnv = ({
+	missing,
+	fallbackWarnings,
+}: AnalyticsEnvReport): void => {
 	if (fallbackWarnings.length > 0) {
-		console.warn('[analytics-env] Development fallbacks in use:\n' + fallbackWarnings.join('\n'));
+		console.warn(
+			"[analytics-env] Development fallbacks in use:\n" +
+				fallbackWarnings.join("\n"),
+		);
 	}
 
 	if (missing.length > 0) {
-		console.error('[analytics-env] Missing analytics configuration:\n' + missing.join('\n'));
 		console.error(
-			'Analytics providers will not load until these values are provided and the server is restarted.\n'
+			"[analytics-env] Missing analytics configuration:\n" + missing.join("\n"),
+		);
+		console.error(
+			"Analytics providers will not load until these values are provided and the server is restarted.\n",
 		);
 	} else {
-		console.log('[analytics-env] Analytics environment variables detected.');
+		console.log("[analytics-env] Analytics environment variables detected.");
 	}
 };
 
 export const runAnalyticsEnvCheck = (): AnalyticsEnvReport => {
-	loadEnvConfig(process.cwd(), process.env.NODE_ENV !== 'production', {
+	loadEnvConfig(process.cwd(), process.env.NODE_ENV !== "production", {
 		info: () => {
 			/* noop */
 		},

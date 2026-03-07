@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-import { queueTimeouts } from 'shared/utils';
+import { queueTimeouts } from "shared/utils";
 
-import { CheckmarkIcon, ClipboardIcon, Spinner } from 'components';
+import { CheckmarkIcon, ClipboardIcon, Spinner } from "components";
 
-import { codeTheme } from 'styles';
-import { Box, Button } from './styles';
+import { codeTheme } from "styles";
+import { Box, Button } from "./styles";
 
 const clipboardStateIcons = {
 	copying: () => <Spinner />,
@@ -17,24 +17,25 @@ const clipboardStateIcons = {
 type clipboardStateKeys = keyof typeof clipboardStateIcons;
 
 export function CodeBox(props: any) {
-	const [clipboardState, setClipboardState] = useState<clipboardStateKeys>('default');
+	const [clipboardState, setClipboardState] =
+		useState<clipboardStateKeys>("default");
 
 	function copyToClipboard() {
 		navigator.clipboard
 			.writeText(props.children)
-			.then(() => setClipboardState('copying'))
+			.then(() => setClipboardState("copying"))
 			.then(() =>
 				queueTimeouts(
 					{
 						delay: 500,
-						callback: () => setClipboardState('copied'),
+						callback: () => setClipboardState("copied"),
 					},
 
 					{
 						delay: 1000,
-						callback: () => setClipboardState('default'),
-					}
-				)
+						callback: () => setClipboardState("default"),
+					},
+				),
 			);
 	}
 
@@ -45,7 +46,7 @@ export function CodeBox(props: any) {
 			<Button
 				onClick={copyToClipboard}
 				title="Copy to clipboard"
-				disabled={clipboardState !== 'default'}
+				disabled={clipboardState !== "default"}
 			>
 				{clipboardStateIcons[clipboardState]()}
 			</Button>

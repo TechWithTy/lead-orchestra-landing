@@ -1,5 +1,5 @@
-import { animations, styled } from 'styles';
+import { animations, styled } from "styles";
 
-export const SVG = styled('svg', {
+export const SVG = styled("svg", {
 	animation: `${animations.spin} 1s linear infinite`,
 });

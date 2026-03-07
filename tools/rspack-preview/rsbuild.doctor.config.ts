@@ -1,4 +1,4 @@
-import { defineConfig } from '@rsbuild/core';
+import { defineConfig } from "@rsbuild/core";
 
 // RSDoctor-focused rsbuild config used by doctor runner.
 // - Uses resolve.alias (not deprecated source.alias)
@@ -15,7 +15,7 @@ export default defineConfig({
 	output: {
 		distPath: {
 			// Generate dist within the preview tool root to avoid warnings
-			root: 'dist',
+			root: "dist",
 		},
 		cleanDistPath: true,
 	},
@@ -23,7 +23,7 @@ export default defineConfig({
 		rspack: (config) => {
 			try {
 				// eslint-disable-next-line @typescript-eslint/no-var-requires
-				const { RsdoctorRspackPlugin } = require('@rsdoctor/rspack-plugin');
+				const { RsdoctorRspackPlugin } = require("@rsdoctor/rspack-plugin");
 				config.plugins = [
 					...(config.plugins || []),
 					new RsdoctorRspackPlugin({ enableReport: true }),

@@ -1,16 +1,16 @@
-import type { Context, InternalExitIntentSettings } from '../types';
+import type { Context, InternalExitIntentSettings } from "../types";
 
-export const contexts: { [key in Exclude<Context, '' | void>]: Context } = {
-	onMobile: 'onMobile',
-	onTrigger: 'onTrigger',
-	onDesktop: 'onDesktop',
-	onUnsubscribe: 'onUnsubscribe',
+export const contexts: { [key in Exclude<Context, "" | void>]: Context } = {
+	onMobile: "onMobile",
+	onTrigger: "onTrigger",
+	onDesktop: "onDesktop",
+	onUnsubscribe: "onUnsubscribe",
 };
 
 export const defaultSettings: InternalExitIntentSettings = {
 	cookie: {
 		daysToExpire: 30,
-		key: 'exit-intent',
+		key: "exit-intent",
 	},
 	desktop: {
 		triggerOnIdle: false,

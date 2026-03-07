@@ -23,7 +23,8 @@ export function ScheduleMeeting() {
 		void trackMetaServerEvent({
 			eventName: "Schedule",
 			eventId,
-			eventSourceUrl: typeof window !== "undefined" ? window.location.href : undefined,
+			eventSourceUrl:
+				typeof window !== "undefined" ? window.location.href : undefined,
 		});
 	}, []);
 

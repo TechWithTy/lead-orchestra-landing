@@ -1,14 +1,14 @@
-import { Fragment, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Fragment, useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
-import { commands } from 'shared/constants';
-import { queueTimeouts } from 'shared/utils';
+import { commands } from "shared/constants";
+import { queueTimeouts } from "shared/utils";
 
-import { CheckmarkIcon, ClipboardIcon, Separator, Spinner } from 'components';
+import { CheckmarkIcon, ClipboardIcon, Separator, Spinner } from "components";
 
-import { usePackageManagerSelection } from 'hooks';
-import { codeTheme } from 'styles';
-import { Button, PackageButton, PackageManagerList, ShellBox } from './styles';
+import { usePackageManagerSelection } from "hooks";
+import { codeTheme } from "styles";
+import { Button, PackageButton, PackageManagerList, ShellBox } from "./styles";
 
 const clipboardStateIcons = {
 	copying: () => <Spinner />,
@@ -19,57 +19,66 @@ const clipboardStateIcons = {
 type ClipboardStateKeys = keyof typeof clipboardStateIcons;
 type PackageManagerOptions = keyof typeof commands;
 
-const defaultActivePackageManager = 'yarn';
+const defaultActivePackageManager = "yarn";
 
 export function InstallationBox() {
-	const [clipboardState, setClipboardState] = useState<ClipboardStateKeys>('default');
+	const [clipboardState, setClipboardState] =
+		useState<ClipboardStateKeys>("default");
 
 	const { activePackageManager, updateActivePackageManager } =
-		usePackageManagerSelection<PackageManagerOptions>(defaultActivePackageManager);
+		usePackageManagerSelection<PackageManagerOptions>(
+			defaultActivePackageManager,
+		);
 
 	const installCommand = commands[activePackageManager];
 
-	const availablePackagesManagers = Object.keys(commands) as PackageManagerOptions[];
+	const availablePackagesManagers = Object.keys(
+		commands,
+	) as PackageManagerOptions[];
 
 	function copyToClipboard() {
 		navigator.clipboard
 			.writeText(installCommand)
-			.then(() => setClipboardState('copying'))
+			.then(() => setClipboardState("copying"))
 			.then(() =>
 				queueTimeouts(
 					{
 						delay: 1000,
-						callback: () => setClipboardState('copied'),
+						callback: () => setClipboardState("copied"),
 					},
 					{
 						delay: 1000,
-						callback: () => setClipboardState('default'),
-					}
-				)
+						callback: () => setClipboardState("default"),
+					},
+				),
 			);
 	}
 
 	return (
 		<>
 			<PackageManagerList>
-				{availablePackagesManagers.map((packageManagerName, index, packageManagers) => {
-					const isLastItem = index === packageManagers.length - 1;
+				{availablePackagesManagers.map(
+					(packageManagerName, index, packageManagers) => {
+						const isLastItem = index === packageManagers.length - 1;
 
-					return (
-						<Fragment key={packageManagerName}>
-							<li>
-								<PackageButton
-									active={packageManagerName === activePackageManager}
-									onClick={() => updateActivePackageManager(packageManagerName)}
-								>
-									{packageManagerName}
-								</PackageButton>
-							</li>
+						return (
+							<Fragment key={packageManagerName}>
+								<li>
+									<PackageButton
+										active={packageManagerName === activePackageManager}
+										onClick={() =>
+											updateActivePackageManager(packageManagerName)
+										}
+									>
+										{packageManagerName}
+									</PackageButton>
+								</li>
 
-							{!isLastItem && <Separator aria-hidden />}
-						</Fragment>
-					);
-				})}
+								{!isLastItem && <Separator aria-hidden />}
+							</Fragment>
+						);
+					},
+				)}
 			</PackageManagerList>
 
 			<ShellBox>
@@ -80,7 +89,7 @@ export function InstallationBox() {
 				<Button
 					onClick={copyToClipboard}
 					title="Copy to clipboard"
-					disabled={clipboardState !== 'default'}
+					disabled={clipboardState !== "default"}
 				>
 					{clipboardStateIcons[clipboardState]()}
 				</Button>

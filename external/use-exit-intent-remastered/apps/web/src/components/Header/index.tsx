@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { useElementIntersection } from 'hooks';
-import type { RefObject } from 'react';
-import { intersection, library } from 'shared/constants';
+import { useElementIntersection } from "hooks";
+import type { RefObject } from "react";
+import { intersection, library } from "shared/constants";
 
 import {
 	Description,
@@ -13,9 +13,9 @@ import {
 	LayoutSpacing,
 	LibraryVersion,
 	Title,
-} from 'components';
+} from "components";
 
-import { Layout } from './styles';
+import { Layout } from "./styles";
 
 export function Header() {
 	const { ref, onIntersect } = useElementIntersection<HTMLDivElement>({
@@ -23,8 +23,8 @@ export function Header() {
 		offset: 0,
 	});
 
-	onIntersect('home', () => {
-		history.replaceState(null, '', '#');
+	onIntersect("home", () => {
+		history.replaceState(null, "", "#");
 	});
 
 	return (

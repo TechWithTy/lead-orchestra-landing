@@ -59,6 +59,7 @@ import {
 	renderFormField,
 } from "@/components/contact/form/formFieldHelpers";
 import { mapPilotTesterApplication } from "./testerApplicationMappers";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 export default function ContactPilotForm({
 	prefill,
@@ -297,6 +298,7 @@ export default function ContactPilotForm({
 						})}
 						className="space-y-4"
 					>
+						<HiddenAttributionFields />
 						{priorityPilotFormFields.map((fieldConfig) => (
 							<FormField
 								key={fieldConfig.name}

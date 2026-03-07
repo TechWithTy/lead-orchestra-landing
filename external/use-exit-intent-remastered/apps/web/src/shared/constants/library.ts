@@ -1,4 +1,4 @@
-import packageJSON from '../../../../../packages/use-exit-intent/package.json';
+import packageJSON from "../../../../../packages/use-exit-intent/package.json";
 
 const { name, version, description, repository, license, author } = packageJSON;
 
@@ -8,5 +8,5 @@ export const library = {
 	version,
 	license,
 	description,
-	url: repository.url.replace('.git', ''),
+	url: repository.url.replace(".git", ""),
 } as const;

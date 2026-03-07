@@ -1,4 +1,4 @@
-import { HeaderContainer, HeaderContent } from './styles';
+import { HeaderContainer, HeaderContent } from "./styles";
 
 export function FixedHeader({ children }: { children: React.ReactNode }) {
 	return (

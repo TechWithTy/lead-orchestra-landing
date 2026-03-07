@@ -1,5 +1,5 @@
-import { readdir, stat } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { readdir, stat } from "node:fs/promises";
+import { resolve } from "node:path";
 
 export async function getAllMDXFilePaths(directory: string) {
 	const filePaths: string[] = [];

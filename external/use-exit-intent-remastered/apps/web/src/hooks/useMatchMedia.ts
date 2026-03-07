@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useMatchMedia(condition: string): boolean {
 	const [matches, setMatches] = useState(false);
@@ -14,9 +14,9 @@ export function useMatchMedia(condition: string): boolean {
 		setMatches(matchMedia.matches);
 
 		try {
-			matchMedia.addEventListener('change', listener);
+			matchMedia.addEventListener("change", listener);
 
-			return () => matchMedia.removeEventListener('change', listener);
+			return () => matchMedia.removeEventListener("change", listener);
 		} catch (_) {
 			matchMedia.addListener(listener);
 

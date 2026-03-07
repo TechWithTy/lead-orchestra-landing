@@ -33,7 +33,9 @@ const readRichText = (page: NotionPage, propertyName: string): string => {
 };
 
 const readTitle = (page: NotionPage, propertyName: string): string => {
-	const property = page.properties?.[propertyName] as NotionTitleProperty | undefined;
+	const property = page.properties?.[propertyName] as
+		| NotionTitleProperty
+		| undefined;
 	return (
 		property?.title
 			?.map((item) => item.plain_text || item.text?.content || "")
@@ -50,7 +52,9 @@ const assert = (condition: boolean, message: string): void => {
 
 const run = async () => {
 	if (!NOTION_API_KEY || !DATABASE_ID) {
-		throw new Error("Missing NOTION_API_KEY or NOTION_DATABASE_ID/NOTION_DB_ID");
+		throw new Error(
+			"Missing NOTION_API_KEY or NOTION_DATABASE_ID/NOTION_DB_ID",
+		);
 	}
 
 	// Route reads DATABASE_ID at module initialization time.
@@ -71,9 +75,14 @@ const run = async () => {
 		businessType: ["🧑‍💻 Tech & SaaS Niche"],
 		gclid: "test-gclid-123",
 		utm_source: "google",
+		utm_medium: "cpc",
 		utm_campaign: "intake-e2e",
 		utm_term: "lead orchestration",
 		utm_content: "hero_cta",
+		fbclid: "fb-test-123",
+		msclkid: "ms-test-123",
+		wbraid: "wb-test-123",
+		gbraid: "gb-test-123",
 		utm_icp: "enterprise_segment_a",
 	};
 
@@ -120,9 +129,14 @@ const run = async () => {
 	const queryJson = (await queryResponse.json()) as { results?: NotionPage[] };
 	const pages = queryJson.results || [];
 
-	const matched = pages.find((page) => readTitle(page, " Name").includes(marker));
+	const matched = pages.find((page) =>
+		readTitle(page, " Name").includes(marker),
+	);
 
-	assert(Boolean(matched), `Could not find generated lead page for marker ${marker}`);
+	assert(
+		Boolean(matched),
+		`Could not find generated lead page for marker ${marker}`,
+	);
 	const page = matched as NotionPage;
 
 	assert(readRichText(page, "gclid") === payload.gclid, "gclid value mismatch");
@@ -142,7 +156,10 @@ const run = async () => {
 		readRichText(page, "utm_content") === payload.utm_content,
 		"utm_content value mismatch",
 	);
-	assert(readRichText(page, "utm_icp") === payload.utm_icp, "utm_icp value mismatch");
+	assert(
+		readRichText(page, "utm_icp") === payload.utm_icp,
+		"utm_icp value mismatch",
+	);
 
 	await notion.pages.update({
 		page_id: page.id,

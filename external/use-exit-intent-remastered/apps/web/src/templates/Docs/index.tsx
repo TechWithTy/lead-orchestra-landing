@@ -1,13 +1,21 @@
-import { useMDXComponents } from '@mdx-js/react';
-import { MDXRemote } from 'next-mdx-remote';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useMDXComponents } from "@mdx-js/react";
+import { MDXRemote } from "next-mdx-remote";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-import { useMatchMedia } from 'hooks';
-import { library, sizes } from 'shared/constants';
+import { useMatchMedia } from "hooks";
+import { library, sizes } from "shared/constants";
 
-import { Article, Content, Header, MenuButton, Section, Sidebar, Title } from './styles';
+import {
+	Article,
+	Content,
+	Header,
+	MenuButton,
+	Section,
+	Sidebar,
+	Title,
+} from "./styles";
 
 import {
 	DocLinkTree,
@@ -20,16 +28,18 @@ import {
 	Menu,
 	OuterClickArea,
 	PaginationNavigator,
-} from 'components';
+} from "components";
 
-import type { DocProps } from 'shared/types';
+import type { DocProps } from "shared/types";
 
 export function DocsTemplate({ doc, links, pagination }: DocProps) {
 	const route = useRouter();
 	const MDXComponents = useMDXComponents();
 	const [menuOpen, setMenuOpen] = useState(false);
 
-	const matchesMobileWidth = useMatchMedia(`(max-width: ${sizes.breakpoints.mobile}px)`);
+	const matchesMobileWidth = useMatchMedia(
+		`(max-width: ${sizes.breakpoints.mobile}px)`,
+	);
 
 	function handleMenuVisibility() {
 		setMenuOpen(!menuOpen);
@@ -49,7 +59,7 @@ export function DocsTemplate({ doc, links, pagination }: DocProps) {
 							<MenuButton
 								active={menuOpen}
 								onClick={handleMenuVisibility}
-								title={menuOpen ? 'Close menu' : 'Open menu'}
+								title={menuOpen ? "Close menu" : "Open menu"}
 							>
 								<Menu />
 							</MenuButton>

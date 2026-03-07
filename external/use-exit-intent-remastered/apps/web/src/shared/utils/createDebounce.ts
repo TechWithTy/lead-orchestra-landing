@@ -1,4 +1,7 @@
-export function createDebounce(fn: (...args: unknown[]) => unknown, delay = 200) {
+export function createDebounce(
+	fn: (...args: unknown[]) => unknown,
+	delay = 200,
+) {
 	let timer: ReturnType<typeof setTimeout>;
 
 	return {

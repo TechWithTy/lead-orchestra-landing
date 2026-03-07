@@ -4,7 +4,13 @@
 		"type": "MIT",
 		"url": "https://opensource.org/licenses/MIT",
 		"description": "A permissive open-source license with minimal restrictions. Allows commercial use, modification, distribution, and private use.",
-		"permissions": ["commercial-use", "modification", "distribution", "private-use", "sublicense"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"private-use",
+			"sublicense"
+		],
 		"conditions": ["include-copyright", "include-license"],
 		"limitations": ["liability", "warranty"]
 	},
@@ -13,8 +19,19 @@
 		"type": "Apache-2.0",
 		"url": "https://www.apache.org/licenses/LICENSE-2.0",
 		"description": "A permissive open-source license that also provides an express grant of patent rights from contributors to users.",
-		"permissions": ["commercial-use", "modification", "distribution", "patent-use", "private-use"],
-		"conditions": ["include-copyright", "include-license", "state-changes", "patent-notice"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"patent-use",
+			"private-use"
+		],
+		"conditions": [
+			"include-copyright",
+			"include-license",
+			"state-changes",
+			"patent-notice"
+		],
 		"limitations": ["trademark-use", "liability", "warranty"]
 	},
 	{
@@ -22,7 +39,13 @@
 		"type": "GPL-3.0",
 		"url": "https://www.gnu.org/licenses/gpl-3.0",
 		"description": "A copyleft license that requires derived works to be open source and licensed under the same terms.",
-		"permissions": ["commercial-use", "modification", "distribution", "patent-use", "private-use"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"patent-use",
+			"private-use"
+		],
 		"conditions": [
 			"include-copyright",
 			"disclose-source",
@@ -37,7 +60,12 @@
 		"type": "BSD-2-Clause",
 		"url": "https://opensource.org/licenses/BSD-2-Clause",
 		"description": "A permissive license that comes in two variants, the 2-clause and 3-clause BSD license. This is the 2-clause version.",
-		"permissions": ["commercial-use", "modification", "distribution", "private-use"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"private-use"
+		],
 		"conditions": ["include-copyright"],
 		"limitations": ["liability", "warranty"]
 	},
@@ -46,7 +74,12 @@
 		"type": "BSD-3-Clause",
 		"url": "https://opensource.org/licenses/BSD-3-Clause",
 		"description": "A permissive license similar to the BSD 2-Clause License, but with a third clause that prohibits use of the copyright holder's name for promotion.",
-		"permissions": ["commercial-use", "modification", "distribution", "private-use"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"private-use"
+		],
 		"conditions": ["include-copyright", "non-endorsement"],
 		"limitations": ["liability", "warranty"]
 	},
@@ -55,8 +88,19 @@
 		"type": "MPL-2.0",
 		"url": "https://www.mozilla.org/en-US/MPL/2.0/",
 		"description": "A weak copyleft license that allows linking with files under different licenses. Source code must be made available under MPL.",
-		"permissions": ["commercial-use", "modification", "distribution", "patent-use", "private-use"],
-		"conditions": ["include-copyright", "disclose-source", "same-license", "document-changes"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"patent-use",
+			"private-use"
+		],
+		"conditions": [
+			"include-copyright",
+			"disclose-source",
+			"same-license",
+			"document-changes"
+		],
 		"limitations": ["liability", "warranty", "trademark-use"]
 	},
 	{
@@ -64,7 +108,13 @@
 		"type": "LGPL-3.0",
 		"url": "https://www.gnu.org/licenses/lgpl-3.0",
 		"description": "A weak copyleft license that allows linking with non-GPL programs, provided the LGPL-licensed components remain modifiable.",
-		"permissions": ["commercial-use", "modification", "distribution", "patent-use", "private-use"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"patent-use",
+			"private-use"
+		],
 		"conditions": [
 			"include-copyright",
 			"disclose-source",
@@ -79,7 +129,13 @@
 		"type": "EPL-2.0",
 		"url": "https://www.eclipse.org/legal/epl-2.0/",
 		"description": "A business-friendly copyleft license that requires source code availability for modifications but allows combining with other code.",
-		"permissions": ["commercial-use", "modification", "distribution", "patent-use", "private-use"],
+		"permissions": [
+			"commercial-use",
+			"modification",
+			"distribution",
+			"patent-use",
+			"private-use"
+		],
 		"conditions": [
 			"include-copyright",
 			"disclose-source",

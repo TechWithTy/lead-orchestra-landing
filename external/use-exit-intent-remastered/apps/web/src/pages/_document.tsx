@@ -1,7 +1,7 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { getPublicPath } from 'shared/utils';
-import { getCssText } from 'styles';
+import { getPublicPath } from "shared/utils";
+import { getCssText } from "styles";
 
 export default class CustomDocument extends Document {
 	render() {
@@ -12,9 +12,13 @@ export default class CustomDocument extends Document {
 
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 
-					<link rel="icon" href={getPublicPath('/favicon.ico')} />
+					<link rel="icon" href={getPublicPath("/favicon.ico")} />
 
-					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+					<link
+						rel="preconnect"
+						href="https://fonts.gstatic.com"
+						crossOrigin=""
+					/>
 
 					<link
 						href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"

@@ -1,1641 +1,1591 @@
 ﻿[
-    {
-        "Who will be responsible for reviewing and acting on the leads?":  {
-                                                                               "id":  "%3F%5EZu",
-                                                                               "type":  "select",
-                                                                               "select":  null
-                                                                           },
-        "Monthly Budget":  {
-                               "id":  "D%3A~C",
-                               "type":  "select",
-                               "select":  {
-                                              "id":  "o\u003ebZ",
-                                              "name":  "\u003c$250",
-                                              "color":  "red"
-                                          }
-                           },
-        "Conversion Rate %":  {
-                                  "id":  "DTQ%7D",
-                                  "type":  "number",
-                                  "number":  null
-                              },
-        "Current CRM":  {
-                            "id":  "DhDo",
-                            "type":  "rich_text",
-                            "rich_text":  [
-                                              {
-                                                  "type":  "text",
-                                                  "text":  {
-                                                               "content":  "In-house",
-                                                               "link":  null
-                                                           },
-                                                  "annotations":  {
-                                                                      "bold":  false,
-                                                                      "italic":  false,
-                                                                      "strikethrough":  false,
-                                                                      "underline":  false,
-                                                                      "code":  false,
-                                                                      "color":  "default"
-                                                                  },
-                                                  "plain_text":  "In-house",
-                                                  "href":  null
-                                              }
-                                          ]
-                        },
-        "Interested in these features?":  {
-                                              "id":  "GDHS",
-                                              "type":  "multi_select",
-                                              "multi_select":  [
-                                                                   {
-                                                                       "id":  "Ii\u003c_",
-                                                                       "name":  "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
-                                                                       "color":  "gray"
-                                                                   },
-                                                                   {
-                                                                       "id":  "sjBt",
-                                                                       "name":  "Lead Enrichment - Find Phone numbers emails and socials of leads.",
-                                                                       "color":  "orange"
-                                                                   }
-                                                               ]
-                                          },
-        "ICP Category":  {
-                             "id":  "Gwlg",
-                             "type":  "multi_select",
-                             "multi_select":  [
-                                                  {
-                                                      "id":  "vzM}",
-                                                      "name":  "Event Curator / Event Organizer",
-                                                      "color":  "pink"
-                                                  }
-                                              ]
-                         },
-        "Schedule Kickoff Call":  {
-                                      "id":  "G%7BZ_",
-                                      "type":  "date",
-                                      "date":  null
-                                  },
-        "Qualified":  {
-                          "id":  "H%3FcW",
-                          "type":  "select",
-                          "select":  {
-                                         "id":  "yYjW",
-                                         "name":  "Disqualified",
-                                         "color":  "pink"
-                                     }
-                      },
-        "Are you willing to pay for a small pilot to validate lead quality before scaling":  {
-                                                                                                 "id":  "JqG%3F",
-                                                                                                 "type":  "select",
-                                                                                                 "select":  null
-                                                                                             },
-        "If approved, how soon can you actively work and test a new lead list?":  {
-                                                                                      "id":  "KRnV",
-                                                                                      "type":  "select",
-                                                                                      "select":  null
-                                                                                  },
-        "Priority Level":  {
-                               "id":  "Lf~L",
-                               "type":  "multi_select",
-                               "multi_select":  [
-                                                    {
-                                                        "id":  "DBYQ",
-                                                        "name":  "Medium",
-                                                        "color":  "gray"
-                                                    }
-                                                ]
-                           },
-        "Avg Deal Amount ($)":  {
-                                    "id":  "PN%5Cm",
-                                    "type":  "number",
-                                    "number":  35000
-                                },
-        "Existing Lead Lists?":  {
-                                     "id":  "W%3BNb",
-                                     "type":  "multi_select",
-                                     "multi_select":  [
-                                                          {
-                                                              "id":  "Hkto",
-                                                              "name":  "No",
-                                                              "color":  "green"
-                                                          }
-                                                      ]
-                                 },
-        "Disqualification Reason":  {
-                                        "id":  "c_ZP",
-                                        "type":  "rich_text",
-                                        "rich_text":  [
-                                                          {
-                                                              "type":  "text",
-                                                              "text":  {
-                                                                           "content":  "Budget and execution capacity misalignment. Prospect did not activate or review delivered lead assets within the evaluation window and declined paid pilot required to validate and scale outbound.",
-                                                                           "link":  null
-                                                                       },
-                                                              "annotations":  {
-                                                                                  "bold":  false,
-                                                                                  "italic":  false,
-                                                                                  "strikethrough":  false,
-                                                                                  "underline":  false,
-                                                                                  "code":  false,
-                                                                                  "color":  "default"
-                                                                              },
-                                                              "plain_text":  "Budget and execution capacity misalignment. Prospect did not activate or review delivered lead assets within the evaluation window and declined paid pilot required to validate and scale outbound.",
-                                                              "href":  null
-                                                          }
-                                                      ]
-                                    },
-        "Describe Your Ideal Customer Profile":  {
-                                                     "id":  "fMtZ",
-                                                     "type":  "rich_text",
-                                                     "rich_text":  [
-                                                                       {
-                                                                           "type":  "text",
-                                                                           "text":  {
-                                                                                        "content":  "Event curators  that use Eventbrite or other websites other than Posh",
-                                                                                        "link":  null
-                                                                                    },
-                                                                           "annotations":  {
-                                                                                               "bold":  false,
-                                                                                               "italic":  false,
-                                                                                               "strikethrough":  false,
-                                                                                               "underline":  false,
-                                                                                               "code":  false,
-                                                                                               "color":  "default"
-                                                                                           },
-                                                                           "plain_text":  "Event curators  that use Eventbrite or other websites other than Posh",
-                                                                           "href":  null
-                                                                       }
-                                                                   ]
-                                                 },
-        "Business Type / Niche":  {
-                                      "id":  "g%3C%3FV",
-                                      "type":  "multi_select",
-                                      "multi_select":  [
-                                                           {
-                                                               "id":  "GN\u003eN",
-                                                               "name":  "🎤 Event \u0026 Creative Niche",
-                                                               "color":  "red"
-                                                           }
-                                                       ]
-                                  },
-        "Deals / Month":  {
-                              "id":  "j%3Afo",
-                              "type":  "number",
-                              "number":  6
-                          },
-        "Detailed Scraping Instructions ?":  {
-                                                 "id":  "ljP%40",
-                                                 "type":  "rich_text",
-                                                 "rich_text":  [
-                                                                   {
-                                                                       "type":  "text",
-                                                                       "text":  {
-                                                                                    "content":  "Event curators looking to leave Eventbrite and looking for a true all in one solution",
-                                                                                    "link":  null
-                                                                                },
-                                                                       "annotations":  {
-                                                                                           "bold":  false,
-                                                                                           "italic":  false,
-                                                                                           "strikethrough":  false,
-                                                                                           "underline":  false,
-                                                                                           "code":  false,
-                                                                                           "color":  "default"
-                                                                                       },
-                                                                       "plain_text":  "Event curators looking to leave Eventbrite and looking for a true all in one solution",
-                                                                       "href":  null
-                                                                   }
-                                                               ]
-                                             },
-        "High-Intent Lead Sources":  {
-                                         "id":  "m%3Dyk",
-                                         "type":  "rich_text",
-                                         "rich_text":  [
-                                                           {
-                                                               "type":  "text",
-                                                               "text":  {
-                                                                            "content":  "Eventbrite",
-                                                                            "link":  null
-                                                                        },
-                                                               "annotations":  {
-                                                                                   "bold":  false,
-                                                                                   "italic":  false,
-                                                                                   "strikethrough":  false,
-                                                                                   "underline":  false,
-                                                                                   "code":  false,
-                                                                                   "color":  "default"
-                                                                               },
-                                                               "plain_text":  "Eventbrite",
-                                                               "href":  null
-                                                           }
-                                                       ]
-                                     },
-        "Email":  {
-                      "id":  "pnj%40",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "Kadekoya@getbookt.io",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "Kadekoya@getbookt.io",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Main Pain Point(s)":  {
-                                   "id":  "q%3A%3Ar",
-                                   "type":  "multi_select",
-                                   "multi_select":  [
-                                                        {
-                                                            "id":  "BI\u003ew",
-                                                            "name":  "Not enough high-quality leads",
-                                                            "color":  "gray"
-                                                        },
-                                                        {
-                                                            "id":  "YCs\u003e",
-                                                            "name":  "Lead lists are incomplete",
-                                                            "color":  "orange"
-                                                        },
-                                                        {
-                                                            "id":  "`Hpv",
-                                                            "name":  "Hard to find high-intent leads",
-                                                            "color":  "pink"
-                                                        }
-                                                    ]
-                               },
-        "Company Website ?":  {
-                                  "id":  "rdqa",
-                                  "type":  "url",
-                                  "url":  null
-                              },
-        "Notes":  {
-                      "id":  "ss_%5C",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Phone":  {
-                      "id":  "s%7CCh",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Can we connect directly to your CRM?":  {
-                                                     "id":  "vf%3By",
-                                                     "type":  "multi_select",
-                                                     "multi_select":  [
-                                                                          {
-                                                                              "id":  "NoJ`",
-                                                                              "name":  "No id rather manually upload the generated leads",
-                                                                              "color":  "purple"
-                                                                          }
-                                                                      ]
-                                                 },
-        "Lead Volume / Month":  {
-                                    "id":  "x~Tx",
-                                    "type":  "number",
-                                    "number":  300
-                                },
-        "Start Date ":  {
-                            "id":  "y%3F%3Eq",
-                            "type":  "date",
-                            "date":  {
-                                         "start":  "2025-12-04",
-                                         "end":  null,
-                                         "time_zone":  null
-                                     }
-                        },
-        "What is your expectation for initial validation?":  {
-                                                                 "id":  "%7D%5BqI",
-                                                                 "type":  "select",
-                                                                 "select":  null
-                                                             },
-        " Name":  {
-                      "id":  "title",
-                      "type":  "title",
-                      "title":  [
-                                    {
-                                        "type":  "text",
-                                        "text":  {
-                                                     "content":  "Bookt | Kolade",
-                                                     "link":  null
-                                                 },
-                                        "annotations":  {
-                                                            "bold":  false,
-                                                            "italic":  false,
-                                                            "strikethrough":  false,
-                                                            "underline":  false,
-                                                            "code":  false,
-                                                            "color":  "default"
-                                                        },
-                                        "plain_text":  "Bookt | Kolade",
-                                        "href":  null
-                                    }
-                                ]
-                  }
-    },
-    {
-        "Who will be responsible for reviewing and acting on the leads?":  {
-                                                                               "id":  "%3F%5EZu",
-                                                                               "type":  "select",
-                                                                               "select":  null
-                                                                           },
-        "Monthly Budget":  {
-                               "id":  "D%3A~C",
-                               "type":  "select",
-                               "select":  {
-                                              "id":  "chiB",
-                                              "name":  "$3k+",
-                                              "color":  "purple"
-                                          }
-                           },
-        "Conversion Rate %":  {
-                                  "id":  "DTQ%7D",
-                                  "type":  "number",
-                                  "number":  null
-                              },
-        "Current CRM":  {
-                            "id":  "DhDo",
-                            "type":  "rich_text",
-                            "rich_text":  [
-                                              {
-                                                  "type":  "text",
-                                                  "text":  {
-                                                               "content":  "spreadsheets \u0026 social media ad platforms",
-                                                               "link":  null
-                                                           },
-                                                  "annotations":  {
-                                                                      "bold":  false,
-                                                                      "italic":  false,
-                                                                      "strikethrough":  false,
-                                                                      "underline":  false,
-                                                                      "code":  false,
-                                                                      "color":  "default"
-                                                                  },
-                                                  "plain_text":  "spreadsheets \u0026 social media ad platforms",
-                                                  "href":  null
-                                              }
-                                          ]
-                        },
-        "Interested in these features?":  {
-                                              "id":  "GDHS",
-                                              "type":  "multi_select",
-                                              "multi_select":  [
-                                                                   {
-                                                                       "id":  "Ii\u003c_",
-                                                                       "name":  "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
-                                                                       "color":  "gray"
-                                                                   },
-                                                                   {
-                                                                       "id":  "sjBt",
-                                                                       "name":  "Lead Enrichment - Find Phone numbers emails and socials of leads.",
-                                                                       "color":  "orange"
-                                                                   }
-                                                               ]
-                                          },
-        "ICP Category":  {
-                             "id":  "Gwlg",
-                             "type":  "multi_select",
-                             "multi_select":  [
-                                                  {
-                                                      "id":  "d_[t",
-                                                      "name":  "Consumers with inherent virality",
-                                                      "color":  "blue"
-                                                  }
-                                              ]
-                         },
-        "Schedule Kickoff Call":  {
-                                      "id":  "G%7BZ_",
-                                      "type":  "date",
-                                      "date":  null
-                                  },
-        "Qualified":  {
-                          "id":  "H%3FcW",
-                          "type":  "select",
-                          "select":  {
-                                         "id":  "SYWS",
-                                         "name":  "Qualified",
-                                         "color":  "blue"
-                                     }
-                      },
-        "Are you willing to pay for a small pilot to validate lead quality before scaling":  {
-                                                                                                 "id":  "JqG%3F",
-                                                                                                 "type":  "select",
-                                                                                                 "select":  null
-                                                                                             },
-        "If approved, how soon can you actively work and test a new lead list?":  {
-                                                                                      "id":  "KRnV",
-                                                                                      "type":  "select",
-                                                                                      "select":  null
-                                                                                  },
-        "Priority Level":  {
-                               "id":  "Lf~L",
-                               "type":  "multi_select",
-                               "multi_select":  [
-                                                    {
-                                                        "id":  "DBYQ",
-                                                        "name":  "Medium",
-                                                        "color":  "gray"
-                                                    },
-                                                    {
-                                                        "id":  "gLxi",
-                                                        "name":  "High",
-                                                        "color":  "pink"
-                                                    }
-                                                ]
-                           },
-        "Avg Deal Amount ($)":  {
-                                    "id":  "PN%5Cm",
-                                    "type":  "number",
-                                    "number":  9.5
-                                },
-        "Existing Lead Lists?":  {
-                                     "id":  "W%3BNb",
-                                     "type":  "multi_select",
-                                     "multi_select":  [
-                                                          {
-                                                              "id":  "Hkto",
-                                                              "name":  "No",
-                                                              "color":  "green"
-                                                          }
-                                                      ]
-                                 },
-        "Disqualification Reason":  {
-                                        "id":  "c_ZP",
-                                        "type":  "rich_text",
-                                        "rich_text":  [
-
-                                                      ]
-                                    },
-        "Describe Your Ideal Customer Profile":  {
-                                                     "id":  "fMtZ",
-                                                     "type":  "rich_text",
-                                                     "rich_text":  [
-                                                                       {
-                                                                           "type":  "text",
-                                                                           "text":  {
-                                                                                        "content":  "College students and recent graduates who demonstrate a desire to date with intentionality - not just play the field.",
-                                                                                        "link":  null
-                                                                                    },
-                                                                           "annotations":  {
-                                                                                               "bold":  false,
-                                                                                               "italic":  false,
-                                                                                               "strikethrough":  false,
-                                                                                               "underline":  false,
-                                                                                               "code":  false,
-                                                                                               "color":  "default"
-                                                                                           },
-                                                                           "plain_text":  "College students and recent graduates who demonstrate a desire to date with intentionality - not just play the field.",
-                                                                           "href":  null
-                                                                       }
-                                                                   ]
-                                                 },
-        "Business Type / Niche":  {
-                                      "id":  "g%3C%3FV",
-                                      "type":  "multi_select",
-                                      "multi_select":  [
-                                                           {
-                                                               "id":  "@\u003c_e",
-                                                               "name":  "🧑‍💻 Tech \u0026 SaaS Niche",
-                                                               "color":  "orange"
-                                                           },
-                                                           {
-                                                               "id":  "n@V\u003e",
-                                                               "name":  "🧘 Health / Wellness",
-                                                               "color":  "brown"
-                                                           },
-                                                           {
-                                                               "id":  "iBHz",
-                                                               "name":  "♎ B2C High Virality",
-                                                               "color":  "blue"
-                                                           }
-                                                       ]
-                                  },
-        "Deals / Month":  {
-                              "id":  "j%3Afo",
-                              "type":  "number",
-                              "number":  200
-                          },
-        "Detailed Scraping Instructions ?":  {
-                                                 "id":  "ljP%40",
-                                                 "type":  "rich_text",
-                                                 "rich_text":  [
-
-                                                               ]
-                                             },
-        "High-Intent Lead Sources":  {
-                                         "id":  "m%3Dyk",
-                                         "type":  "rich_text",
-                                         "rich_text":  [
-                                                           {
-                                                               "type":  "text",
-                                                               "text":  {
-                                                                            "content":  "Competitor\u0027s current users. \nInstagram/Tiktok\nUniversity directories. \nSpeed dating events",
-                                                                            "link":  null
-                                                                        },
-                                                               "annotations":  {
-                                                                                   "bold":  false,
-                                                                                   "italic":  false,
-                                                                                   "strikethrough":  false,
-                                                                                   "underline":  false,
-                                                                                   "code":  false,
-                                                                                   "color":  "default"
-                                                                               },
-                                                               "plain_text":  "Competitor\u0027s current users. \nInstagram/Tiktok\nUniversity directories. \nSpeed dating events",
-                                                               "href":  null
-                                                           }
-                                                       ]
-                                     },
-        "Email":  {
-                      "id":  "pnj%40",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "csluna@tryperidot.com",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "csluna@tryperidot.com",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Main Pain Point(s)":  {
-                                   "id":  "q%3A%3Ar",
-                                   "type":  "multi_select",
-                                   "multi_select":  [
-                                                        {
-                                                            "id":  "`Hpv",
-                                                            "name":  "Hard to find high-intent leads",
-                                                            "color":  "pink"
-                                                        },
-                                                        {
-                                                            "id":  "@jFM",
-                                                            "name":  "Need more targeted prospects",
-                                                            "color":  "pink"
-                                                        },
-                                                        {
-                                                            "id":  "nl\u003cE",
-                                                            "name":  "Need centralized lead database",
-                                                            "color":  "blue"
-                                                        }
-                                                    ]
-                               },
-        "Company Website ?":  {
-                                  "id":  "rdqa",
-                                  "type":  "url",
-                                  "url":  null
-                              },
-        "Notes":  {
-                      "id":  "ss_%5C",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "We\u0027re pre-revenue. Our goal is to launch at very specific, high intent, universities/cities. ",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "We\u0027re pre-revenue. Our goal is to launch at very specific, high intent, universities/cities. ",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Phone":  {
-                      "id":  "s%7CCh",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "9136266216",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "9136266216",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Can we connect directly to your CRM?":  {
-                                                     "id":  "vf%3By",
-                                                     "type":  "multi_select",
-                                                     "multi_select":  [
-                                                                          {
-                                                                              "id":  "NoJ`",
-                                                                              "name":  "No id rather manually upload the generated leads",
-                                                                              "color":  "purple"
-                                                                          }
-                                                                      ]
-                                                 },
-        "Lead Volume / Month":  {
-                                    "id":  "x~Tx",
-                                    "type":  "number",
-                                    "number":  10000
-                                },
-        "Start Date ":  {
-                            "id":  "y%3F%3Eq",
-                            "type":  "date",
-                            "date":  {
-                                         "start":  "2025-12-29",
-                                         "end":  null,
-                                         "time_zone":  null
-                                     }
-                        },
-        "What is your expectation for initial validation?":  {
-                                                                 "id":  "%7D%5BqI",
-                                                                 "type":  "select",
-                                                                 "select":  null
-                                                             },
-        " Name":  {
-                      "id":  "title",
-                      "type":  "title",
-                      "title":  [
-                                    {
-                                        "type":  "text",
-                                        "text":  {
-                                                     "content":  "Cesar Luna",
-                                                     "link":  null
-                                                 },
-                                        "annotations":  {
-                                                            "bold":  false,
-                                                            "italic":  false,
-                                                            "strikethrough":  false,
-                                                            "underline":  false,
-                                                            "code":  false,
-                                                            "color":  "default"
-                                                        },
-                                        "plain_text":  "Cesar Luna",
-                                        "href":  null
-                                    }
-                                ]
-                  }
-    },
-    {
-        "Who will be responsible for reviewing and acting on the leads?":  {
-                                                                               "id":  "%3F%5EZu",
-                                                                               "type":  "select",
-                                                                               "select":  null
-                                                                           },
-        "Monthly Budget":  {
-                               "id":  "D%3A~C",
-                               "type":  "select",
-                               "select":  {
-                                              "id":  "qJBZ",
-                                              "name":  "$1k–$3k",
-                                              "color":  "brown"
-                                          }
-                           },
-        "Conversion Rate %":  {
-                                  "id":  "DTQ%7D",
-                                  "type":  "number",
-                                  "number":  50
-                              },
-        "Current CRM":  {
-                            "id":  "DhDo",
-                            "type":  "rich_text",
-                            "rich_text":  [
-                                              {
-                                                  "type":  "text",
-                                                  "text":  {
-                                                               "content":  "internal",
-                                                               "link":  null
-                                                           },
-                                                  "annotations":  {
-                                                                      "bold":  false,
-                                                                      "italic":  false,
-                                                                      "strikethrough":  false,
-                                                                      "underline":  false,
-                                                                      "code":  false,
-                                                                      "color":  "default"
-                                                                  },
-                                                  "plain_text":  "internal",
-                                                  "href":  null
-                                              }
-                                          ]
-                        },
-        "Interested in these features?":  {
-                                              "id":  "GDHS",
-                                              "type":  "multi_select",
-                                              "multi_select":  [
-
-                                                               ]
-                                          },
-        "ICP Category":  {
-                             "id":  "Gwlg",
-                             "type":  "multi_select",
-                             "multi_select":  [
-                                                  {
-                                                      "id":  "\u003eqbw",
-                                                      "name":  "Home Services (HVAC Plumbing Roofing etc.)",
-                                                      "color":  "orange"
-                                                  }
-                                              ]
-                         },
-        "Schedule Kickoff Call":  {
-                                      "id":  "G%7BZ_",
-                                      "type":  "date",
-                                      "date":  null
-                                  },
-        "Qualified":  {
-                          "id":  "H%3FcW",
-                          "type":  "select",
-                          "select":  {
-                                         "id":  "yYjW",
-                                         "name":  "Disqualified",
-                                         "color":  "pink"
-                                     }
-                      },
-        "Are you willing to pay for a small pilot to validate lead quality before scaling":  {
-                                                                                                 "id":  "JqG%3F",
-                                                                                                 "type":  "select",
-                                                                                                 "select":  null
-                                                                                             },
-        "If approved, how soon can you actively work and test a new lead list?":  {
-                                                                                      "id":  "KRnV",
-                                                                                      "type":  "select",
-                                                                                      "select":  null
-                                                                                  },
-        "Priority Level":  {
-                               "id":  "Lf~L",
-                               "type":  "multi_select",
-                               "multi_select":  [
-                                                    {
-                                                        "id":  "gLxi",
-                                                        "name":  "High",
-                                                        "color":  "pink"
-                                                    }
-                                                ]
-                           },
-        "Avg Deal Amount ($)":  {
-                                    "id":  "PN%5Cm",
-                                    "type":  "number",
-                                    "number":  150
-                                },
-        "Existing Lead Lists?":  {
-                                     "id":  "W%3BNb",
-                                     "type":  "multi_select",
-                                     "multi_select":  [
-                                                          {
-                                                              "id":  "ow~N",
-                                                              "name":  "Yes — Clean",
-                                                              "color":  "blue"
-                                                          }
-                                                      ]
-                                 },
-        "Disqualification Reason":  {
-                                        "id":  "c_ZP",
-                                        "type":  "rich_text",
-                                        "rich_text":  [
-                                                          {
-                                                              "type":  "text",
-                                                              "text":  {
-                                                                           "content":  "Lead repeatedly avoided committing to a paid pilot or deposit and stated that ",
-                                                                           "link":  null
-                                                                       },
-                                                              "annotations":  {
-                                                                                  "bold":  false,
-                                                                                  "italic":  false,
-                                                                                  "strikethrough":  false,
-                                                                                  "underline":  false,
-                                                                                  "code":  false,
-                                                                                  "color":  "default"
-                                                                              },
-                                                              "plain_text":  "Lead repeatedly avoided committing to a paid pilot or deposit and stated that ",
-                                                              "href":  null
-                                                          },
-                                                          {
-                                                              "type":  "text",
-                                                              "text":  {
-                                                                           "content":  "end users",
-                                                                           "link":  null
-                                                                       },
-                                                              "annotations":  {
-                                                                                  "bold":  false,
-                                                                                  "italic":  true,
-                                                                                  "strikethrough":  false,
-                                                                                  "underline":  false,
-                                                                                  "code":  false,
-                                                                                  "color":  "default"
-                                                                              },
-                                                              "plain_text":  "end users",
-                                                              "href":  null
-                                                          },
-                                                          {
-                                                              "type":  "text",
-                                                              "text":  {
-                                                                           "content":  ", not the platform, would pay for leads. Sought free proof/custom work prior to payment, requested multiple “requirements” calls despite completing qualification, and demonstrated misunderstanding of lead-generation economics and technical scope. High risk of unpaid work, scope creep, and post-delivery conflict.",
-                                                                           "link":  null
-                                                                       },
-                                                              "annotations":  {
-                                                                                  "bold":  false,
-                                                                                  "italic":  false,
-                                                                                  "strikethrough":  false,
-                                                                                  "underline":  false,
-                                                                                  "code":  false,
-                                                                                  "color":  "default"
-                                                                              },
-                                                              "plain_text":  ", not the platform, would pay for leads. Sought free proof/custom work prior to payment, requested multiple “requirements” calls despite completing qualification, and demonstrated misunderstanding of lead-generation economics and technical scope. High risk of unpaid work, scope creep, and post-delivery conflict.",
-                                                              "href":  null
-                                                          }
-                                                      ]
-                                    },
-        "Describe Your Ideal Customer Profile":  {
-                                                     "id":  "fMtZ",
-                                                     "type":  "rich_text",
-                                                     "rich_text":  [
-                                                                       {
-                                                                           "type":  "text",
-                                                                           "text":  {
-                                                                                        "content":  "owner operated service business",
-                                                                                        "link":  null
-                                                                                    },
-                                                                           "annotations":  {
-                                                                                               "bold":  false,
-                                                                                               "italic":  false,
-                                                                                               "strikethrough":  false,
-                                                                                               "underline":  false,
-                                                                                               "code":  false,
-                                                                                               "color":  "default"
-                                                                                           },
-                                                                           "plain_text":  "owner operated service business",
-                                                                           "href":  null
-                                                                       }
-                                                                   ]
-                                                 },
-        "Business Type / Niche":  {
-                                      "id":  "g%3C%3FV",
-                                      "type":  "multi_select",
-                                      "multi_select":  [
-                                                           {
-                                                               "id":  "MuhR",
-                                                               "name":  "🛠️ Contractor / Home Service",
-                                                               "color":  "purple"
-                                                           },
-                                                           {
-                                                               "id":  "iBHz",
-                                                               "name":  "♎ B2C High Virality",
-                                                               "color":  "blue"
-                                                           },
-                                                           {
-                                                               "id":  "[kS\u003e",
-                                                               "name":  "🛍️ E-commerce \u0026 Retail",
-                                                               "color":  "green"
-                                                           },
-                                                           {
-                                                               "id":  "@\u003c_e",
-                                                               "name":  "🧑‍💻 Tech \u0026 SaaS Niche",
-                                                               "color":  "orange"
-                                                           },
-                                                           {
-                                                               "id":  "bWv:",
-                                                               "name":  "💼 B2B  Niche",
-                                                               "color":  "gray"
-                                                           }
-                                                       ]
-                                  },
-        "Deals / Month":  {
-                              "id":  "j%3Afo",
-                              "type":  "number",
-                              "number":  30
-                          },
-        "Detailed Scraping Instructions ?":  {
-                                                 "id":  "ljP%40",
-                                                 "type":  "rich_text",
-                                                 "rich_text":  [
-                                                                   {
-                                                                       "type":  "text",
-                                                                       "text":  {
-                                                                                    "content":  "ISO \"variable\" in \"city/town\" ",
-                                                                                    "link":  null
-                                                                                },
-                                                                       "annotations":  {
-                                                                                           "bold":  false,
-                                                                                           "italic":  false,
-                                                                                           "strikethrough":  false,
-                                                                                           "underline":  false,
-                                                                                           "code":  false,
-                                                                                           "color":  "default"
-                                                                                       },
-                                                                       "plain_text":  "ISO \"variable\" in \"city/town\" ",
-                                                                       "href":  null
-                                                                   }
-                                                               ]
-                                             },
-        "High-Intent Lead Sources":  {
-                                         "id":  "m%3Dyk",
-                                         "type":  "rich_text",
-                                         "rich_text":  [
-                                                           {
-                                                               "type":  "text",
-                                                               "text":  {
-                                                                            "content":  "facebook communities",
-                                                                            "link":  null
-                                                                        },
-                                                               "annotations":  {
-                                                                                   "bold":  false,
-                                                                                   "italic":  false,
-                                                                                   "strikethrough":  false,
-                                                                                   "underline":  false,
-                                                                                   "code":  false,
-                                                                                   "color":  "default"
-                                                                               },
-                                                               "plain_text":  "facebook communities",
-                                                               "href":  null
-                                                           }
-                                                       ]
-                                     },
-        "Email":  {
-                      "id":  "pnj%40",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "maz@wicwac.com",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "maz@wicwac.com",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Main Pain Point(s)":  {
-                                   "id":  "q%3A%3Ar",
-                                   "type":  "multi_select",
-                                   "multi_select":  [
-                                                        {
-                                                            "id":  "BI\u003ew",
-                                                            "name":  "Not enough high-quality leads",
-                                                            "color":  "gray"
-                                                        },
-                                                        {
-                                                            "id":  "`Hpv",
-                                                            "name":  "Hard to find high-intent leads",
-                                                            "color":  "pink"
-                                                        },
-                                                        {
-                                                            "id":  "Ws\\C",
-                                                            "name":  "Don’t know which websites to scrape",
-                                                            "color":  "purple"
-                                                        }
-                                                    ]
-                               },
-        "Company Website ?":  {
-                                  "id":  "rdqa",
-                                  "type":  "url",
-                                  "url":  "wicwac.com"
-                              },
-        "Notes":  {
-                      "id":  "ss_%5C",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Phone":  {
-                      "id":  "s%7CCh",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Can we connect directly to your CRM?":  {
-                                                     "id":  "vf%3By",
-                                                     "type":  "multi_select",
-                                                     "multi_select":  [
-                                                                          {
-                                                                              "id":  "NoJ`",
-                                                                              "name":  "No id rather manually upload the generated leads",
-                                                                              "color":  "purple"
-                                                                          }
-                                                                      ]
-                                                 },
-        "Lead Volume / Month":  {
-                                    "id":  "x~Tx",
-                                    "type":  "number",
-                                    "number":  300
-                                },
-        "Start Date ":  {
-                            "id":  "y%3F%3Eq",
-                            "type":  "date",
-                            "date":  {
-                                         "start":  "2025-12-12",
-                                         "end":  null,
-                                         "time_zone":  null
-                                     }
-                        },
-        "What is your expectation for initial validation?":  {
-                                                                 "id":  "%7D%5BqI",
-                                                                 "type":  "select",
-                                                                 "select":  null
-                                                             },
-        " Name":  {
-                      "id":  "title",
-                      "type":  "title",
-                      "title":  [
-                                    {
-                                        "type":  "text",
-                                        "text":  {
-                                                     "content":  "Maz",
-                                                     "link":  null
-                                                 },
-                                        "annotations":  {
-                                                            "bold":  false,
-                                                            "italic":  false,
-                                                            "strikethrough":  false,
-                                                            "underline":  false,
-                                                            "code":  false,
-                                                            "color":  "default"
-                                                        },
-                                        "plain_text":  "Maz",
-                                        "href":  null
-                                    }
-                                ]
-                  }
-    },
-    {
-        "Who will be responsible for reviewing and acting on the leads?":  {
-                                                                               "id":  "%3F%5EZu",
-                                                                               "type":  "select",
-                                                                               "select":  {
-                                                                                              "id":  "e;}G",
-                                                                                              "name":  "❌ No dedicated owner yet",
-                                                                                              "color":  "pink"
-                                                                                          }
-                                                                           },
-        "Monthly Budget":  {
-                               "id":  "D%3A~C",
-                               "type":  "select",
-                               "select":  {
-                                              "id":  "qJBZ",
-                                              "name":  "$1k–$3k",
-                                              "color":  "brown"
-                                          }
-                           },
-        "Conversion Rate %":  {
-                                  "id":  "DTQ%7D",
-                                  "type":  "number",
-                                  "number":  3
-                              },
-        "Current CRM":  {
-                            "id":  "DhDo",
-                            "type":  "rich_text",
-                            "rich_text":  [
-                                              {
-                                                  "type":  "text",
-                                                  "text":  {
-                                                               "content":  "spreadsheets and sender",
-                                                               "link":  null
-                                                           },
-                                                  "annotations":  {
-                                                                      "bold":  false,
-                                                                      "italic":  false,
-                                                                      "strikethrough":  false,
-                                                                      "underline":  false,
-                                                                      "code":  false,
-                                                                      "color":  "default"
-                                                                  },
-                                                  "plain_text":  "spreadsheets and sender",
-                                                  "href":  null
-                                              }
-                                          ]
-                        },
-        "Interested in these features?":  {
-                                              "id":  "GDHS",
-                                              "type":  "multi_select",
-                                              "multi_select":  [
-                                                                   {
-                                                                       "id":  "lLmA",
-                                                                       "name":  "Automated Outreach Text/Call/Linkedin-Instagram-Facebook  (Deal Scale)",
-                                                                       "color":  "red"
-                                                                   },
-                                                                   {
-                                                                       "id":  "sjBt",
-                                                                       "name":  "Lead Enrichment - Find Phone numbers emails and socials of leads.",
-                                                                       "color":  "orange"
-                                                                   },
-                                                                   {
-                                                                       "id":  "Ii\u003c_",
-                                                                       "name":  "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
-                                                                       "color":  "gray"
-                                                                   }
-                                                               ]
-                                          },
-        "ICP Category":  {
-                             "id":  "Gwlg",
-                             "type":  "multi_select",
-                             "multi_select":  [
-                                                  {
-                                                      "id":  "`W~P",
-                                                      "name":  "Tech Startups",
-                                                      "color":  "blue"
-                                                  }
-                                              ]
-                         },
-        "Schedule Kickoff Call":  {
-                                      "id":  "G%7BZ_",
-                                      "type":  "date",
-                                      "date":  null
-                                  },
-        "Qualified":  {
-                          "id":  "H%3FcW",
-                          "type":  "select",
-                          "select":  {
-                                         "id":  "SYWS",
-                                         "name":  "Qualified",
-                                         "color":  "blue"
-                                     }
-                      },
-        "Are you willing to pay for a small pilot to validate lead quality before scaling":  {
-                                                                                                 "id":  "JqG%3F",
-                                                                                                 "type":  "select",
-                                                                                                 "select":  {
-                                                                                                                "id":  "TMnZ",
-                                                                                                                "name":  "⚠️ Depends on price",
-                                                                                                                "color":  "purple"
-                                                                                                            }
-                                                                                             },
-        "If approved, how soon can you actively work and test a new lead list?":  {
-                                                                                      "id":  "KRnV",
-                                                                                      "type":  "select",
-                                                                                      "select":  {
-                                                                                                     "id":  "NscV",
-                                                                                                     "name":  "⏱ Within 3–5 business days",
-                                                                                                     "color":  "yellow"
-                                                                                                 }
-                                                                                  },
-        "Priority Level":  {
-                               "id":  "Lf~L",
-                               "type":  "multi_select",
-                               "multi_select":  [
-                                                    {
-                                                        "id":  "gLxi",
-                                                        "name":  "High",
-                                                        "color":  "pink"
-                                                    }
-                                                ]
-                           },
-        "Avg Deal Amount ($)":  {
-                                    "id":  "PN%5Cm",
-                                    "type":  "number",
-                                    "number":  1000
-                                },
-        "Existing Lead Lists?":  {
-                                     "id":  "W%3BNb",
-                                     "type":  "multi_select",
-                                     "multi_select":  [
-                                                          {
-                                                              "id":  "Hkto",
-                                                              "name":  "No",
-                                                              "color":  "green"
-                                                          }
-                                                      ]
-                                 },
-        "Disqualification Reason":  {
-                                        "id":  "c_ZP",
-                                        "type":  "rich_text",
-                                        "rich_text":  [
-
-                                                      ]
-                                    },
-        "Describe Your Ideal Customer Profile":  {
-                                                     "id":  "fMtZ",
-                                                     "type":  "rich_text",
-                                                     "rich_text":  [
-                                                                       {
-                                                                           "type":  "text",
-                                                                           "text":  {
-                                                                                        "content":  "Tech founders who recently raised a successful seed-series b round, ideally solo founders as they are the single decision maker.",
-                                                                                        "link":  null
-                                                                                    },
-                                                                           "annotations":  {
-                                                                                               "bold":  false,
-                                                                                               "italic":  false,
-                                                                                               "strikethrough":  false,
-                                                                                               "underline":  false,
-                                                                                               "code":  false,
-                                                                                               "color":  "default"
-                                                                                           },
-                                                                           "plain_text":  "Tech founders who recently raised a successful seed-series b round, ideally solo founders as they are the single decision maker.",
-                                                                           "href":  null
-                                                                       }
-                                                                   ]
-                                                 },
-        "Business Type / Niche":  {
-                                      "id":  "g%3C%3FV",
-                                      "type":  "multi_select",
-                                      "multi_select":  [
-                                                           {
-                                                               "id":  "gCN`",
-                                                               "name":  "💹Marketplace",
-                                                               "color":  "brown"
-                                                           },
-                                                           {
-                                                               "id":  "@\u003c_e",
-                                                               "name":  "🧑‍💻 Tech \u0026 SaaS Niche",
-                                                               "color":  "orange"
-                                                           }
-                                                       ]
-                                  },
-        "Deals / Month":  {
-                              "id":  "j%3Afo",
-                              "type":  "number",
-                              "number":  5
-                          },
-        "Detailed Scraping Instructions ?":  {
-                                                 "id":  "ljP%40",
-                                                 "type":  "rich_text",
-                                                 "rich_text":  [
-                                                                   {
-                                                                       "type":  "text",
-                                                                       "text":  {
-                                                                                    "content":  "Looking for your help with this",
-                                                                                    "link":  null
-                                                                                },
-                                                                       "annotations":  {
-                                                                                           "bold":  false,
-                                                                                           "italic":  false,
-                                                                                           "strikethrough":  false,
-                                                                                           "underline":  false,
-                                                                                           "code":  false,
-                                                                                           "color":  "default"
-                                                                                       },
-                                                                       "plain_text":  "Looking for your help with this",
-                                                                       "href":  null
-                                                                   }
-                                                               ]
-                                             },
-        "High-Intent Lead Sources":  {
-                                         "id":  "m%3Dyk",
-                                         "type":  "rich_text",
-                                         "rich_text":  [
-                                                           {
-                                                               "type":  "text",
-                                                               "text":  {
-                                                                            "content":  "Reddit, crunchbase, linkedin",
-                                                                            "link":  null
-                                                                        },
-                                                               "annotations":  {
-                                                                                   "bold":  false,
-                                                                                   "italic":  false,
-                                                                                   "strikethrough":  false,
-                                                                                   "underline":  false,
-                                                                                   "code":  false,
-                                                                                   "color":  "default"
-                                                                               },
-                                                               "plain_text":  "Reddit, crunchbase, linkedin",
-                                                               "href":  null
-                                                           }
-                                                       ]
-                                     },
-        "Email":  {
-                      "id":  "pnj%40",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "katie@knex.pro",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "katie@knex.pro",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Main Pain Point(s)":  {
-                                   "id":  "q%3A%3Ar",
-                                   "type":  "multi_select",
-                                   "multi_select":  [
-                                                        {
-                                                            "id":  "BI\u003ew",
-                                                            "name":  "Not enough high-quality leads",
-                                                            "color":  "gray"
-                                                        }
-                                                    ]
-                               },
-        "Company Website ?":  {
-                                  "id":  "rdqa",
-                                  "type":  "url",
-                                  "url":  "https://app.knex.pro/"
-                              },
-        "Notes":  {
-                      "id":  "ss_%5C",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Phone":  {
-                      "id":  "s%7CCh",
-                      "type":  "rich_text",
-                      "rich_text":  [
-                                        {
-                                            "type":  "text",
-                                            "text":  {
-                                                         "content":  "6148005340",
-                                                         "link":  null
-                                                     },
-                                            "annotations":  {
-                                                                "bold":  false,
-                                                                "italic":  false,
-                                                                "strikethrough":  false,
-                                                                "underline":  false,
-                                                                "code":  false,
-                                                                "color":  "default"
-                                                            },
-                                            "plain_text":  "6148005340",
-                                            "href":  null
-                                        }
-                                    ]
-                  },
-        "Can we connect directly to your CRM?":  {
-                                                     "id":  "vf%3By",
-                                                     "type":  "multi_select",
-                                                     "multi_select":  [
-                                                                          {
-                                                                              "id":  "jNGd",
-                                                                              "name":  "Yes i dont want to manually upload leads",
-                                                                              "color":  "orange"
-                                                                          }
-                                                                      ]
-                                                 },
-        "Lead Volume / Month":  {
-                                    "id":  "x~Tx",
-                                    "type":  "number",
-                                    "number":  150
-                                },
-        "Start Date ":  {
-                            "id":  "y%3F%3Eq",
-                            "type":  "date",
-                            "date":  {
-                                         "start":  "2026-01-26",
-                                         "end":  null,
-                                         "time_zone":  null
-                                     }
-                        },
-        "What is your expectation for initial validation?":  {
-                                                                 "id":  "%7D%5BqI",
-                                                                 "type":  "select",
-                                                                 "select":  {
-                                                                                "id":  "l_pv",
-                                                                                "name":  "📊 Conversion over 30–60 days",
-                                                                                "color":  "blue"
-                                                                            }
-                                                             },
-        " Name":  {
-                      "id":  "title",
-                      "type":  "title",
-                      "title":  [
-                                    {
-                                        "type":  "text",
-                                        "text":  {
-                                                     "content":  "Katie Murphy",
-                                                     "link":  null
-                                                 },
-                                        "annotations":  {
-                                                            "bold":  false,
-                                                            "italic":  false,
-                                                            "strikethrough":  false,
-                                                            "underline":  false,
-                                                            "code":  false,
-                                                            "color":  "default"
-                                                        },
-                                        "plain_text":  "Katie Murphy",
-                                        "href":  null
-                                    }
-                                ]
-                  }
-    },
-    {
-        "Who will be responsible for reviewing and acting on the leads?":  {
-                                                                               "id":  "%3F%5EZu",
-                                                                               "type":  "select",
-                                                                               "select":  null
-                                                                           },
-        "Monthly Budget":  {
-                               "id":  "D%3A~C",
-                               "type":  "select",
-                               "select":  null
-                           },
-        "Conversion Rate %":  {
-                                  "id":  "DTQ%7D",
-                                  "type":  "number",
-                                  "number":  null
-                              },
-        "Current CRM":  {
-                            "id":  "DhDo",
-                            "type":  "rich_text",
-                            "rich_text":  [
-
-                                          ]
-                        },
-        "Interested in these features?":  {
-                                              "id":  "GDHS",
-                                              "type":  "multi_select",
-                                              "multi_select":  [
-
-                                                               ]
-                                          },
-        "ICP Category":  {
-                             "id":  "Gwlg",
-                             "type":  "multi_select",
-                             "multi_select":  [
-
-                                              ]
-                         },
-        "Schedule Kickoff Call":  {
-                                      "id":  "G%7BZ_",
-                                      "type":  "date",
-                                      "date":  null
-                                  },
-        "Qualified":  {
-                          "id":  "H%3FcW",
-                          "type":  "select",
-                          "select":  null
-                      },
-        "Are you willing to pay for a small pilot to validate lead quality before scaling":  {
-                                                                                                 "id":  "JqG%3F",
-                                                                                                 "type":  "select",
-                                                                                                 "select":  null
-                                                                                             },
-        "If approved, how soon can you actively work and test a new lead list?":  {
-                                                                                      "id":  "KRnV",
-                                                                                      "type":  "select",
-                                                                                      "select":  null
-                                                                                  },
-        "Priority Level":  {
-                               "id":  "Lf~L",
-                               "type":  "multi_select",
-                               "multi_select":  [
-
-                                                ]
-                           },
-        "Avg Deal Amount ($)":  {
-                                    "id":  "PN%5Cm",
-                                    "type":  "number",
-                                    "number":  null
-                                },
-        "Existing Lead Lists?":  {
-                                     "id":  "W%3BNb",
-                                     "type":  "multi_select",
-                                     "multi_select":  [
-
-                                                      ]
-                                 },
-        "Disqualification Reason":  {
-                                        "id":  "c_ZP",
-                                        "type":  "rich_text",
-                                        "rich_text":  [
-
-                                                      ]
-                                    },
-        "Describe Your Ideal Customer Profile":  {
-                                                     "id":  "fMtZ",
-                                                     "type":  "rich_text",
-                                                     "rich_text":  [
-
-                                                                   ]
-                                                 },
-        "Business Type / Niche":  {
-                                      "id":  "g%3C%3FV",
-                                      "type":  "multi_select",
-                                      "multi_select":  [
-
-                                                       ]
-                                  },
-        "Deals / Month":  {
-                              "id":  "j%3Afo",
-                              "type":  "number",
-                              "number":  null
-                          },
-        "Detailed Scraping Instructions ?":  {
-                                                 "id":  "ljP%40",
-                                                 "type":  "rich_text",
-                                                 "rich_text":  [
-
-                                                               ]
-                                             },
-        "High-Intent Lead Sources":  {
-                                         "id":  "m%3Dyk",
-                                         "type":  "rich_text",
-                                         "rich_text":  [
-
-                                                       ]
-                                     },
-        "Email":  {
-                      "id":  "pnj%40",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Main Pain Point(s)":  {
-                                   "id":  "q%3A%3Ar",
-                                   "type":  "multi_select",
-                                   "multi_select":  [
-
-                                                    ]
-                               },
-        "Company Website ?":  {
-                                  "id":  "rdqa",
-                                  "type":  "url",
-                                  "url":  null
-                              },
-        "Notes":  {
-                      "id":  "ss_%5C",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Phone":  {
-                      "id":  "s%7CCh",
-                      "type":  "rich_text",
-                      "rich_text":  [
-
-                                    ]
-                  },
-        "Can we connect directly to your CRM?":  {
-                                                     "id":  "vf%3By",
-                                                     "type":  "multi_select",
-                                                     "multi_select":  [
-
-                                                                      ]
-                                                 },
-        "Lead Volume / Month":  {
-                                    "id":  "x~Tx",
-                                    "type":  "number",
-                                    "number":  null
-                                },
-        "Start Date ":  {
-                            "id":  "y%3F%3Eq",
-                            "type":  "date",
-                            "date":  null
-                        },
-        "What is your expectation for initial validation?":  {
-                                                                 "id":  "%7D%5BqI",
-                                                                 "type":  "select",
-                                                                 "select":  null
-                                                             },
-        " Name":  {
-                      "id":  "title",
-                      "type":  "title",
-                      "title":  [
-
-                                ]
-                  }
-    }
+	{
+		"Who will be responsible for reviewing and acting on the leads?": {
+			"id": "%3F%5EZu",
+			"type": "select",
+			"select": null
+		},
+		"Monthly Budget": {
+			"id": "D%3A~C",
+			"type": "select",
+			"select": {
+				"id": "o\u003ebZ",
+				"name": "\u003c$250",
+				"color": "red"
+			}
+		},
+		"Conversion Rate %": {
+			"id": "DTQ%7D",
+			"type": "number",
+			"number": null
+		},
+		"Current CRM": {
+			"id": "DhDo",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "In-house",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "In-house",
+					"href": null
+				}
+			]
+		},
+		"Interested in these features?": {
+			"id": "GDHS",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "Ii\u003c_",
+					"name": "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
+					"color": "gray"
+				},
+				{
+					"id": "sjBt",
+					"name": "Lead Enrichment - Find Phone numbers emails and socials of leads.",
+					"color": "orange"
+				}
+			]
+		},
+		"ICP Category": {
+			"id": "Gwlg",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "vzM}",
+					"name": "Event Curator / Event Organizer",
+					"color": "pink"
+				}
+			]
+		},
+		"Schedule Kickoff Call": {
+			"id": "G%7BZ_",
+			"type": "date",
+			"date": null
+		},
+		"Qualified": {
+			"id": "H%3FcW",
+			"type": "select",
+			"select": {
+				"id": "yYjW",
+				"name": "Disqualified",
+				"color": "pink"
+			}
+		},
+		"Are you willing to pay for a small pilot to validate lead quality before scaling": {
+			"id": "JqG%3F",
+			"type": "select",
+			"select": null
+		},
+		"If approved, how soon can you actively work and test a new lead list?": {
+			"id": "KRnV",
+			"type": "select",
+			"select": null
+		},
+		"Priority Level": {
+			"id": "Lf~L",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "DBYQ",
+					"name": "Medium",
+					"color": "gray"
+				}
+			]
+		},
+		"Avg Deal Amount ($)": {
+			"id": "PN%5Cm",
+			"type": "number",
+			"number": 35000
+		},
+		"Existing Lead Lists?": {
+			"id": "W%3BNb",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "Hkto",
+					"name": "No",
+					"color": "green"
+				}
+			]
+		},
+		"Disqualification Reason": {
+			"id": "c_ZP",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Budget and execution capacity misalignment. Prospect did not activate or review delivered lead assets within the evaluation window and declined paid pilot required to validate and scale outbound.",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Budget and execution capacity misalignment. Prospect did not activate or review delivered lead assets within the evaluation window and declined paid pilot required to validate and scale outbound.",
+					"href": null
+				}
+			]
+		},
+		"Describe Your Ideal Customer Profile": {
+			"id": "fMtZ",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Event curators  that use Eventbrite or other websites other than Posh",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Event curators  that use Eventbrite or other websites other than Posh",
+					"href": null
+				}
+			]
+		},
+		"Business Type / Niche": {
+			"id": "g%3C%3FV",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "GN\u003eN",
+					"name": "🎤 Event \u0026 Creative Niche",
+					"color": "red"
+				}
+			]
+		},
+		"Deals / Month": {
+			"id": "j%3Afo",
+			"type": "number",
+			"number": 6
+		},
+		"Detailed Scraping Instructions ?": {
+			"id": "ljP%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Event curators looking to leave Eventbrite and looking for a true all in one solution",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Event curators looking to leave Eventbrite and looking for a true all in one solution",
+					"href": null
+				}
+			]
+		},
+		"High-Intent Lead Sources": {
+			"id": "m%3Dyk",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Eventbrite",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Eventbrite",
+					"href": null
+				}
+			]
+		},
+		"Email": {
+			"id": "pnj%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Kadekoya@getbookt.io",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Kadekoya@getbookt.io",
+					"href": null
+				}
+			]
+		},
+		"Main Pain Point(s)": {
+			"id": "q%3A%3Ar",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "BI\u003ew",
+					"name": "Not enough high-quality leads",
+					"color": "gray"
+				},
+				{
+					"id": "YCs\u003e",
+					"name": "Lead lists are incomplete",
+					"color": "orange"
+				},
+				{
+					"id": "`Hpv",
+					"name": "Hard to find high-intent leads",
+					"color": "pink"
+				}
+			]
+		},
+		"Company Website ?": {
+			"id": "rdqa",
+			"type": "url",
+			"url": null
+		},
+		"Notes": {
+			"id": "ss_%5C",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Phone": {
+			"id": "s%7CCh",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Can we connect directly to your CRM?": {
+			"id": "vf%3By",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "NoJ`",
+					"name": "No id rather manually upload the generated leads",
+					"color": "purple"
+				}
+			]
+		},
+		"Lead Volume / Month": {
+			"id": "x~Tx",
+			"type": "number",
+			"number": 300
+		},
+		"Start Date ": {
+			"id": "y%3F%3Eq",
+			"type": "date",
+			"date": {
+				"start": "2025-12-04",
+				"end": null,
+				"time_zone": null
+			}
+		},
+		"What is your expectation for initial validation?": {
+			"id": "%7D%5BqI",
+			"type": "select",
+			"select": null
+		},
+		" Name": {
+			"id": "title",
+			"type": "title",
+			"title": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Bookt | Kolade",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Bookt | Kolade",
+					"href": null
+				}
+			]
+		}
+	},
+	{
+		"Who will be responsible for reviewing and acting on the leads?": {
+			"id": "%3F%5EZu",
+			"type": "select",
+			"select": null
+		},
+		"Monthly Budget": {
+			"id": "D%3A~C",
+			"type": "select",
+			"select": {
+				"id": "chiB",
+				"name": "$3k+",
+				"color": "purple"
+			}
+		},
+		"Conversion Rate %": {
+			"id": "DTQ%7D",
+			"type": "number",
+			"number": null
+		},
+		"Current CRM": {
+			"id": "DhDo",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "spreadsheets \u0026 social media ad platforms",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "spreadsheets \u0026 social media ad platforms",
+					"href": null
+				}
+			]
+		},
+		"Interested in these features?": {
+			"id": "GDHS",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "Ii\u003c_",
+					"name": "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
+					"color": "gray"
+				},
+				{
+					"id": "sjBt",
+					"name": "Lead Enrichment - Find Phone numbers emails and socials of leads.",
+					"color": "orange"
+				}
+			]
+		},
+		"ICP Category": {
+			"id": "Gwlg",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "d_[t",
+					"name": "Consumers with inherent virality",
+					"color": "blue"
+				}
+			]
+		},
+		"Schedule Kickoff Call": {
+			"id": "G%7BZ_",
+			"type": "date",
+			"date": null
+		},
+		"Qualified": {
+			"id": "H%3FcW",
+			"type": "select",
+			"select": {
+				"id": "SYWS",
+				"name": "Qualified",
+				"color": "blue"
+			}
+		},
+		"Are you willing to pay for a small pilot to validate lead quality before scaling": {
+			"id": "JqG%3F",
+			"type": "select",
+			"select": null
+		},
+		"If approved, how soon can you actively work and test a new lead list?": {
+			"id": "KRnV",
+			"type": "select",
+			"select": null
+		},
+		"Priority Level": {
+			"id": "Lf~L",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "DBYQ",
+					"name": "Medium",
+					"color": "gray"
+				},
+				{
+					"id": "gLxi",
+					"name": "High",
+					"color": "pink"
+				}
+			]
+		},
+		"Avg Deal Amount ($)": {
+			"id": "PN%5Cm",
+			"type": "number",
+			"number": 9.5
+		},
+		"Existing Lead Lists?": {
+			"id": "W%3BNb",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "Hkto",
+					"name": "No",
+					"color": "green"
+				}
+			]
+		},
+		"Disqualification Reason": {
+			"id": "c_ZP",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Describe Your Ideal Customer Profile": {
+			"id": "fMtZ",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "College students and recent graduates who demonstrate a desire to date with intentionality - not just play the field.",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "College students and recent graduates who demonstrate a desire to date with intentionality - not just play the field.",
+					"href": null
+				}
+			]
+		},
+		"Business Type / Niche": {
+			"id": "g%3C%3FV",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "@\u003c_e",
+					"name": "🧑‍💻 Tech \u0026 SaaS Niche",
+					"color": "orange"
+				},
+				{
+					"id": "n@V\u003e",
+					"name": "🧘 Health / Wellness",
+					"color": "brown"
+				},
+				{
+					"id": "iBHz",
+					"name": "♎ B2C High Virality",
+					"color": "blue"
+				}
+			]
+		},
+		"Deals / Month": {
+			"id": "j%3Afo",
+			"type": "number",
+			"number": 200
+		},
+		"Detailed Scraping Instructions ?": {
+			"id": "ljP%40",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"High-Intent Lead Sources": {
+			"id": "m%3Dyk",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Competitor\u0027s current users. \nInstagram/Tiktok\nUniversity directories. \nSpeed dating events",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Competitor\u0027s current users. \nInstagram/Tiktok\nUniversity directories. \nSpeed dating events",
+					"href": null
+				}
+			]
+		},
+		"Email": {
+			"id": "pnj%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "csluna@tryperidot.com",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "csluna@tryperidot.com",
+					"href": null
+				}
+			]
+		},
+		"Main Pain Point(s)": {
+			"id": "q%3A%3Ar",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "`Hpv",
+					"name": "Hard to find high-intent leads",
+					"color": "pink"
+				},
+				{
+					"id": "@jFM",
+					"name": "Need more targeted prospects",
+					"color": "pink"
+				},
+				{
+					"id": "nl\u003cE",
+					"name": "Need centralized lead database",
+					"color": "blue"
+				}
+			]
+		},
+		"Company Website ?": {
+			"id": "rdqa",
+			"type": "url",
+			"url": null
+		},
+		"Notes": {
+			"id": "ss_%5C",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "We\u0027re pre-revenue. Our goal is to launch at very specific, high intent, universities/cities. ",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "We\u0027re pre-revenue. Our goal is to launch at very specific, high intent, universities/cities. ",
+					"href": null
+				}
+			]
+		},
+		"Phone": {
+			"id": "s%7CCh",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "9136266216",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "9136266216",
+					"href": null
+				}
+			]
+		},
+		"Can we connect directly to your CRM?": {
+			"id": "vf%3By",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "NoJ`",
+					"name": "No id rather manually upload the generated leads",
+					"color": "purple"
+				}
+			]
+		},
+		"Lead Volume / Month": {
+			"id": "x~Tx",
+			"type": "number",
+			"number": 10000
+		},
+		"Start Date ": {
+			"id": "y%3F%3Eq",
+			"type": "date",
+			"date": {
+				"start": "2025-12-29",
+				"end": null,
+				"time_zone": null
+			}
+		},
+		"What is your expectation for initial validation?": {
+			"id": "%7D%5BqI",
+			"type": "select",
+			"select": null
+		},
+		" Name": {
+			"id": "title",
+			"type": "title",
+			"title": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Cesar Luna",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Cesar Luna",
+					"href": null
+				}
+			]
+		}
+	},
+	{
+		"Who will be responsible for reviewing and acting on the leads?": {
+			"id": "%3F%5EZu",
+			"type": "select",
+			"select": null
+		},
+		"Monthly Budget": {
+			"id": "D%3A~C",
+			"type": "select",
+			"select": {
+				"id": "qJBZ",
+				"name": "$1k–$3k",
+				"color": "brown"
+			}
+		},
+		"Conversion Rate %": {
+			"id": "DTQ%7D",
+			"type": "number",
+			"number": 50
+		},
+		"Current CRM": {
+			"id": "DhDo",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "internal",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "internal",
+					"href": null
+				}
+			]
+		},
+		"Interested in these features?": {
+			"id": "GDHS",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"ICP Category": {
+			"id": "Gwlg",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "\u003eqbw",
+					"name": "Home Services (HVAC Plumbing Roofing etc.)",
+					"color": "orange"
+				}
+			]
+		},
+		"Schedule Kickoff Call": {
+			"id": "G%7BZ_",
+			"type": "date",
+			"date": null
+		},
+		"Qualified": {
+			"id": "H%3FcW",
+			"type": "select",
+			"select": {
+				"id": "yYjW",
+				"name": "Disqualified",
+				"color": "pink"
+			}
+		},
+		"Are you willing to pay for a small pilot to validate lead quality before scaling": {
+			"id": "JqG%3F",
+			"type": "select",
+			"select": null
+		},
+		"If approved, how soon can you actively work and test a new lead list?": {
+			"id": "KRnV",
+			"type": "select",
+			"select": null
+		},
+		"Priority Level": {
+			"id": "Lf~L",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "gLxi",
+					"name": "High",
+					"color": "pink"
+				}
+			]
+		},
+		"Avg Deal Amount ($)": {
+			"id": "PN%5Cm",
+			"type": "number",
+			"number": 150
+		},
+		"Existing Lead Lists?": {
+			"id": "W%3BNb",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "ow~N",
+					"name": "Yes — Clean",
+					"color": "blue"
+				}
+			]
+		},
+		"Disqualification Reason": {
+			"id": "c_ZP",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Lead repeatedly avoided committing to a paid pilot or deposit and stated that ",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Lead repeatedly avoided committing to a paid pilot or deposit and stated that ",
+					"href": null
+				},
+				{
+					"type": "text",
+					"text": {
+						"content": "end users",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": true,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "end users",
+					"href": null
+				},
+				{
+					"type": "text",
+					"text": {
+						"content": ", not the platform, would pay for leads. Sought free proof/custom work prior to payment, requested multiple “requirements” calls despite completing qualification, and demonstrated misunderstanding of lead-generation economics and technical scope. High risk of unpaid work, scope creep, and post-delivery conflict.",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": ", not the platform, would pay for leads. Sought free proof/custom work prior to payment, requested multiple “requirements” calls despite completing qualification, and demonstrated misunderstanding of lead-generation economics and technical scope. High risk of unpaid work, scope creep, and post-delivery conflict.",
+					"href": null
+				}
+			]
+		},
+		"Describe Your Ideal Customer Profile": {
+			"id": "fMtZ",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "owner operated service business",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "owner operated service business",
+					"href": null
+				}
+			]
+		},
+		"Business Type / Niche": {
+			"id": "g%3C%3FV",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "MuhR",
+					"name": "🛠️ Contractor / Home Service",
+					"color": "purple"
+				},
+				{
+					"id": "iBHz",
+					"name": "♎ B2C High Virality",
+					"color": "blue"
+				},
+				{
+					"id": "[kS\u003e",
+					"name": "🛍️ E-commerce \u0026 Retail",
+					"color": "green"
+				},
+				{
+					"id": "@\u003c_e",
+					"name": "🧑‍💻 Tech \u0026 SaaS Niche",
+					"color": "orange"
+				},
+				{
+					"id": "bWv:",
+					"name": "💼 B2B  Niche",
+					"color": "gray"
+				}
+			]
+		},
+		"Deals / Month": {
+			"id": "j%3Afo",
+			"type": "number",
+			"number": 30
+		},
+		"Detailed Scraping Instructions ?": {
+			"id": "ljP%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "ISO \"variable\" in \"city/town\" ",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "ISO \"variable\" in \"city/town\" ",
+					"href": null
+				}
+			]
+		},
+		"High-Intent Lead Sources": {
+			"id": "m%3Dyk",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "facebook communities",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "facebook communities",
+					"href": null
+				}
+			]
+		},
+		"Email": {
+			"id": "pnj%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "maz@wicwac.com",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "maz@wicwac.com",
+					"href": null
+				}
+			]
+		},
+		"Main Pain Point(s)": {
+			"id": "q%3A%3Ar",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "BI\u003ew",
+					"name": "Not enough high-quality leads",
+					"color": "gray"
+				},
+				{
+					"id": "`Hpv",
+					"name": "Hard to find high-intent leads",
+					"color": "pink"
+				},
+				{
+					"id": "Ws\\C",
+					"name": "Don’t know which websites to scrape",
+					"color": "purple"
+				}
+			]
+		},
+		"Company Website ?": {
+			"id": "rdqa",
+			"type": "url",
+			"url": "wicwac.com"
+		},
+		"Notes": {
+			"id": "ss_%5C",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Phone": {
+			"id": "s%7CCh",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Can we connect directly to your CRM?": {
+			"id": "vf%3By",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "NoJ`",
+					"name": "No id rather manually upload the generated leads",
+					"color": "purple"
+				}
+			]
+		},
+		"Lead Volume / Month": {
+			"id": "x~Tx",
+			"type": "number",
+			"number": 300
+		},
+		"Start Date ": {
+			"id": "y%3F%3Eq",
+			"type": "date",
+			"date": {
+				"start": "2025-12-12",
+				"end": null,
+				"time_zone": null
+			}
+		},
+		"What is your expectation for initial validation?": {
+			"id": "%7D%5BqI",
+			"type": "select",
+			"select": null
+		},
+		" Name": {
+			"id": "title",
+			"type": "title",
+			"title": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Maz",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Maz",
+					"href": null
+				}
+			]
+		}
+	},
+	{
+		"Who will be responsible for reviewing and acting on the leads?": {
+			"id": "%3F%5EZu",
+			"type": "select",
+			"select": {
+				"id": "e;}G",
+				"name": "❌ No dedicated owner yet",
+				"color": "pink"
+			}
+		},
+		"Monthly Budget": {
+			"id": "D%3A~C",
+			"type": "select",
+			"select": {
+				"id": "qJBZ",
+				"name": "$1k–$3k",
+				"color": "brown"
+			}
+		},
+		"Conversion Rate %": {
+			"id": "DTQ%7D",
+			"type": "number",
+			"number": 3
+		},
+		"Current CRM": {
+			"id": "DhDo",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "spreadsheets and sender",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "spreadsheets and sender",
+					"href": null
+				}
+			]
+		},
+		"Interested in these features?": {
+			"id": "GDHS",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "lLmA",
+					"name": "Automated Outreach Text/Call/Linkedin-Instagram-Facebook  (Deal Scale)",
+					"color": "red"
+				},
+				{
+					"id": "sjBt",
+					"name": "Lead Enrichment - Find Phone numbers emails and socials of leads.",
+					"color": "orange"
+				},
+				{
+					"id": "Ii\u003c_",
+					"name": "Look-A-like Audinece Generation (Find leads similar to your top closed clients)",
+					"color": "gray"
+				}
+			]
+		},
+		"ICP Category": {
+			"id": "Gwlg",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "`W~P",
+					"name": "Tech Startups",
+					"color": "blue"
+				}
+			]
+		},
+		"Schedule Kickoff Call": {
+			"id": "G%7BZ_",
+			"type": "date",
+			"date": null
+		},
+		"Qualified": {
+			"id": "H%3FcW",
+			"type": "select",
+			"select": {
+				"id": "SYWS",
+				"name": "Qualified",
+				"color": "blue"
+			}
+		},
+		"Are you willing to pay for a small pilot to validate lead quality before scaling": {
+			"id": "JqG%3F",
+			"type": "select",
+			"select": {
+				"id": "TMnZ",
+				"name": "⚠️ Depends on price",
+				"color": "purple"
+			}
+		},
+		"If approved, how soon can you actively work and test a new lead list?": {
+			"id": "KRnV",
+			"type": "select",
+			"select": {
+				"id": "NscV",
+				"name": "⏱ Within 3–5 business days",
+				"color": "yellow"
+			}
+		},
+		"Priority Level": {
+			"id": "Lf~L",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "gLxi",
+					"name": "High",
+					"color": "pink"
+				}
+			]
+		},
+		"Avg Deal Amount ($)": {
+			"id": "PN%5Cm",
+			"type": "number",
+			"number": 1000
+		},
+		"Existing Lead Lists?": {
+			"id": "W%3BNb",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "Hkto",
+					"name": "No",
+					"color": "green"
+				}
+			]
+		},
+		"Disqualification Reason": {
+			"id": "c_ZP",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Describe Your Ideal Customer Profile": {
+			"id": "fMtZ",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Tech founders who recently raised a successful seed-series b round, ideally solo founders as they are the single decision maker.",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Tech founders who recently raised a successful seed-series b round, ideally solo founders as they are the single decision maker.",
+					"href": null
+				}
+			]
+		},
+		"Business Type / Niche": {
+			"id": "g%3C%3FV",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "gCN`",
+					"name": "💹Marketplace",
+					"color": "brown"
+				},
+				{
+					"id": "@\u003c_e",
+					"name": "🧑‍💻 Tech \u0026 SaaS Niche",
+					"color": "orange"
+				}
+			]
+		},
+		"Deals / Month": {
+			"id": "j%3Afo",
+			"type": "number",
+			"number": 5
+		},
+		"Detailed Scraping Instructions ?": {
+			"id": "ljP%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Looking for your help with this",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Looking for your help with this",
+					"href": null
+				}
+			]
+		},
+		"High-Intent Lead Sources": {
+			"id": "m%3Dyk",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Reddit, crunchbase, linkedin",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Reddit, crunchbase, linkedin",
+					"href": null
+				}
+			]
+		},
+		"Email": {
+			"id": "pnj%40",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "katie@knex.pro",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "katie@knex.pro",
+					"href": null
+				}
+			]
+		},
+		"Main Pain Point(s)": {
+			"id": "q%3A%3Ar",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "BI\u003ew",
+					"name": "Not enough high-quality leads",
+					"color": "gray"
+				}
+			]
+		},
+		"Company Website ?": {
+			"id": "rdqa",
+			"type": "url",
+			"url": "https://app.knex.pro/"
+		},
+		"Notes": {
+			"id": "ss_%5C",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Phone": {
+			"id": "s%7CCh",
+			"type": "rich_text",
+			"rich_text": [
+				{
+					"type": "text",
+					"text": {
+						"content": "6148005340",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "6148005340",
+					"href": null
+				}
+			]
+		},
+		"Can we connect directly to your CRM?": {
+			"id": "vf%3By",
+			"type": "multi_select",
+			"multi_select": [
+				{
+					"id": "jNGd",
+					"name": "Yes i dont want to manually upload leads",
+					"color": "orange"
+				}
+			]
+		},
+		"Lead Volume / Month": {
+			"id": "x~Tx",
+			"type": "number",
+			"number": 150
+		},
+		"Start Date ": {
+			"id": "y%3F%3Eq",
+			"type": "date",
+			"date": {
+				"start": "2026-01-26",
+				"end": null,
+				"time_zone": null
+			}
+		},
+		"What is your expectation for initial validation?": {
+			"id": "%7D%5BqI",
+			"type": "select",
+			"select": {
+				"id": "l_pv",
+				"name": "📊 Conversion over 30–60 days",
+				"color": "blue"
+			}
+		},
+		" Name": {
+			"id": "title",
+			"type": "title",
+			"title": [
+				{
+					"type": "text",
+					"text": {
+						"content": "Katie Murphy",
+						"link": null
+					},
+					"annotations": {
+						"bold": false,
+						"italic": false,
+						"strikethrough": false,
+						"underline": false,
+						"code": false,
+						"color": "default"
+					},
+					"plain_text": "Katie Murphy",
+					"href": null
+				}
+			]
+		}
+	},
+	{
+		"Who will be responsible for reviewing and acting on the leads?": {
+			"id": "%3F%5EZu",
+			"type": "select",
+			"select": null
+		},
+		"Monthly Budget": {
+			"id": "D%3A~C",
+			"type": "select",
+			"select": null
+		},
+		"Conversion Rate %": {
+			"id": "DTQ%7D",
+			"type": "number",
+			"number": null
+		},
+		"Current CRM": {
+			"id": "DhDo",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Interested in these features?": {
+			"id": "GDHS",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"ICP Category": {
+			"id": "Gwlg",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Schedule Kickoff Call": {
+			"id": "G%7BZ_",
+			"type": "date",
+			"date": null
+		},
+		"Qualified": {
+			"id": "H%3FcW",
+			"type": "select",
+			"select": null
+		},
+		"Are you willing to pay for a small pilot to validate lead quality before scaling": {
+			"id": "JqG%3F",
+			"type": "select",
+			"select": null
+		},
+		"If approved, how soon can you actively work and test a new lead list?": {
+			"id": "KRnV",
+			"type": "select",
+			"select": null
+		},
+		"Priority Level": {
+			"id": "Lf~L",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Avg Deal Amount ($)": {
+			"id": "PN%5Cm",
+			"type": "number",
+			"number": null
+		},
+		"Existing Lead Lists?": {
+			"id": "W%3BNb",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Disqualification Reason": {
+			"id": "c_ZP",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Describe Your Ideal Customer Profile": {
+			"id": "fMtZ",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Business Type / Niche": {
+			"id": "g%3C%3FV",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Deals / Month": {
+			"id": "j%3Afo",
+			"type": "number",
+			"number": null
+		},
+		"Detailed Scraping Instructions ?": {
+			"id": "ljP%40",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"High-Intent Lead Sources": {
+			"id": "m%3Dyk",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Email": {
+			"id": "pnj%40",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Main Pain Point(s)": {
+			"id": "q%3A%3Ar",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Company Website ?": {
+			"id": "rdqa",
+			"type": "url",
+			"url": null
+		},
+		"Notes": {
+			"id": "ss_%5C",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Phone": {
+			"id": "s%7CCh",
+			"type": "rich_text",
+			"rich_text": []
+		},
+		"Can we connect directly to your CRM?": {
+			"id": "vf%3By",
+			"type": "multi_select",
+			"multi_select": []
+		},
+		"Lead Volume / Month": {
+			"id": "x~Tx",
+			"type": "number",
+			"number": null
+		},
+		"Start Date ": {
+			"id": "y%3F%3Eq",
+			"type": "date",
+			"date": null
+		},
+		"What is your expectation for initial validation?": {
+			"id": "%7D%5BqI",
+			"type": "select",
+			"select": null
+		},
+		" Name": {
+			"id": "title",
+			"type": "title",
+			"title": []
+		}
+	}
 ]

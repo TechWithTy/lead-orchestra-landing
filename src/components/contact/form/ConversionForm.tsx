@@ -38,6 +38,7 @@ import {
 	trackIntakeFormStart,
 	trackIntakeFormSubmit,
 } from "@/utils/seo/fbpixel";
+import { HiddenAttributionFields } from "./HiddenAttributionFields";
 
 export default function ConversionForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -142,6 +143,7 @@ export default function ConversionForm() {
 						className="space-y-6"
 						onFocusCapture={handleFormInteraction}
 					>
+						<HiddenAttributionFields />
 						<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 							{quickApplyFields.map((field) => (
 								<FormField

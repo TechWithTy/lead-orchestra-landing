@@ -147,7 +147,7 @@ export const SelfHostedCard = ({
 				</div>
 				{renderBadge({ badge, badgeLabel, badgeVariant })}
 			</div>
-			
+
 			{pricingTiers && pricingTiers.length > 0 ? (
 				<PricingTable tiers={pricingTiers} />
 			) : null}

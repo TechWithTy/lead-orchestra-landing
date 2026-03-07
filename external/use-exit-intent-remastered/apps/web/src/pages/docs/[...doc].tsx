@@ -1,14 +1,19 @@
-import { MDXProvider } from '@mdx-js/react';
+import { MDXProvider } from "@mdx-js/react";
 
-import { getDoc, getDocLinks, getDocPaginationNavigator, getParsedDocPaths } from 'modules';
+import {
+	getDoc,
+	getDocLinks,
+	getDocPaginationNavigator,
+	getParsedDocPaths,
+} from "modules";
 
-import { Head, createMDXComponents } from 'components';
-import { meta } from 'shared/constants';
-import { DocsTemplate } from 'templates';
+import { Head, createMDXComponents } from "components";
+import { meta } from "shared/constants";
+import { DocsTemplate } from "templates";
 
-import type { ParsedUrlQuery } from 'node:querystring';
-import type { GetStaticPaths, GetStaticProps } from 'next';
-import type { DocProps } from 'shared/types';
+import type { ParsedUrlQuery } from "node:querystring";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import type { DocProps } from "shared/types";
 
 interface GetStaticPropsParams extends ParsedUrlQuery {
 	doc: string[];
@@ -19,15 +24,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 	const paths = docs.map((doc) => ({
 		params: {
-			doc: doc.url.split('/'),
+			doc: doc.url.split("/"),
 		},
 	}));
 
 	return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps<DocProps, GetStaticPropsParams> = async (context) => {
-	const docPath = context.params?.doc?.join('/') || '';
+export const getStaticProps: GetStaticProps<
+	DocProps,
+	GetStaticPropsParams
+> = async (context) => {
+	const docPath = context.params?.doc?.join("/") || "";
 
 	const doc = await getDoc(docPath);
 	const links = await getDocLinks();

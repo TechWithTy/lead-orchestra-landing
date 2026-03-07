@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { vi } from "vitest";
 
 export const init = vi.fn();
 export const capture = vi.fn();

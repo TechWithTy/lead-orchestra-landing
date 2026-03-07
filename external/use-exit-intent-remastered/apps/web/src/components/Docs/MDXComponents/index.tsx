@@ -1,26 +1,31 @@
-import type { ComponentPropsWithoutRef, HTMLAttributes, ReactNode } from 'react';
+import type {
+	ComponentPropsWithoutRef,
+	HTMLAttributes,
+	ReactNode,
+} from "react";
 
 // MDXComponents type definition
 type MDXComponents = {
 	[key: string]: React.ComponentType<Record<string, unknown>> | undefined;
 };
 
-import { Description, Title } from 'components/Layout';
-import { CodeBox } from './CodeBox/index.js';
-import { SingleTick } from './styles.js';
+import { Description, Title } from "components/Layout";
+import { CodeBox } from "./CodeBox/index.js";
+import { SingleTick } from "./styles.js";
 
 type PreProps = HTMLAttributes<HTMLPreElement>;
-type CodeProps = ComponentPropsWithoutRef<'code'>;
+type CodeProps = ComponentPropsWithoutRef<"code">;
 type SpanProps = HTMLAttributes<HTMLSpanElement>;
 
 function extractChildClassName(children: ReactNode): string | undefined {
 	const child = Array.isArray(children) ? children[0] : children;
 
 	if (
-		typeof child === 'object' &&
+		typeof child === "object" &&
 		child !== null &&
-		'props' in child &&
-		typeof (child as { props?: { className?: unknown } }).props?.className === 'string'
+		"props" in child &&
+		typeof (child as { props?: { className?: unknown } }).props?.className ===
+			"string"
 	) {
 		return (child as { props?: { className?: string } }).props?.className;
 	}
@@ -38,14 +43,18 @@ export function createMDXComponents(): MDXComponents {
 			const className = extractChildClassName(children);
 
 			if (!className) {
-				return <SingleTick {...(rest as unknown as SpanProps)}>{children}</SingleTick>;
+				return (
+					<SingleTick {...(rest as unknown as SpanProps)}>
+						{children}
+					</SingleTick>
+				);
 			}
 
 			return <pre {...props} />;
 		},
 
 		code: (props: CodeProps) => {
-			const language = props.className?.replace('language-', '');
+			const language = props.className?.replace("language-", "");
 
 			if (!props.className) {
 				return <code {...props} />;

@@ -14,9 +14,7 @@ describe("Contact thank-you page (smoke)", () => {
 		expect(
 			screen.getByRole("heading", { name: "Thank you for applying" }),
 		).toBeInTheDocument();
-		expect(
-			screen.getByText(/we have your submission/i),
-		).toBeInTheDocument();
+		expect(screen.getByText(/we have your submission/i)).toBeInTheDocument();
 		expect(screen.getByRole("link", { name: "Back to Home" })).toHaveAttribute(
 			"href",
 			"/",
@@ -26,4 +24,3 @@ describe("Contact thank-you page (smoke)", () => {
 		).toHaveAttribute("href", "/contact");
 	});
 });
-

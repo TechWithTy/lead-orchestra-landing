@@ -1,7 +1,7 @@
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
-import fg from 'fast-glob';
+import fg from "fast-glob";
 
 export interface GenerateDataManifestOptions {
 	readonly cwd?: string;
@@ -14,22 +14,22 @@ interface ManifestModule {
 	readonly relativePath: string;
 }
 
-const DATA_ROOT = path.join('src', 'data');
-const STORES_ROOT = path.join('src', 'stores');
-const GENERATED_DIR = '__generated__';
-const MANIFEST_FILE = 'manifest.ts';
-const STORE_REGISTRY_FILE = 'dataStores.ts';
-const DATA_MODULES_FILE = 'modules.ts';
+const DATA_ROOT = path.join("src", "data");
+const STORES_ROOT = path.join("src", "stores");
+const GENERATED_DIR = "__generated__";
+const MANIFEST_FILE = "manifest.ts";
+const STORE_REGISTRY_FILE = "dataStores.ts";
+const DATA_MODULES_FILE = "modules.ts";
 
 const IGNORED_PATTERNS = [
-	'**/__generated__/**',
-	'**/__tests__/**',
-	'**/*.d.ts',
-	'**/*.test.*',
-	'**/*.spec.*',
+	"**/__generated__/**",
+	"**/__tests__/**",
+	"**/*.d.ts",
+	"**/*.test.*",
+	"**/*.spec.*",
 ];
 
-const INDENT = '        ';
+const INDENT = "        ";
 
 export async function generateDataManifest({
 	cwd = process.cwd(),
@@ -40,11 +40,11 @@ export async function generateDataManifest({
 	const generatedDataDir = path.join(dataDir, GENERATED_DIR);
 	const generatedStoreDir = path.join(storesDir, GENERATED_DIR);
 
-	await ensureDirectoryExists(dataDir, 'data');
+	await ensureDirectoryExists(dataDir, "data");
 	await fs.mkdir(generatedDataDir, { recursive: true });
 	await fs.mkdir(generatedStoreDir, { recursive: true });
 
-	const moduleFiles = await fg('**/*.{ts,tsx}', {
+	const moduleFiles = await fg("**/*.{ts,tsx}", {
 		cwd: dataDir,
 		onlyFiles: true,
 		dot: false,
@@ -68,19 +68,19 @@ export async function generateDataManifest({
 	const storeRegistryContent = buildStoreRegistryContent(sortedModules);
 	const dataModulesContent = buildDataModulesContent(sortedModules);
 
-	await fs.writeFile(manifestPath, manifestContent, 'utf8');
-	await fs.writeFile(storeRegistryPath, storeRegistryContent, 'utf8');
-	await fs.writeFile(dataModulesPath, dataModulesContent, 'utf8');
+	await fs.writeFile(manifestPath, manifestContent, "utf8");
+	await fs.writeFile(storeRegistryPath, storeRegistryContent, "utf8");
+	await fs.writeFile(dataModulesPath, dataModulesContent, "utf8");
 }
 
 function toManifestModule(
 	filePath: string,
 	dataDir: string,
-	generatedDataDir: string
+	generatedDataDir: string,
 ): ManifestModule | null {
 	const posixPath = toPosix(filePath);
 	const parsed = path.posix.parse(posixPath);
-	if (parsed.name.startsWith('_')) {
+	if (parsed.name.startsWith("_")) {
 		return null;
 	}
 
@@ -90,26 +90,25 @@ function toManifestModule(
 	}
 
 	const absolutePath = path.join(dataDir, filePath);
-	const importPath = toPosix(path.relative(generatedDataDir, absolutePath)).replace(
-		/\.(tsx|ts)$/u,
-		''
-	);
+	const importPath = toPosix(
+		path.relative(generatedDataDir, absolutePath),
+	).replace(/\.(tsx|ts)$/u, "");
 
 	return {
 		key,
-		importPath: importPath.startsWith('.') ? importPath : `./${importPath}`,
+		importPath: importPath.startsWith(".") ? importPath : `./${importPath}`,
 		absolutePath,
 		relativePath: posixPath,
 	};
 }
 
 function createModuleKey(directory: string, filename: string): string | null {
-	if (filename.startsWith('_')) {
+	if (filename.startsWith("_")) {
 		return null;
 	}
 
-	if (filename === 'index') {
-		return directory || 'index';
+	if (filename === "index") {
+		return directory || "index";
 	}
 
 	return directory ? `${directory}/${filename}` : filename;
@@ -129,7 +128,7 @@ function validateDuplicateKeys(modules: ManifestModule[]) {
 
 	for (const [key, entries] of collisions) {
 		if (entries.length > 1) {
-			const sources = entries.map((entry) => entry.relativePath).join(', ');
+			const sources = entries.map((entry) => entry.relativePath).join(", ");
 			throw new Error(`Duplicate data module key: ${key} (${sources})`);
 		}
 	}
@@ -138,110 +137,132 @@ function validateDuplicateKeys(modules: ManifestModule[]) {
 function buildManifestContent(modules: ManifestModule[]): string {
 	const lines: string[] = [];
 	const keyUnion =
-		modules.length > 0 ? modules.map((mod) => JSON.stringify(mod.key)).join(' | ') : 'never';
+		modules.length > 0
+			? modules.map((mod) => JSON.stringify(mod.key)).join(" | ")
+			: "never";
 
 	lines.push(`export type DataModuleKey = ${keyUnion};`);
-	lines.push('');
-
-	if (modules.length === 0) {
-		lines.push('export type DataModuleLoaders = Record<never, () => Promise<never>>;');
-	} else {
-		lines.push('export type DataModuleLoaders = {');
-		for (const mod of modules) {
-			const literalKey = JSON.stringify(mod.key);
-			const importPath = JSON.stringify(mod.importPath);
-			lines.push(`${INDENT}${literalKey}: () => Promise<typeof import(${importPath})>;`);
-		}
-		lines.push('};');
-	}
-
-	lines.push('');
-	if (modules.length === 0) {
-		lines.push('export type DataModuleModules = Record<never, never>;');
-	} else {
-		lines.push('export type DataModuleModules = {');
-		lines.push(`${INDENT}[K in DataModuleKey]: Awaited<ReturnType<DataModuleLoaders[K]>>;`);
-		lines.push('};');
-	}
-
-	lines.push('');
-	lines.push('export type DataManifestEntry<K extends DataModuleKey = DataModuleKey> = {');
-	lines.push(`${INDENT}readonly key: K;`);
-	lines.push(`${INDENT}readonly importPath: string;`);
-	lines.push(`${INDENT}readonly loader: DataModuleLoaders[K];`);
-	lines.push('};');
-	lines.push('');
+	lines.push("");
 
 	if (modules.length === 0) {
 		lines.push(
-			'export const dataManifest = {} as const satisfies { readonly [K in DataModuleKey]: DataManifestEntry<K> };'
+			"export type DataModuleLoaders = Record<never, () => Promise<never>>;",
 		);
 	} else {
-		lines.push('export const dataManifest = {');
+		lines.push("export type DataModuleLoaders = {");
+		for (const mod of modules) {
+			const literalKey = JSON.stringify(mod.key);
+			const importPath = JSON.stringify(mod.importPath);
+			lines.push(
+				`${INDENT}${literalKey}: () => Promise<typeof import(${importPath})>;`,
+			);
+		}
+		lines.push("};");
+	}
+
+	lines.push("");
+	if (modules.length === 0) {
+		lines.push("export type DataModuleModules = Record<never, never>;");
+	} else {
+		lines.push("export type DataModuleModules = {");
+		lines.push(
+			`${INDENT}[K in DataModuleKey]: Awaited<ReturnType<DataModuleLoaders[K]>>;`,
+		);
+		lines.push("};");
+	}
+
+	lines.push("");
+	lines.push(
+		"export type DataManifestEntry<K extends DataModuleKey = DataModuleKey> = {",
+	);
+	lines.push(`${INDENT}readonly key: K;`);
+	lines.push(`${INDENT}readonly importPath: string;`);
+	lines.push(`${INDENT}readonly loader: DataModuleLoaders[K];`);
+	lines.push("};");
+	lines.push("");
+
+	if (modules.length === 0) {
+		lines.push(
+			"export const dataManifest = {} as const satisfies { readonly [K in DataModuleKey]: DataManifestEntry<K> };",
+		);
+	} else {
+		lines.push("export const dataManifest = {");
 		for (const mod of modules) {
 			const objectKey = formatObjectKey(mod.key);
 			const literalKey = JSON.stringify(mod.key);
 			const importPath = JSON.stringify(mod.importPath);
 			lines.push(
-				`${INDENT}${objectKey}: { key: ${literalKey}, importPath: ${importPath}, loader: () => import(${importPath}) },`
+				`${INDENT}${objectKey}: { key: ${literalKey}, importPath: ${importPath}, loader: () => import(${importPath}) },`,
 			);
 		}
-		lines.push('} as const satisfies { readonly [K in DataModuleKey]: DataManifestEntry<K> };');
+		lines.push(
+			"} as const satisfies { readonly [K in DataModuleKey]: DataManifestEntry<K> };",
+		);
 	}
 
-	lines.push('');
-	lines.push('export type DataManifest = typeof dataManifest;');
-	lines.push('');
+	lines.push("");
+	lines.push("export type DataManifest = typeof dataManifest;");
+	lines.push("");
 	lines.push(
-		'export type DataModuleLoader<K extends DataModuleKey = DataModuleKey> = DataModuleLoaders[K];'
+		"export type DataModuleLoader<K extends DataModuleKey = DataModuleKey> = DataModuleLoaders[K];",
 	);
-	lines.push('');
+	lines.push("");
 	lines.push(
-		'export type DataModuleModule<K extends DataModuleKey = DataModuleKey> = DataModuleModules[K];'
+		"export type DataModuleModule<K extends DataModuleKey = DataModuleKey> = DataModuleModules[K];",
 	);
-	lines.push('');
+	lines.push("");
 
-	return `${lines.join('\n')}\n`;
+	return `${lines.join("\n")}\n`;
 }
 
 function buildStoreRegistryContent(modules: ManifestModule[]): string {
 	const lines: string[] = [];
-	lines.push('import type { DataModuleKey } from "@/data/__generated__/manifest";');
-	lines.push('import { createDataModuleStore } from "@/stores/useDataModuleStore";');
-	lines.push('');
+	lines.push(
+		'import type { DataModuleKey } from "@/data/__generated__/manifest";',
+	);
+	lines.push(
+		'import { createDataModuleStore } from "@/stores/useDataModuleStore";',
+	);
+	lines.push("");
 
 	if (modules.length === 0) {
 		lines.push(
-			'export const dataStores = {} as const satisfies Record<DataModuleKey, ReturnType<typeof createDataModuleStore>>;'
+			"export const dataStores = {} as const satisfies Record<DataModuleKey, ReturnType<typeof createDataModuleStore>>;",
 		);
 	} else {
-		lines.push('export const dataStores = {');
+		lines.push("export const dataStores = {");
 		for (const mod of modules) {
 			const objectKey = formatObjectKey(mod.key);
 			const literalKey = JSON.stringify(mod.key);
-			lines.push(`${INDENT}${objectKey}: createDataModuleStore(${literalKey}),`);
+			lines.push(
+				`${INDENT}${objectKey}: createDataModuleStore(${literalKey}),`,
+			);
 		}
 		lines.push(
-			'} as const satisfies Record<DataModuleKey, ReturnType<typeof createDataModuleStore>>;'
+			"} as const satisfies Record<DataModuleKey, ReturnType<typeof createDataModuleStore>>;",
 		);
 	}
 
-	lines.push('');
-	lines.push('export const dataStoreKeys = Object.keys(dataStores) as DataModuleKey[];');
-	lines.push('');
+	lines.push("");
+	lines.push(
+		"export const dataStoreKeys = Object.keys(dataStores) as DataModuleKey[];",
+	);
+	lines.push("");
 
-	return `${lines.join('\n')}\n`;
+	return `${lines.join("\n")}\n`;
 }
 
 function buildDataModulesContent(modules: ManifestModule[]): string {
 	const lines: string[] = [];
 	lines.push(
-		'import type { DataModuleKey, DataModuleModule } from "@/data/__generated__/manifest";'
+		'import type { DataModuleKey, DataModuleModule } from "@/data/__generated__/manifest";',
 	);
 
 	if (modules.length === 0) {
-		lines.push('');
-		lines.push('export const dataModules = {} as const satisfies Record<DataModuleKey, never>;');
+		lines.push("");
+		lines.push(
+			"export const dataModules = {} as const satisfies Record<DataModuleKey, never>;",
+		);
 	} else {
 		const usedIdentifiers = new Set<string>();
 		const moduleIdentifiers = modules.map((mod) => ({
@@ -253,28 +274,32 @@ function buildDataModulesContent(modules: ManifestModule[]): string {
 			lines.push(`import * as ${identifier} from "${module.importPath}";`);
 		}
 
-		lines.push('');
-		lines.push('export const dataModules = {');
+		lines.push("");
+		lines.push("export const dataModules = {");
 		for (const { module, identifier } of moduleIdentifiers) {
 			const objectKey = formatObjectKey(module.key);
 			lines.push(`${INDENT}${objectKey}: ${identifier},`);
 		}
-		lines.push('} as const satisfies { [K in DataModuleKey]: DataModuleModule<K> };');
+		lines.push(
+			"} as const satisfies { [K in DataModuleKey]: DataModuleModule<K> };",
+		);
 	}
 
-	lines.push('');
-	lines.push('export type DataModules = typeof dataModules;');
-	lines.push('');
-	lines.push('export const dataModuleKeys = Object.keys(dataModules) as DataModuleKey[];');
-	lines.push('');
+	lines.push("");
+	lines.push("export type DataModules = typeof dataModules;");
+	lines.push("");
 	lines.push(
-		'export function getDataModule<K extends DataModuleKey>(key: K): DataModuleModule<K> {'
+		"export const dataModuleKeys = Object.keys(dataModules) as DataModuleKey[];",
+	);
+	lines.push("");
+	lines.push(
+		"export function getDataModule<K extends DataModuleKey>(key: K): DataModuleModule<K> {",
 	);
 	lines.push(`${INDENT}return dataModules[key];`);
-	lines.push('}');
-	lines.push('');
+	lines.push("}");
+	lines.push("");
 
-	return `${lines.join('\n')}\n`;
+	return `${lines.join("\n")}\n`;
 }
 
 function toPosix(value: string): string {
@@ -289,11 +314,11 @@ function createImportIdentifier(key: string, used: Set<string>): string {
 	const segments = key
 		.split(/[\/]/u)
 		.flatMap((segment) => segment.split(/[-_]+/u))
-		.map((segment) => segment.replace(/[^A-Za-z0-9]/gu, ''))
+		.map((segment) => segment.replace(/[^A-Za-z0-9]/gu, ""))
 		.filter(Boolean)
 		.map((segment, index) => {
 			if (segment.length === 0) {
-				return '';
+				return "";
 			}
 			const lower = segment.toLowerCase();
 			if (index === 0) {
@@ -302,9 +327,9 @@ function createImportIdentifier(key: string, used: Set<string>): string {
 			return lower.charAt(0).toUpperCase() + lower.slice(1);
 		});
 
-	let base = segments.join('');
+	let base = segments.join("");
 	if (base.length === 0) {
-		base = 'module';
+		base = "module";
 	}
 
 	if (!/^[A-Za-z_]/u.test(base)) {
@@ -329,7 +354,7 @@ async function ensureDirectoryExists(directoryPath: string, label: string) {
 			throw new Error(`Expected ${label} directory at ${directoryPath}`);
 		}
 	} catch (error: unknown) {
-		if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+		if ((error as NodeJS.ErrnoException).code === "ENOENT") {
 			throw new Error(`Missing ${label} directory at ${directoryPath}`);
 		}
 		throw error;

@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import type React from 'react';
+import Link from "next/link";
+import type React from "react";
 
 /**
  * Minimal preview surface for validating shared UI components under Vite.
@@ -11,10 +11,12 @@ const PreviewApp: React.FC = () => {
 		<div className="min-h-screen bg-background text-foreground px-6 py-12">
 			<div className="mx-auto max-w-4xl space-y-4">
 				<header className="space-y-2">
-					<h1 className="text-3xl font-semibold tracking-tight">DealScale Vite Preview</h1>
+					<h1 className="text-3xl font-semibold tracking-tight">
+						DealScale Vite Preview
+					</h1>
 					<p className="text-muted-foreground">
-						This environment bootstraps shared components using the experimental Vite pipeline.
-						Enable new scenarios by importing from{' '}
+						This environment bootstraps shared components using the experimental
+						Vite pipeline. Enable new scenarios by importing from{" "}
 						<code className="rounded bg-muted px-1 py-0.5 text-sm">@</code>.
 					</p>
 				</header>
@@ -23,14 +25,14 @@ const PreviewApp: React.FC = () => {
 					<ul className="mt-3 list-disc space-y-2 pl-6 text-muted-foreground">
 						<li>Import shared UI components to validate HMR and theming.</li>
 						<li>
-							Dial in data adapters by mocking server-only utilities under{' '}
+							Dial in data adapters by mocking server-only utilities under{" "}
 							<code className="rounded bg-muted px-1 py-0.5 text-sm">
 								tools/vite-preview/src/shims
 							</code>
 							.
 						</li>
 						<li>
-							Update the{' '}
+							Update the{" "}
 							<Link
 								className="font-semibold text-primary underline-offset-2 hover:underline"
 								href="https://rspack.rs/guide/start/quick-start#migrating-from-existing-projects"
@@ -38,7 +40,7 @@ const PreviewApp: React.FC = () => {
 								rel="noreferrer"
 							>
 								forward-compatibility docs
-							</Link>{' '}
+							</Link>{" "}
 							with learnings.
 						</li>
 					</ul>

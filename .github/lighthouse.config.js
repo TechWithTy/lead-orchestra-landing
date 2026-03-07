@@ -1,16 +1,16 @@
 module.exports = {
 	ci: {
 		collect: {
-			staticDistDir: './dist',
+			staticDistDir: "./dist",
 			numberOfRuns: 1,
 			settings: {
-				onlyCategories: ['seo', 'performance'],
+				onlyCategories: ["seo", "performance"],
 			},
 		},
 		assert: {
 			assertions: {
-				'categories:seo': ['error', { minScore: 0.9 }],
-				'categories:performance': ['warn', { minScore: 0.7 }],
+				"categories:seo": ["error", { minScore: 0.9 }],
+				"categories:performance": ["warn", { minScore: 0.7 }],
 			},
 		},
 	},

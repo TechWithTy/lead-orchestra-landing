@@ -1,6 +1,6 @@
-import NextLink from 'next/link';
+import NextLink from "next/link";
 
-import { Button, type ButtonProps } from './styles.js';
+import { Button, type ButtonProps } from "./styles.js";
 
 export function Link({ href, ...restOfProps }: ButtonProps) {
 	return (

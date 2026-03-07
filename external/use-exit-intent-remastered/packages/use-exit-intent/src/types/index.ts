@@ -20,7 +20,9 @@ export interface MobileOptions {
 	delayInSecondsToTrigger?: number;
 }
 
-export type InternalExitIntentSettings = Required<DeepRequired<ExitIntentSettings>>;
+export type InternalExitIntentSettings = Required<
+	DeepRequired<ExitIntentSettings>
+>;
 
 export interface ExitIntentSettings {
 	cookie?: CookieOptions;
@@ -30,7 +32,10 @@ export interface ExitIntentSettings {
 
 type EventPrefix<T extends string> = `on${T}`;
 
-export type Context = EventPrefix<'Trigger' | 'Unsubscribe' | 'Desktop' | 'Mobile'> | void | '';
+export type Context =
+	| EventPrefix<"Trigger" | "Unsubscribe" | "Desktop" | "Mobile">
+	| void
+	| "";
 
 export interface ExitIntentHandler {
 	id: string;

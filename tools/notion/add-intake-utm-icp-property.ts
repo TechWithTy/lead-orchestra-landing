@@ -8,7 +8,9 @@ const DATABASE_ID = process.env.NOTION_DATABASE_ID || process.env.NOTION_DB_ID;
 
 const ensureEnv = (): void => {
 	if (!NOTION_API_KEY || !DATABASE_ID) {
-		throw new Error("Missing NOTION_API_KEY or NOTION_DATABASE_ID/NOTION_DB_ID");
+		throw new Error(
+			"Missing NOTION_API_KEY or NOTION_DATABASE_ID/NOTION_DB_ID",
+		);
 	}
 };
 
@@ -55,7 +57,9 @@ const run = async () => {
 			console.log("utm_icp already exists on intake data source.");
 			return;
 		}
-		throw new Error(`Failed to add utm_icp property: ${response.status} ${text}`);
+		throw new Error(
+			`Failed to add utm_icp property: ${response.status} ${text}`,
+		);
 	}
 
 	console.log("Added utm_icp property to intake data source.");

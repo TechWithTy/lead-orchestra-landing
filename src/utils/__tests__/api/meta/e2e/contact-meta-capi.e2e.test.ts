@@ -25,7 +25,9 @@ beforeAll(async () => {
 	({ POST } = await import("@/app/api/contact/route"));
 	const sendgridModule = await import("@/lib/externalRequests/sendgrid");
 	const metaModule = await import("@/lib/analytics/meta-conversions-api");
-	mockedAddToSendGrid = sendgridModule.addToSendGrid as ReturnType<typeof vi.fn>;
+	mockedAddToSendGrid = sendgridModule.addToSendGrid as ReturnType<
+		typeof vi.fn
+	>;
 	mockedSendMetaConversionEvent =
 		metaModule.sendMetaConversionEvent as ReturnType<typeof vi.fn>;
 });

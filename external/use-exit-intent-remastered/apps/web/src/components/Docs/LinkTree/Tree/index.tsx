@@ -1,4 +1,4 @@
-import { getType, toObjectTree, unslugify } from 'shared/utils';
+import { getType, toObjectTree, unslugify } from "shared/utils";
 
 interface TreeProps {
 	sections: string[][];
@@ -9,7 +9,7 @@ export function Tree({ sections, renderLinks }: TreeProps) {
 	function render(tree: Object) {
 		return Object.entries(tree).map(([section, children]) => {
 			const sectionName = unslugify(section);
-			const hasChildren = getType(children) === 'object';
+			const hasChildren = getType(children) === "object";
 
 			if (hasChildren) {
 				return (

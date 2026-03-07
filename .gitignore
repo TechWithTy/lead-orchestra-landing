@@ -15,6 +15,7 @@ dist-ssr/
 # Next.js build and cache
 .next/
 out/
+.next-clean*/
 .swc/
 .turbo/
 *.tsbuildinfo

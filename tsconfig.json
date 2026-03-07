@@ -1,126 +1,114 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
-  "compilerOptions": {
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo",
-    "strict": false,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@external/dynamic-hero": [
-        "./src/components/dynamic-hero/src/index.ts"
-      ],
-      "@external/dynamic-hero/*": [
-        "./src/components/dynamic-hero/src/*"
-      ],
-      "shared": [
-        "./external/use-exit-intent-remastered/apps/web/src/shared/index.ts"
-      ],
-      "shared/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/shared/*"
-      ],
-      "styles": [
-        "./external/use-exit-intent-remastered/apps/web/src/styles/index.ts"
-      ],
-      "styles/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/styles/*"
-      ],
-      "components": [
-        "./external/use-exit-intent-remastered/apps/web/src/components/index.ts"
-      ],
-      "components/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/components/*"
-      ],
-      "hooks": [
-        "./external/use-exit-intent-remastered/apps/web/src/hooks/index.ts"
-      ],
-      "hooks/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/hooks/*"
-      ],
-      "modules": [
-        "./external/use-exit-intent-remastered/apps/web/src/modules/index.ts"
-      ],
-      "modules/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/modules/*"
-      ],
-      "templates": [
-        "./external/use-exit-intent-remastered/apps/web/src/templates/index.ts"
-      ],
-      "templates/*": [
-        "./external/use-exit-intent-remastered/apps/web/src/templates/*"
-      ],
-      "@external/use-exit-intent": [
-        "./external/use-exit-intent-remastered/packages/use-exit-intent/src/index.ts"
-      ],
-      "@external/use-exit-intent/*": [
-        "./external/use-exit-intent-remastered/packages/use-exit-intent/src/*"
-      ]
-    },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false,
-    "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "noEmit": true,
-    "declaration": false,
-    "module": "esnext",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "**/__tests__/**",
-    "**/*.__tests__.ts",
-    "**/*.__tests__.tsx",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "functions",
-    "landing/functions",
-    "src/testHelpers",
-    "tools",
-    "tests",
-    "vitest.config.ts",
-    "vitest.setup.ts",
-    "vitest.setup-*.ts",
-    "scripts",
-    "scripts/**/*"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next-clean/types/**/*.ts",
-    ".next-v2/types/**/*.ts",
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "src/types/**/*.d.ts",
-    "src/types/svg.d.ts",
-    "../.next-temp/types/**/*.ts"
-  ]
+	"files": [],
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		},
+		{
+			"path": "./tsconfig.node.json"
+		}
+	],
+	"compilerOptions": {
+		"incremental": true,
+		"tsBuildInfoFile": ".tsbuildinfo",
+		"strict": false,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@external/dynamic-hero": ["./src/components/dynamic-hero/src/index.ts"],
+			"@external/dynamic-hero/*": ["./src/components/dynamic-hero/src/*"],
+			"shared": [
+				"./external/use-exit-intent-remastered/apps/web/src/shared/index.ts"
+			],
+			"shared/*": [
+				"./external/use-exit-intent-remastered/apps/web/src/shared/*"
+			],
+			"styles": [
+				"./external/use-exit-intent-remastered/apps/web/src/styles/index.ts"
+			],
+			"styles/*": [
+				"./external/use-exit-intent-remastered/apps/web/src/styles/*"
+			],
+			"components": [
+				"./external/use-exit-intent-remastered/apps/web/src/components/index.ts"
+			],
+			"components/*": [
+				"./external/use-exit-intent-remastered/apps/web/src/components/*"
+			],
+			"hooks": [
+				"./external/use-exit-intent-remastered/apps/web/src/hooks/index.ts"
+			],
+			"hooks/*": ["./external/use-exit-intent-remastered/apps/web/src/hooks/*"],
+			"modules": [
+				"./external/use-exit-intent-remastered/apps/web/src/modules/index.ts"
+			],
+			"modules/*": [
+				"./external/use-exit-intent-remastered/apps/web/src/modules/*"
+			],
+			"templates": [
+				"./external/use-exit-intent-remastered/apps/web/src/templates/index.ts"
+			],
+			"templates/*": [
+				"./external/use-exit-intent-remastered/apps/web/src/templates/*"
+			],
+			"@external/use-exit-intent": [
+				"./external/use-exit-intent-remastered/packages/use-exit-intent/src/index.ts"
+			],
+			"@external/use-exit-intent/*": [
+				"./external/use-exit-intent-remastered/packages/use-exit-intent/src/*"
+			]
+		},
+		"noImplicitAny": false,
+		"noUnusedParameters": false,
+		"skipLibCheck": true,
+		"allowJs": true,
+		"noUnusedLocals": false,
+		"strictNullChecks": false,
+		"target": "ES2017",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"noEmit": true,
+		"declaration": false,
+		"module": "esnext",
+		"esModuleInterop": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"plugins": [
+			{
+				"name": "next"
+			}
+		]
+	},
+	"exclude": [
+		"node_modules",
+		"**/__tests__/**",
+		"**/*.__tests__.ts",
+		"**/*.__tests__.tsx",
+		"**/*.test.ts",
+		"**/*.test.tsx",
+		"**/*.spec.ts",
+		"**/*.spec.tsx",
+		"functions",
+		"landing/functions",
+		"src/testHelpers",
+		"tools",
+		"tests",
+		"vitest.config.ts",
+		"vitest.setup.ts",
+		"vitest.setup-*.ts",
+		"scripts",
+		"scripts/**/*"
+	],
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		".next-clean/types/**/*.ts",
+		".next-v2/types/**/*.ts",
+		".next/types/**/*.ts",
+		"next-env.d.ts",
+		"src/types/**/*.d.ts",
+		"src/types/svg.d.ts",
+		"../.next-temp/types/**/*.ts"
+	]
 }

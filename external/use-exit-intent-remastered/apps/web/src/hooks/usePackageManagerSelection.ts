@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const localStorageKey = '@daltonmenezes/packageManager';
+const localStorageKey = "@daltonmenezes/packageManager";
 
-export function usePackageManagerSelection<PackageManagerOptions extends string>(
-	defaultActivePackageManager: PackageManagerOptions
-) {
-	const [activePackageManager, setActivePackageManager] = useState<PackageManagerOptions>(
-		defaultActivePackageManager
-	);
+export function usePackageManagerSelection<
+	PackageManagerOptions extends string,
+>(defaultActivePackageManager: PackageManagerOptions) {
+	const [activePackageManager, setActivePackageManager] =
+		useState<PackageManagerOptions>(defaultActivePackageManager);
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		const packageManager = window.localStorage.getItem(
-			localStorageKey
+			localStorageKey,
 		) as PackageManagerOptions | null;
 
-		setActivePackageManager(() => (packageManager ? packageManager : defaultActivePackageManager));
+		setActivePackageManager(() =>
+			packageManager ? packageManager : defaultActivePackageManager,
+		);
 	}, []);
 
 	function updateActivePackageManager(packageManager: PackageManagerOptions) {

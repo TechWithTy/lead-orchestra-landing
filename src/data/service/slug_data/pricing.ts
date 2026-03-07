@@ -158,18 +158,21 @@ export const pricingCatalog: PricingCatalog = {
 					{
 						name: "Private Deployment",
 						price: "$24,000/year",
-						description: "Full source access, dockerized deployment, self-hosted license",
+						description:
+							"Full source access, dockerized deployment, self-hosted license",
 					},
 					{
 						name: "Private Deployment + SLA",
 						price: "$48,000/year",
-						description: "Includes priority support, guided onboarding, and shared Slack channel",
+						description:
+							"Includes priority support, guided onboarding, and shared Slack channel",
 						highlighted: true,
 					},
 					{
 						name: "Regulated / On-Prem / Gov",
 						price: "$75,000 – $120,000/year",
-						description: "Air-gapped support, custom compliance (FedRAMP/HIPAA), dedicated engineering",
+						description:
+							"Air-gapped support, custom compliance (FedRAMP/HIPAA), dedicated engineering",
 					},
 				],
 				aiCredits: {

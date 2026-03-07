@@ -1,14 +1,14 @@
-import { styled } from 'styles';
+import { styled } from "styles";
 
-export const Separator = styled('div', {
-	background: '$shape-quaternary',
+export const Separator = styled("div", {
+	background: "$shape-quaternary",
 
 	compoundVariants: [
 		{
 			horizontal: true,
 			css: {
 				borderLeft: 0,
-				borderTop: '1px solid rgba(36, 36, 36, 0.547)',
+				borderTop: "1px solid rgba(36, 36, 36, 0.547)",
 			},
 		},
 	],
@@ -16,7 +16,7 @@ export const Separator = styled('div', {
 	variants: {
 		opacity: {
 			default: {
-				borderLeft: '1px solid $shape-tertiary',
+				borderLeft: "1px solid $shape-tertiary",
 			},
 
 			low: {
@@ -33,7 +33,7 @@ export const Separator = styled('div', {
 
 		horizontal: {
 			true: {
-				width: '100%',
+				width: "100%",
 				height: 1,
 			},
 		},
@@ -41,6 +41,6 @@ export const Separator = styled('div', {
 
 	defaultVariants: {
 		vertical: true,
-		opacity: 'default',
+		opacity: "default",
 	},
 });

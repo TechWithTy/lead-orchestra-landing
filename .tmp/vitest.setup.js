@@ -1,17 +1,17 @@
-import 'dotenv/config';
-import '@testing-library/jest-dom';
+import "dotenv/config";
+import "@testing-library/jest-dom";
 const shouldEnableAdapter =
-	process.env.USE_TEST_FRAMEWORK_ADAPTER === 'true' ||
-	process.env.SKIP_TEST_FRAMEWORK_ADAPTER === 'false';
+	process.env.USE_TEST_FRAMEWORK_ADAPTER === "true" ||
+	process.env.SKIP_TEST_FRAMEWORK_ADAPTER === "false";
 if (shouldEnableAdapter) {
 	const {
 		default: nodeFetch,
 		Headers: NodeHeaders,
 		Request: NodeRequest,
 		Response: NodeResponse,
-	} = await import('node-fetch');
+	} = await import("node-fetch");
 	const ensureJestFacade = () => {
-		if (typeof globalThis.jest !== 'undefined') {
+		if (typeof globalThis.jest !== "undefined") {
 			return;
 		}
 		const vi = globalThis.vi;
@@ -29,7 +29,7 @@ if (shouldEnableAdapter) {
 						moduleMockRegistry.set(specifier, mockedModule);
 						return mockedModule;
 					},
-					options
+					options,
 				);
 				return;
 			}
@@ -38,7 +38,7 @@ if (shouldEnableAdapter) {
 		const requireMock = (specifier) => {
 			if (!moduleMockRegistry.has(specifier)) {
 				throw new Error(
-					'Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.'
+					"Module has not been registered via jest.mock(). Provide a factory when mocking under Vitest so the adapter can expose it synchronously.",
 				);
 			}
 			return moduleMockRegistry.get(specifier);
@@ -49,7 +49,7 @@ if (shouldEnableAdapter) {
 			mocked: vi.mocked.bind(vi),
 			requireActual: () => {
 				throw new Error(
-					'jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.'
+					"jest.requireActual is not supported by the Vitest compatibility shim. Import the module directly instead.",
 				);
 			},
 			requireMock,
@@ -82,17 +82,17 @@ if (shouldEnableAdapter) {
 		globalThis.jest = jestFacade;
 	};
 	ensureJestFacade();
-	if (typeof globalThis.fetch === 'undefined') {
+	if (typeof globalThis.fetch === "undefined") {
 		globalThis.fetch = nodeFetch;
 	}
-	if (typeof globalThis.Request === 'undefined') {
+	if (typeof globalThis.Request === "undefined") {
 		globalThis.Request = NodeRequest;
 		globalThis.Response = NodeResponse;
 		globalThis.Headers = NodeHeaders;
 	}
 	afterAll(async () => {
 		const agent = globalThis.fetch?.__agent;
-		if (agent && typeof agent.destroy === 'function') {
+		if (agent && typeof agent.destroy === "function") {
 			agent.destroy();
 		}
 	});
