@@ -348,16 +348,16 @@ const Contact = () => {
 							onValueChange={handleTabChange}
 							className="w-full"
 						>
-							<TabsList className="mb-8 grid h-auto w-full max-w-full grid-cols-2 gap-2 rounded-2xl bg-muted/60 p-2 shadow-inner drop-shadow-sm dark:bg-muted/20">
+							<TabsList className="mb-8 grid h-auto w-full max-w-full grid-cols-2 gap-2 rounded-2xl bg-muted/80 p-2 shadow-inner drop-shadow-md border border-border/50 dark:bg-muted/30">
 								<TabsTrigger
 									value="conversion"
-									className="rounded-xl py-3 font-bold text-sm transition-all hover:bg-background/50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md md:text-base"
+									className="rounded-xl py-4 font-bold text-sm transition-all hover:bg-background/80 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-focus data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg md:text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 								>
 									Quick Form
 								</TabsTrigger>
 								<TabsTrigger
 									value="prequalification"
-									className="rounded-xl py-3 font-bold text-sm transition-all hover:bg-background/50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md md:text-base"
+									className="rounded-xl py-4 font-bold text-sm transition-all hover:bg-background/80 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-focus data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg md:text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 								>
 									Consultation Form
 								</TabsTrigger>
