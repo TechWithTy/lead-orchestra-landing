@@ -1042,6 +1042,68 @@ export const caseStudies: CaseStudy[] = [
 		featured: false,
 		redirectToContact: false,
 	},
+	{
+		id: "lead-orchestra-competitor-growth-001",
+		title:
+			"SaaS Founder: Accelerating Customer Acquisition by Poaching Competitor Leads",
+		subtitle:
+			"How an ambitious founder transitioned from generic lead lists to a competitive growth engine, capturing highly engaged audiences directly from rivals.",
+		referenceLink: "",
+		slug: "poaching-competitor-leads",
+		categories: ["lead-generation", "go-to-market"],
+		industries: ["founders", "saas"],
+		copyright: {
+			title: "Capture Leads From Your Competitors",
+			subtitle:
+				"Find prospects already engaging with your competitors across social platforms, directories, and events.",
+			ctaText: "Start With 100 Free Leads",
+			ctaLink: "/contact",
+		},
+		tags: [
+			"Competitor Audience Capture",
+			"Growth Hacking",
+			"Outbound Strategy",
+			"B2B",
+		],
+		clientName: "B2B SaaS Challenger",
+		clientDescription:
+			"A growing software startup competing in a saturated market dominated by legacy platforms with high switching costs.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1170&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"Traditional lead databases (like ZoomInfo or Apollo) were exhausted, yielding budget shoppers rather than ready buyers.",
+			"Generic outbound lacked the necessary context for SDRs to personalize at scale.",
+			"Needed a strategic advantage to pull customers away from well-entrenched, legacy competitors.",
+		],
+		lastModified: new Date("2026-03-08T00:00:00.000Z"),
+		businessOutcomes: [
+			{
+				title: "Lead Quality",
+				subtitle:
+					"Shifted audience from budget shoppers to growth-focused decision makers.",
+			},
+			{
+				title: "Conversion Rate",
+				subtitle:
+					"Outbound campaigns converted 3x higher due to built-in buying intent context.",
+			},
+		],
+		solutions: [
+			"Implemented a competitor audience capture workflow, targeting surfaces where rival customers engaged.",
+			"Extracted verified emails and phone numbers from audiences attending competitor webinars and following their social channels.",
+			"Enabled a highly personalized outbound strategy: 'I saw you use [Competitor]—here's why we're better.'",
+		],
+		description:
+			"A SaaS founder needed an edge against established market giants. Instead of relying on saturated lead databases, we repositioned their outbound engine. Using Lead Orchestra, they successfully targeted and extracted highly engaged prospects directly from their competitors' ecosystems, transforming their go-to-market motion from standard outreach to a strategic competitive acquisition engine.",
+		results: [
+			{ title: "Meetings Rate", value: "3x Increase" },
+			{ title: "Pipeline Quality", value: "High Intent" },
+		],
+		featured: true,
+		redirectToContact: false,
+	},
 ];
 
 export const caseStudyCategories: Category[] = [
