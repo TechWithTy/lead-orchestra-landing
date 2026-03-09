@@ -435,7 +435,6 @@ export const caseStudies: CaseStudy[] = [
 				value: "Seasonal/launch pushes supported",
 			},
 		],
-		howItWorks: generalHowItWorks,
 		featured: true,
 		redirectToContact: true,
 	},
