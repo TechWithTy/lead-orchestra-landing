@@ -738,6 +738,310 @@ export const caseStudies: CaseStudy[] = [
 		featured: false,
 		redirectToContact: false,
 	},
+	{
+		id: "founder-saas-mvp-001",
+		title: "Indie Hacker: From Idea to Profitable SaaS MVP in 24 Hours",
+		subtitle:
+			"How we helped a solo founder launch a fully functional B2B SaaS MVP using rapid development frameworks.",
+		referenceLink: "",
+		slug: "indie-hacker-saas-mvp-24-hours",
+		categories: ["development", "mvp"],
+		industries: ["founders"],
+		copyright: {
+			title: "Want to launch your MVP at lightning speed?",
+			subtitle:
+				"We build tailored software tools and scalable SaaS platforms fast.",
+			ctaText: "Let's Build It!",
+			ctaLink: "/contact",
+		},
+		tags: ["SaaS", "MVP", "Rapid Prototyping"],
+		clientName: "Solo Founder",
+		clientDescription:
+			"An aspiring tech entrepreneur launching a specialized CRM for niche communities.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		businessChallenges: [
+			"Needed to validate a SaaS concept without spending 6 months in development",
+			"Limited budget required an extremely lean stack",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{
+				title: "Time to Market",
+				subtitle: "Launched within 24 hours of final spec",
+			},
+			{
+				title: "Initial Revenue",
+				subtitle: "Secured first 10 paying customers in week 1",
+			},
+		],
+		solutions: [
+			"Deployed a modern, serverless Next.js architecture.",
+			"Integrated automated billing and authentication loops instantly.",
+		],
+		description:
+			"A solo founder came to us needing a rapid SaaS MVP deployment to validate market demand. By using our robust templates and AI-assisted workflows, we delivered a polished MVP fast.",
+		results: [
+			{ title: "Development Time", value: "24 Hours" },
+			{ title: "Cost Savings", value: "85%" },
+		],
+		featured: false,
+		redirectToContact: false,
+	},
+	{
+		id: "enterprise-bookt-001",
+		title: "Bookt: Enterprise Custom Lead Generation Engine",
+		subtitle:
+			"Scaling B2B outbound with a dedicated enterprise data sourcing and automated lead generation engine.",
+		referenceLink: "",
+		slug: "bookt-custom-lead-generation-engine",
+		categories: ["lead-generation", "automation"],
+		industries: ["enterprise"],
+		copyright: {
+			title: "Ready to scale your enterprise sales pipeline?",
+			subtitle:
+				"We build custom scraping and outbound systems for high-volume enterprise needs.",
+			ctaText: "Talk to Us!",
+			ctaLink: "/contact",
+		},
+		tags: ["Enterprise Data", "B2B Outbound", "Data Enrichment"],
+		clientName: "Bookt",
+		clientDescription:
+			"A rapidly growing enterprise software platform targeting global HR departments.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1170&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"Standard lead databases produced too much inaccurate data",
+			"Needed real-time scraping of enterprise job boards and company news",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{ title: "Data Accuracy", subtitle: "Improved data validity to 98%" },
+			{
+				title: "Lead Volume",
+				subtitle: "Generated 10,000+ targeted enterprise leads per month",
+			},
+		],
+		solutions: [
+			"Engineered a scalable, distributed custom scraping engine.",
+			"Implemented an enrichment pipeline integrating seamlessly with their CRM.",
+		],
+		description:
+			"Bookt required a specialized data acquisition flow which standard tools could not provide. Our enterprise scraping engine delivered localized, highly validated contact data.",
+		results: [
+			{ title: "Pipeline Growth", value: "300%" },
+			{ title: "Data Quality", value: "98% Validated" },
+		],
+		featured: true,
+		redirectToContact: false,
+	},
+	{
+		id: "engineering-mcp-plugin-001",
+		title: "Engineering Team: Replacing Legacy Scrapers with an MCP Plugin",
+		subtitle:
+			"How an engineering team cut maintenance hours seamlessly by integrating our robust MCP scraper plugin.",
+		referenceLink: "",
+		slug: "developer-replaced-scraping-code-mcp-plugin",
+		categories: ["development", "api"],
+		industries: ["developers"],
+		copyright: {
+			title: "Tired of maintaining headless browsers?",
+			subtitle:
+				"Replace legacy scraping scripts with our intelligent MCP plugins.",
+			ctaText: "Transform Your Stack",
+			ctaLink: "/contact",
+		},
+		tags: ["MCP Plugin", "Puppeteer", "API Modernization"],
+		clientName: "SaaS Dev Team",
+		clientDescription:
+			"A fast-paced engineering squad managing dozens of legacy scraping microservices.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1170&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"Constant breakage of Puppeteer scripts due to DOM changes",
+			"High server costs for running headless browsers 24/7",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{
+				title: "Maintenance",
+				subtitle: "Reduced scraping maintenance to near-zero",
+			},
+			{
+				title: "Cost Efficiency",
+				subtitle: "Slashed infrastructure costs significantly",
+			},
+		],
+		solutions: [
+			"Plugged in our Model Context Protocol (MCP) compatible extraction tool.",
+			"Centralized all extraction queries into a standardized API interface.",
+		],
+		description:
+			"An engineering team was drowning in scraper maintenance. By switching to our dynamic MCP-based extraction service, they freed up 30 hours of engineering time weekly.",
+		results: [
+			{ title: "Saved Hours", value: "30h / week" },
+			{ title: "Server Cost", value: "-60%" },
+		],
+		featured: false,
+		redirectToContact: false,
+	},
+	{
+		id: "agency-niche-directory-001",
+		title: "Lead Gen Agency: Scraping Niche Directories for Cold Email",
+		subtitle:
+			"Empowering a B2B cold email agency to tap into hyper-specific directories for enriched, verified lead lists.",
+		referenceLink: "",
+		slug: "cold-email-agency-niche-directory-leads",
+		categories: ["lead-generation", "data"],
+		industries: ["agencies"],
+		copyright: {
+			title: "Want to unlock niche data for your agency?",
+			subtitle:
+				"We extract verified emails directly from untouched directories.",
+			ctaText: "Let's Scrape",
+			ctaLink: "/contact",
+		},
+		tags: ["Cold Email", "Directory Scraping", "B2B Leads"],
+		clientName: "HyperTarget Agency",
+		clientDescription:
+			"A boutique lead-gen agency struggling to find untapped data sources.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1170&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"ZoomInfo and Apollo data were exhausted and highly competitive",
+			"Needed a way to extract localized business owners and niche directories",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{
+				title: "Open Rates",
+				subtitle: "Achieved 65%+ open rates on cold campaigns",
+			},
+			{
+				title: "Client Retention",
+				subtitle:
+					"Increased agency retainer length by providing exclusive leads",
+			},
+		],
+		solutions: [
+			"Built custom scrapers mapped to niche industry associations and directories.",
+			"Ran the raw data through an automated email waterfall verification sequence.",
+		],
+		description:
+			"A cold email agency was seeing diminishing returns from standard databases. We created scrapers to parse niche industry association member lists, verified the emails, and fed them directly into their cold email software.",
+		results: [
+			{ title: "Reply Rate", value: "Triple Industry Avg" },
+			{ title: "New Leads Found", value: "50,000+" },
+		],
+		featured: false,
+		redirectToContact: false,
+	},
+	{
+		id: "sdr-revops-competitor-001",
+		title: "RevOps Team: Scalable Competitor Customer Targeting",
+		subtitle:
+			"How SDRs achieved a 4x increase in meeting rates by targeting competitors' dissatisfied customers.",
+		referenceLink: "",
+		slug: "sdr-revops-competitor-case-studies",
+		categories: ["automation", "lead-generation"],
+		industries: ["sdr-revops"],
+		copyright: {
+			title: "Boost your SDR meeting rates instantly.",
+			subtitle: "Target high-intent accounts with custom competitive signals.",
+			ctaText: "Level Up Outreach",
+			ctaLink: "/contact",
+		},
+		tags: ["RevOps", "Competitor Scraping", "Buying Intent"],
+		clientName: "SaaS ScaleUp",
+		clientDescription:
+			"A growing software company trying to poach enterprise deals from legacy competitors.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1151&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"Generic outbound lacked the context needed to break into active accounts",
+			"Needed a way to identify companies actively complaining or switching from legacy systems",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{ title: "Meeting Booked Rate", subtitle: "Increased from 1.5% to 6.2%" },
+			{ title: "Sales Cycle", subtitle: "Shortened deal cycle by 25%" },
+		],
+		solutions: [
+			"Monitored low-star reviews and negative social sentiment against legacy vendors.",
+			"Automatically matched complaints to key decision-makers and routed alerts to the RevOps team.",
+		],
+		description:
+			"RevOps required higher-quality lead intent. We implemented a continuous sentiment monitoring system across review sites, linking dissatisfied users to specific decision-makers and piping them directly to SDRs.",
+		results: [
+			{ title: "Meetings Rate", value: "4x Increase" },
+			{ title: "Deal Velocity", value: "-25% Cycle Time" },
+		],
+		featured: false,
+		redirectToContact: false,
+	},
+	{
+		id: "real-estate-fsbo-001",
+		title: "Real Estate Investor: Automating FSBO Lead Scraping",
+		subtitle:
+			"Creating an automated off-market pipeline by scraping For-Sale-By-Owner listings instantly.",
+		referenceLink: "",
+		slug: "real-estate-investor-fsbo-scraping",
+		categories: ["lead-generation"],
+		industries: ["real-estate"],
+		copyright: {
+			title: "Want to automate your property acquisition?",
+			subtitle:
+				"We build scrapers to find the best off-market deals before your competitors.",
+			ctaText: "Automate Deals",
+			ctaLink: "/contact",
+		},
+		tags: ["Real Estate", "FSBO", "SMS Automation", "Data Pipeline"],
+		clientName: "National Home Buyers",
+		clientDescription:
+			"A multi-state real estate investment firm specializing in direct-to-seller property acquisitions.",
+		featuredImage:
+			"https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop",
+		thumbnailImage:
+			"https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=400&auto=format&fit=crop",
+		businessChallenges: [
+			"Manual tracking of FSBO sites across dozens of zip codes was unsustainable",
+			"Competitors were texting sellers hours before their team saw the listing",
+		],
+		lastModified: new Date("2026-02-18T00:00:00.000Z"),
+		businessOutcomes: [
+			{
+				title: "Speed to Lead",
+				subtitle: "Reduced average contact time from 24h to 5 minutes",
+			},
+			{
+				title: "Acquisitions",
+				subtitle:
+					"Increased monthly properties bought under asking price by 40%",
+			},
+		],
+		solutions: [
+			"Developed a real-time monitor for target zip codes on FSBO networks.",
+			"Integrated Twilio to instantly SMS the seller the moment a listing went live.",
+		],
+		description:
+			"The client was losing deals because they were too slow. We built a data pipeline that constantly checks target counties for new private listings, bypasses captcha, extracts numbers, and sends an automated pre-approved SMS intro.",
+		results: [
+			{ title: "Contact Speed", value: "< 5 mins" },
+			{ title: "Acquisitions", value: "+40%" },
+		],
+		featured: false,
+		redirectToContact: false,
+	},
 ];
 
 export const caseStudyCategories: Category[] = [

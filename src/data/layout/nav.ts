@@ -108,32 +108,32 @@ export const navItems: NavItem[] = [
 		children: [
 			{
 				title: "Founders",
-				href: "/industries/founders",
+				href: "/case-studies/indie-hacker-saas-mvp-24-hours",
 				icon: RocketIcon,
 			},
 			{
 				title: "Enterprise",
-				href: "/pricing",
+				href: "/case-studies/bookt-custom-lead-generation-engine",
 				icon: BuildingIcon,
 			},
 			{
 				title: "Developers & Engineers",
-				href: "/industries/developers",
+				href: "/case-studies/developer-replaced-scraping-code-mcp-plugin",
 				icon: Code2Icon,
 			},
 			{
 				title: "Lead Gen Agencies",
-				href: "/industries/agencies",
+				href: "/case-studies/cold-email-agency-niche-directory-leads",
 				icon: MailIcon,
 			},
 			{
 				title: "SDR & RevOps Teams",
-				href: "/industries/sdr-revops",
+				href: "/case-studies/sdr-revops-competitor-case-studies",
 				icon: SearchIcon,
 			},
 			{
 				title: "Real Estate",
-				href: "/industries/real-estate",
+				href: "/case-studies/real-estate-investor-fsbo-scraping",
 				icon: HomeIcon,
 			},
 		],
