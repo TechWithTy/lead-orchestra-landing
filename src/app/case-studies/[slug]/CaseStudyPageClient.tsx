@@ -146,12 +146,14 @@ export default function CaseStudyPageClient({
 				<Separator className="mx-auto my-8 max-w-7xl border-white/10" />
 				<CaseStudyBusinessOutcome caseStudy={caseStudy} />
 				<Separator className="mx-auto my-8 max-w-7xl border-white/10" />
-				<section className="container">
-					<SectionHeading centered title="How It Works" />
-					<div className="mt-8">
-						<HowItWorksCarousel howItWorks={caseStudy.howItWorks} />
-					</div>
-				</section>
+				{caseStudy.howItWorks && caseStudy.howItWorks.length > 0 && (
+					<section className="container">
+						<SectionHeading centered title="How It Works" />
+						<div className="mt-8">
+							<HowItWorksCarousel howItWorks={caseStudy.howItWorks} />
+						</div>
+					</section>
+				)}
 				{isFeatureError ? (
 					<div className="my-12 rounded-xl border border-destructive/20 bg-destructive/10 p-6 text-center text-destructive-foreground">
 						Unable to load highlights right now.
