@@ -1,7 +1,6 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { HiddenAttributionFields } from "../form/HiddenAttributionFields";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useHasMounted } from "@/hooks/useHasMounted";
@@ -13,6 +12,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { HiddenAttributionFields } from "../form/HiddenAttributionFields";
 
 const formSchema = z.object({
 	email: z.string().email({ message: "Please enter a valid email address" }),
@@ -140,7 +140,7 @@ export const Newsletter = () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: data.email }),
 			});
-			const result = await response.json();
+			const result = await response.json().catch(() => ({}));
 			if (!response.ok) {
 				setError(result.message || "Subscription failed");
 				toast.error(result.message || "Subscription failed");

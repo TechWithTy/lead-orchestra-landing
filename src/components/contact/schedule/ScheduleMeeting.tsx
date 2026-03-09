@@ -56,7 +56,7 @@ export function ScheduleMeeting() {
 			{showBenefits && (
 				<ul
 					id="tour-benefits"
-					className="mb-4 ml-1 list-disc space-y-1 text-muted-foreground text-xs text-left"
+					className="mb-4 ml-1 list-disc space-y-1 text-left text-muted-foreground text-xs"
 					aria-live="polite"
 				>
 					<li>Deep dive into your current lead generation process</li>

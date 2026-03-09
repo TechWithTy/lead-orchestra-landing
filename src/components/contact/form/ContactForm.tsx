@@ -48,8 +48,8 @@ import {
 import type { FieldConfig, RenderFieldProps } from "@/types/contact/formFields";
 import { generateMetaEventId, trackLead } from "@/utils/seo/fbpixel";
 import { useRouter } from "next/navigation";
-import { mapBetaTesterApplication } from "./testerApplicationMappers";
 import { HiddenAttributionFields } from "./HiddenAttributionFields";
+import { mapBetaTesterApplication } from "./testerApplicationMappers";
 
 export default function ContactForm({
 	prefill,
@@ -171,7 +171,7 @@ export default function ContactForm({
 				// ? Even if SendGrid fails, we proceed with Beehiiv, but log the error
 				console.error(
 					"Failed to add contact to SendGrid",
-					await response.json(),
+					await response.json().catch(() => ({})),
 				);
 			}
 

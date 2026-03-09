@@ -51,7 +51,7 @@ export function NewsletterEmailInput({
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: data.email }),
 			});
-			const result = await response.json();
+			const result = await response.json().catch(() => ({}));
 			if (!response.ok) {
 				setError(result.message || "Subscription failed");
 				toast.error(result.message || "Subscription failed");

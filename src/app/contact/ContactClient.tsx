@@ -29,8 +29,8 @@ import { useCallback, useEffect, useMemo } from "react";
 
 import { useDataModuleGuardTelemetry } from "@/hooks/useDataModuleGuardTelemetry";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ConversionForm from "@/components/contact/form/ConversionForm";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 
 // * Centralized SEO for /contact using getStaticSeo helper
@@ -348,11 +348,17 @@ const Contact = () => {
 							onValueChange={handleTabChange}
 							className="w-full"
 						>
-							<TabsList className="mb-8 grid w-full grid-cols-2">
-								<TabsTrigger value="conversion" className="py-3">
+							<TabsList className="mb-8 grid h-auto w-full max-w-full grid-cols-2 gap-2 rounded-2xl bg-muted/60 p-2 shadow-inner drop-shadow-sm dark:bg-muted/20">
+								<TabsTrigger
+									value="conversion"
+									className="rounded-xl py-3 font-bold text-sm transition-all hover:bg-background/50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md md:text-base"
+								>
 									Quick Form
 								</TabsTrigger>
-								<TabsTrigger value="prequalification" className="py-3">
+								<TabsTrigger
+									value="prequalification"
+									className="rounded-xl py-3 font-bold text-sm transition-all hover:bg-background/50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-md md:text-base"
+								>
 									Consultation Form
 								</TabsTrigger>
 							</TabsList>

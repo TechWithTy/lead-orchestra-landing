@@ -37,8 +37,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { createFieldProps, renderFormField } from "./formFieldHelpers";
 import { HiddenAttributionFields } from "./HiddenAttributionFields";
+import { createFieldProps, renderFormField } from "./formFieldHelpers";
 
 type CloserApplicationFormProps = {
 	onSuccess?: () => void;

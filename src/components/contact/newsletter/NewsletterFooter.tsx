@@ -63,7 +63,7 @@ export const NewsletterFooter = () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email: data.email }),
 			});
-			const result = await response.json();
+			const result = await response.json().catch(() => ({}));
 			if (!response.ok) {
 				setError(result.message || "Subscription failed");
 				toast.error(result.message || "Subscription failed");
@@ -120,7 +120,7 @@ export const NewsletterFooter = () => {
 							</div>
 							<Button
 								type="submit"
-								className="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-primary to-focus font-semibold !text-white shadow-lg transition-opacity hover:opacity-90 hover:shadow-primary/20"
+								className="!text-white flex h-10 w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-primary to-focus font-semibold shadow-lg transition-opacity hover:opacity-90 hover:shadow-primary/20"
 								disabled={isSubmitting}
 							>
 								{isSubmitting ? "Subscribing..." : "Subscribe"}
