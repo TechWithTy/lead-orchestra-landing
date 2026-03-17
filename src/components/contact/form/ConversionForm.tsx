@@ -126,11 +126,11 @@ export default function ConversionForm() {
 
 	return (
 		<div className="relative mx-auto max-w-3xl rounded-2xl border border-primary/40 bg-gradient-to-br from-white via-background to-primary-50 p-6 shadow-xl ring-1 ring-primary/10 transition-all sm:p-10 dark:bg-gradient-to-br dark:from-background dark:via-background-dark dark:to-primary/10">
-			<div className="-z-10 absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-focus/10 opacity-60 blur-lg dark:from-primary/30 dark:to-focus/20" />
+			<div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-primary/10 to-focus/10 opacity-60 blur-lg dark:from-primary/30 dark:to-focus/20" />
 
 			<Header
 				title="Quick Application"
-				subtitle="Grab your spot in the queue with the basics. Takes less than 60 seconds."
+				subtitle="See if you qualify for 100 free leads. Grab your spot in the queue with the basics. Takes less than 60 seconds."
 				size="sm"
 				className="mb-8 text-center"
 			/>

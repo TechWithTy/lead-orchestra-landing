@@ -1,9 +1,13 @@
 "use client";
 
-import { useAuthModal } from "@/components/auth/use-auth-store";
+import { ChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { NewsletterEmailInput } from "@/components/contact/newsletter/NewsletterEmailInput";
-import { StickyBanner } from "@/components/ui/StickyBanner";
-import { Button } from "@/components/ui/button";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -13,17 +17,10 @@ import {
 	NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
+import { StickyBanner } from "@/components/ui/StickyBanner";
 import { navItems } from "@/data/layout/nav";
 import { useHasMounted } from "@/hooks/useHasMounted";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { signOut, useSession } from "next-auth/react";
-import { useTheme } from "next-themes";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import { ThemeToggle } from "../theme/theme-toggle";
 import { BetaStickyBanner } from "./BetaStickyBanner";
 
@@ -177,22 +174,9 @@ const DesktopNav = () => {
 type MobileNavProps = {
 	isOpen: boolean;
 	onClose: () => void;
-	isAuthenticated: boolean;
-	isAuthLoading: boolean;
-	onSignOut: () => void;
-	onSignIn: () => void;
-	onSignUp: () => void;
 };
 
-const MobileNav = ({
-	isOpen,
-	onClose,
-	isAuthenticated,
-	isAuthLoading,
-	onSignOut,
-	onSignIn,
-	onSignUp,
-}: MobileNavProps) => {
+const MobileNav = ({ isOpen, onClose }: MobileNavProps) => {
 	const [openSubmenus, setOpenSubmenus] = useState<Record<string, boolean>>({});
 	const { resolvedTheme } = useTheme();
 	const [_mounted, setMounted] = useState(false);
@@ -241,7 +225,7 @@ const MobileNav = ({
 				backgroundColor: isDark ? "rgb(2, 6, 23)" : "rgba(255, 255, 255, 0.95)",
 			}}
 		>
-			<div className="-z-10 absolute inset-0 overflow-hidden">
+			<div className="absolute inset-0 -z-10 overflow-hidden">
 				{isOpen && (
 					<div className="pointer-events-none absolute inset-0 flex items-center justify-center">
 						{isDark ? (
@@ -402,48 +386,6 @@ const MobileNav = ({
 							/>
 						</div>
 					</li>
-					{isAuthenticated && !isAuthLoading && (
-						<li className="pt-2">
-							<Button
-								variant="outline"
-								className="w-full"
-								onClick={() => {
-									onClose();
-									onSignOut();
-								}}
-							>
-								Sign out
-							</Button>
-						</li>
-					)}
-					{!isAuthenticated && !isAuthLoading && (
-						<>
-							<li className="pt-2">
-								<Button
-									variant="default"
-									className="w-full"
-									onClick={() => {
-										onClose();
-										onSignUp();
-									}}
-								>
-									Sign up
-								</Button>
-							</li>
-							<li className="pt-2">
-								<Button
-									variant="outline"
-									className="w-full"
-									onClick={() => {
-										onClose();
-										onSignIn();
-									}}
-								>
-									Sign in
-								</Button>
-							</li>
-						</>
-					)}
 				</ul>
 			</div>
 
@@ -553,9 +495,6 @@ export default function Navbar() {
 		};
 	}, []);
 
-	const { status } = useSession();
-	const openAuthModal = useAuthModal((state) => state.open);
-
 	useEffect(() => {
 		if (!hasMounted) return;
 		if (mobileMenuOpen) {
@@ -581,20 +520,6 @@ export default function Navbar() {
 	useEffect(() => {
 		setBannerMounted(true);
 	}, []);
-
-	const isAuthenticated = status === "authenticated";
-
-	const handleSignOut = () => {
-		void signOut({ callbackUrl: "/" });
-	};
-
-	const handleSignIn = () => {
-		openAuthModal("signin");
-	};
-
-	const handleSignUp = () => {
-		openAuthModal("signup");
-	};
 
 	return (
 		<>
@@ -629,19 +554,6 @@ export default function Navbar() {
 
 					<DesktopNav />
 
-					<div className="hidden items-center space-x-2 lg:flex">
-						{isAuthenticated && (
-							<Button variant="outline" size="sm" onClick={handleSignOut}>
-								Sign out
-							</Button>
-						)}
-						{!isAuthenticated && status !== "loading" && (
-							<Button variant="default" size="sm" onClick={handleSignIn}>
-								Sign in
-							</Button>
-						)}
-					</div>
-
 					<button
 						className="z-20 text-black lg:hidden dark:text-white"
 						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -656,11 +568,6 @@ export default function Navbar() {
 					<MobileNav
 						isOpen={mobileMenuOpen}
 						onClose={() => setMobileMenuOpen(false)}
-						isAuthenticated={isAuthenticated}
-						isAuthLoading={status === "loading"}
-						onSignOut={handleSignOut}
-						onSignIn={handleSignIn}
-						onSignUp={handleSignUp}
 					/>
 				</div>
 			</nav>
