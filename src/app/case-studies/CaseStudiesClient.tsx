@@ -41,7 +41,7 @@ export default function CaseStudiesClient() {
 	const { pagedItems: paginatedCaseStudies, setPage } = usePagination(
 		filteredCaseStudies,
 		{
-			itemsPerPage: 6,
+			itemsPerPage: 12,
 			initialPage: 1,
 			enableShowAll: true,
 		},

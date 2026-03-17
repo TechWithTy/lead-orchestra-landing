@@ -108,32 +108,32 @@ export const navItems: NavItem[] = [
 		children: [
 			{
 				title: "Founders",
-				href: "/case-studies/indie-hacker-saas-mvp-24-hours",
+				href: "/case-studies/poaching-competitor-leads",
 				icon: RocketIcon,
 			},
 			{
 				title: "Enterprise",
-				href: "/case-studies/bookt-custom-lead-generation-engine",
+				href: "/case-studies/poaching-competitor-facebook-groups",
 				icon: BuildingIcon,
 			},
 			{
 				title: "Developers & Engineers",
-				href: "/case-studies/developer-replaced-scraping-code-mcp-plugin",
+				href: "/case-studies/developer-poaches-competitor-api",
 				icon: Code2Icon,
 			},
 			{
 				title: "Lead Gen Agencies",
-				href: "/case-studies/cold-email-agency-niche-directory-leads",
+				href: "/case-studies/agency-poaching-competitor-webinars",
 				icon: MailIcon,
 			},
 			{
 				title: "SDR & RevOps Teams",
-				href: "/case-studies/sdr-revops-competitor-case-studies",
+				href: "/case-studies/sdr-revops-competitor-poaching-g2",
 				icon: SearchIcon,
 			},
 			{
 				title: "Real Estate",
-				href: "/case-studies/real-estate-investor-fsbo-scraping",
+				href: "/case-studies/real-estate-poach-competitor-agents",
 				icon: HomeIcon,
 			},
 		],
